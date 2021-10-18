@@ -1,0 +1,1308 @@
+1
+00:00:07,013 --> 00:00:09,073
+Halo semuanya
+
+2
+00:00:09,073 --> 00:00:14,423
+Hari ini saya akan memperkenalkan kepada Anda: OEM metapackages dan Concourse CI
+
+3
+00:00:15,219 --> 00:00:24,172
+Presentasi ini dapat ditemukan di URL berikut
+
+4
+00:00:26,000 --> 00:00:27,629
+Pertama, saya akan memperkenalkan diri
+
+5
+00:00:27,629 --> 00:00:29,554
+Saya FourDollars
+
+6
+00:00:29,554 --> 00:00:36,817
+Saya seorang Debian Developer, juga anggota komunitas Ubuntu dan Gnome
+
+7
+00:00:37,277 --> 00:00:41,334
+Uh, saya juga seorang karyawan di Canonical, dan juga penggemar Vim
+
+8
+00:00:41,334 --> 00:00:47,097
+Saya biasanya menggunakan Plurk sebagai jejaring sosial utama saya
+
+9
+00:00:48,000 --> 00:00:51,000
+Oke, mari kita mulai kesibukan kita
+
+10
+00:00:51,000 --> 00:00:54,000
+Apa itu OEM metapackage?
+
+11
+00:00:54,000 --> 00:01:04,587
+Ada sebuah artikel di situs berita Open Source
+
+12
+00:01:04,587 --> 00:01:11,760
+dan ada juga pengumuman di Mailing List Ubuntu mengenai topik ini
+
+13
+00:01:12,282 --> 00:01:21,000
+Jadi ini pada dasarnya mengatakan bahwa kami (Canonical) telah mensertifikasi mesin-mesin OEM
+
+14
+00:01:21,000 --> 00:01:27,486
+Akan ada pengalaman sertifikasi OEM yang berbeda (berkaitan dengan platform yang berbeda)
+
+15
+00:01:28,000 --> 00:01:40,000
+Detail operasional dijelaskan dalam artikel di Mailing List ini
+
+16
+00:01:40,000 --> 00:01:42,608
+Oke
+
+17
+00:01:42,608 --> 00:01:46,000
+Sederhananya,
+
+18
+00:01:46,256 --> 00:01:52,585
+Kami akan menyediakan OEM metapackage untuk platform
+
+19
+00:01:52,585 --> 00:01:56,178
+Platformnya bisa berupa PC All-in-one,
+
+20
+00:01:56,178 --> 00:02:02,107
+laptop, atau desktop
+
+21
+00:02:02,107 --> 00:02:11,606
+Dan kemudian mereka diminta untuk menggunakan kernel yang telah kami tentukan
+
+22
+00:02:11,606 --> 00:02:15,567
+Jadi seperti yang Anda lihat pada gambar di bawah ini
+
+23
+00:02:15,802 --> 00:02:21,603
+Kami menyediakan dua kernel berbeda untuk Ubuntu 20.04 LTS
+
+24
+00:02:21,603 --> 00:02:28,172
+Salah satunya adalah kernel OEM, dan yang lainnya adalah kernel HWE generik
+
+25
+00:02:28,446 --> 00:02:30,702
+Kemudian...
+
+26
+00:02:30,702 --> 00:02:35,861
+OEM metapackage kami terutama akan menggunakan kernel yang atas
+
+27
+00:02:35,861 --> 00:02:37,960
+Mengapa kita menggunakan yang atas?
+
+28
+00:02:37,960 --> 00:02:39,341
+Tentu saja karena,
+
+29
+00:02:39,341 --> 00:02:44,362
+Mesin yang kami gunakan adalah mesin yang lebih baru
+
+30
+00:02:44,710 --> 00:02:52,057
+Perangkat kerasnya relatif lebih baru, sehingga memerlukan driver kernel terbaru untuk mendukungnya
+
+31
+00:02:52,057 --> 00:02:56,726
+Jadi kami memperkenalkan cara ini
+
+32
+00:02:56,726 --> 00:03:01,097
+Kami akan memiliki dua kernel yang berbeda secara bersamaan
+
+33
+00:03:01,097 --> 00:03:08,817
+Kernel OEM akan dilengkapi dengan versi kernel linux yang lebih baru
+
+34
+00:03:09,138 --> 00:03:11,041
+Jadi seperti itu
+
+35
+00:03:11,238 --> 00:03:17,723
+Di sini, SWE generik di bawah ini akan menggunakan versi yang lebih stabil
+
+36
+00:03:17,723 --> 00:03:26,637
+Kemudian Anda juga dapat melihat bahwa pada beberapa kasus di sini, versi 5.4 akan beralih secara langsung ke versi yang lebih baru 5.8
+
+37
+00:03:26,637 --> 00:03:35,522
+Juga, kami beralih dari kernel versi 5.8 ke 5.11 bulan ini
+
+38
+00:03:36,021 --> 00:03:38,316
+Akan ada konversi langsung
+
+39
+00:03:38,316 --> 00:03:43,313
+Ada sesuatu yang berbeda di bagian kernel OEM. Bagian ini akan memiliki waktu yang saling tumpang tindih
+
+40
+00:03:43,313 --> 00:03:49,055
+Misalnya, waktu untuk kernel Linux 5.6
+
+41
+00:03:49,055 --> 00:03:56,860
+Anda lihat, ada tumpang tindih yang panjang dengan kernel OEM 20.04b di sini.
+
+42
+00:03:56,860 --> 00:04:02,674
+Sepertinya sampai Juni 2021 ini
+
+43
+00:04:02,674 --> 00:04:08,000
+Saya kemudian akhirnya beralih dari 5.6 ke 5.10
+
+44
+00:04:08,000 --> 00:04:15,175
+Kemudian, kami mendapatkan kernel OEM baru versi 5.13 di bulan Juli
+
+45
+00:04:15,689 --> 00:04:23,859
+Di masa mendatang, kernel OEM versi 5.10 akan beralih ke 5.13
+
+46
+00:04:24,334 --> 00:04:26,551
+Kurang lebih seperti itu
+
+47
+00:04:26,551 --> 00:04:31,000
+Ide utama dari OEM metapackage adalah bahwa
+
+48
+00:04:31,000 --> 00:04:38,000
+Anda dapat menginstal kernel OEM Linux versi yang lebih baru ini lebih awal
+
+49
+00:04:38,000 --> 00:04:44,525
+Instal versi kernel yang relatif baru untuk mendukung beberapa perangkat keras yang relatif baru
+
+50
+00:04:46,000 --> 00:04:49,000
+Lalu bagaimana kita mencapai ini?
+
+51
+00:04:49,000 --> 00:04:53,332
+Ada dua poin utama
+
+52
+00:04:53,332 --> 00:05:00,757
+Salah satunya adalah kami menggunakan modalias untuk mencocokkan perangkat keras
+
+53
+00:05:01,021 --> 00:05:11,110
+Kemudian poin lainnya adalah ia akan menggunakan driver Ubuntu, ubiquity dan update-manager untuk menginstal OEM meta
+
+54
+00:05:12,180 --> 00:05:14,358
+Jadi apa itu modalias?
+
+55
+00:05:14,358 --> 00:05:18,541
+modalias adalah sebuah sistem file, sistem file yang disediakan oleh kernel
+
+56
+00:05:18,541 --> 00:05:24,517
+ArchWiki memiliki penjelasan yang cukup jelas tentang ini
+
+57
+00:05:25,000 --> 00:05:31,603
+Ini sebenarnya adalah antarmuka yang disediakan oleh kernel
+
+58
+00:05:31,603 --> 00:05:38,606
+Dan Anda dapat memperoleh informasi perangkat keras di sana
+
+59
+00:05:38,943 --> 00:05:44,724
+Perintah berikut dapat membantu Anda menemukan file-file itu secara langsung
+
+60
+00:05:44,724 --> 00:05:49,804
+Kemudian Anda dapat membaca isi file secara langsung
+
+61
+00:05:49,804 --> 00:05:54,762
+Anda bisa mengetahui seperti apa modalias itu
+
+62
+00:05:54,762 --> 00:05:59,000
+Contoh yang lebih praktis diberikan di bawah ini
+
+63
+00:05:59,255 --> 00:06:07,543
+Driver Ubuntu digunakan untuk menginstal driver untuk perangkat keras tambahan
+
+64
+00:06:08,178 --> 00:06:10,512
+Berikut adalah daftar ubuntu-drivers
+
+65
+00:06:10,512 --> 00:06:20,877
+Ditampilkan bahwa "Hei, saya memiliki driver Nvidia 460 dan driver Nvidia 470."
+
+66
+00:06:20,877 --> 00:06:26,000
+Kemudian kita dapat menggunakan perintah: ubuntu-drivers devices untuk melihatnya
+
+67
+00:06:26,000 --> 00:06:29,470
+Oh, itu cocok dengan file ini
+
+68
+00:06:29,789 --> 00:06:36,235
+Isi modalias di dalam direktori ini akan terlihat seperti ini
+
+69
+00:06:37,000 --> 00:06:40,313
+Kemudian, ia menyediakan ....
+
+70
+00:06:40,313 --> 00:06:48,600
+Misalnya, dalam kasus ini, driver grafis open source bawaan sedang digunakan
+
+71
+00:06:48,600 --> 00:07:00,266
+Kemudian disarankan agar kita menggunakan driver Nvidia 470 untuk GPU ini
+
+72
+00:07:01,000 --> 00:07:10,615
+Jadi, ada modalias pada perangkat keras
+
+73
+00:07:10,615 --> 00:07:19,760
+Kita dapat menggunakan isi dari modalias agar sesuai dengan perangkat keras yang kita inginkan
+
+74
+00:07:20,235 --> 00:07:24,253
+Jadi, praktisnya
+
+75
+00:07:24,611 --> 00:07:32,076
+Jika Anda melakukan update software, akan dimunculkan sebuah dialog yang disebut Improved Hardware Support
+
+76
+00:07:32,076 --> 00:07:42,658
+Sebagai contoh, kami menggunakan salah satu model Dell Latitude dan ia akan muncul di daftar update
+
+77
+00:07:42,658 --> 00:07:47,762
+Jika Anda tidak menginginkannya, Anda cukup menghapus centangnya
+
+78
+00:07:48,003 --> 00:07:51,003
+Seluruh pengalaman pengguna akan seperti ini
+
+79
+00:07:51,590 --> 00:07:56,000
+Jadi pada dasarnya ini adalah OEM metapackage
+
+80
+00:07:57,000 --> 00:08:02,663
+Oke, selanjutnya kita akan membahas tentang Concourse CI?
+
+81
+00:08:03,000 --> 00:08:13,402
+Concourse CI adalah sebuah tool open source, terutama untuk mengeksekusi task
+
+82
+00:08:13,402 --> 00:08:20,407
+Sebenarnya, ia mirip dengan tool seperti crontab dan cron job
+
+83
+00:08:20,407 --> 00:08:33,595
+Tapi lebih dari itu.... bagaimana Anda mengatakannya ..... Lebih kaya, punya lebih banyak pengaturan dan lebih nyaman untuk digunakan
+
+84
+00:08:34,274 --> 00:08:45,184
+Ia terutama membangun keseluruhan pipeline melalui "resources, tasks, dan jobs"
+
+85
+00:08:47,238 --> 00:08:50,000
+Secara praktis, seperti yang Anda lihat
+
+86
+00:08:50,000 --> 00:08:59,000
+Ini adalah kerangka Concourse CI, CI yang disediakan secara default
+
+87
+00:08:59,000 --> 00:09:07,976
+Ini adalah set kerja. Ada "resource" di sini, dan bagian hijau adalah apa yang disebut "job"
+
+88
+00:09:07,976 --> 00:09:13,862
+Setiap 30 detik, job akan dieksekusi seperti yang dapat Anda lihat
+
+89
+00:09:19,000 --> 00:09:21,765
+Ini akan dieksekusi setiap 30 detik
+
+90
+00:09:21,765 --> 00:09:23,355
+Bagaimana cara mencapai ini?
+
+91
+00:09:23,355 --> 00:09:29,057
+Setiap 30 detik, resource ini akan berubah
+
+92
+00:09:32,000 --> 00:09:34,804
+Setiap 30 detik, akan ada beberapa perubahan pada resource
+
+93
+00:09:34,804 --> 00:09:40,389
+Dan perubahan ini akan menyebabkan job dieksekusi
+
+94
+00:09:42,000 --> 00:09:45,000
+Ini adalah konsep dasar dari Concourse CI
+
+95
+00:09:45,000 --> 00:09:55,462
+Dan... kita bisa menggunakan kombinasi resource yang berbeda
+
+96
+00:09:56,000 --> 00:10:02,454
+untuk membentuk beberapa pipeline yang rumit namun berguna untuk memenuhi kebutuhan kita
+
+97
+00:10:02,454 --> 00:10:04,626
+Ayo kita lanjutkan
+
+98
+00:10:05,533 --> 00:10:15,000
+Hal lain yang perlu disebutkan adalah bahwa ia sebenarnya agak sulit dipelajari
+
+99
+00:10:15,000 --> 00:10:17,647
+Mengapa Concourse CI secara resmi menyebutkan hal ini?
+
+100
+00:10:17,647 --> 00:10:30,000
+Itu karena Anda sebenarnya membutuhkan banyak konsep linux untuk menguasai tool ini
+
+101
+00:10:30,000 --> 00:10:36,937
+Misalnya, pipeline pada command line, redirect, dan lain-lain.
+
+102
+00:10:36,981 --> 00:10:46,428
+Anda juga harus sangat akrab dengan beberapa mekanisme Linux
+
+103
+00:10:46,428 --> 00:10:59,381
+Anda akan membutuhkan latar belakang pengetahuan tersebut untuk menguasai tool CI ini
+
+104
+00:11:01,000 --> 00:11:04,000
+Oke, ini beberapa catatannya
+
+105
+00:11:04,000 --> 00:11:16,595
+Saat ini, semua resource dan job Concourse CI disusun oleh kontainer Docker
+
+106
+00:11:16,595 --> 00:11:20,000
+Dan saat ini hanya mendukung AMD 64
+
+107
+00:11:20,000 --> 00:11:23,196
+Yang disebut arsitektur x86_64
+
+108
+00:11:23,196 --> 00:11:30,355
+Dan pipeline-nya tidak benar-benar mendukung if/else, ia hanya berjalan saja sampai akhir
+
+109
+00:11:30,355 --> 00:11:35,940
+Entah benar atau salah, entah gagal atau berhasil
+
+110
+00:11:37,057 --> 00:11:42,916
+Dan Anda harus familiar dengan sintaks YAML dan JSON
+
+111
+00:11:46,000 --> 00:11:57,460
+Di "it Help" (sebuah blog IT Mandarin), Cang Shi Xian Ye telah memposting beberapa tutorial pengantar
+
+112
+00:11:57,460 --> 00:12:08,817
+Ada beberapa poin yang perlu kita perhatikan: Pertama, Concourse CI dikembangkan oleh Cloud Foundry
+
+113
+00:12:09,000 --> 00:12:16,465
+Mereka mengembangkan tool CI/CD ini karena semua alat CI/CD yang ada tidak dapat menyelesaikan masalah mereka
+
+114
+00:12:17,141 --> 00:12:23,548
+Seperti yang disebutkan sebelumnya, hal ini hanya tentang menggambar pipeline
+
+115
+00:12:23,548 --> 00:12:30,895
+Gunakan beberapa resource pada pipeline untuk memicu eksekusi job
+
+116
+00:12:32,352 --> 00:12:41,736
+Dibandingkan dengan tool CI/CD lainnya
+
+117
+00:12:41,736 --> 00:12:45,687
+Kita tidak memiliki konsep plugin di Concourse CI
+
+118
+00:12:45,687 --> 00:12:51,546
+Semua ekstensibilitasnya (plugin) dilakukan melalui "resource"
+
+119
+00:12:51,546 --> 00:12:53,864
+Saya akan membicarakannya nanti
+
+120
+00:12:54,569 --> 00:13:01,000
+Bagi saya, saya membuat sendiri tipe resource ini
+
+121
+00:13:01,000 --> 00:13:13,242
+Ketika saya pertama kali mulai menggunakannya, saya perlu mengekspor sesuatu di CI ke tempat lain
+
+122
+00:13:13,242 --> 00:13:19,668
+Concourse CI tidak menyediakan alat bawaan yang dapat mengekspor file
+
+123
+00:13:19,668 --> 00:13:26,828
+Ia hanya menyediakan beberapa antarmuka dan beberapa resource dasar
+
+124
+00:13:26,828 --> 00:13:33,470
+Resource bawaan juga tidak menyediakan penyimpanan
+
+125
+00:13:33,470 --> 00:13:39,392
+Ah, jadi saya membuat resource samba dan resource webdav ini
+
+126
+00:13:39,392 --> 00:13:50,582
+Selain itu, terkadang saya perlu dput JPEG ke ppa, untuk itulah resource dput
+
+127
+00:13:50,582 --> 00:13:58,726
+Karena saya perlu cukup sering melakukan dput dan itu menjadi pekerjaan yang berulang
+
+128
+00:13:58,726 --> 00:14:05,838
+Jadi saya baru saja membuat resource dput untuk menyederhanakan tugas ini
+
+129
+00:14:05,838 --> 00:14:11,329
+Ada juga resource autopkgtest sederhana
+
+130
+00:14:14,710 --> 00:14:25,000
+Juga, kita sering perlu memantau versi paket Debian
+
+131
+00:14:25,000 --> 00:14:31,196
+Misalnya, ketika ada rilis kernel baru atau rilis baru GRUB
+
+132
+00:14:31,196 --> 00:14:41,284
+Ketika mendeteksi perubahan dalam versi paket,
+
+133
+00:14:41,284 --> 00:14:45,000
+Saya ingin melakukan sesuatu sesegera mungkin
+
+134
+00:14:45,000 --> 00:14:55,833
+Jadi, karena kebutuhan ini, saya juga menulis resource untuk memantau perubahan versi paket Debian
+
+135
+00:14:55,833 --> 00:15:00,477
+Selain itu, saya juga menulis sendiri notifikasi mattermost 
+
+136
+00:15:00,477 --> 00:15:03,712
+Karena kami menggunakan mattermost di Canonical
+
+137
+00:15:03,712 --> 00:15:12,880
+Jadi saya menggunakan notifikasi mattermost ini untuk mengirim beberapa pesan ke kanal mattermost
+
+138
+00:15:12,880 --> 00:15:18,389
+Juga, saya perlu mendeteksi perubahan pada launchpad bug
+
+139
+00:15:18,389 --> 00:15:27,681
+Demikian juga, ketika ada beberapa perubahan pada launchpad bug, beberapa job akan dipicu supaya aktif
+
+140
+00:15:28,201 --> 00:15:32,611
+Dan kami juga menggunakan Jenkins
+
+141
+00:15:32,611 --> 00:15:42,597
+Jadi kita perlu memantau apakah ada beberapa job di Jenkins yang dipicu
+
+142
+00:15:42,597 --> 00:15:50,000
+Dan jika Jenkins telah menyelesaikan tugas dengan sukses, kami dapat melanjutkan untuk melakukan hal lain selanjutnya melalui Concourse CI
+
+143
+00:15:50,000 --> 00:15:52,120
+Terakhir, kami juga mempunyai resource rclone
+
+144
+00:15:52,120 --> 00:16:03,509
+rclone adalah tool penyalinan dan sinkronisasi file yang lebih umum
+
+145
+00:16:03,509 --> 00:16:09,000
+Kami perlu menggunakannya, jadi kami membuat resource rclone ini
+
+146
+00:16:12,789 --> 00:16:17,943
+Oke, mari kita perkenalkan resource WebDAV
+
+147
+00:16:17,943 --> 00:16:20,916
+Resource WebDAV yang disebutkan di atas
+
+148
+00:16:20,916 --> 00:16:25,000
+Konsepnya seperti ini.....
+
+149
+00:16:28,379 --> 00:16:35,647
+Saya akan memonitor sebuah file di WebDAV
+
+150
+00:16:35,647 --> 00:16:40,629
+Dan saya juga akan mengunduh image docker dari Ubuntu Focal
+
+151
+00:16:40,629 --> 00:16:44,099
+Jadi image sudah siap digunakan di job check-demo-message
+
+152
+00:16:44,099 --> 00:16:50,410
+Jika ada beberapa file di demo strorage ini yang berubah,
+
+153
+00:16:50,410 --> 00:16:55,212
+maka hal itu akan memicu job pesan demo ini
+
+154
+00:16:55,961 --> 00:16:59,744
+Ini adalah isi dari pipeline
+
+155
+00:17:05,000 --> 00:17:09,370
+Pertama-tama, saya akan menentukan tipe resource
+
+156
+00:17:09,370 --> 00:17:15,235
+Namanya WebDAV, dan tipenya adalah registry-image
+
+157
+00:17:15,235 --> 00:17:23,000
+Resource ini adalah resource Webdav yang telah saya letakkan di registri github sebelumnya
+
+158
+00:17:23,000 --> 00:17:25,590
+Kemudian saya akan memberikan beberapa nilai default di sini
+
+159
+00:17:25,590 --> 00:17:28,494
+Misalnya, domain saya adalah webdav
+
+160
+00:17:28,494 --> 00:17:34,235
+username dan passwordnya adalah webdav, dan saya tidak menggunakan HTTPS
+
+161
+00:17:35,000 --> 00:17:41,235
+Selanjutnya, saya dapat menggunakan tipe webdav ini di resource
+
+162
+00:17:41,235 --> 00:17:46,350
+Namanya adalah demo storage, dan saya juga memberinya sebuah ikon
+
+163
+00:17:46,350 --> 00:17:50,606
+Ini adalah ikon Material Design
+
+164
+00:17:50,606 --> 00:17:56,525
+Saya ingin memonitor perubahan di dalam direktori demo
+
+165
+00:17:58,157 --> 00:18:03,820
+Kemudian image docker ubuntu focal
+
+166
+00:18:04,412 --> 00:18:07,687
+Ini adalah definisi dari resource
+
+167
+00:18:07,687 --> 00:18:10,569
+Selanjutnya saya akan mendefinisikan job
+
+168
+00:18:10,569 --> 00:18:13,843
+Saya hanya memiliki satu job di sini yang disebut check-demo-message
+
+169
+00:18:13,843 --> 00:18:21,738
+Rencananya adalah saya akan mengunduh image ubuntu focal ini
+
+170
+00:18:21,738 --> 00:18:29,000
+Kemudian saya akan memeriksa demo storage. Jika ada perubahan, maka perubahan itu akan memicu job untuk dijalankan
+
+171
+00:18:29,000 --> 00:18:31,334
+Jadi di sini kita memiliki sebuah trigger yang sama dengan true
+
+172
+00:18:31,334 --> 00:18:36,410
+Dengan kata lain, jika ada perubahan pada resource dari demo storage ini,
+
+173
+00:18:36,410 --> 00:18:41,193
+itu akan secara otomatis memicu seluruh job untuk dieksekusi
+
+174
+00:18:41,193 --> 00:18:45,000
+Task sesungguhnya yang ingin kita capai terletak di sini, task ini
+
+175
+00:18:45,000 --> 00:18:47,435
+Dan kita dapat mendefinisikan dalam task ini bahwa
+
+176
+00:18:47,435 --> 00:18:55,856
+Saya ingin menggunakan image ubuntu focal sebagai lingkungan kerja saya
+
+177
+00:18:56,433 --> 00:19:03,350
+Dan Anda dapat mendefinisikan platformnya yaitu linux
+
+178
+00:19:03,350 --> 00:19:13,908
+Dan inputnya adalah, saya ingin secara langsung menggunakan info yang diambil dari demo storage ini
+
+179
+00:19:13,908 --> 00:19:20,000
+Kemudian Anda memasukkan input ini. Ini adalah sebuah array, dan kita akan memberinya nama
+
+180
+00:19:20,000 --> 00:19:26,486
+Selanjutnya, Anda dapat menggunakan perintahnya secara langsung di run
+
+181
+00:19:26,486 --> 00:19:29,744
+path adalah nama perintahnya
+
+182
+00:19:29,744 --> 00:19:37,248
+Anda cukup menggunakan cat dan menyediakan sebuah parameter, yang merupakan pesan demo storage
+
+183
+00:19:40,000 --> 00:19:46,877
+Oke, hasilnya akan terlihat seperti ini. Mari kita lompat ke demo langsung
+
+184
+00:20:00,000 --> 00:20:08,640
+Saya telah menyiapkan sebuah repo dari OEM metapackage yang akan saya gunakan nanti
+
+185
+00:20:08,640 --> 00:20:12,219
+dan repositori git
+
+186
+00:20:12,219 --> 00:20:24,386
+Anda dapat mengikuti instruksi di dalam dan construct Concourse CI ini
+
+187
+00:20:24,386 --> 00:20:30,465
+Construct Concourse CI menggunakan docker-compose
+
+188
+00:20:34,587 --> 00:20:37,587
+Oke, saya akan login dulu
+
+189
+00:20:38,000 --> 00:20:46,209
+Setelah masuk, saya dapat menggunakan...
+
+190
+00:20:57,003 --> 00:21:13,465
+Kemudian, saya dapat menggunakan pipeline webdav demo
+
+191
+00:21:33,000 --> 00:21:38,820
+Kemudian Anda dapat membuka tautan
+
+192
+00:21:49,636 --> 00:21:50,894
+Di sini kita perlu menunggu sebentar
+
+193
+00:21:50,894 --> 00:21:55,702
+Ini adalah pertama kalinya kita membangunnya
+
+194
+00:21:55,702 --> 00:22:03,401
+Jadi perlu beberapa saat untuk mengunduh image dari resource
+
+195
+00:22:04,000 --> 00:22:07,000
+Tentu saja image tersebut bisa digunakan kembali nanti
+
+196
+00:22:07,000 --> 00:22:13,000
+Selesai mengunduh resource webdav
+
+197
+00:22:13,000 --> 00:22:19,681
+Kita lihat, ada pesan di sini
+
+198
+00:22:23,000 --> 00:22:32,334
+Oke, isinya adalah untuk mengambil log pesan
+
+199
+00:22:32,334 --> 00:22:36,000
+Dan kemudian menampilkannya
+
+200
+00:22:36,671 --> 00:22:37,798
+Kira-kira seperti ini
+
+201
+00:22:38,777 --> 00:22:43,076
+Karena saya letakkan langsung di repo ini
+
+202
+00:22:45,000 --> 00:22:46,903
+Jadi kita juga bisa....
+
+203
+00:22:46,903 --> 00:22:53,702
+Misalnya, tambahkan waktu saya merekam video ini ke dalamnya
+
+204
+00:22:53,702 --> 00:22:56,702
+Kemudian Anda dapat menyampaikan ini lagi
+
+205
+00:23:00,344 --> 00:23:04,761
+Ada timestamp tambahan di akhir
+
+206
+00:23:17,000 --> 00:23:31,000
+Ok, jika ia mendeteksi versi baru, job yang ditentukan akan dijalankan secara otomatis
+
+207
+00:23:31,000 --> 00:23:36,726
+Anda lihat ada timestamp di sini yang baru saja saya tambahkan
+
+208
+00:23:36,726 --> 00:23:44,308
+Nah, ini adalah demo kasar dari resource Webdav
+
+209
+00:23:49,587 --> 00:23:50,629
+Bagus
+
+210
+00:23:50,629 --> 00:24:01,765
+Jadi bagaimana kita menggunakan Concourse CI dalam OEM metapackage kita?
+
+211
+00:24:01,765 --> 00:24:05,352
+Pertama, kita perlu menyebutkan itu
+
+212
+00:24:05,352 --> 00:24:08,307
+Pegawai Canonical akan memelihara OEM metapackage
+
+213
+00:24:08,307 --> 00:24:16,000
+di dalam 3 repositori git ini, di bawah branch yang berbeda
+
+214
+00:24:16,000 --> 00:24:21,232
+Dan saya akan memelihara pipeline CI/CD ini
+
+215
+00:24:21,232 --> 00:24:25,720
+di repositori git launchpad ini
+
+216
+00:24:26,000 --> 00:24:29,000
+Eh, maka itu akan ...
+
+217
+00:24:34,639 --> 00:24:38,832
+Misalnya di sini, nama filenya akan terlihat seperti ini
+
+218
+00:24:40,000 --> 00:24:41,903
+Akan ada banyak branch
+
+219
+00:24:41,903 --> 00:24:49,133
+Setiap branch mewakili platform yang berbeda
+
+220
+00:24:52,587 --> 00:25:01,775
+Meta CI yang saya pelihara ada di sini
+
+221
+00:25:03,000 --> 00:25:06,868
+Jadi ini relatif sederhana, hanya berisi satu cabang
+
+222
+00:25:09,509 --> 00:25:18,736
+Selain itu, saya memelihara sebuah dashboard, yang terlihat seperti ini.....
+
+223
+00:25:20,000 --> 00:25:27,190
+Hmm.... Saya bisa kembali untuk menjelaskan dasbor ini nanti jika ada waktu
+
+224
+00:25:29,000 --> 00:25:40,624
+Oke, sebenarnya hasil eksekusi Concourse CI akan seperti ini
+
+225
+00:25:42,000 --> 00:25:49,426
+Ini akan memiliki beberapa job, dan semuanya dipicu oleh branch git
+
+226
+00:25:49,426 --> 00:25:55,000
+Setelah menyelesaikan sesuatu, jika ia gagal .....
+
+227
+00:25:55,000 --> 00:26:03,404
+Beberapa pesan akan dikirim ke kanal mattermost melalui mattermost
+
+228
+00:26:07,000 --> 00:26:12,702
+Dashboard yang disebutkan sebelumnya terlihat seperti ini
+
+229
+00:26:12,702 --> 00:26:24,671
+Sebenarnya, di sini, autopkg bootstrap build pass, real build pass
+
+230
+00:26:24,671 --> 00:26:29,780
+Masing-masing sesuai dengan job tertentu di sini
+
+231
+00:26:29,780 --> 00:26:36,931
+Misalnya, modalias build ini pass, ia sesuai dengan modalias ini
+
+232
+00:26:38,000 --> 00:26:44,799
+Dan ada instalasi boostrap di sini
+
+233
+00:26:46,000 --> 00:26:49,000
+kernel flavour akan terletak di sini
+
+234
+00:26:49,467 --> 00:26:53,000
+lalu nama market akan ada di sini
+
+235
+00:26:54,000 --> 00:26:57,000
+Ini pada dasarnya seperti ini
+
+236
+00:27:00,000 --> 00:27:08,298
+Oke, itu pada dasarnya ....
+
+237
+00:27:08,298 --> 00:27:27,000
+Saya memiliki job pipeline lain untuk memeriksa tiga repositori git ini secara regular
+
+238
+00:27:27,000 --> 00:27:32,311
+Jika ada branch baru
+
+239
+00:27:34,000 --> 00:27:42,000
+Atau jika ada beberapa branch dihapus, itu akan memperbarui meta ci yang saya pelihara
+
+240
+00:27:42,000 --> 00:27:45,000
+Memperbaruinya secara otomatis
+
+241
+00:27:45,548 --> 00:27:56,655
+Yang perlu saya lakukan sebenarnya adalah mengedit dua template ini
+
+242
+00:27:56,655 --> 00:28:02,856
+Dan tambahkan beberapa set data pengujian lagi
+
+243
+00:28:06,000 --> 00:28:11,546
+Mari lompat ke demo langsung
+
+244
+00:28:24,000 --> 00:28:35,067
+Lihat readme, disebutkan bahwa kita dapat melakukan konfigurasi ulang ci
+
+245
+00:28:36,000 --> 00:28:49,000
+Dan itu akan secara otomatis memantau repositori meta ci
+
+246
+00:28:49,000 --> 00:28:59,765
+Jika ada perubahan, maka secara otomatis akan membangun CI individual
+
+247
+00:28:59,765 --> 00:29:04,635
+Kita dapat membatalkan ini dan itu akan mulai beroperasi
+
+248
+00:30:09,000 --> 00:30:13,756
+Di sini kita harus meningkatkannya dengan tidak menjalankan lima job secara bersamaan
+
+249
+00:30:13,756 --> 00:30:16,298
+Jalankan satu job pada satu waktu, satu per satu
+
+250
+00:30:16,298 --> 00:30:27,091
+Sehingga kita dapat mencegah bentrokan resource saat menjalankan beberapa job secara bersamaan
+
+251
+00:31:05,000 --> 00:31:08,000
+Semua selesai!
+
+252
+00:31:08,000 --> 00:31:12,136
+Oke, pada dasarnya terlihat seperti ini
+
+253
+00:31:21,984 --> 00:31:27,551
+Mengapa kita tidak bisa melihat apa-apa di sini?
+
+254
+00:31:27,551 --> 00:31:31,178
+Karena ada terlalu banyak job di dalamnya,
+
+255
+00:31:31,178 --> 00:31:35,509
+ia tidak dapat menampilkan semuanya LOL
+
+256
+00:31:35,804 --> 00:31:38,491
+Tapi Anda bisa klik untuk melihat
+
+257
+00:31:38,491 --> 00:31:48,256
+Misalnya, vary-..... yang disebutkan dalam presentasi, yang dimulai dengan v
+
+258
+00:31:48,256 --> 00:31:52,196
+Ini akan menyelesaikan permasalahan tidak memeriksa secara otomatis
+
+259
+00:31:52,196 --> 00:31:56,767
+Saya menulis program kecil untuk menangkap webhook dari fungsi
+
+260
+00:31:56,767 --> 00:32:06,000
+melalui webhook yang disediakan oleh Concourse CI
+
+261
+00:32:06,000 --> 00:32:09,666
+Ia datang ke sini, dan kemudian memicu ini
+
+262
+00:32:09,666 --> 00:32:20,308
+Jika Anda ingin menggunakannya, Anda bisa memicunya secara manual
+
+263
+00:32:33,569 --> 00:32:40,000
+Setelah dicek akan terlihat seperti ini
+
+264
+00:32:40,000 --> 00:32:49,305
+Kemudian akan mulai melakukan beberapa tes yang telah ditentukan ini
+
+265
+00:32:53,940 --> 00:32:55,537
+Ini pada dasarnya.....
+
+266
+00:32:55,537 --> 00:33:07,592
+bagaimana kita mengintegrasikan Concourse CI dengan OEM metapackage
+
+267
+00:33:30,807 --> 00:33:40,781
+Oh dan karena komputer yang saya gunakan untuk demo ini sebenarnya cukup...
+
+268
+00:33:40,781 --> 00:33:45,425
+Komputer yang saya gunakan sebenarnya tidak terlalu powerful
+
+269
+00:33:47,000 --> 00:33:52,548
+Jadi ya, eksekusinya akan lebih lambat
+
+270
+00:33:52,548 --> 00:33:55,650
+Jika Anda membuat daftar setiap tugas
+
+271
+00:33:55,650 --> 00:34:01,000
+Daftarnya akan menjadi sangat panjang karena ada terlalu banyak job
+
+272
+00:34:03,105 --> 00:34:08,455
+Itu sebabnya kita mengurutkannya berdasarkan abjad
+
+273
+00:34:08,455 --> 00:34:12,669
+Jadi akan lebih cepat
+
+274
+00:34:22,000 --> 00:34:30,600
+Juga... Ayo kita jalankan ini dulu
+
+275
+00:34:37,433 --> 00:34:42,196
+Hmmm.... Mari kita demonstrasikan hal selanjutnya
+
+276
+00:34:42,196 --> 00:34:48,172
+Misalnya, Anda dapat melihat bahwa sudah ada beberapa test job di sini
+
+277
+00:34:48,172 --> 00:34:55,251
+Sekarang saya akan menambahkan test job baru
+
+278
+00:34:58,000 --> 00:35:04,665
+Yang perlu saya lakukan adalah memodifikasi file yaml ini yang disebut template project
+
+279
+00:35:04,665 --> 00:35:07,000
+Dan kita akan lihat...
+
+280
+00:35:09,000 --> 00:35:13,253
+Mari kita lakukan cek secara acak
+
+281
+00:35:44,000 --> 00:35:52,444
+Oh, saya akan menulis sebuah job untuk menampilkan modalias
+
+282
+00:35:55,000 --> 00:35:58,313
+Cukup salin yang sudah ada di sini
+
+283
+00:36:52,000 --> 00:37:02,115
+Kemudian di sini kita akan mendapatkan request Ubuntu, mendapatkan OEM
+
+284
+00:37:05,000 --> 00:37:09,527
+Ini cek aslinya, kita ingin mengubahnya untuk menampilkan
+
+285
+00:37:26,871 --> 00:37:32,636
+Kemudian cek modalias
+
+286
+00:37:32,636 --> 00:37:38,000
+Saya hanya akan menyalin ini
+
+287
+00:38:15,000 --> 00:38:23,796
+Oke, di sini Anda dapat mengubahnya menjadi ...
+
+288
+00:38:46,000 --> 00:38:52,838
+Oke, saya baru saja menambahkan test job baru
+
+289
+00:38:52,838 --> 00:38:55,334
+yang disebut print-modaliases
+
+290
+00:38:55,334 --> 00:38:58,060
+Menampilkan.....
+
+291
+00:38:58,060 --> 00:39:00,988
+menampilkan string modalias
+
+292
+00:39:09,000 --> 00:39:14,859
+Ini akan memasukkan branch Ubuntu dari platform saat ini,
+
+293
+00:39:14,859 --> 00:39:23,018
+ke path Ubuntu ini
+
+294
+00:39:23,018 --> 00:39:27,036
+Dan inilah branch OEM
+
+295
+00:39:27,036 --> 00:39:32,000
+Ini akan ditambahkan ke folder OEM
+
+296
+00:39:32,000 --> 00:39:38,705
+Maka Anda harus dapat melakukan cat pada print-modaliases ini
+
+297
+00:39:44,000 --> 00:39:47,000
+Ini seharusnya bekerja
+
+298
+00:39:47,901 --> 00:39:49,594
+Kita menambahkan ini
+
+299
+00:39:52,000 --> 00:39:57,057
+dan mendefinisikan sebuah fungsi
+
+300
+00:39:57,057 --> 00:40:00,723
+Ini ytt di sini, saya bisa menjelaskannya nanti
+
+301
+00:40:03,000 --> 00:40:10,000
+Lalu saya menulis sebuah job baru
+
+302
+00:40:12,000 --> 00:40:15,000
+Isinya pada dasarnya seperti ini
+
+303
+00:40:15,687 --> 00:40:20,000
+Maka saya bisa melakukan generate
+
+304
+00:40:20,000 --> 00:40:22,256
+Apa itu generate?
+
+305
+00:40:22,256 --> 00:40:26,000
+Dengan melakukan generate, itu akan membaca template
+
+306
+00:40:26,000 --> 00:40:33,700
+dan mengekspor 3 proyek, yaitu somerville, stella, dan sutton
+
+307
+00:40:33,700 --> 00:40:48,500
+Kemudian ia akan menggunakan tool, ytt, untuk menghasilkan file YAML untuk platform final
+
+308
+00:40:54,000 --> 00:41:00,799
+Ini akan menghasilkan somerville.yaml, stella.yaml, dan sutton.yaml
+
+309
+00:41:03,000 --> 00:41:05,708
+Mari kita mengujinya ~
+
+310
+00:41:05,708 --> 00:41:10,588
+Jadi saya menggunakan perintah
+
+311
+00:41:10,588 --> 00:41:21,459
+untuk meng-generate somerville yang disebutkan di atas ....
+
+312
+00:41:38,000 --> 00:41:43,941
+Juga menyampaikan webhook mattermost
+
+313
+00:42:25,000 --> 00:42:33,718
+Hmm mungkin ytt tidak mendukung ini
+
+314
+00:42:48,008 --> 00:42:51,253
+Baiklah
+
+315
+00:43:02,397 --> 00:43:09,000
+Tunggu sebentar ? ! Mungkin kita harus menambahkan grup ke dalamnya
+
+316
+00:43:09,000 --> 00:43:10,782
+Ayo kita modif lagi
+
+317
+00:43:43,000 --> 00:43:44,303
+Bagus
+
+318
+00:43:44,303 --> 00:43:54,940
+Kemudian Anda dapat melihat bahwa ada test job baru yang disebut varys-focal-modaliases-print
+
+319
+00:43:54,940 --> 00:44:00,545
+Tentu saja itu akan mengeksekusi setiap job untuk saya, jadi saya hanya perlu mengubah satu hal
+
+320
+00:44:15,000 --> 00:44:21,603
+Oke, ini modaliases-print yang baru saja saya tambahkan
+
+321
+00:44:23,000 --> 00:44:26,000
+Job baru
+
+322
+00:44:27,627 --> 00:44:29,217
+Jadi misalkan itu adalah tes baru lainnya
+
+323
+00:44:29,217 --> 00:44:38,765
+yang kita perlukan untuk menguji OEM metapackage.
+
+324
+00:44:38,765 --> 00:44:42,000
+Begitulah kita dapat menambahkannya ke dalam pipeline
+
+325
+00:44:47,000 --> 00:44:47,867
+Bagus
+
+326
+00:44:47,867 --> 00:44:52,000
+Jadi ini adalah akhir dari sharing saya, semoga kalian menyukainya
+
+327
+00:44:52,000 --> 00:44:55,000
+Oke, terima kasih semuanya~
+

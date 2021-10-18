@@ -1,0 +1,1308 @@
+1
+00:00:07,013 --> 00:00:09,073
+Hello everyone
+
+2
+00:00:09,073 --> 00:00:14,423
+Today I will introduce to you: OEM metapackages and Concourse CI
+
+3
+00:00:15,219 --> 00:00:24,172
+This presentation can be found in the following URL
+
+4
+00:00:26,000 --> 00:00:27,629
+First, I will introduce myself
+
+5
+00:00:27,629 --> 00:00:29,554
+I am FourDollars
+
+6
+00:00:29,554 --> 00:00:36,817
+I am a Debian developer, also member of Ubuntu and Gnome community
+
+7
+00:00:37,277 --> 00:00:41,334
+Uh, I am also an employee in Canonical, and also a Vim fantic
+
+8
+00:00:41,334 --> 00:00:47,097
+I usually use Plurk as my main social network
+
+9
+00:00:48,000 --> 00:00:51,000
+Okay, let’s get down to business~
+
+10
+00:00:51,000 --> 00:00:54,000
+What are OEM metapackages?
+
+11
+00:00:54,000 --> 00:01:04,587
+There is an article on the Open Source news
+
+12
+00:01:04,587 --> 00:01:11,760
+and there is also an announcement in our Ubuntu Mailing concerning this topic
+
+13
+00:01:12,282 --> 00:01:21,000
+So this is basically saying that we (Canonical) has certified OEM machines
+
+14
+00:01:21,000 --> 00:01:27,486
+There will be different OEM certified experience (regarding different platform)
+
+15
+00:01:28,000 --> 00:01:40,000
+The operational details is explained in the article of this mailing list
+
+16
+00:01:40,000 --> 00:01:42,608
+Okay
+
+17
+00:01:42,608 --> 00:01:46,000
+Simply put,
+
+18
+00:01:46,256 --> 00:01:52,585
+We will provide an OEM metapackage for the platform
+
+19
+00:01:52,585 --> 00:01:56,178
+The platform could be an All-in-one PC,
+
+20
+00:01:56,178 --> 00:02:02,107
+a laptop, or a desktop
+
+21
+00:02:02,107 --> 00:02:11,606
+And then have them to use the kernel that we specified
+
+22
+00:02:11,606 --> 00:02:15,567
+So as you can see in the picture below
+
+23
+00:02:15,802 --> 00:02:21,603
+We provide two different kernels for Ubuntu 20.04 LTS
+
+24
+00:02:21,603 --> 00:02:28,172
+One is the OEM kernel, and the other is the generic HWE kernel
+
+25
+00:02:28,446 --> 00:02:30,702
+And...
+
+26
+00:02:30,702 --> 00:02:35,861
+Our OEM metapackage will mainly use the upper kernel
+
+27
+00:02:35,861 --> 00:02:37,960
+Why would we use the above one?
+
+28
+00:02:37,960 --> 00:02:39,341
+Of course it's because that,
+
+29
+00:02:39,341 --> 00:02:44,362
+The machines we use are newer machines
+
+30
+00:02:44,710 --> 00:02:52,057
+The hardware will be relatively newer, so it will need latest kernel drivers to support it
+
+31
+00:02:52,057 --> 00:02:56,726
+So we introduced this workflow
+
+32
+00:02:56,726 --> 00:03:01,097
+We will have two different kernels simultaneously
+
+33
+00:03:01,097 --> 00:03:08,817
+OEM kernel will equipped with newer version of linux kernel
+
+34
+00:03:09,138 --> 00:03:11,041
+It's basically like this
+
+35
+00:03:11,238 --> 00:03:17,723
+Here, the generic SWE below will use a more stable version
+
+36
+00:03:17,723 --> 00:03:26,637
+Then you can also see that at some point here, version 5.4 will directly switch to the newer version 5.8
+
+37
+00:03:26,637 --> 00:03:35,522
+Also, we switched from kernel version 5.8 to 5.11 this month
+
+38
+00:03:36,021 --> 00:03:38,316
+It will have a direct conversion
+
+39
+00:03:38,316 --> 00:03:43,313
+There is something different in OEM kernel. It will have some overlapping time
+
+40
+00:03:43,313 --> 00:03:49,055
+For example, the time period of Linux kernel 5.6
+
+41
+00:03:49,055 --> 00:03:56,860
+You see, there's a long overlap with the 20.04b OEM kernel down here.
+
+42
+00:03:56,860 --> 00:04:02,674
+Until I think June of 2021
+
+43
+00:04:02,674 --> 00:04:08,000
+It then finally switched from 5.6 to 5.10
+
+44
+00:04:08,000 --> 00:04:15,175
+Later on, we got a new OEM kernel version 5.13 in July
+
+45
+00:04:15,689 --> 00:04:23,859
+In the future, the OEM kernel version 5.10 will switch to 5.13
+
+46
+00:04:24,334 --> 00:04:26,551
+It's roughly like that
+
+47
+00:04:26,551 --> 00:04:31,000
+The main idea of OEM metapackage is that
+
+48
+00:04:31,000 --> 00:04:38,000
+you get to install these newer version of Linux OEM kernel earlier
+
+49
+00:04:38,000 --> 00:04:44,525
+Install a relatively new version of the kernel to support some relatively new hardware
+
+50
+00:04:46,000 --> 00:04:49,000
+Then how do we achieve this?
+
+51
+00:04:49,000 --> 00:04:53,332
+There are two main points
+
+52
+00:04:53,332 --> 00:05:00,757
+One is that we use modaliases to match the hardware
+
+53
+00:05:01,021 --> 00:05:11,110
+The other is that it will use Ubuntu driver, ubiquity and update-manager to install OEM meta
+
+54
+00:05:12,180 --> 00:05:14,358
+So what are modaliases?
+
+55
+00:05:14,358 --> 00:05:18,541
+modaliases is a file system provided by the kernel
+
+56
+00:05:18,541 --> 00:05:24,517
+The ArchWiki has a pretty clear explanation about this
+
+57
+00:05:25,000 --> 00:05:31,603
+It is actually an interface provided by the kernel
+
+58
+00:05:31,603 --> 00:05:38,606
+And you can obtain hardware information there
+
+59
+00:05:38,943 --> 00:05:44,724
+The following command can help you find those files directly
+
+60
+00:05:44,724 --> 00:05:49,804
+Then you can read the contents of the file directly
+
+61
+00:05:49,804 --> 00:05:54,762
+You can get to know what modaliases look like
+
+62
+00:05:54,762 --> 00:05:59,000
+A more practical example is provided below
+
+63
+00:05:59,255 --> 00:06:07,543
+Ubuntu driver is used to install drivers for additional hardware
+
+64
+00:06:08,178 --> 00:06:10,512
+Here is the ubuntu-drivers list
+
+65
+00:06:10,512 --> 00:06:20,877
+It shows that "Hey, I have an Nvidia driver 460 and Nvidia driver 470."
+
+66
+00:06:20,877 --> 00:06:26,000
+Then we can use the command: ubuntu-drivers devices to see that
+
+67
+00:06:26,000 --> 00:06:29,470
+Oh, it matched to this file
+
+68
+00:06:29,789 --> 00:06:36,235
+The content of modaliases file under this directory will look like this
+
+69
+00:06:37,000 --> 00:06:40,313
+Then, it provide....
+
+70
+00:06:40,313 --> 00:06:48,600
+For example, in this case, the built-in open source graphic driver is currently in use
+
+71
+00:06:48,600 --> 00:07:00,266
+Then it suggested that we can use Nvidia driver 470 for this GPU
+
+72
+00:07:01,000 --> 00:07:10,615
+So, there are modaliases on the hardware
+
+73
+00:07:10,615 --> 00:07:19,760
+We can use the content of modaliases to match the hardwares that we want
+
+74
+00:07:20,235 --> 00:07:24,253
+So, practically
+
+75
+00:07:24,611 --> 00:07:32,076
+If you are updating the software, it will actually pop up a dialog called Improved Hardware Support
+
+76
+00:07:32,076 --> 00:07:42,658
+For example, we use one of the models from Dell Latitude and it will shows up in the updating list
+
+77
+00:07:42,658 --> 00:07:47,762
+If you don't want it, you can simply uncheck it
+
+78
+00:07:48,003 --> 00:07:51,003
+The whole user experience will be like this
+
+79
+00:07:51,590 --> 00:07:56,000
+So this is basically OEM metapackage
+
+80
+00:07:57,000 --> 00:08:02,663
+Okay, next we are going to talk about what Concourse CI is
+
+81
+00:08:03,000 --> 00:08:13,402
+Concourse CI is an open source tool, mainly used for executing tasks
+
+82
+00:08:13,402 --> 00:08:20,407
+In fact, it is similar to tools like crontab and cron job
+
+83
+00:08:20,407 --> 00:08:33,595
+But it is more.... how do you say it.....Richer, got more settings and more convenient to use
+
+84
+00:08:34,274 --> 00:08:45,184
+It mainly builds the entire pipeline through the "resources, tasks, and jobs"
+
+85
+00:08:47,238 --> 00:08:50,000
+Practically, as you can see
+
+86
+00:08:50,000 --> 00:08:59,000
+This is the frame of Concourse CI, the CI provided by default
+
+87
+00:08:59,000 --> 00:09:07,976
+This is a working set. There is a "resource" here, and the green part is the so-called "job"
+
+88
+00:09:07,976 --> 00:09:13,862
+Every 30 seconds, the job will be executed as you can see
+
+89
+00:09:19,000 --> 00:09:21,765
+It will be executed every 30 seconds
+
+90
+00:09:21,765 --> 00:09:23,355
+How does it achieve this?
+
+91
+00:09:23,355 --> 00:09:29,057
+Every 30 seconds, there will be some changes in the resource
+
+92
+00:09:32,000 --> 00:09:34,804
+Every 30 seconds, there will be some changes in the resource
+
+93
+00:09:34,804 --> 00:09:40,389
+And this change will cause the job to be executed
+
+94
+00:09:42,000 --> 00:09:45,000
+This is the basic concept of Concourse CI
+
+95
+00:09:45,000 --> 00:09:55,462
+And... we can use different combinations of resources
+
+96
+00:09:56,000 --> 00:10:02,454
+to form some complicated but useful pipelines that meet our needs
+
+97
+00:10:02,454 --> 00:10:04,626
+Let's continue
+
+98
+00:10:05,533 --> 00:10:15,000
+Another point to be mentioned is that it actually has a rather steep learning curve
+
+99
+00:10:15,000 --> 00:10:17,647
+Why does Concourse CI officially mention this?
+
+100
+00:10:17,647 --> 00:10:30,000
+It’s because you actually need a lot of linux concepts in order to master this tool
+
+101
+00:10:30,000 --> 00:10:36,937
+For example, pipeline in command line, redirect, and etc.
+
+102
+00:10:36,981 --> 00:10:46,428
+Also you need to be very familiar with some mechanisms of Linux
+
+103
+00:10:46,428 --> 00:10:59,381
+You will need those background knowledge in order to master this CI tool
+
+104
+00:11:01,000 --> 00:11:04,000
+OK, here are some notes
+
+105
+00:11:04,000 --> 00:11:16,595
+Right now, all resources and jobs of Concourse CI are composed by Docker container
+
+106
+00:11:16,595 --> 00:11:20,000
+And it currently only supports AMD 64
+
+107
+00:11:20,000 --> 00:11:23,196
+Which is the so-called x86_64 architecture
+
+108
+00:11:23,196 --> 00:11:30,355
+And its pipeline doesn’t actually support if/else, it just goes all the way to the end
+
+109
+00:11:30,355 --> 00:11:35,940
+It's either right or wrong, either fail or success
+
+110
+00:11:37,057 --> 00:11:42,916
+And you need to be familiar with YAML and JSON syntax
+
+111
+00:11:46,000 --> 00:11:57,460
+In it Help (A Mandarin IT blog), Cang Shi Xian Ye has posted some introductory tutorials
+
+112
+00:11:57,460 --> 00:12:08,817
+There are a few point we need to note: First, Concourse CI is developed by Cloud Foundry
+
+113
+00:12:09,000 --> 00:12:16,465
+They developed this CI/CD tool because all of the existing CI/CD tools can’t solve their problem
+
+114
+00:12:17,141 --> 00:12:23,548
+As mentioned earlier, it is just about drawing pipelines
+
+115
+00:12:23,548 --> 00:12:30,895
+Use some resources in the pipeline to trigger the execution of the job
+
+116
+00:12:32,352 --> 00:12:41,736
+Compared to other CI/CD tools
+
+117
+00:12:41,736 --> 00:12:45,687
+We don't have the concept of plugin in Concourse CI
+
+118
+00:12:45,687 --> 00:12:51,546
+All its (plugin) extensibility is done through "resources"
+
+119
+00:12:51,546 --> 00:12:53,864
+I'll talk about it later
+
+120
+00:12:54,569 --> 00:13:01,000
+For me, I made these resource types myself
+
+121
+00:13:01,000 --> 00:13:13,242
+When I first started using it, I needed to export something in the CI to other places
+
+122
+00:13:13,242 --> 00:13:19,668
+Concourse CI doesn't provide a built-in tool that can export files
+
+123
+00:13:19,668 --> 00:13:26,828
+It only provides some interfaces and some basic resources
+
+124
+00:13:26,828 --> 00:13:33,470
+The built-in resource does not provide storage either
+
+125
+00:13:33,470 --> 00:13:39,392
+Ah, so I made this samba resource and webdav resource
+
+126
+00:13:39,392 --> 00:13:50,582
+In addition, sometimes I need to dput JPEG to ppa, this is what the dput resource for
+
+127
+00:13:50,582 --> 00:13:58,726
+Because I need to dput quite often and it's just repetitive work
+
+128
+00:13:58,726 --> 00:14:05,838
+So I just made a dput resource to simplify this task
+
+129
+00:14:05,838 --> 00:14:11,329
+There is also a simple autopkgtest resource
+
+130
+00:14:14,710 --> 00:14:25,000
+Also, we often need to monitor the version of Debian package
+
+131
+00:14:25,000 --> 00:14:31,196
+For example, when there is a new release of kernel or a new release of GRUB
+
+132
+00:14:31,196 --> 00:14:41,284
+When it detects a change in the version of a package,
+
+133
+00:14:41,284 --> 00:14:45,000
+I want it to do something as soon as possible
+
+134
+00:14:45,000 --> 00:14:55,833
+Thus, because of these requirement, I also wrote a resource to monitor change of the Debian package version
+
+135
+00:14:55,833 --> 00:15:00,477
+In addition, I also wrote a mattermost notification myself
+
+136
+00:15:00,477 --> 00:15:03,712
+Because we use mattermost in Canonical
+
+137
+00:15:03,712 --> 00:15:12,880
+So I use this mattermost notification to send some messages to the mattermost channel
+
+138
+00:15:12,880 --> 00:15:18,389
+Also, I need to detect changes in the launchpad bug
+
+139
+00:15:18,389 --> 00:15:27,681
+Likewise, when there is some changes in launchpad bugs, some jobs will be triggered
+
+140
+00:15:28,201 --> 00:15:32,611
+And we also use Jenkins
+
+141
+00:15:32,611 --> 00:15:42,597
+So we will need to monitor whether some jobs on Jenkins are triggered
+
+142
+00:15:42,597 --> 00:15:50,000
+And if Jenkins finishes the task successfully, we can continue to do other things next through Concourse CI
+
+143
+00:15:50,000 --> 00:15:52,120
+Lastly, we also got rclone resource 
+
+144
+00:15:52,120 --> 00:16:03,509
+rclone is a more general file copying and syncing tool
+
+145
+00:16:03,509 --> 00:16:09,000
+We need to use it, so we made this rclone resource
+
+146
+00:16:12,789 --> 00:16:17,943
+Okay, let’s introduce the WebDAV resource
+
+147
+00:16:17,943 --> 00:16:20,916
+The above mentioned WebDAV resource
+
+148
+00:16:20,916 --> 00:16:25,000
+The concept is like this.....
+
+149
+00:16:28,379 --> 00:16:35,647
+I will monitor a file on WebDAV
+
+150
+00:16:35,647 --> 00:16:40,629
+And I will also download the docker image of Ubuntu Focal
+
+151
+00:16:40,629 --> 00:16:44,099
+So the image is ready-to-use in the check-demo-message job
+
+152
+00:16:44,099 --> 00:16:50,410
+If there is some files in this demo strorage has changed,
+
+153
+00:16:50,410 --> 00:16:55,212
+it will triggers this demo message job
+
+154
+00:16:55,961 --> 00:16:59,744
+This is the content of this pipeline
+
+155
+00:17:05,000 --> 00:17:09,370
+First of all, let me define the resource type
+
+156
+00:17:09,370 --> 00:17:15,235
+The name is WebDAV, and the type is registry-image
+
+157
+00:17:15,235 --> 00:17:23,000
+The resource of it is the Webdav resource I put on the github registry in advance
+
+158
+00:17:23,000 --> 00:17:25,590
+Then I will provide some default values ​​here
+
+159
+00:17:25,590 --> 00:17:28,494
+For example, my domain is webdav
+
+160
+00:17:28,494 --> 00:17:34,235
+username and password are also webdav, and then I don't use HTTPS
+
+161
+00:17:35,000 --> 00:17:41,235
+Next, I can use this webdav type in the resource
+
+162
+00:17:41,235 --> 00:17:46,350
+The name is demo storage, and I also give it an icon
+
+163
+00:17:46,350 --> 00:17:50,606
+This is the material design icon
+
+164
+00:17:50,606 --> 00:17:56,525
+I want it to monitor changes under the demo directory
+
+165
+00:17:58,157 --> 00:18:03,820
+Then the docker image of ubuntu focal
+
+166
+00:18:04,412 --> 00:18:07,687
+This is the definition of resource
+
+167
+00:18:07,687 --> 00:18:10,569
+Next I will define job
+
+168
+00:18:10,569 --> 00:18:13,843
+I only have one job here called check-demo-message
+
+169
+00:18:13,843 --> 00:18:21,738
+Its plan is that I am going to download this ubuntu focal image
+
+170
+00:18:21,738 --> 00:18:29,000
+Then I will check the demo storage. If there is any change, it will trigger the job
+
+171
+00:18:29,000 --> 00:18:31,334
+So here we have a trigger equal to true
+
+172
+00:18:31,334 --> 00:18:36,410
+In other words, if there is any change in the resource of this demo storage,
+
+173
+00:18:36,410 --> 00:18:41,193
+it will automatically trigger the entire job to be executed
+
+174
+00:18:41,193 --> 00:18:45,000
+The real task we want to achieve lies in here, this task
+
+175
+00:18:45,000 --> 00:18:47,435
+And we can define in this task that
+
+176
+00:18:47,435 --> 00:18:55,856
+I want to use the ubuntu focal docker image to build my working environment
+
+177
+00:18:56,433 --> 00:19:03,350
+And you can define that the platform would be linux
+
+178
+00:19:03,350 --> 00:19:13,908
+And the input is, I want to directly use the info fetched from this demo storage
+
+179
+00:19:13,908 --> 00:19:20,000
+Then you enter this input. Here is an array, and we would give it a name
+
+180
+00:19:20,000 --> 00:19:26,486
+Next, you can use command directly in run
+
+181
+00:19:26,486 --> 00:19:29,744
+path is the name of the command
+
+182
+00:19:29,744 --> 00:19:37,248
+You can simply cat something and provide a parameter, which is the demo storage message
+
+183
+00:19:40,000 --> 00:19:46,877
+Okay, the result will look like this. Let us jump into live demo
+
+184
+00:20:00,000 --> 00:20:08,640
+I have prepared a repo of the OEM metapackage that I will use later
+
+185
+00:20:08,640 --> 00:20:12,219
+and the git repository
+
+186
+00:20:12,219 --> 00:20:24,386
+You can follow the instructions inside and construct this Concourse CI
+
+187
+00:20:24,386 --> 00:20:30,465
+Construct Concourse CI using docker-compose
+
+188
+00:20:34,587 --> 00:20:37,587
+OK, I'll login first
+
+189
+00:20:38,000 --> 00:20:46,209
+After logging in, I can use...
+
+190
+00:20:57,003 --> 00:21:13,465
+Then, I can say webdav demo pipelines
+
+191
+00:21:33,000 --> 00:21:38,820
+Then you can open the link
+
+192
+00:21:49,636 --> 00:21:50,894
+Here we need to wait for a bit
+
+193
+00:21:50,894 --> 00:21:55,702
+This is the first time we built it
+
+194
+00:21:55,702 --> 00:22:03,401
+So it takes a while to download the resource image
+
+195
+00:22:04,000 --> 00:22:07,000
+Of course it can be reused later on
+
+196
+00:22:07,000 --> 00:22:13,000
+It finished downloading the resource of webdav
+
+197
+00:22:13,000 --> 00:22:19,681
+Oh we see, there is a message here
+
+198
+00:22:23,000 --> 00:22:32,334
+Okay, then its content is to grab a message log
+
+199
+00:22:32,334 --> 00:22:36,000
+And then print it out
+
+200
+00:22:36,671 --> 00:22:37,798
+It's roughly like this
+
+201
+00:22:38,777 --> 00:22:43,076
+Because I put it directly in this repo
+
+202
+00:22:45,000 --> 00:22:46,903
+So we can also....
+
+203
+00:22:46,903 --> 00:22:53,702
+For example, add the time I am recording this video to it
+
+204
+00:22:53,702 --> 00:22:56,702
+Then you can pass this in again
+
+205
+00:23:00,344 --> 00:23:04,761
+There is an extra timestamp in the end
+
+206
+00:23:17,000 --> 00:23:31,000
+Ok, if it detects a new version, the defined job will be executed automatically
+
+207
+00:23:31,000 --> 00:23:36,726
+You see there is a timestamp here that I just added
+
+208
+00:23:36,726 --> 00:23:44,308
+Well, this is a rough demo of Webdav resource
+
+209
+00:23:49,587 --> 00:23:50,629
+Good
+
+210
+00:23:50,629 --> 00:24:01,765
+So how do we use Concourse CI in our OEM metapackages?
+
+211
+00:24:01,765 --> 00:24:05,352
+First, we need to mention that
+
+212
+00:24:05,352 --> 00:24:08,307
+Employees in Canonical will maintain the OEM metapackage
+
+213
+00:24:08,307 --> 00:24:16,000
+under different branches in these 3 git repositories
+
+214
+00:24:16,000 --> 00:24:21,232
+And I will maintain this CI/CD pipeline
+
+215
+00:24:21,232 --> 00:24:25,720
+in this launchpad git repository
+
+216
+00:24:26,000 --> 00:24:29,000
+Uh, then it will...
+
+217
+00:24:34,639 --> 00:24:38,832
+For example here, its file name will look like this
+
+218
+00:24:40,000 --> 00:24:41,903
+There will be many branches
+
+219
+00:24:41,903 --> 00:24:49,133
+Each branch represents a different platform
+
+220
+00:24:52,587 --> 00:25:01,775
+The meta CI that I maintain is right here
+
+221
+00:25:03,000 --> 00:25:06,868
+So this is relatively simple, it only contains one branch
+
+222
+00:25:09,509 --> 00:25:18,736
+In addition, I maintain a dashboard, which looks something like this.....
+
+223
+00:25:20,000 --> 00:25:27,190
+Hmm.... I can come back to explain this dashboard later if we have time
+
+224
+00:25:29,000 --> 00:25:40,624
+Okay, actually the execution result of Concourse CI will be like this
+
+225
+00:25:42,000 --> 00:25:49,426
+It will have multiple jobs, and all are all triggered by git branched
+
+226
+00:25:49,426 --> 00:25:55,000
+After it finishes somthing, if it fails.....
+
+227
+00:25:55,000 --> 00:26:03,404
+Some messages will be sent to the mattermost channel through mattermost
+
+228
+00:26:07,000 --> 00:26:12,702
+The dashboard mentioned before looks like this
+
+229
+00:26:12,702 --> 00:26:24,671
+Actually, here, this autopkg boostrap build pass, real build pass
+
+230
+00:26:24,671 --> 00:26:29,780
+Each actually matches to a certain job here
+
+231
+00:26:29,780 --> 00:26:36,931
+For example, this modaliases build pass, it will match to this modaliases
+
+232
+00:26:38,000 --> 00:26:44,799
+And there is the installation of boostrap down here
+
+233
+00:26:46,000 --> 00:26:49,000
+kernel flavour will lies here
+
+234
+00:26:49,467 --> 00:26:53,000
+then the market name will be here
+
+235
+00:26:54,000 --> 00:26:57,000
+It's basically like this
+
+236
+00:27:00,000 --> 00:27:08,298
+Okay, that's basically....
+
+237
+00:27:08,298 --> 00:27:27,000
+I have another pipeline job to check these three git repositories regularly
+
+238
+00:27:27,000 --> 00:27:32,311
+If there is any new branches
+
+239
+00:27:34,000 --> 00:27:42,000
+Or if some branch is deleted, it will update the meta ci that I maintain
+
+240
+00:27:42,000 --> 00:27:45,000
+Automatically update it
+
+241
+00:27:45,548 --> 00:27:56,655
+All I need to do is actually to edit these two templates
+
+242
+00:27:56,655 --> 00:28:02,856
+And add some more test datasets
+
+243
+00:28:06,000 --> 00:28:11,546
+Let's jump into live demo
+
+244
+00:28:24,000 --> 00:28:35,067
+Refer to readme, it mentioned that we can set a reconfigure ci
+
+245
+00:28:36,000 --> 00:28:49,000
+And it will automatically watch the meta ci repository
+
+246
+00:28:49,000 --> 00:28:59,765
+If there is any change, it will then automatically build individual CI
+
+247
+00:28:59,765 --> 00:29:04,635
+We can unpalse this and it will start to operate
+
+248
+00:30:09,000 --> 00:30:13,756
+Here we should improved it by not running five jobs at the same time
+
+249
+00:30:13,756 --> 00:30:16,298
+We should run one job at a time, one at a time
+
+250
+00:30:16,298 --> 00:30:27,091
+So that we can prevent resource contention and slow execution when running multiple jobs at the same time
+
+251
+00:31:05,000 --> 00:31:08,000
+All done!
+
+252
+00:31:08,000 --> 00:31:12,136
+OK, that basically looks like this
+
+253
+00:31:21,984 --> 00:31:27,551
+So why we see nothing here?
+
+254
+00:31:27,551 --> 00:31:31,178
+Because there are too many jobs in it,
+
+255
+00:31:31,178 --> 00:31:35,509
+it is unable to display everything LOL
+
+256
+00:31:35,804 --> 00:31:38,491
+But you can click to see
+
+257
+00:31:38,491 --> 00:31:48,256
+For example, the vary-..... mentioned in the presentation, the one begins with v
+
+258
+00:31:48,256 --> 00:31:52,196
+It will solve the problem that it won’t check automatically
+
+259
+00:31:52,196 --> 00:31:56,767
+I wrote a small program to catch the webhook of the function
+
+260
+00:31:56,767 --> 00:32:06,000
+through the the webhook provided by Concourse CI
+
+261
+00:32:06,000 --> 00:32:09,666
+It’s coming in here, and then it trigger this
+
+262
+00:32:09,666 --> 00:32:20,308
+If you want to use it, you can just trigger it manually
+
+263
+00:32:33,569 --> 00:32:40,000
+After checking it will look something like this
+
+264
+00:32:40,000 --> 00:32:49,305
+Then it will start to do some of these pre-defined tests
+
+265
+00:32:53,940 --> 00:32:55,537
+This is basically.....
+
+266
+00:32:55,537 --> 00:33:07,592
+how we integrate Concourse CI with our OEM metapackages
+
+267
+00:33:30,807 --> 00:33:40,781
+Oh and because the computer I am using for this demo is actually quite...
+
+268
+00:33:40,781 --> 00:33:45,425
+The computer I am using is actually not that powerful
+
+269
+00:33:47,000 --> 00:33:52,548
+So yes, the execution would be slower
+
+270
+00:33:52,548 --> 00:33:55,650
+If you list every task out
+
+271
+00:33:55,650 --> 00:34:01,000
+The list will become very long because there are too many jobs
+
+272
+00:34:03,105 --> 00:34:08,455
+That’s why we order it alphabetically
+
+273
+00:34:08,455 --> 00:34:12,669
+Hopefully it will be faster
+
+274
+00:34:22,000 --> 00:34:30,600
+Also... Let 's run this first
+
+275
+00:34:37,433 --> 00:34:42,196
+Hmmm.... Let's demonstrate the next thing
+
+276
+00:34:42,196 --> 00:34:48,172
+For example, you can see that there are already some test jobs here
+
+277
+00:34:48,172 --> 00:34:55,251
+Now I will add a new test job
+
+278
+00:34:58,000 --> 00:35:04,665
+All I need to do is to modify this yaml called project template
+
+279
+00:35:04,665 --> 00:35:07,000
+And we'll see...
+
+280
+00:35:09,000 --> 00:35:13,253
+Let's do a random check or something
+
+281
+00:35:44,000 --> 00:35:52,444
+Oh, let's write a job to print out modaliases
+
+282
+00:35:55,000 --> 00:35:58,313
+Just copy the existing one here
+
+283
+00:36:52,000 --> 00:37:02,115
+Then here we will get Ubuntu request, get OEM
+
+284
+00:37:05,000 --> 00:37:09,527
+Here is check originally, we want to change it to print
+
+285
+00:37:26,871 --> 00:37:32,636
+Then check modaliases
+
+286
+00:37:32,636 --> 00:37:38,000
+I will just copy this
+
+287
+00:38:15,000 --> 00:38:23,796
+Okay, here you can change it to...
+
+288
+00:38:46,000 --> 00:38:52,838
+Okay, I just added a new test job
+
+289
+00:38:52,838 --> 00:38:55,334
+Called print-modaliases
+
+290
+00:38:55,334 --> 00:38:58,060
+Just print it out.....
+
+291
+00:38:58,060 --> 00:39:00,988
+print out the modaliases string
+
+292
+00:39:09,000 --> 00:39:14,859
+It will input the Ubuntu branch of the current platform,
+
+293
+00:39:14,859 --> 00:39:23,018
+to this Ubuntu path
+
+294
+00:39:23,018 --> 00:39:27,036
+And here is the OEM branch
+
+295
+00:39:27,036 --> 00:39:32,000
+It will be added to the OEM folder
+
+296
+00:39:32,000 --> 00:39:38,705
+Then you should be able to cat it out in this print-modaliases
+
+297
+00:39:44,000 --> 00:39:47,000
+This should work
+
+298
+00:39:47,901 --> 00:39:49,594
+We added this
+
+299
+00:39:52,000 --> 00:39:57,057
+and defined a function
+
+300
+00:39:57,057 --> 00:40:00,723
+This ytt here, I can explain it later
+
+301
+00:40:03,000 --> 00:40:10,000
+Then I wrote a new job
+
+302
+00:40:12,000 --> 00:40:15,000
+The content is basically like this
+
+303
+00:40:15,687 --> 00:40:20,000
+Then I can do generate
+
+304
+00:40:20,000 --> 00:40:22,256
+What is generate?
+
+305
+00:40:22,256 --> 00:40:26,000
+By doing generate, it will read the template
+
+306
+00:40:26,000 --> 00:40:33,700
+and export 3 projects, which are somerville, stella, and sutton
+
+307
+00:40:33,700 --> 00:40:48,500
+Then it will use the tool, ytt, to generate a YAML file for the final platform
+
+308
+00:40:54,000 --> 00:41:00,799
+It will generate somerville.yaml, stella.yaml, and sutton.yaml
+
+309
+00:41:03,000 --> 00:41:05,708
+Let's test it~
+
+310
+00:41:05,708 --> 00:41:10,588
+So I use command line
+
+311
+00:41:10,588 --> 00:41:21,459
+to generate the above mentioned somerville....
+
+312
+00:41:38,000 --> 00:41:43,941
+Also pass in the mattermost webhook
+
+313
+00:42:25,000 --> 00:42:33,718
+Hmm probably ytt does not support dash
+
+314
+00:42:48,008 --> 00:42:51,253
+Alright
+
+315
+00:43:02,397 --> 00:43:09,000
+Wait a second ? ! Maybe we should add group into it
+
+316
+00:43:09,000 --> 00:43:10,782
+Let's modify again
+
+317
+00:43:43,000 --> 00:43:44,303
+Great
+
+318
+00:43:44,303 --> 00:43:54,940
+Then you can see that there is a new test job called varys-focal-modaliases-print
+
+319
+00:43:54,940 --> 00:44:00,545
+Of course it will execute every jobs for me, so I just need to change one thing
+
+320
+00:44:15,000 --> 00:44:21,603
+Okay, here is the modaliases-print I just added
+
+321
+00:44:23,000 --> 00:44:26,000
+A brand new job
+
+322
+00:44:27,627 --> 00:44:29,217
+So suppose it is another new test
+
+323
+00:44:29,217 --> 00:44:38,765
+that we needed to test the OEM metapackage.
+
+324
+00:44:38,765 --> 00:44:42,000
+That is how we can add it into our pipeline
+
+325
+00:44:47,000 --> 00:44:47,867
+Great
+
+326
+00:44:47,867 --> 00:44:52,000
+So this is the end of my sharing, hope you guys will like it
+
+327
+00:44:52,000 --> 00:44:55,000
+Okay, thank you everyone~
+
