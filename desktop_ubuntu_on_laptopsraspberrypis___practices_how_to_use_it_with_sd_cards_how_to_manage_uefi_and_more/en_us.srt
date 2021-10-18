@@ -1,0 +1,1385 @@
+1
+00:00:08,816 --> 00:00:11,120
+Today, I would like to talk about Ubuntu use case on Laptops and Raspberry Pis.
+
+2
+00:00:11,376 --> 00:00:12,912
+for Desktop users.
+
+3
+00:00:14,192 --> 00:00:15,728
+And also I'd like to talk about how manage them.
+
+4
+00:00:17,264 --> 00:00:21,872
+What are best practice, and how we should do.
+
+5
+00:00:22,128 --> 00:00:25,712
+I'm Masafumi Ohta, now leading RaspberryPI User Group in Japan.
+
+6
+00:00:25,968 --> 00:00:28,784
+I would love to introduce myself.
+
+7
+00:00:29,296 --> 00:00:31,600
+I have started RaspberryPi User Group in Japan since 2012.
+
+8
+00:00:32,624 --> 00:00:33,904
+I also volunteering for RaspberryPi Foundation.
+
+9
+00:00:39,024 --> 00:00:41,072
+What I am mainly doing for is
+
+10
+00:00:41,328 --> 00:00:46,192
+help their business in Japan.
+
+11
+00:00:47,472 --> 00:00:52,336
+Now, I'm also helping expanding the market that includes out of Japan,
+
+12
+00:00:52,592 --> 00:00:53,872
+Such as China, Taiwan.
+
+13
+00:00:56,432 --> 00:00:57,968
+This is another self introduction
+ in RaspberryPi Official Forum.
+
+14
+00:01:05,136 --> 00:01:08,720
+It's hosted the "Japanese" category in the Raspberry Pi Offical forum
+
+15
+00:01:11,536 --> 00:01:13,072
+You can read my post from Raspberry PI Official Site
+
+16
+00:01:14,864 --> 00:01:18,448
+And please check "Japanese" category.
+
+17
+00:01:19,472 --> 00:01:23,056
+I'm appreciate that if you check out.
+
+18
+00:01:23,312 --> 00:01:25,104
+Here is today's agenda.
+
+19
+00:01:26,384 --> 00:01:30,420
+Do you love Ubuntu Desktop? And is it useful?
+
+20
+00:01:36,624 --> 00:01:39,184
+Should we preserve dualboot with Windows?
+
+21
+00:01:40,720 --> 00:01:43,024
+Hacks about UEFI and SD Cards.
+
+22
+00:01:43,536 --> 00:01:45,328
+And other Tips.
+
+23
+00:01:47,376 --> 00:01:49,744
+Can we use Raspberry Pi as Ubuntu Desktop?
+
+24
+00:01:50,960 --> 00:01:55,312
+I'd like to introduce Raspberry Pi with Ubuntu in the last topic
+
+25
+00:01:55,824 --> 00:01:57,360
+Okay, as first,
+
+26
+00:01:59,920 --> 00:02:01,456
+Do You Love Ubuntu Desktop?
+
+27
+00:02:01,968 --> 00:02:03,760
+Why I'd like to talk about,
+
+28
+00:02:05,040 --> 00:02:07,384
+Here is post by my firend in Taiwan, tha't picture in Facebook.
+
+29
+00:02:14,000 --> 00:02:15,012
+In past,
+
+30
+00:02:15,024 --> 00:02:17,072
+He, my firend, said "Freedom is Important"
+
+31
+00:02:18,352 --> 00:02:19,632
+And he also declare that he don't have any needs of Microsoft Office.
+
+32
+00:02:19,888 --> 00:02:21,168
+"Open Source is great."
+
+33
+00:02:21,424 --> 00:02:24,504
+So he told that, "We should use Debian/GNU Linux"
+
+34
+00:02:25,264 --> 00:02:30,128
+However, now, I recheck his opinion, he said that..... "macOS is best"
+
+35
+00:02:30,896 --> 00:02:32,432
+And he told that, "MacBook Pro is amazing."
+
+36
+00:02:34,736 --> 00:02:36,784
+From realistic viewpoint, we can't avoid this type of matter,
+
+37
+00:02:37,296 --> 00:02:39,856
+When we use Ubuntu Linux as Desktop,
+
+38
+00:02:40,112 --> 00:02:44,464
+we should consider that this point of view, the problem is,
+
+39
+00:02:45,744 --> 00:02:48,560
+Using Ubuntu Desktop are, it is like building blocks with Lego,
+we should build our own custom one-off machine
+
+40
+00:02:52,144 --> 00:02:54,448
+I guess we should evaluate this point of view,
+
+41
+00:02:56,496 --> 00:02:59,240
+When we use Windows, we may install apps and set some settings
+
+42
+00:02:59,264 --> 00:03:01,864
+We should build our environment from Vanilla much more than Window - installing Operating System, and install many applications, describe configs...
+
+43
+00:03:02,896 --> 00:03:06,736
+and many setups are needed. It's time to take many tasks.
+
+44
+00:03:06,992 --> 00:03:08,272
+And more
+
+45
+00:03:08,784 --> 00:03:10,064
+I guess We should take more time than expected
+
+46
+00:03:10,576 --> 00:03:12,880
+using Ubuntu.
+
+47
+00:03:15,184 --> 00:03:17,232
+We might meet unexpected things,
+
+48
+00:03:18,512 --> 00:03:21,584
+We should accept something trade-offs.
+
+49
+00:03:22,608 --> 00:03:24,912
+From this viewpoint, frankly speaking,
+we need patience that same as builing Logo blocks.
+
+50
+00:03:32,336 --> 00:03:35,664
+It's also fun both builing and using that,
+builing our own environment is great experience,
+
+51
+00:03:35,920 --> 00:03:40,528
+It's my own first prototype environment with GPD Pocket 2 (Handheld PC)
+
+52
+00:03:40,784 --> 00:03:43,344
+It's Linux Desktop,
+
+53
+00:03:43,600 --> 00:03:45,136
+I installed on the SDCard,
+
+54
+00:03:48,464 --> 00:03:51,792
+lately I replaced that
+
+55
+00:03:52,048 --> 00:03:54,608
+Here is my latest  environment,
+
+56
+00:03:56,144 --> 00:04:00,496
+This is built with gpd Pocket 2 2021, minor updates
+
+57
+00:04:03,312 --> 00:04:09,200
+ I have directly installed to SSD
+
+58
+00:04:13,808 --> 00:04:15,600
+By the way,
+
+59
+00:04:15,856 --> 00:04:19,440
+There are problem that GPD Pocket got hot,
+ especially bace face has high temperature.
+
+60
+00:04:19,696 --> 00:04:21,488
+Because Core M3 consume electrical power and make heats.
+
+61
+00:04:28,143 --> 00:04:31,983
+This picture is my hack, pasted heatthink plates and cooling that.
+
+62
+00:04:36,335 --> 00:04:39,407
+However, if you can accept this point, it become great gadget.
+
+63
+00:04:40,943 --> 00:04:43,503
+It has extremely portable,
+
+64
+00:04:43,759 --> 00:04:48,879
+I can read e-mails and have web surfines in train,
+
+65
+00:04:49,135 --> 00:04:55,279
+Suspend/Resume is fast enough if you install Ubuntu into SSD.
+
+66
+00:04:55,535 --> 00:04:59,375
+so I am sure that it's very useful.
+
+67
+00:05:03,471 --> 00:05:07,823
+Anyway, return to topic about should we preserve Windows.
+
+68
+00:05:08,591 --> 00:05:14,735
+I think that we have just one reason,
+
+69
+00:05:14,991 --> 00:05:21,135
+if we update BIOS/UEFI with safety and easy way, we should use windows.
+
+70
+00:05:23,183 --> 00:05:25,231
+GPD Pocket has windows application that can easily update BIOS/UEFI.
+
+71
+00:05:25,743 --> 00:05:28,559
+Just click and wait, it's easy and fast.
+
+72
+00:05:28,815 --> 00:05:34,959
+We have another approach, BIOS/UEFI has built-in update interface,
+
+73
+00:05:35,215 --> 00:05:37,519
+we can update firmware with that interface.
+
+74
+00:05:37,775 --> 00:05:39,823
+We have alternative solutions,
+
+75
+00:05:40,079 --> 00:05:42,127
+extracting from firmware archive, and getting binary
+
+76
+00:05:42,639 --> 00:05:44,687
+after that, we can update via BIOS/UEFI menu.
+
+77
+00:05:45,455 --> 00:05:48,271
+And another approach is, using USB bootable OS
+ and upgrade from that OS.
+
+78
+00:05:51,343 --> 00:05:55,695
+Unfortunately, most safest way updating is to do with Windows.
+
+79
+00:05:59,279 --> 00:06:01,839
+So, we might preserve Windows.
+
+80
+00:06:02,095 --> 00:06:05,167
+And also, we have another reason for using Windows.
+
+81
+00:06:09,263 --> 00:06:15,407
+In realistic use scnenarios, we need Zoom, Microsoft Office,
+ and some Security softwares.
+
+82
+00:06:15,663 --> 00:06:21,295
+And BIOS Updater, many chattools, these are firendly in Windows
+ and Linux's aren't so.
+
+83
+00:06:30,767 --> 00:06:33,827
+In using Zoom, I should consider
+about some factors, AI Camera functions
+
+84
+00:06:33,851 --> 00:06:36,911
+aren't workbale on Linux. So I must use Windows.
+
+85
+00:06:38,703 --> 00:06:44,847
+That's huge gap between Linux and Windows,
+ and IMHO this is vendor side issue,
+
+86
+00:06:45,103 --> 00:06:49,199
+Maintenance and QA are should be provided on Windows,
+it's by-design.
+
+87
+00:06:59,951 --> 00:07:02,511
+In this gadget, I have to talk about con
+
+88
+00:07:02,767 --> 00:07:08,911
+Firstly, we, linux users is too much annoyed slow speeds on SD cards because we can't use internal SSD as main storage.
+
+89
+00:07:15,311 --> 00:07:21,455
+And also, it's easy to corrupt,
+we will see many bad sectors day by day.
+
+90
+00:07:22,479 --> 00:07:25,807
+I planed that using USB Memory but
+
+91
+00:07:26,575 --> 00:07:32,207
+Performance is limited by USB port,
+ it's unavoidable.
+
+92
+00:07:33,231 --> 00:07:37,583
+And also it's limtited by total capacity of
+ USB logical tree.
+
+93
+00:07:38,863 --> 00:07:45,007
+USB Port also used to Ethernet connections,
+ it consumes bandwidth and causes USB speeds down.
+
+94
+00:07:48,079 --> 00:07:52,175
+So, when we use some applications,
+
+95
+00:07:52,431 --> 00:07:57,807
+By Limited disk bandwidth, we should manage that.
+
+96
+00:07:59,087 --> 00:08:02,159
+And also, frankly saying, internal disk is really fast.
+
+97
+00:08:03,951 --> 00:08:06,443
+Here is result of benchmark,
+
+98
+00:08:06,511 --> 00:08:08,303
+Both microSD card's and internal disk's,
+
+99
+00:08:10,863 --> 00:08:13,679
+It's KDiskMark, CrystalDiskMark-like benchmark software
+
+100
+00:08:16,751 --> 00:08:21,615
+We can get insight that random access is etremely slow.
+
+101
+00:08:25,711 --> 00:08:28,527
+So we should consider how mitigate that, here.
+
+102
+00:08:31,087 --> 00:08:36,463
+First, I would talk tips of using microSD,
+with my experience about GPD Pocket,
+
+103
+00:08:36,719 --> 00:08:36,719
+I can't use suspend because Resume take many
+ time and have stability issue.
+
+104
+00:08:44,143 --> 00:08:46,703
+So I think that Hybernation is better using SD-Card.
+
+105
+00:08:49,519 --> 00:08:55,663
+Also I used memcache (memdisk) as cache.
+
+106
+00:08:56,175 --> 00:08:57,967
+It can make virtual storage
+that uses some of memory
+
+107
+00:08:58,223 --> 00:09:04,367
+I am sure using virtual storage is mandatory
+ for Games, Browsers, MUAs,
+
+108
+00:09:04,623 --> 00:09:06,671
+because these applications
+ have massive writes,
+
+109
+00:09:08,207 --> 00:09:11,023
+And also these write operations
+ require speed.
+
+110
+00:09:14,607 --> 00:09:17,679
+So I estimated that virtual storage
+ is mandatory factor.
+
+111
+00:09:20,239 --> 00:09:21,263
+This is tough point when using microSD.
+
+112
+00:09:23,311 --> 00:09:28,431
+Okay, let's start diving deep to this.
+
+113
+00:09:28,687 --> 00:09:30,735
+UEFI and SD Card hacks, with have a fun.
+
+114
+00:09:37,391 --> 00:09:39,171
+These're UEFI's limitation, and...
+
+115
+00:09:39,183 --> 00:09:42,511
+it may be surprised we can see many "Locked" features.
+
+116
+00:09:42,767 --> 00:09:46,871
+"Unlocked" gadget is rare cases,
+dominant exceptional cases are gaming Laptop.
+
+117
+00:09:52,239 --> 00:09:54,719
+Gaming Laptop needs optimization, thus these are "Unlocked".
+
+118
+00:10:01,711 --> 00:10:06,319
+Return to "Locked" cases, we can't change VT-d enablement and CPU frequency.
+
+119
+00:10:06,575 --> 00:10:10,311
+Sometimes these aren't displayed and also disabled.
+
+120
+00:10:18,095 --> 00:10:20,131
+Especially, disabling VT-d is critital for virtualization use cases.
+
+121
+00:10:20,143 --> 00:10:22,191
+So I asked vendors about these "Locked".
+
+122
+00:10:22,447 --> 00:10:23,971
+Vendors said: "It's for safety use".
+
+123
+00:10:24,527 --> 00:10:30,159
+"For preventing accidents, it should be "Locked" and "not displayed"".
+
+124
+00:10:33,711 --> 00:10:37,295
+In these cases, I tried to request
+for getting special "Unlocked" UEFI images.
+
+125
+00:10:37,551 --> 00:10:39,343
+Results are depended by-vendors,
+some vendor provided that.
+
+126
+00:10:39,855 --> 00:10:41,903
+In many cases, Japanese vendors
+ didn't provide custom image.
+
+127
+00:10:43,183 --> 00:10:47,791
+And Chinese vendors are negotiable, but it's just subjective tends.
+
+128
+00:10:51,119 --> 00:10:55,215
+Okay, I'd talk about SD Cards hacks.
+
+129
+00:10:57,263 --> 00:10:59,671
+You might have experience of installation,
+
+130
+00:11:01,227 --> 00:11:03,863
+And if so, install to SD Card itself isn't difficult.
+
+131
+00:11:08,015 --> 00:11:13,647
+Difficult point is, we should consider SD Cards themselves.
+
+132
+00:11:13,903 --> 00:11:15,739
+For examle, "Which vendor is better"
+
+133
+00:11:15,951 --> 00:11:21,327
+Write cycle limits are per-Vendor matter.
+
+134
+00:11:23,631 --> 00:11:27,983
+And also you might know, in many cases, we can't use "trim" them.
+
+135
+00:11:30,031 --> 00:11:33,359
+As a result, we have no way
+ to reduce write cycles.
+
+136
+00:11:38,735 --> 00:11:42,831
+It means that we can easily attenpt and then exceed
+ write-cycles-limits of them.
+
+137
+00:11:46,415 --> 00:11:49,219
+Also we should know that
+SD Cards are easily cause data corruptions.
+
+138
+00:11:49,243 --> 00:11:52,347
+And ocaissionary the Card itself become not functional.
+
+139
+00:11:55,807 --> 00:11:59,355
+So we should clarify the excess caused by broken media,
+ or just data corruption.
+
+140
+00:12:05,871 --> 00:12:09,651
+And also we should decide which is better,
+replace SD Card, execute fsck, and more.
+
+141
+00:12:15,343 --> 00:12:21,487
+Installing Windows to SD Card may be the best way if we could
+
+142
+00:12:21,743 --> 00:12:24,303
+However, Windows can be only installed to internal PCIe Storage
+
+143
+00:12:27,887 --> 00:12:31,983
+Due to boot ralated limiation.
+
+144
+00:12:32,239 --> 00:12:35,131
+So we can't install Windows to SD Card.
+
+145
+00:12:36,847 --> 00:12:40,175
+Anyway, SD Cards didn't have "trim"
+
+146
+00:12:44,015 --> 00:12:47,343
+So we should consider how reduce write operations.
+
+147
+00:12:47,599 --> 00:12:50,927
+And also we should check data corruptions.
+
+148
+00:12:56,815 --> 00:13:00,143
+Let's considering how manage when
+SD Cards itself become not functional state.
+
+149
+00:13:00,911 --> 00:13:05,007
+From my exeperience, dominant cases are
+"becoming Read Only"
+
+150
+00:13:05,519 --> 00:13:07,823
+So first approach is "touch" command.
+
+151
+00:13:10,127 --> 00:13:12,943
+touch can detect
+
+152
+00:13:13,455 --> 00:13:15,503
+When you meet "Read Only" issue,
+
+153
+00:13:17,295 --> 00:13:21,391
+deletion and replaces are too early, next step is...
+
+154
+00:13:21,647 --> 00:13:24,207
+Boot from Live USB, and use gparted
+ and execute chkdsk
+
+155
+00:13:28,559 --> 00:13:33,679
+and chkdisk may recover the issue
+
+156
+00:13:34,447 --> 00:13:39,683
+In many cases, we can resolve the issue
+because it's special trick.
+
+157
+00:13:41,103 --> 00:13:43,863
+I try to explain what's happen,
+it's my guess, some of SD Cards have
+
+158
+00:13:43,919 --> 00:13:49,807
+specific behavior.  e.g. Transcend's.
+After a certain numbers of read operations,
+
+159
+00:13:50,319 --> 00:13:52,867
+they will be turned to "Read Only",
+as safety mechanisms.
+
+160
+00:13:52,879 --> 00:13:56,691
+And chkdsk will recover that.
+After that, we can reuse SD Cards till next limit.
+
+161
+00:13:57,487 --> 00:14:00,559
+These behavior are probably "By-design"
+ safety mechanisms.
+
+162
+00:14:05,167 --> 00:14:09,775
+For controlling these behavior,
+ chkdsk is first step of trouble shooting.
+
+163
+00:14:12,591 --> 00:14:17,967
+And if we can't recover "Read Only" with this approach,
+we should consider next step.
+
+164
+00:14:18,223 --> 00:14:22,695
+Next Step is, getting new SD Cards,
+and starting full copy with "dd" command.
+
+165
+00:14:29,743 --> 00:14:33,839
+Copying with "dd" is time consuming,
+but most reliable approach.
+
+166
+00:14:38,959 --> 00:14:45,103
+This page has some tuning approachs to avoid
+overloading to SD Cards,
+
+167
+00:14:45,359 --> 00:14:49,967
+Create memdisk working directory
+ and using as /tmp
+
+168
+00:14:50,223 --> 00:14:53,551
+Also I created working directory with memdisk,
+
+169
+00:14:58,415 --> 00:15:03,791
+and here is a Firefox tweaks,
+that will use ramdisk /tmp.
+
+170
+00:15:09,167 --> 00:15:13,007
+For your information about SD Cards issues,
+this is famous articles in Rasberry Pi.
+
+171
+00:15:19,151 --> 00:15:22,775
+Author is Peter Stevens,
+who provides Rasbperry Pi Hosting Service, "mythic beasts"
+
+172
+00:15:26,575 --> 00:15:29,899
+They have great knowledge
+ about SD Cards handling in real,
+
+173
+00:15:29,955 --> 00:15:35,799
+In begining, they tryed hosting service
+ that uses SD Cards,
+
+174
+00:15:36,559 --> 00:15:41,935
+And they meet many issues,
+this is useful.
+
+175
+00:15:42,447 --> 00:15:48,079
+And based on this knowledge, we should
+understand how SD Cards are fragile.
+
+176
+00:15:52,431 --> 00:15:54,523
+Okay, next.
+
+177
+00:15:57,295 --> 00:16:00,879
+AntiVirus softwares,
+
+178
+00:16:01,135 --> 00:16:04,207
+I tested Dr.Web and ESET
+
+179
+00:16:04,671 --> 00:16:10,815
+Dr. Web consumed 100% CPU in scan,
+even if I used SSD.
+
+180
+00:16:15,983 --> 00:16:20,811
+GPD Pocket doesn't have enough CPU power,
+so we should consider that.
+
+181
+00:16:22,383 --> 00:16:28,527
+For avoiding issue, scheduling
+ that to idle time,
+
+182
+00:16:29,295 --> 00:16:31,487
+I think scheduling is maneagable
+ but bit tough.
+
+183
+00:16:31,599 --> 00:16:35,439
+ESET doesn't consume CPU power.
+
+184
+00:16:35,695 --> 00:16:39,535
+Per AntiVirus Softwares, someone consumes
+machine resources.
+
+185
+00:16:39,791 --> 00:16:41,839
+So we should consider
+selection with tests
+
+186
+00:16:42,607 --> 00:16:45,423
+For detecting, I found
+some key symptoms
+
+187
+00:16:45,935 --> 00:16:50,543
+When automatic updates, I can't use apt
+because Dr.Web consumes whole CPUs.
+
+188
+00:16:59,247 --> 00:17:01,295
+I feel that it's not usable in my use case.
+
+189
+00:17:08,207 --> 00:17:10,511
+Next, Grub settings,
+
+190
+00:17:11,023 --> 00:17:17,167
+In real Desktop usecase,
+we should use dual boot with Windows,
+
+191
+00:17:22,287 --> 00:17:28,431
+And if we erase Windows and
+install ubuntu directly to internal SSD,
+
+192
+00:17:28,687 --> 00:17:31,379
+It can cause issue.
+
+193
+00:17:33,551 --> 00:17:39,695
+In my case, I can't boot system itself,
+no boot screen, no signal.
+
+194
+00:17:39,951 --> 00:17:44,303
+For solving the issue, AskUbuntu and other
+articles may help you.
+
+195
+00:17:55,567 --> 00:17:59,663
+For Linux and Linux dual booting,
+it means that you used Linux in SD Cards,
+
+196
+00:17:59,919 --> 00:18:03,435
+And plan to install another Linux
+into internal storage.
+
+197
+00:18:05,807 --> 00:18:08,143
+For it cases, you might
+ meet another issues.
+
+198
+00:18:10,415 --> 00:18:15,095
+If one updates kernel related packages,
+it will re-create Grub environment.
+
+199
+00:18:16,303 --> 00:18:21,423
+and it can affect other side Linux
+
+200
+00:18:21,679 --> 00:18:27,823
+As a result, one side needs
+another side for booting.
+
+201
+00:18:28,079 --> 00:18:34,223
+For reparing, you might need
+ grub-install or boot repair tools.
+
+202
+00:18:40,879 --> 00:18:43,183
+In My case, SD Card's side re-create grub,
+
+203
+00:18:43,439 --> 00:18:49,583
+and Grub require SD Card side's,
+ so if I lost SD Card,
+
+204
+00:18:49,839 --> 00:18:52,175
+my GPD Pocket became unbootable.
+
+205
+00:18:57,263 --> 00:19:03,151
+For fixing it, Grub menu has a way
+ to select internal ssd,
+
+206
+00:19:03,919 --> 00:19:08,527
+After boot up, I re-create
+Grub from internal SSD, problem gone.
+
+207
+00:19:09,551 --> 00:19:15,695
+For avoiding boot issue, we should
+pay attention for Grub related things.
+
+208
+00:19:17,743 --> 00:19:24,331
+And here is related articles
+when I met issue.
+
+209
+00:19:26,095 --> 00:19:28,475
+Is Rasberry Pi useful or not?
+
+210
+00:19:35,407 --> 00:19:40,799
+This is Ubuntu's official page,
+and we have many Raspberry Pi images.
+
+211
+00:19:42,063 --> 00:19:48,207
+We have both 32-bit and 64bit
+ ubuntu 21.04 images
+
+212
+00:19:49,743 --> 00:19:54,783
+Ubuntu is now one of offical image. And, the images are
+evaluated by engineers of Rasbperry Pi Foundation
+
+213
+00:19:55,067 --> 00:19:57,203
+It's appreciable point for you.
+
+214
+00:20:00,239 --> 00:20:04,079
+And of course these images
+work well in Raspberry Pi 400 (JP)
+
+215
+00:20:07,407 --> 00:20:10,611
+It works in 64 bit and
+ I can input with Input Method (Kana input)
+
+216
+00:20:10,635 --> 00:20:12,459
+It's useful.
+
+217
+00:20:12,783 --> 00:20:16,367
+Next, I'd like to provide
+line up of Rasberry Pi,
+
+218
+00:20:16,623 --> 00:20:19,439
+with information
+ about capability of ubuntu
+
+219
+00:20:20,975 --> 00:20:24,503
+Raspberry Pi3 is mainstream product
+and of course Ubuntu is available.
+
+220
+00:20:25,627 --> 00:20:32,619
+Raspberry Pi4, I assume that
+many peoples want to use container with Ubuntu Server
+
+221
+00:20:33,263 --> 00:20:39,407
+However, 8GB model is a really few stock now,
+it may be improved in November.
+
+222
+00:20:41,455 --> 00:20:45,259
+So please stay tuned
+with 4GB Model and others.
+
+223
+00:20:50,159 --> 00:20:53,999
+And, I would recommend to use Compute Module,
+I would ask you to try.
+
+224
+00:20:54,511 --> 00:20:59,459
+Because it can connect many devices via PCI Express.
+
+225
+00:20:59,823 --> 00:21:05,967
+And also it has HDMI and others, you can use it as Desktop via I/O board
+
+226
+00:21:07,823 --> 00:21:10,895
+So let's enjoy and make some with your great idea.
+
+227
+00:21:11,151 --> 00:21:15,271
+Some of users are trying to create "Hand Held" PC.
+
+228
+00:21:15,339 --> 00:21:18,339
+Let's try such approachs and others.
+
+229
+00:21:23,208 --> 00:21:27,208
+I am really sorry that Compute Module remains USB2.0 because of the resources on SoC
+
+230
+00:21:28,116 --> 00:21:31,988
+And, Akkie, our community member, tested many devices
+
+231
+00:21:32,144 --> 00:21:36,496
+with PCIe connectivity.
+
+232
+00:21:37,520 --> 00:21:41,104
+Notable point is, both 10GbE and NVMe work well.
+
+233
+00:21:41,752 --> 00:21:46,660
+the most important point of Compute Module is,
+
+234
+00:21:48,016 --> 00:21:52,368
+RTC support available for it.
+
+235
+00:21:52,880 --> 00:21:58,256
+So we can build it for Embedded and Laptop.
+
+236
+00:21:58,512 --> 00:22:02,104
+And you can use it as Desktop.
+
+237
+00:22:06,192 --> 00:22:08,240
+btw, next is Rasberry Pi 400, Pi 400 is...
+
+238
+00:22:08,752 --> 00:22:14,132
+It has faster CPU and well designed heat sinks.
+
+239
+00:22:15,408 --> 00:22:19,760
+also it's fanless.
+
+240
+00:22:20,016 --> 00:22:26,160
+It's inspired by retro PCs, Commodore 64 and BBC Micro. Eben's hobby.
+
+241
+00:22:26,416 --> 00:22:29,920
+It's designed for education.
+
+242
+00:22:31,536 --> 00:22:36,452
+2nd batch included some of localized versions, for Japan and India.
+
+243
+00:22:37,936 --> 00:22:43,132
+localized versions for other countries will be supported but no ETAs.
+
+244
+00:22:43,388 --> 00:22:47,388
+So please check Rasberry Pi official page.
+
+245
+00:22:47,412 --> 00:22:50,812
+And official Twitter will provide information.
+
+246
+00:22:52,528 --> 00:22:55,308
+Okay, next is roadmap,
+
+247
+00:22:55,600 --> 00:23:01,744
+Some of roadmaps are leaked by founder Eben in Tom's Hardware.
+
+248
+00:23:02,256 --> 00:23:04,048
+For that, fundamentally,
+
+249
+00:23:05,072 --> 00:23:09,072
+We met semiconductor shortage,
+
+250
+00:23:09,072 --> 00:23:13,072
+and we cannot plan 4a and 5 at right now.
+
+251
+00:23:16,616 --> 00:23:21,816
+So no one can get new products untill fullfilled.
+
+252
+00:23:24,016 --> 00:23:27,600
+and if you can't wait, I'd like to point what should you check,
+
+253
+00:23:27,856 --> 00:23:31,440
+Return to Raspberry Pi's philosophy,  down-compatible,
+
+254
+00:23:31,696 --> 00:23:36,560
+for children, and have fun, these are great hint.
+
+255
+00:23:37,072 --> 00:23:43,316
+Also some of interviews and Github will have leak :)
+
+256
+00:23:43,472 --> 00:23:47,964
+Please check these places for getting latest information.
+
+257
+00:23:49,360 --> 00:23:52,176
+At last, I would talk "one more thing".
+
+258
+00:23:52,432 --> 00:23:56,016
+I have told that at many conferences,
+
+259
+00:23:56,272 --> 00:24:01,392
+We're calling your Raspberry Pi project.
+
+260
+00:24:01,904 --> 00:24:03,184
+What is suiting to requirement,
+
+261
+00:24:03,696 --> 00:24:08,048
+We have MagPi, the official Raspberry Pi Magazine,
+
+262
+00:24:08,560 --> 00:24:12,936
+We want to introduce your project as MagPi's articles.
+
+263
+00:24:13,492 --> 00:24:16,072
+There are many prospected articles in the world,
+
+264
+00:24:16,496 --> 00:24:20,080
+Of course, MagPi is magazine in UK, so
+
+265
+00:24:20,336 --> 00:24:24,336
+So dominant are in Europe and Africa.
+
+266
+00:24:24,360 --> 00:24:26,360
+Now, bit increased China and India's
+
+267
+00:24:26,736 --> 00:24:30,576
+However, it's still limited in the globe.
+
+268
+00:24:31,088 --> 00:24:32,256
+So,
+
+269
+00:24:32,368 --> 00:24:46,368
+We need more articles from other places, such as Korea, Taiwan, Hong-Kong, Macau, Vietnam and other places.
+
+270
+00:24:46,448 --> 00:24:52,448
+We want to meet and introduce great projects from diverse areas.
+
+271
+00:24:56,432 --> 00:25:01,552
+So we're appreciate that you will try / submit / contact us.
+
+272
+00:25:03,088 --> 00:25:04,112
+For example,
+
+273
+00:25:04,624 --> 00:25:07,624
+Here is my mediations,
+
+274
+00:25:08,464 --> 00:25:10,000
+This article is provided from Taiwan,
+
+275
+00:25:10,512 --> 00:25:12,048
+Maker is Penk Chen,
+
+276
+00:25:12,304 --> 00:25:16,304
+He provided "CutiePie".
+
+277
+00:25:16,400 --> 00:25:23,400
+And he works for Qt, and this handheld has rich UI.
+
+278
+00:25:28,176 --> 00:25:33,040
+It bumped into editor of MagPi, and
+
+279
+00:25:33,296 --> 00:25:35,856
+And he has intent to meet Penk Chen,
+
+280
+00:25:36,112 --> 00:25:41,612
+So I mediate both editor and Penk Chen, result is here.
+
+281
+00:25:45,328 --> 00:25:48,912
+I also introduced projects in Japan,
+
+282
+00:25:49,424 --> 00:25:54,544
+Here is VInyard Kikushima, Winery usecase by Mr.Kikushima.
+
+283
+00:25:55,056 --> 00:25:58,556
+In this winery, he uses Raspberry Pi
+
+284
+00:25:58,652 --> 00:26:00,952
+and getting many data from sensors.
+
+285
+00:26:01,044 --> 00:26:08,044
+Automated system changes volume of pesticides
+
+286
+00:26:12,464 --> 00:26:14,000
+What is need,
+
+287
+00:26:15,024 --> 00:26:19,120
+Too many pesticides will corrupt deliciousness of wine.
+
+288
+00:26:19,376 --> 00:26:22,192
+So he want to decrease them.
+
+289
+00:26:23,728 --> 00:26:26,328
+However, zero pesticides isn't realistic,
+
+290
+00:26:26,364 --> 00:26:31,788
+challange is, getting "lower limit" by sensors.
+
+291
+00:26:33,200 --> 00:26:36,180
+Okay, at last, it is not known exactly why, it's me.
+
+292
+00:26:36,272 --> 00:26:39,856
+I have dream that I would introduce Asia-wide projects,
+
+293
+00:26:40,112 --> 00:26:42,380
+not limited in Japan
+
+294
+00:26:47,496 --> 00:26:49,620
+I want to introduce many projects in various area,
+
+295
+00:26:52,176 --> 00:26:54,476
+I'm discussing with many open source communities,
+
+296
+00:26:54,485 --> 00:26:57,485
+and providing showcases.
+
+297
+00:26:57,596 --> 00:27:01,844
+Because I believe it shouldn't limit to Japan
+
+298
+00:27:02,384 --> 00:27:03,884
+I have been doing so,
+
+299
+00:27:04,944 --> 00:27:11,944
+China, Taiwan, Korea, Vietnam, Indonesia, Thailand.....and others,
+
+300
+00:27:12,112 --> 00:27:18,000
+I want to see many projects from many area.
+
+301
+00:27:18,512 --> 00:27:20,760
+So if you want to introduce your project.
+
+302
+00:27:20,816 --> 00:27:26,424
+Please feel free to reach out to me.
+
+303
+00:27:30,032 --> 00:27:31,312
+As conclusion,
+
+304
+00:27:34,384 --> 00:27:40,056
+Using Ubuntu Desktop is fun, but it likes Lego.
+
+305
+00:27:40,272 --> 00:27:45,272
+We should never forget it,
+
+306
+00:27:46,416 --> 00:27:48,852
+You should pay some time, not easy way.
+
+307
+00:27:48,976 --> 00:27:52,476
+If it's not feasible for usecase,
+
+308
+00:27:52,548 --> 00:27:56,388
+We should install to SD Card and use as sub desktop.
+
+309
+00:27:56,444 --> 00:27:59,180
+and use Windows as primary.
+
+310
+00:27:59,216 --> 00:28:02,032
+I would like to reiterate that.
+
+311
+00:28:02,160 --> 00:28:08,504
+And we should review Pros/Cons of
+Internal SSD and microSD.
+
+312
+00:28:08,560 --> 00:28:12,728
+Considering trade-off is mandatory.
+
+313
+00:28:13,552 --> 00:28:21,152
+And also, we should understant that
+ how SD Card works as boot device.
+
+314
+00:28:23,792 --> 00:28:32,556
+And, For Rasbberry Pi, Ubuntu is official and 64bit.
+
+315
+00:28:38,384 --> 00:28:41,200
+Raspberry Pi OS 64 bit is currently trial phase.
+
+316
+00:28:43,760 --> 00:28:47,600
+64 bit suse is already official phase.
+
+317
+00:28:47,856 --> 00:28:54,856
+AFAIK, only suse and Ubuntu
+are official phase with 64 bit support.
+
+318
+00:28:56,560 --> 00:29:04,560
+And if you have great project,
+ absolutely, please keep in touch with me.
+
+319
+00:29:05,008 --> 00:29:14,008
+Mail, Twitter, Facebook, Linkedin,
+and other approaches are welcome.
+
+320
+00:29:15,760 --> 00:29:20,060
+Please let me know with any contacts.
+
+321
+00:29:20,880 --> 00:29:23,952
+Thank you for your time.
+
+322
+00:29:24,720 --> 00:29:26,512
+okay, just 30 minutes.
+
+323
+00:29:27,024 --> 00:29:32,024
+Have a nice day! See you all.
+
