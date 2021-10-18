@@ -1,0 +1,300 @@
+1
+00:00:07,700 --> 00:00:10,834
+Hi, everyone in the Ubuntu community.
+
+2
+00:00:10,867 --> 00:00:13,200
+ First of all, I am very grateful to UbuCon ASIA 
+
+3
+00:00:13,234 --> 00:00:15,700
+for providing this opportunity for me to communicate with everyone
+
+4
+00:00:15,734 --> 00:00:17,534
+Today I want to share with you
+
+5
+00:00:17,567 --> 00:00:21,500
+ all the efforts that the openEuler community has made in the open source compliance area.
+
+6
+00:00:21,500 --> 00:00:24,767
+ I hope that I can collide spark with everyone more.
+
+7
+00:00:24,767 --> 00:00:29,634
+OpenEuler community was born at the end of 2019
+
+8
+00:00:29,634 --> 00:00:32,280
+and is currently the largest,
+
+9
+00:00:32,280 --> 00:00:35,466
+ most active and transparent operating system open source community in China.
+
+10
+00:00:35,466 --> 00:00:40,693
+.A total of three releases have been issued since the first version was released in March 2020,
+
+11
+00:00:40,693 --> 00:00:44,689
+and more than 6,000 community contributors have participated in.
+
+12
+00:00:44,689 --> 00:00:46,481
+Kylin software I work for
+
+13
+00:00:46,481 --> 00:00:49,423
+is the second largest contributor to the OpenEuler community.
+
+14
+00:00:49,423 --> 00:00:53,340
+Open source compliance is a very big topic,
+
+15
+00:00:53,340 --> 00:00:57,067
+including but not limited to copyright and license compliance
+
+16
+00:00:57,067 --> 00:00:59,569
+ patent compliance, export control compliance,
+
+17
+00:00:59,569 --> 00:01:02,034
+ GDPR compliance, trade secret compliance
+
+18
+00:01:02,034 --> 00:01:03,625
+and trademark compliance, etc.
+
+19
+00:01:03,625 --> 00:01:06,932
+open source compliance is also a breakthrough to encourage developers
+
+20
+00:01:06,932 --> 00:01:10,273
+to understand the open source culture and join the open source community.
+
+21
+00:01:10,273 --> 00:01:16,035
+OpenEuler community has placed great emphasis on open source compliance since its creation
+
+22
+00:01:16,035 --> 00:01:17,715
+With the rapid development of the community,
+
+23
+00:01:17,715 --> 00:01:21,486
+a special compliance sig was established in January 2021.
+
+24
+00:01:21,486 --> 00:01:23,069
+The main work content includes
+
+25
+00:01:23,069 --> 00:01:26,033
+ research and science popularization in compliance-related fields,
+
+26
+00:01:26,033 --> 00:01:28,845
+analysis and answers to community compliance problems,
+
+27
+00:01:28,845 --> 00:01:34,485
+and development and maintenance of the access control system when submitting community contributions.
+
+28
+00:01:34,485 --> 00:01:41,217
+response to the most core license recognition management work in the open source community governance work,
+
+29
+00:01:41,217 --> 00:01:44,557
+the compliance sig has designed and planned a complete set of compliance tool chains,
+
+30
+00:01:44,557 --> 00:01:48,008
+and is now steadily advancing the implementation according to the roadmap.
+
+31
+00:01:48,008 --> 00:01:50,982
+Combining the specific functions of the various link tools,
+
+32
+00:01:50,982 --> 00:01:56,376
+the compliant sig partners named them after the names of famous people in the ancient Chinese Three Kingdoms period.
+
+33
+00:01:56,376 --> 00:02:00,757
+Every fan of the Three Kingdoms will smile when they hear their names.
+
+34
+00:02:00,757 --> 00:02:05,458
+Next, I will explain the complete operation process of the entire tool chain for everyone.
+
+35
+00:02:05,458 --> 00:02:08,334
+When the community receives a new pr,
+
+36
+00:02:08,334 --> 00:02:13,832
+we first ask the Cao Chong tool to classify the submitted content into code or non-code
+
+37
+00:02:13,832 --> 00:02:16,612
+such as documents, multimedia， rich text, etc.
+
+38
+00:02:16,612 --> 00:02:19,943
+Text documents can be directly scanned for their license information,
+
+39
+00:02:19,943 --> 00:02:24,594
+ while code types need to be used Huatuo Code Kinship Analysis tool analyzes its kinship 
+
+40
+00:02:24,594 --> 00:02:29,093
+ and scans for fragment references of existing open source software source codes.
+
+41
+00:02:29,093 --> 00:02:33,758
+.If there is a reference, confirm whether it complies with the corresponding license.
+
+42
+00:02:33,758 --> 00:02:35,758
+If there is no license, manual judgment is required to determine whether there is plagiarism.
+
+43
+00:02:39,033 --> 00:02:41,200
+Because of the severe conditions of this stage,
+
+44
+00:02:41,200 --> 00:02:45,198
+the tool was named Zhang Fei, a man who is the gateway, ten thousand men cannot open.
+
+45
+00:02:45,700 --> 00:02:47,200
+After Zhang Fei Gatekeeper access control is passed,
+
+46
+00:02:47,200 --> 00:02:49,958
+a standard license text comparison is required to confirm 
+
+47
+00:02:49,958 --> 00:02:55,510
+ that it is the standard version of the license text or a variant license modified by the developer.
+
+48
+00:02:55,510 --> 00:02:58,520
+For all the licenses involved in the project, 
+
+49
+00:02:58,520 --> 00:03:02,835
+uniformly check the SPDX standard format, 
+
+50
+00:03:02,835 --> 00:03:08,113
+and then confirm whether each license has passed the OSI or FSF certification.
+
+51
+00:03:08,113 --> 00:03:12,441
+.If it is not OSI or FSF certified license,
+
+52
+00:03:12,441 --> 00:03:14,418
+a community decision is required.
+
+53
+00:03:14,418 --> 00:03:16,088
+whether to agree to the merge.
+
+54
+00:03:16,088 --> 00:03:22,062
+Next, the Diao Chan system will determine whether the labels of different licenses are compatible or conflicting.
+
+55
+00:03:22,062 --> 00:03:25,789
+ the compliance risk analysis report of the entire project is formed
+
+56
+00:03:25,789 --> 00:03:29,340
+and output to the SBOM risk warning board and archived.
+
+57
+00:03:31,033 --> 00:03:37,695
+Developers and reviewers can check the compliance risk summary of the entire project through the SBOM risk pre-warning board
+
+58
+00:03:37,695 --> 00:03:43,572
+ and at the same time can open a detailed examination of the project’s explicit and implicit dependencies,
+
+59
+00:03:43,572 --> 00:03:47,582
+and confirm whether the omissions are in the abrupt license.
+
+60
+00:03:47,582 --> 00:03:53,098
+.The name of the Diao Chan system Diao Chan is one of the four great beauties in ancient China.
+
+61
+00:03:53,098 --> 00:03:59,133
+ With a friendly human-computer interface, the system summarizes boring legal texts into three types of
+
+62
+00:03:59,133 --> 00:04:07,885
+ labels for rights, obligations and restrictions for users to quickly identify and understand various common licenses.
+
+63
+00:04:07,885 --> 00:04:13,776
+The Diao Chan system also provides an API interface for the access control system or a third party to use.
+
+64
+00:04:13,776 --> 00:04:21,207
+Developers can use the GraphQL API provided by the Diao Chan system to conveniently confirm the interface information.
+
+65
+00:04:21,207 --> 00:04:26,747
+At present, we have mainly completed the development of the Diaochan system and Huatuo tools.
+
+66
+00:04:26,747 --> 00:04:29,560
+Zhangfei Gatekeeper has also been put into trial operation,
+
+67
+00:04:29,560 --> 00:04:32,558
+and there are still many tasks waiting for us.
+
+68
+00:04:32,558 --> 00:04:37,033
+The current entire compliance tool chain considers common problems in license compliance work,
+
+69
+00:04:37,033 --> 00:04:39,413
+such as  whether to declare a license,
+
+70
+00:04:39,413 --> 00:04:41,495
+whether the license text is standard,
+
+71
+00:04:41,495 --> 00:04:46,241
+and whether the license used has been certified by OSI or FSF,
+
+72
+00:04:46,241 --> 00:04:48,926
+is the license in the project fully compatible 
+
+73
+00:04:51,467 --> 00:04:53,977
+there is still a huge room for improvement
+
+74
+00:04:53,977 --> 00:04:58,604
+ I hope that friends in the Ubuntu community will share your valuable opinions with us.
+
+75
+00:04:58,604 --> 00:05:01,514
+Thank you all, goodbye!
+

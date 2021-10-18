@@ -1,0 +1,297 @@
+1
+00:00:07,700 --> 00:00:10,834
+Hai semuanya di Komunitas Ubuntu.
+
+2
+00:00:10,867 --> 00:00:13,200
+ Pertama-tama, saya berterima kasih kepada UbuCon ASIA
+
+3
+00:00:13,234 --> 00:00:15,700
+Yang telah memberikan kesempatan ini kepada saya untuk berkomunikasi dengan semuanya.
+
+4
+00:00:15,734 --> 00:00:17,534
+Hari ini saya akan membagikan kepada kalian,
+
+5
+00:00:17,567 --> 00:00:21,500
+ Semua usaha yang telah dibuat oleh komunitas openEuler pada area kepatuhan open-source.
+
+6
+00:00:21,500 --> 00:00:24,767
+ Saya berharap bahwa saya bisa memercikkan ilmu saya kepada semua orang di sini.
+
+7
+00:00:24,767 --> 00:00:29,634
+Komunitas OpenEuler berdiri pada akhir tahun 2019
+
+8
+00:00:29,634 --> 00:00:32,280
+dan saat ini adalah komunitas open-source yang paling besar,
+
+9
+00:00:32,280 --> 00:00:35,466
+ yang paling aktif dan transparan di Tiongkok.
+
+10
+00:00:35,466 --> 00:00:40,693
+.Sebanyak tiga rilis telah dikeluarkan sejak versi pertama dirilis pada Maret 2020, 
+
+11
+00:00:40,693 --> 00:00:44,689
+dan lebih dari 6000 kontributor di komunitas telah berpartisipasi.
+
+12
+00:00:44,689 --> 00:00:46,481
+Perangkat lunak Kylin yang saya kerjakan
+
+13
+00:00:46,481 --> 00:00:49,423
+adalah kontribusi terbesar kedua terhadap OpenEuler community.
+
+14
+00:00:49,423 --> 00:00:53,340
+Kepatuhan sumber terbuka (open source) adalah topik yang sangat besar,
+
+15
+00:00:53,340 --> 00:00:57,067
+termasuk tapi tidak terbatas pada copyright dan kepatuhan lisensi
+
+16
+00:00:57,067 --> 00:00:59,569
+ kepatuhan terhadap paten, kepatuhan terhadap kontrol ekspor
+
+17
+00:00:59,569 --> 00:01:02,034
+ kepatuhan GDPR, kepatuhan rahasia dagang
+
+18
+00:01:02,034 --> 00:01:03,625
+dan kepatuhan merk dagang, dan lain-lain.
+
+19
+00:01:03,625 --> 00:01:06,932
+kepatuhan open source juga merupakan terobosan bagi para pengembang
+
+20
+00:01:06,932 --> 00:01:10,273
+untuk memahami budaya open source dan bergabung dengan komunitas open source.
+
+21
+00:01:10,273 --> 00:01:16,035
+Komunitas OpenEuler telah menempatkan perhatian lebih kepada kepatuhan open source sejak penciptaannya.
+
+22
+00:01:16,035 --> 00:01:17,715
+Dengan pengembangan yang cepat terhadap komunitas tersebut,
+
+23
+00:01:17,715 --> 00:01:21,486
+sebuah tanda kepatuhan khusus didirikan pada Januari 2021.
+
+24
+00:01:21,486 --> 00:01:23,069
+Konten pekerjaan utama meliputi
+
+25
+00:01:23,069 --> 00:01:26,033
+  penelitian dan mempopulerkan ilmu pengetahuan di bidang terkait kepatuhan,
+
+26
+00:01:26,033 --> 00:01:28,845
+analisis dan jawaban atas masalah kepatuhan komunitas,
+
+27
+00:01:28,845 --> 00:01:34,485
+dan pengembangan dan pemeliharaan sistem kontrol akses saat mengirimkan kontribusi komunitas.
+
+28
+00:01:34,485 --> 00:01:41,217
+tanggapan terhadap pekerjaan manajemen pengakuan lisensi paling inti dalam pekerjaan tata kelola komunitas sumber terbuka,
+
+29
+00:01:41,217 --> 00:01:44,557
+tanda kepatuhan telah merancang dan merencanakan satu set lengkap rantai alat kepatuhan,
+
+30
+00:01:44,557 --> 00:01:48,008
+dan sekarang terus memajukan implementasi sesuai dengan peta rancangan.
+
+31
+00:01:48,008 --> 00:01:50,982
+Menggabungkan fungsi spesifik dari berbagai alat tautan,
+
+32
+00:01:50,982 --> 00:01:56,376
+mitra penandatangan patuh tersebut menamai mereka setelah nama orang-orang terkenal di periode Tiga Kerajaan Tiongkok kuno (3 Kingdoms). 
+
+33
+00:01:56,376 --> 00:02:00,757
+Setiap penggemar Three Kingdoms akan tersenyum ketika mendengar nama mereka.
+
+34
+00:02:00,757 --> 00:02:05,458
+Selanjutnya, saya akan menjelaskan proses operasi lengkap dari seluruh rangkaian alat untuk semua orang.
+
+35
+00:02:05,458 --> 00:02:08,334
+Ketika komunitas menerima pr baru,
+
+36
+00:02:08,334 --> 00:02:13,832
+pertama-tama kami meminta alat Cao Chong untuk mengklasifikasikan konten yang dikirimkan ke dalam kode atau non-kode
+
+37
+00:02:13,832 --> 00:02:16,612
+seperti dokumen, multimedia, rich text, dll.
+
+38
+00:02:16,612 --> 00:02:19,943
+Dokumen teks dapat langsung dipindai untuk informasi lisensinya,
+
+39
+00:02:19,943 --> 00:02:24,594
+ sementara file berjenis code perlu digunakan alat Analisis relasi Kode Huatuo menganalisis relasinya
+
+40
+00:02:24,594 --> 00:02:29,093
+  dan memindai referensi fragmen dari kode sumber perangkat lunak sumber terbuka yang ada.
+
+41
+00:02:29,093 --> 00:02:33,758
+.Jika ada referensi, konfirmasikan apakah itu sesuai dengan lisensi yang sesuai.
+
+42
+00:02:33,758 --> 00:02:35,758
+Jika tidak ada lisensi, penilaian manual diperlukan untuk menentukan apakah ada plagiarisme.
+
+43
+00:02:39,033 --> 00:02:41,200
+Karena kondisi yang parah dari tahap ini,
+
+44
+00:02:41,200 --> 00:02:45,198
+sebuah alat yang bernama Zhang Fei, seorang pria yang merupakan penjaga gerbang, sepuluh ribu pria tidak dapat membukanya.
+
+45
+00:02:45,700 --> 00:02:47,200
+Setelah kontrol akses Penjaga Gerbang Zhang Fei dilewati,
+
+46
+00:02:47,200 --> 00:02:49,958
+perbandingan teks lisensi standar diperlukan untuk mengonfirmasi
+
+47
+00:02:49,958 --> 00:02:55,510
+ bahwa itu adalah versi standar dari teks lisensi atau lisensi varian yang dimodifikasi oleh pengembang.
+ 
+0:02:55.510,0:02:58.520
+Untuk semua lisensi yang terlibat dalam proyek,
+
+48
+00:02:58,520 --> 00:03:02,835
+periksa secara seragam format standar SPDX,
+
+49
+00:03:02,835 --> 00:03:08,113
+dan kemudian konfirmasikan apakah setiap lisensi telah lulus sertifikasi OSI atau FSF.
+
+50
+00:03:08,113 --> 00:03:12,441
+.Jika bukan lisensi bersertifikat OSI atau FSF,
+
+51
+00:03:12,441 --> 00:03:14,418
+diperlukan keputusan komunitas.
+
+52
+00:03:14,418 --> 00:03:16,088
+apakah akan menyetujui penggabungan.
+
+53
+00:03:16,088 --> 00:03:22,062
+Selanjutnya, sistem Diao Chan akan menentukan apakah label dari lisensi yang berbeda kompatibel atau bertentangan.
+
+54
+00:03:22,062 --> 00:03:25,789
+ laporan analisis risiko kepatuhan dari seluruh proyek terbentuk
+
+55
+00:03:25,789 --> 00:03:29,340
+dan output ke papan peringatan risiko SBOM dan diarsipkan.
+
+56
+00:03:31,033 --> 00:03:37,695
+Pengembang dan peninjau dapat memeriksa ringkasan risiko kepatuhan dari seluruh proyek melalui papan peringatan risiko SBOM
+
+57
+00:03:37,695 --> 00:03:43,572
+ dan pada saat yang sama dapat membuka pemeriksaan rinci dari dependensi eksplisit dan implisit proyek,
+ 
+0:03:43.572,0:03:47.582
+dan konfirmasikan apakah penghilangan itu ada dalam lisensi mendadak.
+
+58
+00:03:47,582 --> 00:03:53,098
+.Nama sistem Diao Chan Diao Chan adalah salah satu dari empat kecantikan besar di Tiongkok kuno.
+
+59
+00:03:53,098 --> 00:03:59,133
+ Dengan antarmuka manusia-komputer yang ramah, sistem merangkum teks hukum yang membosankan menjadi tiga jenis:
+
+60
+00:03:59,133 --> 00:04:07,885
+ label untuk hak, kewajiban, dan batasan bagi pengguna untuk mengidentifikasi dan memahami berbagai lisensi umum dengan cepat.
+
+61
+00:04:07,885 --> 00:04:13,776
+Sistem Diao Chan juga menyediakan antarmuka API untuk digunakan oleh sistem kontrol akses atau pihak ketiga.
+
+62
+00:04:13,776 --> 00:04:21,207
+Pengembang dapat menggunakan GraphQL API yang disediakan oleh sistem Diao Chan untuk mengonfirmasi informasi antarmuka dengan mudah
+
+63
+00:04:21,207 --> 00:04:26,747
+Saat ini, utamanya kami telah menyelesaikan pengembangan sistem Diaochan dan alat Huatuo.
+
+64
+00:04:26,747 --> 00:04:29,560
+Penjaga Gerbang Zhangfei juga telah dimasukkan ke dalam operasi percobaan,
+
+65
+00:04:29,560 --> 00:04:32,558
+dan masih banyak tugas yang menunggu kita.
+
+66
+00:04:32,558 --> 00:04:37,033
+Seluruh rantai alat kepatuhan saat ini mempertimbangkan masalah umum dalam pekerjaan kepatuhan lisensi,
+
+67
+00:04:37,033 --> 00:04:39,413
+seperti apakah akan mendeklarasikan lisensi,
+
+68
+00:04:39,413 --> 00:04:41,495
+apakah teks lisensi standar,
+
+69
+00:04:41,495 --> 00:04:46,241
+dan apakah lisensi yang digunakan telah disertifikasi oleh OSI atau FSF,
+
+70
+00:04:46,241 --> 00:04:48,926
+apakah lisensi dalam proyek ini sepenuhnya kompatibel
+
+71
+00:04:51,467 --> 00:04:53,977
+masih ada ruang besar untuk perbaikan
+
+72
+00:04:53,977 --> 00:04:58,604
+ Saya berharap teman-teman di komunitas Ubuntu akan berbagi pendapat Anda yang berharga dengan kami.
+ 
+0:04:58.604,0:05:01.514
+Terima kasih semuanya, sampai jumpa!
+
