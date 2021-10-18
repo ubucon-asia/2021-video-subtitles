@@ -1,0 +1,1728 @@
+1
+00:00:07,859 --> 00:00:11,850
+Hello , I am Jeong Hyeon, Nam from the Korea WSL User Group 
+
+2
+00:00:11,850 --> 00:00:17,369
+who prepared and presented a WSL-related topic at Ubucon 2021 Asia.
+
+3
+00:00:17,369 --> 00:00:22,380
+What I would like to introduce today is how to create an
+
+4
+00:00:22,380 --> 00:00:26,730
+integration test using the Windows API provided by WSL,
+
+5
+00:00:26,730 --> 00:00:31,380
+and prepare a session to show the demo and
+
+6
+00:00:31,380 --> 00:00:35,820
+briefly introduce the process of how it was made
+
+7
+00:00:35,820 --> 00:00:40,167
+and the open source project that was actually developed . I did.
+
+8
+00:00:42,700 --> 00:00:47,650
+There are five major topics that I would like to introduce today. First
+
+9
+00:00:47,650 --> 00:00:52,090
+of all, the background that led me to start this open source
+
+10
+00:00:52,090 --> 00:00:56,950
+project, the demo and environment to actually use the WSL SDK, the process
+
+11
+00:00:56,950 --> 00:01:03,130
+of solving various problems that occurred in the process of developing the SDK, and the process of
+
+12
+00:01:03,130 --> 00:01:07,570
+seeing that all the WSL APIs are still public. I can't, but I'm
+
+13
+00:01:07,570 --> 00:01:13,540
+going to divide the presentation into five parts to talk
+
+14
+00:01:13,540 --> 00:01:21,360
+about the things that I regretted there and the direction in which this project can be improved in the future.
+
+15
+00:01:21,840 --> 00:01:26,040
+First of all, the motivation and background for starting this project
+
+16
+00:01:26,040 --> 00:01:29,330
+I'd like to try to do a little talk about
+
+17
+00:01:29,420 --> 00:01:34,610
+the WSL I use very well. So of course now
+
+18
+00:01:34,610 --> 00:01:38,479
+I more thought will have features such as in windows server because
+
+19
+00:01:38,479 --> 00:01:42,920
+it may be the WSL in the Windows client OS
+
+20
+00:01:42,920 --> 00:01:47,420
+usually on Windows servers tend to provide such conformity
+
+21
+00:01:47,420 --> 00:01:52,460
+of production, the features provided by the client, find
+
+22
+00:01:52,460 --> 00:01:57,110
+the micro pecking me how should that detail step-by-step guide to activate
+
+23
+00:01:57,110 --> 00:02:01,634
+the WSL in quite nicely windows server in a soft DOCS
+
+24
+00:02:01,634 --> 00:02:04,100
+But wotdeon part to get interesting is
+
+25
+00:02:04,100 --> 00:02:09,170
+if the original as it is to install the WSL release now through the store, correct, but
+
+26
+00:02:09,170 --> 00:02:12,530
+Windows server and understand everyone As you
+
+27
+00:02:12,530 --> 00:02:18,049
+may know, there is no app store for clients. So
+
+28
+00:02:18,049 --> 00:02:22,760
+, I wondered how to distribute WSL again. So
+
+29
+00:02:22,760 --> 00:02:29,540
+, after reading the contents carefully as a document, now in the store separately, now
+
+30
+00:02:29,540 --> 00:02:35,870
+only the corresponding package file. In other words, it is a guide so that only the APPX file
+
+31
+00:02:35,870 --> 00:02:39,530
+can be extracted and downloaded from a separate server.
+
+32
+00:02:39,530 --> 00:02:44,329
+So now, the downloaded file was decompressed and
+
+33
+00:02:44,329 --> 00:02:50,239
+the bootstrapper in charge of the installation was executed in the
+
+34
+00:02:50,239 --> 00:02:55,900
+extracted file . But what was interesting now is that
+
+35
+00:02:55,900 --> 00:03:02,370
+after unzipping the package, a file called install.tar.gz has
+
+36
+00:03:02,370 --> 00:03:08,379
+been created. However, since this file is a root file system,
+
+37
+00:03:08,379 --> 00:03:14,049
+it can be seen as a container format that contains all the files corresponding to the
+
+38
+00:03:14,049 --> 00:03:19,390
+Linux user land area and my various contents at once . However, it was
+
+39
+00:03:19,390 --> 00:03:24,549
+quite impressive and interesting to see it installed and used as it is.
+
+40
+00:03:24,549 --> 00:03:30,430
+So, if I could customize this image file itself in the form I want
+
+41
+00:03:30,430 --> 00:03:35,799
+, it would be ok, wouldn't it be interesting? So, if you look a little more closely,
+
+42
+00:03:35,799 --> 00:03:40,934
+maybe it is possible to refine or automate WSL in a
+
+43
+00:03:40,934 --> 00:03:47,867
+form that is more than the provided package in the form I want .
+
+44
+00:03:47,867 --> 00:03:51,989
+I started with that background.
+
+45
+00:03:53,300 --> 00:03:59,200
+So I searched a little more and found a header file called wslapi.h in the
+
+46
+00:03:59,200 --> 00:04:03,050
+SDK. It includes some very interesting functions and
+
+47
+00:04:03,050 --> 00:04:06,170
+header definitions.
+
+48
+00:04:06,170 --> 00:04:15,870
+So I started to dig deeper and test what these APIs sometimes do. So, I made three main assumptions. One can now
+
+49
+00:04:15,870 --> 00:04:19,549
+image the case of the window, there is a Linux image when
+
+50
+00:04:19,549 --> 00:04:24,300
+the window image for this, and Linux If these images
+
+51
+00:04:24,300 --> 00:04:28,440
+can be created as the os images I want, and
+
+52
+00:04:28,440 --> 00:04:33,360
+the WSL distributions using the thus created image I
+
+53
+00:04:33,360 --> 00:04:37,710
+What if I could register and release it freely
+
+54
+00:04:37,710 --> 00:04:42,240
+when I want ? Finally, if there is such a way that I can
+
+55
+00:04:42,240 --> 00:04:48,150
+send and receive commands from the Windows side at any time for
+
+56
+00:04:48,150 --> 00:04:52,869
+the instance registered in this way , I can
+
+57
+00:04:52,869 --> 00:04:58,089
+use these means to create an automated test environment. In other words, integration testing that
+
+58
+00:04:58,089 --> 00:05:03,789
+unless we Knit a VM a complete test environment called modified in some other
+
+59
+00:05:03,789 --> 00:05:10,079
+form, such as Cygwin, or closest to the original Linux long, but
+
+60
+00:05:10,079 --> 00:05:15,099
+the overhead lifting easier and faster than such an environment a lot of
+
+61
+00:05:15,099 --> 00:05:20,199
+Linux to drive I started to imagine whether
+
+62
+00:05:20,199 --> 00:05:28,989
+a concrete way to test the OS could be a realistic way. At the same time , I started
+
+63
+00:05:28,989 --> 00:05:34,059
+the project thinking that it would be great if productivity could be improved
+
+64
+00:05:34,059 --> 00:05:37,319
+by using the automation environment of WSL. 
+
+65
+00:05:39,440 --> 00:05:45,350
+So , I first developed the SDK project under the
+
+66
+00:05:45,350 --> 00:05:51,740
+name of github.com/wslhub/wsl-sdk-com and uploaded the code in a somewhat completed state.
+
+67
+00:05:51,740 --> 00:05:55,900
+So, what you can do with this project and this SDK is that you
+
+68
+00:05:56,210 --> 00:06:01,820
+use all languages ​​that support the computer. 
+
+69
+00:06:01,820 --> 00:06:08,267
+You can register, modify, and delete WSL distributions as you want, and
+
+70
+00:06:08,267 --> 00:06:12,470
+what distributions are currently
+
+71
+00:06:12,470 --> 00:06:18,200
+installed and what distributions you want. Not really, now each filesystem exists separately.
+
+72
+00:06:18,200 --> 00:06:23,240
+So, by converting each file system to a path between the Windows file system
+
+73
+00:06:23,240 --> 00:06:28,934
+and assembling the path programmatically, when
+
+74
+00:06:28,934 --> 00:06:34,070
+putting a file in or out of WSL, it helps to develop
+
+75
+00:06:34,070 --> 00:06:38,000
+more conveniently and stably from the path problem.
+
+76
+00:06:38,000 --> 00:06:41,060
+The state has such a means, and there was one
+
+77
+00:06:41,060 --> 00:06:46,940
+last topic that I was thinking about for the purpose of automating integration tests. 
+
+78
+00:06:46,940 --> 00:06:52,370
+Since the name of the distribution is actually used in WSL as a basic unit, it
+
+79
+00:06:52,370 --> 00:06:57,080
+was necessary to dynamically generate the name of the distribution
+
+80
+00:06:57,080 --> 00:07:01,910
+. However, in addition to dynamically generating names like that, I had to
+
+81
+00:07:01,910 --> 00:07:07,430
+create a name that is easy for people to remember and understand, so I thought about
+
+82
+00:07:07,430 --> 00:07:11,430
+a good way to do it, and when I create a container in Docker, it
+
+83
+00:07:11,430 --> 00:07:16,980
+is like a simple adjective in front of the names of people and people who contributed
+
+84
+00:07:16,980 --> 00:07:21,860
+to the scientific world. On the other hand,
+
+85
+00:07:21,860 --> 00:07:26,634
+there is a module that automatically assigns nicknames that are easy
+
+86
+00:07:26,634 --> 00:07:31,800
+for humans to read and understand . So I brought the module, ported it, and
+
+87
+00:07:31,800 --> 00:07:35,580
+was able to apply it here . So,
+
+88
+00:07:35,580 --> 00:07:39,780
+the characteristic of the SDK is that these functions
+
+89
+00:07:39,780 --> 00:07:44,150
+can be used freely without any restrictions or troublesome parts.
+
+90
+00:07:44,259 --> 00:07:51,300
+So, let's take a look at the specifics of how the sdk actually works.
+
+91
+00:07:52,290 --> 00:07:57,550
+As I said earlier, the SDK is
+
+92
+00:07:57,550 --> 00:08:01,870
+divided into 6 parts and provides functions.
+
+93
+00:08:01,870 --> 00:08:05,340
+Let's take a look one by one.
+
+94
+00:08:06,540 --> 00:08:13,120
+There is a problem that the SDK must be initialized before using it.
+
+95
+00:08:13,120 --> 00:08:15,870
+I will come back to this part again later.
+
+96
+00:08:15,870 --> 00:08:21,500
+In fact , if we talk about the WSL API based on the API that is now
+
+97
+00:08:21,500 --> 00:08:26,320
+open to Microsoft Docs, the API is just an API that
+
+98
+00:08:26,320 --> 00:08:37,000
+is simply an externally mapped component called the LXSS manager internally. That's why
+
+99
+00:08:37,000 --> 00:08:41,534
+we can't just call this API like the Windows API we usually think of.
+
+100
+00:08:41,534 --> 00:08:44,567
+A function that initializes a
+
+101
+00:08:44,567 --> 00:08:49,630
+COM-related security model called CoinitializeSecurity must be called once.
+
+102
+00:08:49,630 --> 00:08:54,934
+But now this function cannot be called again after calling it more than once anywhere.
+
+103
+00:08:54,934 --> 00:08:58,110
+Therefore,
+
+104
+00:08:58,110 --> 00:09:04,120
+in an environment that relies on COM technology, such as LINQPad or Power Shell, which is a typical example
+
+105
+00:09:04,120 --> 00:09:09,120
+, an access denied error code is displayed when trying to call WSL API,
+
+106
+00:09:09,120 --> 00:09:14,900
+apart from being able to call it by bringing the WSL API in the form of a
+
+107
+00:09:14,900 --> 00:09:20,589
+dll function in the form of C language . will fall So, I was thinking about what to do
+
+108
+00:09:20,589 --> 00:09:23,890
+to overcome this part, and as I
+
+109
+00:09:23,890 --> 00:09:29,667
+will tell you later, it is not only taken out of the process,
+
+110
+00:09:29,667 --> 00:09:35,134
+but the existing floating process and the process hosting only the newly created WSL SDK are
+
+111
+00:09:35,134 --> 00:09:39,580
+organically related to each other without any prior information or
+
+112
+00:09:39,580 --> 00:09:43,510
+specific information. After contemplating for a long time how to
+
+113
+00:09:43,510 --> 00:09:48,867
+communicate smoothly without information , I started to introduce
+
+114
+00:09:48,867 --> 00:09:55,890
+the out-of-process COM model , which is an old concept, but still useful. 
+
+115
+00:09:57,030 --> 00:10:01,900
+And now, as I said before, it is not important to simply attach a GUID value at
+
+116
+00:10:01,900 --> 00:10:06,210
+random in the random name generation part , so there is
+
+117
+00:10:06,210 --> 00:10:12,270
+a module called names generator in the docker container, so you
+
+118
+00:10:12,270 --> 00:10:18,950
+can easily port this part to C# and apply it I could.
+
+119
+00:10:20,680 --> 00:10:26,560
+And now, since I have to actually install this Linux, I should
+
+120
+00:10:26,560 --> 00:10:33,111
+have thought about the question of where to get this Linux from.
+
+121
+00:10:33,111 --> 00:10:46,143
+So I did some research and found that WSL is now free to install and use on any Linux distribution as long as it has a root filesystem.
+
+122
+00:10:46,143 --> 00:10:56,928
+So, such a really lightweight Linux operating system like BusyBox was of course equipped to be used within WSL.
+
+123
+00:10:56,928 --> 00:11:10,870
+In addition, I was able to use Alpine Linux, an ultra-light operating system currently being used in Docker, to WSL because someone else ported it well.
+
+124
+00:11:10,870 --> 00:11:17,139
+So, in this project, we internally unit test using BusyBox and Alpine. 
+
+125
+00:11:17,139 --> 00:11:23,334
+In other words, when this API verifies that the functions provided by the SDK operate normally
+
+126
+00:11:23,334 --> 00:11:27,190
+, Alpine and BusyBox.
+
+127
+00:11:27,190 --> 00:11:31,600
+If you are using Ubuntu or Debian using the rootfs image, the
+
+128
+00:11:31,600 --> 00:11:36,250
+image size is usually large, so I was able to write such unit tests that are
+
+129
+00:11:36,250 --> 00:11:40,690
+much faster and more accurate than that, but still achieve the purpose.
+
+130
+00:11:40,690 --> 00:11:43,449
+And I have one more thing to tell you.
+
+131
+00:11:43,449 --> 00:11:49,089
+Now, if the Ubuntu probably would be the same is true the other Linux than Ubuntu
+
+132
+00:11:49,089 --> 00:11:55,180
+do it for for a pre-made WSL I'd often the distribution creating preview
+
+133
+00:11:55,180 --> 00:12:00,040
+No, but the root file system of each architecture
+
+134
+00:12:00,040 --> 00:12:03,790
+it without the few declared for the WSL is compatible with the technical
+
+135
+00:12:03,790 --> 00:12:08,700
+Because it is possible, you can bring and use the
+
+136
+00:12:08,700 --> 00:12:13,230
+root image created in this way in WSL as much as you want.
+
+137
+00:12:15,329 --> 00:12:20,639
+And I want to show you one more interesting topic.
+
+138
+00:12:20,639 --> 00:12:26,220
+You will be using Docker a lot. But now, Docker uses multi-layered images
+
+139
+00:12:26,220 --> 00:12:30,629
+internally, but in fact, it has the ability to
+
+140
+00:12:30,629 --> 00:12:39,629
+export the container once created in the form of rootfs. So,
+
+141
+00:12:39,629 --> 00:12:46,300
+without doing any special work, I just randomly created a container, and in the state immediately terminated, I said
+
+142
+00:12:46,300 --> 00:12:52,734
+(command) docker export -o mylinux.tar.gz ubuntu1804
+
+143
+00:12:52,734 --> 00:12:59,290
+, so I specified the root image path and exported ubuntu1804.
+
+144
+00:12:59,290 --> 00:13:04,019
+Then check the created image file.
+
+145
+00:13:07,910 --> 00:13:15,340
+If you look at how this file is actually organized, you can see that it is a typical root filesystem.
+
+146
+00:13:15,380 --> 00:13:22,149
+And in order to import into WSL, I try to bring the rootfs image
+
+147
+00:13:22,860 --> 00:13:30,740
+by using the import command so that it can be installed in a specific path.
+
+148
+00:13:30,740 --> 00:13:38,400
+I'm trying to bring it to WSL2. Then you can see how well the import was done, and when you
+
+149
+00:13:38,400 --> 00:13:44,209
+actually run it, you can see that it works well.
+
+150
+00:13:50,980 --> 00:13:56,770
+So, if you check the etc os release, you can see that the 18.04 docker image has
+
+151
+00:13:56,770 --> 00:14:05,910
+been brought as it is. And after the test was over, it worked well until unregister.
+
+152
+00:14:07,760 --> 00:14:12,200
+Yes, in this way , anyone can
+
+153
+00:14:12,200 --> 00:14:17,780
+easily create a WSL root file system and easily author
+
+154
+00:14:17,780 --> 00:14:21,950
+a dedicated distribution by simply
+
+155
+00:14:21,950 --> 00:14:27,300
+building a WSL image file that you want with a Docker file
+
+156
+00:14:27,300 --> 00:14:33,350
+from Docker and exporting it to WSL. I could see that possibility.
+
+157
+00:14:33,350 --> 00:14:37,310
+That's why I use this flexible Linux file system.
+
+158
+00:14:37,310 --> 00:14:42,130
+As a docker container image, where I just showed you exporting,
+
+159
+00:14:42,130 --> 00:14:46,640
+conversely, in a docker container image, of course the layers are not alive, but
+
+160
+00:14:46,640 --> 00:14:54,167
+anyway, the underlying root image can be converted directly to a container image.
+
+161
+00:14:54,167 --> 00:14:57,600
+After importing the
+
+162
+00:14:57,600 --> 00:15:03,290
+image like this, you have the ability to use another base image in another docker file.
+
+163
+00:15:03,290 --> 00:15:12,010
+And as I just showed you, you can also select the WSL version at the time of importing the image.
+
+164
+00:15:13,870 --> 00:15:18,834
+And I did a little bit of research on handling this programmatically, how to
+
+165
+00:15:18,834 --> 00:15:22,360
+do that by passing the command directly to WSL and allowing
+
+166
+00:15:22,360 --> 00:15:26,867
+the interpreter to execute the command directly
+
+167
+00:15:26,867 --> 00:15:32,139
+in it . Basically, what we're using here now is the part
+
+168
+00:15:32,139 --> 00:15:36,579
+we use a lot when programming Windows.
+
+169
+00:15:36,579 --> 00:15:41,319
+There are named pipes and anonymous pipes.
+
+170
+00:15:41,319 --> 00:15:46,400
+An API that creates and provides
+
+171
+00:15:46,400 --> 00:15:52,630
+each anonymous pipe corresponding to STDIN, STDOUT, and STDERR
+
+172
+00:15:52,630 --> 00:15:58,367
+to the process by using it as an anonymous pipe, input comes in as input,
+
+173
+00:15:58,367 --> 00:16:02,350
+captures STDOUT and STDERR separately, and
+
+174
+00:16:02,350 --> 00:16:09,670
+returns each character by dividing it was developed and
+
+175
+00:16:09,670 --> 00:16:13,319
+incorporated.
+
+176
+00:16:14,350 --> 00:16:18,820
+So, I've prepared a little bit of an actual demo video.
+
+177
+00:16:18,820 --> 00:16:22,350
+Let's take a look at them one by one.
+
+178
+00:16:24,670 --> 00:16:30,279
+First of all, it is the most representative
+
+179
+00:16:30,279 --> 00:16:34,960
+because it is designed with COM API. 
+
+180
+00:16:34,960 --> 00:16:39,880
+Using VB Script in Office, I have prepared a demonstration 2
+
+181
+00:16:39,880 --> 00:16:46,089
+of sending remote commands to WSL in COM method and
+
+182
+00:16:46,089 --> 00:16:50,320
+executing them. So, as you can see, I showed you how
+
+183
+00:16:50,320 --> 00:16:55,610
+to take data from STDOUT and paste it into a spreadsheet cell.
+
+184
+00:16:55,610 --> 00:17:01,940
+As such, it provides such a flexible function that you can bring
+
+185
+00:17:01,940 --> 00:17:08,110
+the output String created by WSL anywhere and use it.
+
+186
+00:17:10,000 --> 00:17:16,340
+And, of course, similar features are available in PowerShell.
+
+187
+00:17:16,340 --> 00:17:20,660
+Take the Alpine Linux root file
+
+188
+00:17:20,660 --> 00:17:25,580
+using PowerShell Script, add it dynamically,
+
+189
+00:17:25,580 --> 00:17:35,290
+and check the settings. And you can see that it is running well by installing Vim internally
+
+190
+00:17:38,350 --> 00:17:46,300
+. The package manager is running as it is, and I proceeded like this until I
+
+191
+00:17:46,300 --> 00:17:51,234
+uninstalled the distribution after the end of use , and
+
+192
+00:17:51,234 --> 00:17:59,730
+you can see that only the Ubuntu Linux distribution that I installed and used first is left.
+
+193
+00:18:01,190 --> 00:18:06,534
+And in Python, an extension module called PyWin32
+
+194
+00:18:06,534 --> 00:18:12,500
+already includes things related to COM. So, similarly, in Python,
+
+195
+00:18:12,500 --> 00:18:17,090
+you can use the WSL SDK API to test the
+
+196
+00:18:17,090 --> 00:18:21,529
+desired operation in a form similar to the PowerShell shown earlier. 
+
+197
+00:18:21,529 --> 00:18:27,400
+So, I made a sample like this so that I can install, use, and test the
+
+198
+00:18:27,400 --> 00:18:38,559
+WSL distribution in an interactive way using Jupyter Notebook . Similarly, you can see that it runs fine.
+
+199
+00:18:46,299 --> 00:18:55,529
+So even the distribution launcher is automatically created and executed like this.
+
+200
+00:18:57,840 --> 00:19:04,309
+So far, I have shown a demo using Python.
+
+201
+00:19:04,800 --> 00:19:08,730
+Finally, I made my unit tests like this.
+
+202
+00:19:08,730 --> 00:19:15,900
+The unit test is made in the form of being executed with .NET in Visual Studio now, but the
+
+203
+00:19:15,900 --> 00:19:21,234
+unit test itself is not a structure that just executes the .NET runtime directly, in
+
+204
+00:19:21,234 --> 00:19:26,167
+fact , it is executed inside the management process in Visual Studio.
+
+205
+00:19:26,167 --> 00:19:30,900
+It doesn't matter when only .NET code is executed, but
+
+206
+00:19:30,900 --> 00:19:35,760
+when using such a complex security model because it is interlocked with COM,
+
+207
+00:19:35,760 --> 00:19:41,700
+as mentioned earlier, COM-related security models such as LINQPad and PowerShell are
+
+208
+00:19:41,700 --> 00:19:45,780
+already in use, so overriding this according to WSL
+
+209
+00:19:45,780 --> 00:19:52,034
+It is difficult. Since these parts are excluded in the Out of Process form and
+
+210
+00:19:52,034 --> 00:19:57,810
+provided so that the internal SDK communicates with the COM API, 
+
+211
+00:19:57,810 --> 00:20:05,200
+it becomes a form to simply utilize and use it in the
+
+212
+00:20:05,200 --> 00:20:09,309
+form of a client in the unit test.
+
+213
+00:20:09,309 --> 00:20:13,140
+And I have one more thing to tell you.
+
+214
+00:20:13,140 --> 00:20:19,260
+There is a part I want to briefly mention
+
+215
+00:20:19,260 --> 00:20:23,780
+in the video I prepared in advance in Python .
+
+216
+00:20:26,119 --> 00:20:35,869
+As I will tell you later, isn't there really no need to create such a launcher in the first place? I thought Surprisingly
+
+217
+00:20:35,869 --> 00:20:39,799
+, an API called WSL register distribution was made
+
+218
+00:20:39,799 --> 00:20:43,867
+public for those who design distributions
+
+219
+00:20:43,867 --> 00:20:48,679
+. So, we could not use the API in a different form
+
+220
+00:20:48,679 --> 00:20:54,267
+like the WSL import command we saw earlier, and the
+
+221
+00:20:54,267 --> 00:21:00,000
+execution entity that calls the API is now in which exe file and on
+
+222
+00:21:00,000 --> 00:21:03,949
+which file system path, and then
+
+223
+00:21:03,949 --> 00:21:09,949
+unconditionally WSL distribution. Unpacks and installs my image and has such a behavior . So
+
+224
+00:21:09,949 --> 00:21:14,029
+, since the operation was not the type of operation I wanted, there was a
+
+225
+00:21:14,029 --> 00:21:19,879
+unique constraint that the exe file must be separate
+
+226
+00:21:19,879 --> 00:21:25,309
+regardless of whether a separate subject that calls
+
+227
+00:21:25,309 --> 00:21:29,239
+this API must be small or large .
+
+228
+00:21:29,239 --> 00:21:33,933
+It was a bit disappointing that the Docs did not have a specific explanation for this part.
+
+229
+00:21:33,933 --> 00:21:41,169
+I remember having a bit of trial and error to figure this out now.
+
+230
+00:21:42,430 --> 00:21:47,140
+Yes. So, as I said before
+
+231
+00:21:47,140 --> 00:21:52,290
+, since the API called CoinitializeSecurity cannot be called twice, there was
+
+232
+00:21:52,290 --> 00:21:59,433
+such an environmental restriction, and in the end, to solve this problem, 
+
+233
+00:21:59,433 --> 00:22:07,140
+I had to go to the form of calling the WSL API in a separate process. I have come to the conclusion that
+
+234
+00:22:08,440 --> 00:22:17,590
+So, for those unfamiliar with the COM model, let me tell you a little bit more. 
+
+235
+00:22:17,590 --> 00:22:22,320
+First of all, COM is basically
+
+236
+00:22:22,320 --> 00:22:28,540
+deployed as an in-process model the most. So,
+
+237
+00:22:28,540 --> 00:22:33,100
+originally, the DLL is loaded into the process so
+
+238
+00:22:33,100 --> 00:22:40,867
+that it can be used , but if it is exported to API functions in the C language form, what
+
+239
+00:22:40,867 --> 00:22:48,370
+is the return type of these and these function signatures in the header file? I
+
+240
+00:22:48,370 --> 00:22:58,360
+used a lot of forms used in exchanges under the premise that they have header files with each other by matching the protocol to machine language form , what is the name, and how to configure the arguments
+
+241
+00:22:58,360 --> 00:23:02,350
+. For this reason, there were insufficient clear rules or rationale for
+
+242
+00:23:02,350 --> 00:23:08,020
+how to call functions in languages ​​other than C or
+
+243
+00:23:08,020 --> 00:23:12,790
+in situations that cross the boundaries of processes or systems . So, in
+
+244
+00:23:12,790 --> 00:23:18,640
+order to solve these problems in earnest, the concept of the type library was
+
+245
+00:23:18,640 --> 00:23:27,867
+introduced, and in order to call and manage the dll in a more object-oriented form, the model called COM was extended
+
+246
+00:23:27,867 --> 00:23:35,200
+to Win32, to be more precise, Windows 95. It was introduced and used a lot from the beginning
+
+247
+00:23:35,200 --> 00:23:40,120
+, and now it is connected to the Internet technology,
+
+248
+00:23:40,120 --> 00:23:49,680
+so the ActiveX technology we have so much trouble with now is the COM-based part. However, as I said earlier, with this process method,
+
+249
+00:23:49,680 --> 00:23:57,390
+the WSL SDK could not achieve what I wanted, so to solve this part, it is taken out as an
+
+250
+00:23:57,390 --> 00:24:06,170
+external process and in the meantime, COM is used again
+
+251
+00:24:06,170 --> 00:24:12,990
+. Now, whether it is implemented or not, you can receive and use the COM interface object
+
+252
+00:24:12,990 --> 00:24:18,060
+unconditionally from the outside
+
+253
+00:24:18,060 --> 00:24:22,230
+. Because we had to bring in
+
+254
+00:24:22,230 --> 00:24:25,830
+such a mechanism to ensure that the
+
+255
+00:24:25,830 --> 00:24:30,133
+network port is over and over again. There are several other servers,
+
+256
+00:24:30,133 --> 00:24:34,470
+and it was necessary to respond flexibly to these parts . Then,
+
+257
+00:24:34,470 --> 00:24:39,420
+after searching for a while, in the end, the Out of Process model is a way to
+
+258
+00:24:39,420 --> 00:24:42,660
+achieve what I want . The conclusion was that
+
+259
+00:24:42,660 --> 00:24:45,840
+really let down by the way Fortunately
+
+260
+00:24:45,840 --> 00:24:50,250
+Out of rattling going to do something to make the implementation Process approach
+
+261
+00:24:50,250 --> 00:24:55,050
+deoraguyo really rare examples. However, it was a long time ago that Microsoft had
+
+262
+00:24:55,050 --> 00:24:58,890
+an open source project called the All-In-One Code Framework, and
+
+263
+00:24:58,890 --> 00:25:05,070
+now, as everyone knows, it is the era of uploading all open source to Github. 
+
+264
+00:25:05,070 --> 00:25:09,967
+But even at this time, it is very old, but it is an
+
+265
+00:25:09,967 --> 00:25:14,730
+open source site operated by Microsoft because it is called Code Plex. There
+
+266
+00:25:14,730 --> 00:25:18,360
+was storage . It ended this summer. So, I found
+
+267
+00:25:18,360 --> 00:25:22,790
+the All-In-One code framework that was on the codeplex, and
+
+268
+00:25:22,790 --> 00:25:28,620
+there, I was really lucky to find an implementation on the
+
+269
+00:25:28,620 --> 00:25:31,860
+Out of Process COM server I wanted, and that was implemented only in C#
+
+270
+00:25:31,860 --> 00:25:36,300
+. At that time, Code Flex was already closed, so I was able
+
+271
+00:25:36,300 --> 00:25:44,000
+to find another forked version on Github and extract the source I wanted from there.
+
+272
+00:25:44,450 --> 00:25:49,279
+So, I came up with this example and designed an API that performs the
+
+273
+00:25:49,279 --> 00:25:53,367
+various functions I showed you earlier.
+
+274
+00:25:53,367 --> 00:25:59,140
+But now, some of you may be wondering here, so I would like to
+
+275
+00:25:59,140 --> 00:26:03,500
+briefly mention why you are still using the
+
+276
+00:26:03,500 --> 00:26:08,150
+.NET Framework . First of all, the .NET Framework is a framework that is almost built-in
+
+277
+00:26:08,150 --> 00:26:16,333
+to Windows, as everyone knows . So, one of the biggest reasons to use .NET is the
+
+278
+00:26:16,333 --> 00:26:19,533
+advanced technologies that Windows enters. For example,
+
+279
+00:26:19,533 --> 00:26:23,600
+an NT service Knit, and registry 
+
+280
+00:26:23,600 --> 00:26:28,250
+COM server Knit, this part of the C# and complex
+
+281
+00:26:28,250 --> 00:26:34,300
+C++, widely used because it can be programmed to sample a parent without programming
+
+282
+00:26:34,300 --> 00:26:37,933
+Now Out of Process COM Server Again,
+
+283
+00:26:37,933 --> 00:26:41,450
+only it features in .NET runtime The .NET Framework was still used
+
+284
+00:26:41,450 --> 00:26:46,429
+because it was possible to implement it easily because the parts to be dealt with, the
+
+285
+00:26:46,429 --> 00:26:50,900
+auto-generation of the time library , and these parts were tightly
+
+286
+00:26:50,900 --> 00:26:53,929
+integrated into the OS using the .NET Framework.
+
+287
+00:26:53,929 --> 00:26:58,659
+Conversely, unfortunately, in the case of .NET Core and .NET 5,
+
+288
+00:26:58,659 --> 00:27:05,133
+this part has been decoupled. So, when you create and register these out of process components only
+
+289
+00:27:05,133 --> 00:27:10,220
+if you have Windows SDK and VS C++ compiler , you can
+
+290
+00:27:10,220 --> 00:27:13,850
+create a time library on your behalf, and
+
+291
+00:27:13,850 --> 00:27:19,867
+there was such a restriction that you can do these tasks. So, I wanted to do a proof-of-concept quickly and I wanted to get
+
+292
+00:27:19,867 --> 00:27:23,033
+things done quickly, so I
+
+293
+00:27:23,033 --> 00:27:32,833
+moved the code to the .NET Framework and created an implementation. And as I said before,
+
+294
+00:27:32,833 --> 00:27:39,490
+WSL register distribution has such a unique behavior.
+
+295
+00:27:39,490 --> 00:27:45,880
+I found this function in the WSL API and called it,
+
+296
+00:27:45,880 --> 00:27:52,067
+and strangely enough , the exe file, the exe file where the SDK is executed, and the WSL distribution were created like this
+
+297
+00:27:52,067 --> 00:27:55,967
+without even dividing the folder. So how did this happen? After
+
+298
+00:27:55,967 --> 00:28:01,200
+searching a bit more, I found that it was calling this function
+
+299
+00:28:01,200 --> 00:28:04,600
+called query pool process image name.
+
+300
+00:28:04,600 --> 00:28:08,867
+Of course, I haven't reverse engineered this code or module, but what
+
+301
+00:28:08,867 --> 00:28:19,590
+this function does is now find the path of the exe file and return it.
+
+302
+00:28:19,590 --> 00:28:24,280
+So this is how it worked. With
+
+303
+00:28:24,280 --> 00:28:28,967
+DLL Defenders Checker, I was able to recognize immediately.
+
+304
+00:28:28,967 --> 00:28:31,690
+Thanks, I'll have to tweak the
+
+305
+00:28:31,690 --> 00:28:36,450
+architecture a bit more . was able to draw a conclusion.
+
+306
+00:28:37,720 --> 00:28:42,100
+So, by proceeding with the development like this, I was
+
+307
+00:28:42,100 --> 00:28:46,300
+able to complete the function to the level that I showed the demo earlier .
+
+308
+00:28:46,300 --> 00:28:51,720
+But now, unfortunately, as I said before, WSL is
+
+309
+00:28:51,720 --> 00:28:57,033
+not a form that all APIs have been refined and released, but it is simply a
+
+310
+00:28:57,033 --> 00:29:03,467
+LXSS service manager, a hidden WSL manager,
+
+311
+00:29:03,467 --> 00:29:08,530
+and a mapping of those functions of management components. 
+
+312
+00:29:08,530 --> 00:29:13,950
+When using such more, more complex, and on the other hand advanced functions,
+
+313
+00:29:13,950 --> 00:29:18,880
+I think it is better for this manager component to communicate.
+
+314
+00:29:18,880 --> 00:29:25,500
+Surprisingly, however, this part has not yet been published in Microsoft Docs at all.
+
+315
+00:29:25,500 --> 00:29:30,040
+There are people in the community who kindly
+
+316
+00:29:30,040 --> 00:29:34,960
+disclosed what the time library of the manager component
+
+317
+00:29:34,960 --> 00:29:37,470
+would be like, reverse-engineered .
+
+318
+00:29:37,470 --> 00:29:43,690
+In fact, now that this interface has been officially used as an interface, since the
+
+319
+00:29:43,690 --> 00:29:47,950
+specification is not an open interface, it
+
+320
+00:29:47,950 --> 00:29:51,310
+seems that it should be used only for
+
+321
+00:29:51,310 --> 00:29:56,260
+fun at the moment, and it was a bit disappointing that it
+
+322
+00:29:56,260 --> 00:30:01,180
+is not an interface that can be used stably . So, I don't know
+
+323
+00:30:01,180 --> 00:30:04,733
+how WSL will develop in the future in this part, 
+
+324
+00:30:04,733 --> 00:30:10,650
+but I'm looking forward to whether the API surface that can be used will increase a lot.
+
+325
+00:30:15,930 --> 00:30:21,600
+Now, I have told you almost everything I prepared.
+
+326
+00:30:21,600 --> 00:30:29,210
+In conclusion, I would like to summarize what I want to convey.
+
+327
+00:30:29,890 --> 00:30:35,050
+This is a part that I realized late now after proceeding with development.
+
+328
+00:30:35,050 --> 00:30:40,630
+In fact, I made an Out of Process COM server with so much effort now, but
+
+329
+00:30:40,630 --> 00:30:45,190
+I came to realize that there are quite a few hurdles when actually deploying.
+
+330
+00:30:45,190 --> 00:30:49,000
+Like Linux and Windows, in the current trend,
+
+331
+00:30:49,000 --> 00:30:53,200
+even if the meta does not have administrator privileges,
+
+332
+00:30:53,200 --> 00:30:58,240
+all tasks can be done with a general user account , or
+
+333
+00:30:58,240 --> 00:31:02,033
+tasks that the user can perform themselves
+
+334
+00:31:02,033 --> 00:31:08,400
+without requiring elevation of privilege are handled within it. I come to realize later that
+
+335
+00:31:08,400 --> 00:31:13,100
+making it fit the overall direction, flow, and trend. 
+
+336
+00:31:13,100 --> 00:31:18,280
+In the case of Out of Process COM server, everything is fine, but the problem was
+
+337
+00:31:18,280 --> 00:31:22,630
+that one of the very good and useful functions in COM, the
+
+338
+00:31:22,630 --> 00:31:26,650
+unregistered use function, could not be used . So I was thinking about how
+
+339
+00:31:26,650 --> 00:31:30,760
+to solve this part, but in the end I couldn't find an answer.
+
+340
+00:31:30,760 --> 00:31:35,500
+In the meantime, I changed my mind.
+
+341
+00:31:35,500 --> 00:31:39,867
+ASP. NET Core continued to evolve, and as we
+
+342
+00:31:39,867 --> 00:31:44,367
+all know, gRPC support was combined with Google's
+
+343
+00:31:44,367 --> 00:31:51,200
+Proto 8 interpreter, and features were developed at a fairly decent level. Not only that,
+
+344
+00:31:51,200 --> 00:31:57,100
+if you look at the things that have made gRPC-related servers and tools like this open source with
+
+345
+00:31:57,100 --> 00:32:01,090
+golang on Windows, containerd and Kubernetes are
+
+346
+00:32:01,090 --> 00:32:06,933
+typically configured like that.
+
+347
+00:32:06,933 --> 00:32:15,360
+So named pipes or Unix socket concepts newly added after Windows 10 version 1803 are now
+
+348
+00:32:15,360 --> 00:32:21,233
+linked. So in ASP.NET Core originally
+
+349
+00:32:21,233 --> 00:32:26,380
+by binding to random ports to use TCP port this should have been a little earlier
+
+350
+00:32:26,380 --> 00:32:30,880
+there was a rattling delicate issue of how would inform the port number, as I
+
+351
+00:32:30,880 --> 00:32:34,390
+mentioned. However, about this part,
+
+352
+00:32:34,390 --> 00:32:39,310
+thanks to the change to support Unix sockets in Windows 10 1803,
+
+353
+00:32:39,310 --> 00:32:44,380
+if you can match this part by properly assembling all the Windows environment variables
+
+354
+00:32:44,380 --> 00:32:49,933
+system environment variables to the previously promised file path, then
+
+355
+00:32:49,933 --> 00:32:53,470
+Out of Process COM You can enjoy the benefits of using a
+
+356
+00:32:53,470 --> 00:32:57,880
+server, and you can easily extract the WSL SDK to the outside
+
+357
+00:32:57,880 --> 00:33:02,050
+without requiring administrator privileges.
+
+358
+00:33:02,050 --> 00:33:06,039
+I could think like that. Not only that, but
+
+359
+00:33:06,039 --> 00:33:11,100
+considering the part that is now distributed to the Windows Store later
+
+360
+00:33:11,100 --> 00:33:16,000
+, and now, these days, not only the process but also the
+
+361
+00:33:16,000 --> 00:33:20,279
+ARM processor is supported a lot here and there, and
+
+362
+00:33:20,279 --> 00:33:24,760
+WSL already supports the ARM processor well.
+
+363
+00:33:24,760 --> 00:33:30,190
+However, in order to digest this part, in this case,
+
+364
+00:33:30,190 --> 00:33:35,049
+ASP.NET Core and gRPC were applied, not in the form of COM . This new
+
+365
+00:33:35,049 --> 00:33:39,100
+type of model should now be applied again.
+
+366
+00:33:39,100 --> 00:33:42,190
+Still, I have a plan to create a new revision in a
+
+367
+00:33:42,190 --> 00:33:45,820
+form that is a
+
+368
+00:33:45,820 --> 00:33:51,010
+little more accessible and easy to use in multiple languages ​​by
+
+369
+00:33:51,010 --> 00:33:57,929
+actively using concepts such as Unix sockets and named pipes .
+
+370
+00:33:58,660 --> 00:34:05,050
+And Github Actions can now be launched using WSL 1. 
+
+371
+00:34:05,050 --> 00:34:10,929
+So, as a reference now, when the WSL SDK
+
+372
+00:34:10,929 --> 00:34:16,929
+burns the build pipeline on Github, someone has developed
+
+373
+00:34:16,929 --> 00:34:21,460
+it with WSL Extension and Github Action, and I
+
+374
+00:34:21,460 --> 00:34:28,149
+succeeded in automating the build by using it well . So, in the future,
+
+375
+00:34:28,149 --> 00:34:33,730
+I have a blueprint of whether the WSL SDK can also
+
+376
+00:34:33,730 --> 00:34:38,033
+be packaged so that it can be used in Github Action, which will
+
+377
+00:34:38,033 --> 00:34:41,550
+greatly help improve the productivity of several developers .
+
+378
+00:34:41,609 --> 00:34:46,080
+And what I showed in the demo
+
+379
+00:34:46,080 --> 00:34:54,000
+is limited to the languages ​​that can use the COM server, and various languages ​​are supported. I said it for this purpose.
+
+380
+00:34:54,000 --> 00:34:57,933
+As I said before, if we can move on to gRPC,
+
+381
+00:34:57,933 --> 00:35:03,030
+then I wonder if we can support a wider
+
+382
+00:35:03,030 --> 00:35:06,930
+variety of such languages ​​more comprehensively . So, 
+
+383
+00:35:06,930 --> 00:35:11,730
+when I think that everything, including the SDK, API is somewhat
+
+384
+00:35:11,730 --> 00:35:17,010
+stabilized, I start developing SDKs for various languages ​​in earnest
+
+385
+00:35:17,010 --> 00:35:26,270
+so that I can show them to the community.
+
+386
+00:35:26,970 --> 00:35:33,267
+And I'm thinking of a model that links Docker and Docker Hub.
+
+387
+00:35:33,267 --> 00:35:38,333
+Now, in the process of creating a WSL distribution
+
+388
+00:35:38,333 --> 00:35:42,800
+using the API provided by the Docker engine
+
+389
+00:35:42,800 --> 00:35:50,000
+, it is easy to develop such an operation that
+
+390
+00:35:50,000 --> 00:35:56,240
+automatically creates, imports and exports a WSL distribution using Docker Pie script. 
+
+391
+00:35:57,360 --> 00:36:06,870
+I think like that. So, to recap what I have introduced today, it is broadly as follows. First of all, 
+
+392
+00:36:06,870 --> 00:36:10,860
+the APIs related to WSL provided by Microsoft Docs were
+
+393
+00:36:10,860 --> 00:36:15,840
+designed for developers who want to create a new distribution for WSL,
+
+394
+00:36:15,840 --> 00:36:21,990
+and the documentation was written in that direction. As a result, the
+
+395
+00:36:21,990 --> 00:36:27,780
+explanation was a little unkind and there were a lot of missing parts.
+
+396
+00:36:27,780 --> 00:36:33,000
+Nevertheless, some core APIs are designed to be used freely
+
+397
+00:36:33,000 --> 00:36:38,010
+regardless of the scenario, so
+
+398
+00:36:38,010 --> 00:36:43,080
+I would like to say that it would be good to make full use of those parts now .
+
+399
+00:36:43,080 --> 00:36:48,500
+And I mentioned that if you use rootfs, you can freely
+
+400
+00:36:48,500 --> 00:36:56,089
+register and delete WSL distributions. And the
+
+401
+00:36:56,089 --> 00:37:06,650
+WSL SDK is currently under development for this project that I am developing. So, wouldn't
+
+402
+00:37:06,650 --> 00:37:15,740
+it be possible to develop and release it to a level that can be said to be version 0.1 in a
+
+403
+00:37:15,740 --> 00:37:20,690
+not so distant time ? I am thinking like that. And
+
+404
+00:37:20,690 --> 00:37:25,339
+as I showed you in today's demo, WSL distribution can
+
+405
+00:37:25,339 --> 00:37:31,339
+be customized and developed freely, so you can use Docker or
+
+406
+00:37:31,339 --> 00:37:35,167
+use rootfs distributed by the existing
+
+407
+00:37:35,167 --> 00:37:41,660
+Linux community. Either way, if you use WSL to the end , it will be very helpful
+
+408
+00:37:41,660 --> 00:37:49,329
+in maximizing the productivity related to Linux . I could see such a view.
+
+409
+00:37:50,050 --> 00:37:53,590
+So, to introduce our community one
+
+410
+00:37:53,590 --> 00:37:59,680
+more time, our community is currently operating as a Facebook group.
+
+411
+00:37:59,680 --> 00:38:04,333
+And I'm currently working on an organization on Github.
+
+412
+00:38:04,333 --> 00:38:14,050
+So , if I show you one more of our homepage , if you come to wslhub.com, we will operate a medium blog
+
+413
+00:38:17,200 --> 00:38:22,990
+so that you can read various troubleshooting guides on the
+
+414
+00:38:22,990 --> 00:38:28,890
+medium blog that team members are writing together , and
+
+415
+00:38:28,890 --> 00:38:34,690
+the Yoron medium articles that I have contributed so far.
+
+416
+00:38:34,690 --> 00:38:37,240
+There is.
+
+417
+00:38:37,240 --> 00:38:44,119
+Also, such a good guide called Getting Started with WSL
+
+418
+00:38:44,119 --> 00:38:48,470
+is created and operated based on MkDocs.
+
+419
+00:38:48,470 --> 00:38:53,240
+So when you install the WSL initially need to check some things and
+
+420
+00:38:53,240 --> 00:38:57,320
+WSL 1 and 2 do that you need to install
+
+421
+00:38:57,320 --> 00:39:02,700
+the Visual Studio code works or ssh key generation tasks
+
+422
+00:39:02,700 --> 00:39:06,410
+for each method of installation and often
+
+423
+00:39:06,410 --> 00:39:11,359
+the gajigoseo various such topics as you install this dokeo
+
+424
+00:39:11,359 --> 00:39:15,470
+There are also documentation sites that cover a variety of topics from
+
+425
+00:39:15,470 --> 00:39:19,167
+setting up a development environment, advanced guides, and
+
+426
+00:39:19,167 --> 00:39:22,967
+troubleshooting . We made this material to be helpful to those who
+
+427
+00:39:22,967 --> 00:39:28,690
+want to know more about WSL or want to learn, so I think it would be good if you share it and use it.
+
+428
+00:39:31,340 --> 00:39:37,000
+Yes, my presentation ends here. If you have any more questions or want to know more, please
+
+429
+00:39:37,000 --> 00:39:41,150
+use the WSL Hub community (wsl.com) or send an
+
+430
+00:39:41,150 --> 00:39:46,160
+inquiry to the email address shown on the screen, I will answer
+
+431
+00:39:46,160 --> 00:39:50,570
+as much as I can with sincerity and sincerity.
+
+432
+00:39:50,570 --> 00:39:54,370
+Thank you for listening to the presentation so far.
+
