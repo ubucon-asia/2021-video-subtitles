@@ -1,0 +1,196 @@
+1
+00:00:06,000 --> 00:00:10,143
+Assalamu'alaikum Wr Wb
+
+2
+00:00:10,143 --> 00:00:12,661
+Saya Faiq Aminuddin
+
+3
+00:00:12,661 --> 00:00:16,358
+Kepala MTs NU ITB Tedunan Wedung Demak
+
+4
+00:00:16,358 --> 00:00:23,425
+Saya pengguna Ubuntu dan juga BlankOn Linux
+
+5
+00:00:23,425 --> 00:00:25,375
+Ijinkan kami berbagi materi
+
+6
+00:00:25,375 --> 00:00:33,783
+tentang Pengetikan aksara Pegon dengan menggunakan komputer bersistem operasi Ubuntu.
+
+7
+00:00:33,783 --> 00:00:36,058
+Apa itu Pegon?
+
+8
+00:00:36,058 --> 00:00:42,882
+Pegon adalah abjad Arab yang digunakan untuk menulis aksara Nusantara
+
+9
+00:00:43,491 --> 00:00:49,341
+seperti Jawa, Sunda atau Bahasa Indonesia itu sendiri.
+
+10
+00:00:51,169 --> 00:00:59,780
+Ada beberapa huruf seperti huruf P, C, G, NG, NY
+
+11
+00:00:59,780 --> 00:01:07,863
+yang tidak dapat terwakili bila ditulis dengan huruf abjad Arab Hijaiyah murni
+
+12
+00:01:07,863 --> 00:01:15,215
+Oleh karena itu perlu ada penyesuaian, sehingga muncul Aksara Pegon.
+
+13
+00:01:15,215 --> 00:01:26,345
+Walaupun begitu sebagian huruf-huruf Pegon dapat ditemukan pada daftar Unicode Arab
+
+14
+00:01:27,604 --> 00:01:29,189
+Oleh karena itu,
+
+15
+00:01:29,229 --> 00:01:36,663
+pada salah satu sesi di Gnome Asia Summit di Gresik tahun 2019,
+
+16
+00:01:36,744 --> 00:01:45,640
+pak Aftian pernah mengajak kami membuat file yang berisi layout keyboard Pegon
+
+17
+00:01:45,721 --> 00:01:50,717
+kemudian diberinama .jv
+
+18
+00:01:50,839 --> 00:02:00,709
+kemudian disimpan di folder usr/share/x11/xkb/symbol.
+
+19
+00:02:00,994 --> 00:02:12,205
+Dengan cara pak Aftian ini, pengguna komputer dapat mengetik Pegon secara mudah sesuai dengan layout keyboard yang diinginkan.
+
+20
+00:02:12,774 --> 00:02:15,292
+akan tetapi,
+
+21
+00:02:15,413 --> 00:02:21,750
+cara seperti itu mungkin agak susah bagi pengguna awam.
+
+22
+00:02:25,203 --> 00:02:30,118
+Pada Ubuntu 20, saya malah menemukan file jv.
+
+23
+00:02:30,118 --> 00:02:35,683
+Sayangnya, file jv tersebut tidak berisi layout keyboard Pegon
+
+24
+00:02:35,724 --> 00:02:42,304
+tetapi berisi layout Aksara Jawa, Hanacaraka.
+
+25
+00:02:42,913 --> 00:02:52,012
+Jadi, jv tidak dapat digunakan lagi untuk Aksara Pegon
+
+26
+00:02:52,012 --> 00:02:54,409
+Jadi, perlu nama yang lain.
+
+27
+00:02:54,449 --> 00:02:58,186
+Adapun di madrasah kami,
+
+28
+00:02:58,633 --> 00:03:02,492
+Di MTs NU ITB
+
+29
+00:03:02,492 --> 00:03:11,347
+Mayoritas dari kami masih asing dengan layout keyboard selain keyboard yang biasa dipakai yaitu English (en/AS).
+
+30
+00:03:13,216 --> 00:03:18,943
+maka, solusinya kami pernah mencoba memanfaatkan on-screen keyboard.
+
+31
+00:03:21,055 --> 00:03:32,429
+Pada on-screen keyboard ini kami dapat melihat bahwa sebenarnya beberapa Aksara Pegon sudah ada pada keyboard Arab.
+
+32
+00:03:33,647 --> 00:03:37,628
+Akan tetapi kami masih kesulitan menggunakannya.
+
+33
+00:03:38,481 --> 00:03:43,477
+Jadi, kami mencoba menggunakan Virtual Keyboard yang lain;
+
+34
+00:03:45,061 --> 00:03:47,620
+yaitu dengan memasang aplikasi Onboard.
+
+35
+00:03:48,433 --> 00:03:56,313
+Pada apalikasi Onboard kami bisa mengetik lebih banyak Aksara Pegon
+
+36
+00:03:56,882 --> 00:04:01,878
+seperti huruf C, P, NG, dan NY.
+
+37
+00:04:02,975 --> 00:04:10,530
+Jadi, ada 5 Aksara Pegon yang sudah bisa kami gunakan
+
+38
+00:04:10,530 --> 00:04:14,633
+yaitu dengan mengaktifkan tombol Alt-Gr.
+
+39
+00:04:14,673 --> 00:04:23,202
+Walaupun belum lengkap (belum ada aksara G pada Onboard), ini sudah sangat membantu.
+
+40
+00:04:24,991 --> 00:04:38,314
+Alternatif yang lain: kadang kami terpaksa mengetik aksara Pegon dengan huruf Hijaiyah murni.
+
+41
+00:04:39,695 --> 00:04:43,838
+Misalnya, huruf P diketik dengan huruf Fa' (ف)
+
+42
+00:04:44,529 --> 00:04:48,834
+Huruf NG diketik menggunakan huruf Ain (ع)
+
+43
+00:04:48,916 --> 00:04:52,856
+Ini, tentu saja, bukan cara yang ideal.
+
+44
+00:04:53,993 --> 00:04:55,902
+Oleh karena itu, harapan kami:
+
+45
+00:04:56,430 --> 00:05:05,854
+1. Keyboard Pegon tertanam pada Gnome dan Ubuntu
+
+46
+00:05:05,935 --> 00:05:14,222
+sehingga pengguna awam seperti kami di madrasah tinggal menggunakan.
+
+47
+00:05:14,425 --> 00:05:21,858
+2. Onscreen-Keyboard juga dapat digunakan mengetik Pegon
+
+48
+00:05:21,858 --> 00:05:24,742
+Sekian dari kami
+
+49
+00:05:24,742 --> 00:05:26,692
+Wassalamu'alaikum Wr Wb.
+

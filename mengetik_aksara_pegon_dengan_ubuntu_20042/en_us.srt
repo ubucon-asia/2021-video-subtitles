@@ -1,0 +1,197 @@
+1
+00:00:06,000 --> 00:00:10,143
+Assalamu'alaikum Warahmatullahi Wabarakatuh.
+
+2
+00:00:10,143 --> 00:00:12,661
+I am Faiq Aminuddin.
+
+3
+00:00:12,661 --> 00:00:16,358
+Headmaster of Islamic Junior High School NU ITB Tedunan Wedung Demak.
+
+4
+00:00:16,358 --> 00:00:23,425
+I am an Ubuntu and BlankOn Linux user.
+
+5
+00:00:23,425 --> 00:00:25,375
+Please let us share
+
+6
+00:00:25,375 --> 00:00:33,783
+about Pegon script typing using a computer installed with Ubuntu.
+
+7
+00:00:33,783 --> 00:00:36,058
+What is Pegon?
+
+8
+00:00:36,058 --> 00:00:42,882
+Pegon is an Hijaiyah Arabic alphabet used to write Nusantara letter of alphabet
+
+9
+00:00:43,491 --> 00:00:49,341
+like Javanese, Sundanese, or Bahasa Indonesia itself.
+
+10
+00:00:51,169 --> 00:00:59,780
+There are some letter such as letter P, C, G, NG, NY
+
+11
+00:00:59,780 --> 00:01:07,863
+That cannot be representated correctly if written with genuine Hijaiyah Arabic alphabet.
+
+12
+00:01:07,863 --> 00:01:15,215
+Therefore it needs some adjustments, so it is comes up with Pegon script.
+
+13
+00:01:15,215 --> 00:01:26,345
+Even though a part of Pegon script letters can be found on Arabic Unicode list.
+
+14
+00:01:27,604 --> 00:01:29,189
+Therefore,
+
+15
+00:01:29,229 --> 00:01:36,663
+at one of the sessions at Gnome Asia Summit in Gresik in 2019,
+
+16
+00:01:36,744 --> 00:01:45,640
+Mr. Aftian ever invites us to made a file that contains Pegon script keyboard layout
+
+17
+00:01:45,721 --> 00:01:50,717
+then named as .jv
+
+18
+00:01:50,839 --> 00:02:00,709
+then saved in usr/share/x11/xkb/symbol folder.
+
+19
+00:02:00,994 --> 00:02:12,205
+With this Mr. Aftian way, computer users can type Pegon script easily according to the desired keyboard layouts.
+
+20
+00:02:12,774 --> 00:02:15,292
+However,
+
+21
+00:02:15,413 --> 00:02:21,750
+that way will be slightly difficult for common users.
+
+22
+00:02:25,203 --> 00:02:30,118
+Pada Ubuntu 20, saya malah menemukan file jv.
+On Ubuntu 20, I even found .jv file.
+
+23
+00:02:30,118 --> 00:02:35,683
+Unfortunately, that .jv file does not contained Pegon script keyboard layout.
+
+24
+00:02:35,724 --> 00:02:42,304
+but contained Javanese script layout, Hanacaraka.
+
+25
+00:02:42,913 --> 00:02:52,012
+So, the .jv file cannot be used anymore for Pegon script.
+
+26
+00:02:52,012 --> 00:02:54,409
+So it needs another name.
+
+27
+00:02:54,449 --> 00:02:58,186
+As for in our school,
+
+28
+00:02:58,633 --> 00:03:02,492
+In Islamic Junior High School NU ITB 
+
+29
+00:03:02,492 --> 00:03:11,347
+Majority of us still unfamiliar with keyboard layouts other that is commonly used namely English (en/US).
+
+30
+00:03:13,216 --> 00:03:18,943
+then, the solution we ever tried is to utilize on-screen keyboard.
+
+31
+00:03:21,055 --> 00:03:32,429
+On this on-screen we can see that actually several Pegon script letters already on Arabic keyboard.
+
+32
+00:03:33,647 --> 00:03:37,628
+But we still having trouble using it.
+
+33
+00:03:38,481 --> 00:03:43,477
+So, we tried to use another Virtual Keyboard;
+
+34
+00:03:45,061 --> 00:03:47,620
+that is by installing Onboard application.
+
+35
+00:03:48,433 --> 00:03:56,313
+On that Onboard application we can type more Pegon script
+
+36
+00:03:56,882 --> 00:04:01,878
+such as C, P, NG, and NY letters.
+
+37
+00:04:02,975 --> 00:04:10,530
+So, there are 5 Pogon script letters that can we used
+
+38
+00:04:10,530 --> 00:04:14,633
+that is by activating Alt-Gr button.
+
+39
+00:04:14,673 --> 00:04:23,202
+Even though it is not completed yet (G letters not existed on Onboard), this is still very good.
+
+40
+00:04:24,991 --> 00:04:38,314
+Another alternative is: sometimes we have to type Pegon sript with genuine Hijaiyah Arabic alphabet.
+
+41
+00:04:39,695 --> 00:04:43,838
+For examples, P letter typed with Fa' (ف) letter
+
+42
+00:04:44,529 --> 00:04:48,834
+NG letter typed with Ain (ع) letter.
+
+43
+00:04:48,916 --> 00:04:52,856
+This way, of course it is not an ideal way.
+
+44
+00:04:53,993 --> 00:04:55,902
+Therefore, we hope that:
+
+45
+00:04:56,430 --> 00:05:05,854
+1. Pegon script keyboard is embedded on Gnome and Ubuntu
+
+46
+00:05:05,935 --> 00:05:14,222
+so that common users like us in the school just used it anyway.
+
+47
+00:05:14,425 --> 00:05:21,858
+2. On-screen keyboard can be used to type Pegon script
+
+48
+00:05:21,858 --> 00:05:24,742
+That is all from us
+
+49
+00:05:24,742 --> 00:05:26,692
+Wassalamu'alaikum Warahmatullah Wabarakatuh.
+
