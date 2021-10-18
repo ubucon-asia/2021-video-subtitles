@@ -1,0 +1,125 @@
+1
+00:00:05,200 --> 00:00:12,560
+Hello, my name is Mark Shuttleworth and I am 
+delighted to welcome you to UbuCon Asia.   
+
+2
+00:00:12,560 --> 00:00:19,440
+Now one of the big dreams of Open Source is that it 
+would level the playing field that entrepreneurs,  
+
+3
+00:00:19,440 --> 00:00:24,800
+innovators, and everyday people whichever no 
+matter what country they are in, no matter  
+
+4
+00:00:24,800 --> 00:00:34,474
+what their personal circumstances, all have access 
+equally to the greatest technology that humanity can create. 
+
+5
+00:00:34,474 --> 00:00:41,280
+And we have seen over the last few 
+decades Open Source become a tremendous leveler.  
+
+6
+00:00:41,280 --> 00:00:46,080
+You don't have to be in Silicon Valley to create 
+the next great startup. You don't have to be  
+
+7
+00:00:46,080 --> 00:00:52,640
+wealthy to get access to sophisticated software 
+to invent the future or just to participate  
+
+8
+00:00:52,640 --> 00:00:59,440
+in digital culture. So it's an incredible 
+privilege for those of us who work in Open Source  
+
+9
+00:00:59,440 --> 00:01:06,000
+to know that all around the world, people 
+just like you are able to enjoy Open Source,  
+
+10
+00:01:06,000 --> 00:01:10,160
+appreciate Open Source, and contribute 
+to Open Source and use Open Source  
+
+11
+00:01:10,160 --> 00:01:17,280
+to build great things for themselves and for the 
+people around them. Open Source is a great leveler  
+
+12
+00:01:18,000 --> 00:01:25,840
+and it touches every industry. Just in our own 
+work at Canonical we work with telecommunications  
+
+13
+00:01:25,840 --> 00:01:32,160
+companies, telcos changing the nature of 
+bandwidth to the home, bandwidth to businesses,  
+
+14
+00:01:32,160 --> 00:01:38,160
+telecommunications services. The automotive 
+industry, there is Open Source in cars, there is  
+
+15
+00:01:38,160 --> 00:01:43,600
+Open Source in factories, there's Open Source in 
+the robots that make the cars, there's Open Source  
+
+16
+00:01:43,600 --> 00:01:50,320
+in the clouds that have all the data that make 
+cars autonomous, there's Open Source in the high  
+
+17
+00:01:50,320 --> 00:01:56,480
+performance computing that essentially simulates 
+cars to make them safer. Open Source is changing  
+
+18
+00:01:56,480 --> 00:02:05,120
+every industry from finance to smart cities to 
+smart homes. I hope that the UbuCon Asia agenda  
+
+19
+00:02:05,120 --> 00:02:10,320
+will be your gateway to Open Source whatever your 
+ambitions, whatever your dreams, whatever your  
+
+20
+00:02:10,320 --> 00:02:15,280
+technology future. I hope that Open Source will 
+be at the heart of it, and that this conference  
+
+21
+00:02:15,280 --> 00:02:21,840
+can be a meaningful step for you to that future. I 
+want to thank the organizers. It takes an enormous  
+
+22
+00:02:21,840 --> 00:02:26,240
+amount of work to pull together different 
+people, pull together program, get people  
+
+23
+00:02:26,240 --> 00:02:31,760
+prepared to speak, and then to make everybody 
+aware of it. I hope you have a great time. Thank  
+
+24
+00:02:31,760 --> 00:02:36,240
+you for your interest in Ubuntu. Thank you to 
+those of you who are members of the community  
+
+25
+00:02:36,240 --> 00:02:49,840
+and contributors to Ubuntu. It is your work that 
+makes Ubuntu great. Have a great conference.
+

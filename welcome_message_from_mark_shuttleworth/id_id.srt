@@ -1,0 +1,100 @@
+1
+00:00:05,200 --> 00:00:12,560
+Halo, nama saya Mark Shuttleworth dan saya senang menyambut Anda di UbuCon Asia.
+
+2
+00:00:12,560 --> 00:00:19,440
+Sekarang salah satu impian besar Open Source adalah bahwa ia ingin menyetarakan gelanggang permainan, dimana para pengusaha,
+
+3
+00:00:19,440 --> 00:00:24,800
+inovator, dan orang-orang biasa di mana pun dan di negara apa pun mereka berada,
+
+4
+00:00:24,800 --> 00:00:34,474
+apa pun keadaan pribadi mereka, semuanya memiliki akses yang setara ke teknologi terhebat yang bisa dibuat oleh umat manusia.
+
+5
+00:00:34,474 --> 00:00:41,280
+Dan kita telah melihat selama beberapa dekade terakhir Open Source menjadi alat penyetara yang luar biasa.
+
+6
+00:00:41,280 --> 00:00:46,080
+Anda tidak harus berada di Silicon Valley untuk membuat startup hebat berikutnya. Anda tidak harus kaya
+
+7
+00:00:46,080 --> 00:00:52,640
+untuk mendapatkan akses ke perangkat lunak canggih untuk menciptakan masa depan atau hanya untuk berpartisipasi
+
+8
+00:00:52,640 --> 00:00:59,440
+dalam budaya digital. Jadi, ini adalah hak istimewa yang luar biasa bagi kami yang bekerja di Open Source
+
+9
+00:00:59,440 --> 00:01:06,000
+untuk mengetahui bahwa di seluruh dunia, orang-orang seperti Anda dapat menikmati Open Source,
+
+10
+00:01:06,000 --> 00:01:10,160
+menghargai Open Source, dan berkontribusi pada Open Source serta menggunakan Open Source
+
+11
+00:01:10,160 --> 00:01:17,280
+untuk membangun hal-hal hebat untuk diri mereka sendiri dan untuk orang-orang di sekitar mereka. Open Source adalah alat penyetara yang hebat
+
+12
+00:01:18,000 --> 00:01:25,840
+dan menyentuh setiap industri. Dalam pekerjaan kami sendiri di Canonical, kami bekerja dengan perusahaan telekomunikasi.
+
+13
+00:01:25,840 --> 00:01:32,160
+Perusahaan telekomunikasi mengubah peta bandwidth ke rumah, bandwidth ke bisnis,
+
+14
+00:01:32,160 --> 00:01:38,160
+dan mengubah layanan telekomunikasi. Di industri otomotif ada Open Source di mobil,
+
+15
+00:01:38,160 --> 00:01:43,600
+ada Open Source di pabrik, ada Open Source di robot yang membuat mobil, ada Open Source di cloud
+
+16
+00:01:43,600 --> 00:01:50,320
+yang memiliki semua data yang menjadikan mobil otonom, ada Open Source
+
+17
+00:01:50,320 --> 00:01:56,480
+di komputasi berkinerja tinggi yang penting untuk mensimulasikan mobil supaya membuat mereka lebih aman. Open Source mengubah
+
+18
+00:01:56,480 --> 00:02:05,120
+setiap industri dari keuangan ke kota pintar hingga rumah pintar. Saya berharap agenda UbuCon Asia
+
+19
+00:02:05,120 --> 00:02:10,320
+akan menjadi pintu gerbang Anda menuju Open Source apapun ambisi Anda, apapun impian Anda,
+
+20
+00:02:10,320 --> 00:02:15,280
+apapun masa depan teknologi Anda. Saya berharap Open Source akan menjadi jiwanya, dan konferensi ini
+
+21
+00:02:15,280 --> 00:02:21,840
+dapat menjadi langkah yang berarti bagi Anda untuk menuju ke masa depan itu. Saya ingin berterima kasih kepada penyelenggara. 
+
+22
+00:02:21,840 --> 00:02:26,240
+Dibutuhkan kerja keras untuk mengumpulkan orang-orang, menyusun program, menjadikan mereka siap
+
+23
+00:02:26,240 --> 00:02:31,760
+untuk menyampaikan gagasannya, dan kemudian membuat semua orang menyadarinya. Saya berharap Anda menikmatinya. 
+
+24
+00:02:31,760 --> 00:02:36,240
+Terima kasih atas minat Anda pada Ubuntu. Terima kasih kepada Anda yang menjadi anggota komunitas
+
+25
+00:02:36,240 --> 00:02:49,840
+dan kontributor Ubuntu. Hasil kerja Andalah yang membuat Ubuntu hebat. Selamat mengikuti konferensi ini.
+
