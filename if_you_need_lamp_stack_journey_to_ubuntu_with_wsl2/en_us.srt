@@ -1,0 +1,344 @@
+1
+00:00:08,040 --> 00:00:10,034
+Ok, Hello!
+
+2
+00:00:10,034 --> 00:00:13,920
+This is Byung-seung Cho from the Ubuntu Korean Community.
+
+3
+00:00:13,920 --> 00:00:27,034
+From now on, Let's get started with Ubucon Asia 2021 Lightning Talk session, 'If you need LAMP Stack, Journey to Ubuntu with WSL2'
+
+4
+00:00:29,200 --> 00:00:35,834
+What I wanted to build with Ubuntu on WSL was just a simple WordPress site.
+
+5
+00:00:35,867 --> 00:00:42,034
+I will introduce the basic stack what I used for the WordPree site, first.
+
+6
+00:00:44,019 --> 00:00:49,934
+First, LAMP Stack which I choosed was putting a nginx web server on Ubuntu OS,
+
+7
+00:00:49,934 --> 00:00:53,034
+Maria DB for database, and PHP
+
+8
+00:00:53,034 --> 00:00:58,000
+That was basic configuration that I selected for WordPress requirements.
+
+9
+00:00:58,000 --> 00:01:01,367
+Although I'll use it in live server,
+
+10
+00:01:01,367 --> 00:01:06,700
+I wanted to work more comfortably locally before the deployment, 
+
+11
+00:01:06,700 --> 00:01:11,500
+but since I am a Windows user,
+
+12
+00:01:11,500 --> 00:01:22,034
+'How can I make an environment closer to the server more comfortable to use on my laptop?' struck me, first.
+
+13
+00:01:22,119 --> 00:01:27,667
+So now, Virtualbox, or VM Ware, etc.
+
+14
+00:01:27,667 --> 00:01:35,200
+Now, later, I use Multi-pass together, anyway, WSL2 was most convenient for them,
+
+15
+00:01:35,200 --> 00:01:37,034
+in simple task.
+
+16
+00:01:37,034 --> 00:01:39,034
+I want to tell that point.
+
+17
+00:01:39,200 --> 00:01:44,334
+The contents coming later are not about 'How to use Ubuntu with WSL2', but
+
+18
+00:01:44,334 --> 00:01:49,800
+there will be some troubleshooting tips in my experience such as the installation.
+
+19
+00:01:49,800 --> 00:01:54,630
+So I'm going to share it briefly.
+
+20
+00:01:56,080 --> 00:01:59,034
+Here are two tips that you should never miss.
+
+21
+00:01:59,034 --> 00:02:07,034
+One is that you can insert and remove files directly from Windows Explorer to Ubuntu in WSL.
+
+22
+00:02:07,034 --> 00:02:10,367
+This address can now be used comfortably.
+
+23
+00:02:10,367 --> 00:02:22,034
+Next, if you just type the code, file name, and just that folder in WSL, the Visual Studio Code editor runs immediately.
+
+24
+00:02:22,034 --> 00:02:32,700
+Visual Studio Code itself is installed on Windows, so you can easily change the header file or change the CSS for a while, so
+
+25
+00:02:32,700 --> 00:02:43,034
+these two are literally tips that are like a quick guide. So, if you know this you can easily fix it quickly for a long time.
+
+26
+00:02:45,034 --> 00:02:51,034
+When trying to use WSL2, the Windows 10 version must be checked first.
+
+27
+00:02:51,034 --> 00:02:54,600
+Well, if you're using the preview version of Windows 11 right now, it doesn't matter at all.
+
+28
+00:02:54,634 --> 00:02:59,534
+However, when it's 10, you should pay attention to third line more then anyting else.
+
+29
+00:02:59,534 --> 00:03:06,534
+When you check the OS build, it has the 5 then 3 or 4 digits, and they are usually correct.
+
+30
+00:03:06,534 --> 00:03:08,700
+You just need to pull all latest updates.
+
+31
+00:03:08,700 --> 00:03:17,034
+But this last part has to be more than 1049 now, but sometimes it's three digits.
+
+32
+00:03:17,150 --> 00:03:23,034
+If these are three digits, WSL2 will never be activated even if the rest of the conditions are met.
+
+33
+00:03:23,034 --> 00:03:31,400
+So, the biggest obstacle to its activation is that part, so please don't forget and take care of it.
+
+34
+00:03:33,510 --> 00:03:41,767
+Yes, in the beginning I said that we can send and receive files directly from Windows Explorer to directories in Ubuntu, but there is reverse direction way.
+
+35
+00:03:41,767 --> 00:03:49,167
+It means, if you look at Ubuntu, you can enter directly from the mount directory as a Windows local drive like this.
+
+36
+00:03:49,200 --> 00:03:52,067
+Even if you do that, it doesn't matter anyway.
+
+37
+00:03:52,067 --> 00:04:00,700
+However, in the initial state attached like that, chmod or chown cannot be executed anymore.
+
+38
+00:04:00,700 --> 00:04:04,567
+Running it doesn't change permissions or settings.
+
+39
+00:04:04,920 --> 00:04:12,367
+To change that, first, you should unmount the mounted drive itself from Ubuntu.
+
+40
+00:04:12,367 --> 00:04:22,367
+Then, when remounting after unmounting is finished, you should mount it again with the metadata value and the setting value
+
+41
+00:04:22,400 --> 00:04:29,034
+then, itself would be setted up to orchestrate configurations such as user permissions.
+
+42
+00:04:29,034 --> 00:04:33,867
+You can it in this way, so this setting would be much more convenient than you think.
+
+43
+00:04:33,867 --> 00:04:37,100
+There are times when it is annoying to run Windows Explorer inside Ubuntu as well.
+
+44
+00:04:37,100 --> 00:04:41,934
+Or, accessing to fold through the network can also be annoying.
+
+45
+00:04:41,934 --> 00:04:45,167
+So, it would be good to know this as well.
+
+46
+00:04:47,470 --> 00:04:50,667
+Then, the following may be a habit only I have.
+
+47
+00:04:50,667 --> 00:04:59,467
+Originally, when I was using IaaS in AWS, Azure, or cloud like this, when server goes wrong,
+
+48
+00:04:59,467 --> 00:05:04,467
+Terminated it, and created a new one, I just repeated this routine.
+
+49
+00:05:04,467 --> 00:05:08,867
+However, I used it in WSL2 as it is, however
+
+50
+00:05:08,867 --> 00:05:13,867
+when it come to 'The setting went wrong but it's annoying to revert it', its installation is simple, so
+
+51
+00:05:13,867 --> 00:05:18,367
+I just went to the MS store again and press Install Ubuntu and continue to use Ubuntu like this.
+
+52
+00:05:19,034 --> 00:05:21,534
+As I kept to use like this, I kept repeating the reinstallation.
+
+53
+00:05:22,034 --> 00:05:25,034
+If you continue to reinstall 10 or 20 times, more and more,
+
+54
+00:05:25,034 --> 00:05:31,334
+then, MS store showed me an error, even though I obviously deleted Ubuntu cleanly.
+
+55
+00:05:31,700 --> 00:05:34,400
+So the installation does not proceed.
+
+56
+00:05:34,700 --> 00:05:38,700
+In this case, there is a way to fix it by reboot.
+
+57
+00:05:38,814 --> 00:05:42,367
+But even after reboot, there are times when it doesn't work again.
+
+58
+00:05:42,367 --> 00:05:50,634
+In that case, instead of Ubuntu, you should go to the MS Store to initialize the app data from MS Store, and now
+
+59
+00:05:50,634 --> 00:05:53,534
+you can install it without any problems.
+
+60
+00:05:53,634 --> 00:06:00,034
+This is 'why can't I install it, Is WSL2 Wrong? What's wrong?' Don't get confused like this.
+
+61
+00:06:00,034 --> 00:06:03,034
+Yes, I searched this tip for it.
+
+62
+00:06:05,370 --> 00:06:15,634
+Then, there is several things to do in your local WSL2(and also WSL1) after reboot.
+
+63
+00:06:16,200 --> 00:06:16,867
+What we're doing is,
+
+64
+00:06:16,867 --> 00:06:20,934
+ah well, what I'm doing is the LAMP Stack, so
+
+65
+00:06:20,934 --> 00:06:29,867
+originally I thought that the status would be always in 'running', but whenever I reboot, it was always off.
+
+66
+00:06:29,867 --> 00:06:41,034
+So, at that time, I always run the command and shell and just type 'wsl sudo service nginx start' in the command window to eat it right away.
+
+67
+00:06:41,034 --> 00:06:48,034
+So, after rebooting, you must always set this up to use the homepage.
+
+68
+00:06:48,034 --> 00:06:50,100
+Eh, it might look like this.
+
+69
+00:06:50,100 --> 00:06:57,700
+If you don't do this, you're just like, 'Oh, I can't connect after a reboot, I can't go to the homepage' It is just not working, in that moments.
+
+70
+00:06:57,700 --> 00:07:06,034
+So it's because the server isn't up, so you should check whether the server is running at that time.
+
+71
+00:07:08,120 --> 00:07:12,830
+With a series of tips, I've done my setting.
+
+72
+00:07:12,830 --> 00:07:16,034
+After adjusting the settings, I was able to see the WordPress view.
+
+73
+00:07:16,034 --> 00:07:19,434
+When view is available, is it really the end now?
+
+74
+00:07:19,434 --> 00:07:27,034
+For now, It's not a matter of using WSL2 anymore, but creating a website itself is not the end, is it?
+
+75
+00:07:27,034 --> 00:07:34,367
+So even after that, in fact, I have to upload more theme settings and other settings on the homepage.
+
+76
+00:07:34,400 --> 00:07:37,534
+Yes, I have to start a new journey again.
+
+77
+00:07:37,534 --> 00:07:47,400
+However, thanks to WSL2, I was unfamiliar with the various settings, but I was able to go through more famillar, so
+
+78
+00:07:47,400 --> 00:07:53,240
+I was able to create a manual, and yes, I was able to come easily.
+
+79
+00:07:54,770 --> 00:07:58,367
+It's a short lightning talk, so rather than explaining this in detail,
+
+80
+00:07:58,367 --> 00:08:01,900
+in fact, I don't know this technically in so much detail.
+
+81
+00:08:02,034 --> 00:08:09,034
+Though, I hope the tips I picked up would be good help for you.
+
+82
+00:08:09,034 --> 00:08:16,167
+If you have any feedback or other questions after this video, please post a question on the
+
+83
+00:08:16,167 --> 00:08:22,034
+Facebook channel, or through the Korean Ubuntu users group. 
+
+84
+00:08:22,034 --> 00:08:27,034
+Then, I'll answer as best as I can.
+
+85
+00:08:27,034 --> 00:08:29,767
+Yes, this concludes the Lightning Talk.
+
+86
+00:08:29,767 --> 00:08:31,767
+Thank you!
+
