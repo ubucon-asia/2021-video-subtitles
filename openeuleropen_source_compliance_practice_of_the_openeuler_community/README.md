@@ -1,6 +1,7 @@
 # Open source compliance practice of the openEuler community
 
 - Speaker: [YueLiang Wang](mailto:littlemoon917@hotmail.com)
+- [Session information](https://2021.ubucon.asia/sessions/openeuleropen_source_compliance_practice_of_the_openeuler_community)
 - [Video on YouTube](https://www.youtube.com/watch?v=0WMVgUBWZjk)
 
 ## Subtitles

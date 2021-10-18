@@ -1,6 +1,7 @@
 # Promote Ubuntu localization of the ethnic minorities in China
 
 - Speaker: [Bugress Chang](mailto:open@brsvh.org)
+- [Session information](https://2021.ubucon.asia/sessions/promote_ubuntu_localization_of_the_ethnic_groups_in_china/)
 - [Video on YouTube](https://www.youtube.com/watch?v=0vFovPpP0LQ)
 
 ## Subtitles
