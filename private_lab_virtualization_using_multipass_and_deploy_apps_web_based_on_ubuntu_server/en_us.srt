@@ -1,0 +1,1233 @@
+1
+00:00:06,700 --> 00:00:13,110
+Hi, I'm Nur Hamim. I'm currently passionate about Open Source, Linux, and Cloud Computing.
+
+2
+00:00:13,110 --> 00:00:21,077
+Currently I am also active in several Linux communities in Indonesia and I am the founder of BelajarLinux.id,
+
+3
+00:00:21,077 --> 00:00:26,550
+and I work at PT. Biznet GIO Nusantara as Product Operation Engineer.
+
+4
+00:00:26,550 --> 00:00:33,930
+At the Ubuntu Conference Asia 2021 this time I will bring the theme Private Lab Virtualization
+
+5
+00:00:33,930 --> 00:00:42,225
+using multipass and deploy web-based apps on the Ubuntu Server Virtual Machine that is on multipass.
+
+6
+00:00:42,225 --> 00:00:46,152
+Let's get acquainted with multipass. What is multipass?
+
+7
+00:00:46,152 --> 00:01:01,523
+Multipass is a virtualization and one of the products from Canonical, Ubuntu. Multipass is used to create a Virtual Machine. Multipass support with cloud-init, just like the public cloud.
+
+8
+00:01:01,825 --> 00:01:08,680
+Multipass can run in the local environment, or on the computer or on our respective laptops.
+
+9
+00:01:08,680 --> 00:01:15,013
+Multipass itself is free and highly recommended for development.
+
+10
+00:01:15,013 --> 00:01:22,920
+Why should we use multipass? Multipass is very light and very simple and easy to use.
+
+11
+00:01:23,185 --> 00:01:29,413
+When we are creating a VM and we want to delete a VM in multipass it is very easy.
+
+12
+00:01:29,639 --> 00:01:34,759
+Multipass also works as a virtual machine manager.
+
+13
+00:01:36,000 --> 00:01:42,836
+Multipass can be installed on several operating systems such as Linux, Windows, and Mac OS.
+
+14
+00:01:42,836 --> 00:01:53,430
+Multipass is designed for developers who want to use Ubuntu-based virtual machines.
+
+15
+00:01:53,430 --> 00:02:00,683
+Next we will explain the difference between multipass and VirtualBox.
+
+16
+00:02:00,683 --> 00:02:08,100
+We all know about VirtualBox, which is a virtual manager that can create a virtual machine.
+
+17
+00:02:08,100 --> 00:02:15,390
+In virtualbox we have provided a variety of OS choices templates. Starting from Windows,
+
+18
+00:02:15,390 --> 00:02:24,360
+Linux, and so on. But if we want to create a virtual machine inside
+
+19
+00:02:24,360 --> 00:02:32,944
+VirtualBox, we must have an ISO that we can use to create a virtual machine.
+
+20
+00:02:32,944 --> 00:02:41,050
+In contrast to multipass. Multipass is very flexible. The first,
+
+21
+00:02:41,050 --> 00:02:48,580
+multipass has provided several Ubuntu operating system templates starting from Ubuntu 18,04,
+
+22
+00:02:48,580 --> 00:02:57,820
+20.04, 21.04. And we can also create an operating system or virtual machine in multipass
+
+23
+00:02:57,820 --> 00:03:04,330
+with several other operating systems. And the process of creating virtual machines in multipass
+
+24
+00:03:04,330 --> 00:03:14,050
+just only run one command. Not like VirtualBox, which uses
+
+25
+00:03:14,050 --> 00:03:23,270
+a few steps. Starting from uploading ISO, creating new virtual machine, starting virtual machine. And
+
+26
+00:03:23,270 --> 00:03:30,410
+it really takes time. Next I will explain the differences between multipass and
+
+27
+00:03:30,410 --> 00:03:37,670
+docker. We already know docker is virtualization at the application level. If we have a
+
+28
+00:03:37,670 --> 00:03:45,620
+containerized applications, these applications can be easily run inside the
+
+29
+00:03:45,620 --> 00:03:52,160
+docker. The difference is very basic between multipass and docker. Multipass itself is one
+
+30
+00:03:52,160 --> 00:03:59,540
+of the virtualization in the operating system. Docker can run over multipass. Therefore,
+
+31
+00:03:59,540 --> 00:04:05,900
+Developers in development are very well suited to using multipass. Because in multipass
+
+32
+00:04:05,900 --> 00:04:12,320
+we are very efficient and flexible. We can run an app directly or a service. 
+
+33
+00:04:12,320 --> 00:04:20,860
+for example docker. Next I will explain the difference between multipass, VirtualBox, and LXD.
+
+34
+00:04:20,860 --> 00:04:31,480
+Multipass is one of the experiences from Ubuntu that is specialized for development that can
+
+35
+00:04:31,480 --> 00:04:37,270
+running on multiple operating system platforms. For example multipass can run on Linux, Windows,
+
+36
+00:04:37,270 --> 00:04:43,690
+and Mac OS. So anyone or developer can use multipass on the operating system.
+
+37
+00:04:43,690 --> 00:04:53,140
+And a developer doesn't need a special virtualization to run multipass
+
+38
+00:04:53,140 --> 00:05:04,120
+if on Windows we can use Hyper-V or VirtualBox. While on Mac OS we can
+
+39
+00:05:04,120 --> 00:05:10,720
+using hyperkit or VirtualBox and on Linux we can use LXD. Here are
+
+40
+00:05:10,720 --> 00:05:20,240
+flows from multipass. The bottom is the host. This host can use Linux or Mac OS or
+
+41
+00:05:20,240 --> 00:05:27,860
+windows. So adjust to the environment that we have. Next there is the userspace multipass.
+
+42
+00:05:27,860 --> 00:05:39,620
+This is where the system or service is installed on the host. Above userspace multipass then
+
+43
+00:05:39,620 --> 00:05:45,380
+we can create various kinds of virtual machines. The virtual machine can use Ubuntu,
+
+44
+00:05:45,380 --> 00:05:52,169
+can use CentOS, can use Rocky Linux and so on.
+
+45
+00:05:52,169 --> 00:05:59,930
+Inside the virtual machine, we can install or deploy a service just like the docker service or we
+
+46
+00:05:59,930 --> 00:06:06,020
+can directly deploy an app in the virtual machine. Next I will explain
+
+47
+00:06:06,020 --> 00:06:13,040
+the advantages and disadvantages of the first multipass in terms of the advantages of multipass it is very easy
+
+48
+00:06:13,040 --> 00:06:18,890
+and simple. And very fast in creating a virtual machine. Why? Because multipass
+
+49
+00:06:18,890 --> 00:06:23,880
+already provided a template or default Ubuntu images. If we want to make a
+
+50
+00:06:23,880 --> 00:06:29,730
+Ubuntu virtual machine, we can run only one command line and quickly multipass
+
+51
+00:06:29,730 --> 00:06:34,680
+will create a virtual machine. If we want to create a virtual machine other than the Ubuntu OS,
+
+52
+00:06:34,680 --> 00:06:40,590
+we can do that too. By downloading an image cloud that is already available
+
+53
+00:06:40,590 --> 00:06:46,020
+in each operating system's repository. For example CentOS, we can download first
+
+54
+00:06:46,020 --> 00:06:52,170
+first CentOS cloud image first. Then we can run the command line to create a
+
+55
+00:06:52,170 --> 00:06:58,650
+virtual machine with the virtual pass using the CentOS image. Next multipass
+
+56
+00:06:58,650 --> 00:07:04,890
+one of the most modern management virtual machines and very suitable for a developer
+
+57
+00:07:04,890 --> 00:07:11,640
+whose needs are for development. Because it is very simple and easy to use. Multipass
+
+58
+00:07:11,640 --> 00:07:18,330
+indeed recommended for development. So if we want to make a production level
+
+59
+00:07:20,230 --> 00:07:26,110
+development, we can use a virtual pass to run an app or the operating system.
+
+60
+00:07:26,110 --> 00:07:32,290
+Then what are the disadvantages of multipass? When we have created a virtual machine then
+
+61
+00:07:32,290 --> 00:07:38,461
+we cannot resize the specifications that we have previously set automatically.
+
+62
+00:07:38,461 --> 00:07:43,316
+How to resize a virtual machine that we have created?
+
+63
+00:07:43,316 --> 00:07:49,792
+The solution is to stop the virtual machine first. Then we adjust it manually. The second is,
+
+64
+00:07:49,792 --> 00:07:55,830
+The default multipass in the Virtual machine is only one interface available.
+
+65
+00:07:55,830 --> 00:08:03,730
+The third multipass by default only provides a few images. One of them is just an Ubuntu image
+
+66
+00:08:03,730 --> 00:08:13,540
+and image apps that have been bundled. Examples such as image k3s or image nextcloud. Use case 
+
+67
+00:08:13,540 --> 00:08:21,500
+which is often used by development in multipass, namely using a kubernetes cluster in multipass.
+
+68
+00:08:21,500 --> 00:08:29,150
+Multipass is an alternative to docker. Separate Kubernetes cluster running on top
+
+69
+00:08:29,150 --> 00:08:35,270
+containers. Usually what is often used is docker or containerd. With multipass
+
+70
+00:08:35,270 --> 00:08:43,010
+we can run a docker over multipass and we can run a Kubernetes Cluster on
+
+71
+00:08:43,010 --> 00:08:49,130
+the docker. Or we can also directly run a kubernetes cluster in
+
+72
+00:08:49,130 --> 00:08:55,580
+VMs or virtual machines in multipass. Why? because multipass already supports metadata
+
+73
+00:08:55,580 --> 00:09:02,720
+cloud-init. In cloud-init we can customize any service or package needed by the user
+
+74
+00:09:02,720 --> 00:09:09,710
+the kubernets cluster. Here are some references that can be used for deployments
+
+75
+00:09:09,710 --> 00:09:15,834
+on kubernetes cluster. Next we will explain the basics of cloud-init.
+
+76
+00:09:15,834 --> 00:09:24,420
+Cloud-init is a standard for customizing an instance cloud like a public cloud. Very
+
+77
+00:09:24,420 --> 00:09:30,781
+many public clouds use template cloud-init images. For example openstack.
+
+78
+00:09:30,781 --> 00:09:37,940
+OpenStack can use cloud-init too. In multipass we can also use cloud-init.
+
+79
+00:09:37,940 --> 00:09:44,100
+Therefore, it is highly recommended for developers to use multipass as a tool
+
+80
+00:09:44,100 --> 00:09:50,820
+virtualization media lab suited to development. An example of a cloud-init configuration,
+
+81
+00:09:50,820 --> 00:10:00,450
+here is SSH. How is SSH used to login to virtual machines using key
+
+82
+00:10:00,450 --> 00:10:07,560
+later on. And here we can also determine does the package update the operating system directly?
+
+83
+00:10:07,560 --> 00:10:14,220
+updated or upgraded? Here is an example [True]. It means later on in the process of creating
+
+84
+00:10:14,220 --> 00:10:22,180
+virtual machine, the package is already automatically updated. And here is the packages menu. Packages
+
+85
+00:10:22,180 --> 00:10:28,990
+we can determine this. We want to use what package in the operating system we make or
+
+86
+00:10:28,990 --> 00:10:36,790
+in the Virtual machine we create. Here we will use packages git, vim, wget, even we
+
+87
+00:10:36,790 --> 00:10:44,530
+can use docker package directly and here is the runcmd command line. Ah, here it is
+
+88
+00:10:44,530 --> 00:10:54,730
+which will automatically execute the package. Then the package is a function for lists
+
+89
+00:10:54,730 --> 00:11:01,480
+what packages to install. If the runcmd function is to run or
+
+90
+00:11:01,480 --> 00:11:06,820
+running an installed package. Then How to install multipass? Such that
+
+91
+00:11:06,820 --> 00:11:12,550
+we know multipass can run on various operating system. Starting from Linux, Windows,
+
+92
+00:11:12,550 --> 00:11:18,370
+and Mac OS. Let's see how easy it is. We install a multipass in the operating system
+
+93
+00:11:18,370 --> 00:11:25,010
+Linux. On the Linux operating system, to run multipass we can run with one
+
+94
+00:11:25,010 --> 00:11:31,190
+command line only. Already available on snapd using the command "snap install multipass".
+
+95
+00:11:31,190 --> 00:11:38,480
+If we use architecture other than amd64 then we can also run a multipass.
+
+96
+00:11:38,480 --> 00:11:45,890
+Therefore, multipass does not require special virtualization. So all virtualization
+
+97
+00:11:45,890 --> 00:11:53,060
+it can run a multipass. Then how do we use Windows? and we want
+
+98
+00:11:53,060 --> 00:11:57,440
+running a multipass. Multipass already provides a package for Windows that can
+
+99
+00:11:57,440 --> 00:12:05,540
+we download and we install like installing an application on Windows. However, it should be noted in
+
+100
+00:12:05,540 --> 00:12:11,630
+Windows has some Windows requirements that can support multipass. Including Windows 10
+
+101
+00:12:11,630 --> 00:12:18,740
+Pro, Enterprise, and Education. Or we can combine Windows with
+
+102
+00:12:18,740 --> 00:12:25,260
+VirtualBox to run a multipass. Then if on Mac OS it is the same as in
+
+103
+00:12:25,260 --> 00:12:31,980
+Windows. Multipass already provides a package that can be installed on Mac OS. To install a
+
+104
+00:12:31,980 --> 00:12:38,610
+multipass on Mac OS it is the same as we install an application on Mac OS. and if we want
+
+105
+00:12:38,610 --> 00:12:44,760
+using multipass as well as VirtualBox together and its VirtualBox as
+
+106
+00:12:45,480 --> 00:12:51,630
+Manager of VM multipass, we can set a driver by default
+
+107
+00:12:52,792 --> 00:12:59,020
+it becomes VirtualBox. But if we don't need not use VirtualBox on Mac OS,
+
+108
+00:12:59,020 --> 00:13:04,060
+we do not need to set the driver. Because automatically every time we install a
+
+109
+00:13:04,060 --> 00:13:16,930
+multipass, the multipass driver will be installed automatically. And we can use it
+directly. Here are some Command Lines from multipass. There are so many basic command-line that
+
+110
+00:13:16,930 --> 00:13:24,710
+we can use in multipass. from "multipass -h" to see display help
+
+111
+00:13:24,710 --> 00:13:32,968
+like this or help. Then there are some command line that we can use. Starting from delete,
+
+112
+00:13:32,968 --> 00:13:39,530
+Its function is to delete an instance, "exec" to run or execute
+
+113
+00:13:39,530 --> 00:13:45,560
+instances. Indirectly or without us login to the instance we can use
+
+114
+00:13:45,560 --> 00:13:54,890
+The exec. There is also "find" to search for a image that is in multipass. "get" the function for
+
+115
+00:13:54,890 --> 00:14:03,190
+fetches an existing configuration in instances. There is also "help" for assistance. "info" for
+
+116
+00:14:03,190 --> 00:14:12,010
+view detailed information of existing instances we make. There is also "recover", there is also "purge", and
+
+117
+00:14:12,010 --> 00:14:17,500
+"restart" and other basic commands. I will show these basic commands
+
+118
+00:14:17,500 --> 00:14:23,710
+on the next slide. Ah, on this slide I will explain how to use
+
+119
+00:14:23,710 --> 00:14:30,580
+multipass. As we already know previously multipass has so many command-line
+
+120
+00:14:30,580 --> 00:14:38,470
+that can be run easily. The first one starts from "find". "multipass find". It means we are looking for an image
+
+121
+00:14:39,220 --> 00:14:46,400
+which is in the multipass. Then, how if we want to create a virtual machine
+
+122
+00:14:46,400 --> 00:14:54,620
+in multipass? We can use option launch "multipass launch". at this "launch" we 
+
+123
+00:14:56,120 --> 00:15:04,430
+can specify a parameter. Starting from the CPU, memory, disk, even we can specify network--
+
+124
+00:15:05,000 --> 00:15:11,630
+What network will we use in multipass. For example, here I provide four
+
+125
+00:15:11,630 --> 00:15:17,870
+example. The first example is multipass launch 20.04. That means we will create a virtual
+
+126
+00:15:17,870 --> 00:15:26,770
+machine with Ubuntu 20.04 operating system with the name virtual machine instance-demo --cpu.
+
+127
+00:15:26,770 --> 00:15:34,780
+That means we declare the CPU that will be used by a 2GB multipass. --memory,
+
+128
+00:15:34,780 --> 00:15:41,410
+Here the memory will be used which is 2GB and disk that is 5GB. Ah, here we are actually
+
+129
+00:15:41,410 --> 00:15:47,750
+can customize the specifications of the instance or VM that we need. Example
+
+130
+00:15:47,750 --> 00:15:55,220
+the second we create an instance however by using cloud-init. Or the image that
+
+131
+00:15:55,220 --> 00:16:01,400
+we have customized. The third example is create a virtual machine with an image
+
+132
+00:16:01,400 --> 00:16:06,650
+other than on Ubuntu. As we know that multipass only provided Ubuntu
+
+133
+00:16:06,650 --> 00:16:12,350
+images. And here is the solution If you want run a virtual machine with
+
+134
+00:16:12,350 --> 00:16:23,750
+OS other than Ubuntu. For example here we have provides a CentOS 7 image. For creating
+
+135
+00:16:23,750 --> 00:16:29,090
+virtual machine using CentOS 7 it is very easy. "multipass launch" first,
+
+136
+00:16:29,090 --> 00:16:35,480
+Specify which directory the image is at. and --name CentOS 7. Ah, here
+
+137
+00:16:35,480 --> 00:16:42,680
+we can also customize specifications that we need. Very popular and
+
+138
+00:16:43,590 --> 00:16:52,530
+very good feature of multipass, that is we can also create a virtual machine --cloud-init http.
+
+139
+00:16:52,530 --> 00:16:59,670
+So we don't need to download the image if we install or we create. but
+
+140
+00:16:59,670 --> 00:17:09,030
+we only need links from existing repositories available. And we can directly launch or
+
+141
+00:17:09,030 --> 00:17:15,810
+create virtual machine from images from URL which is already available in the repository
+
+142
+00:17:15,810 --> 00:17:21,900
+directly. So we don't need to download again. But with this method we have to
+
+143
+00:17:21,900 --> 00:17:28,350
+make sure that is internet connection. Why? because we download directly from the center or repository
+
+144
+00:17:28,350 --> 00:17:38,690
+image and install it directly, like that. Next, there is information. In this information we can
+
+145
+00:17:38,690 --> 00:17:46,010
+see detailed specifications and what is in the instance. Example here multipass
+
+146
+00:17:46,010 --> 00:17:52,550
+--info instance-demo. We can see info from virtualization with the demo-instance name that already
+
+147
+00:17:52,550 --> 00:17:59,630
+we have made before. In addition, this information we can also customize the format. Example here
+
+148
+00:17:59,630 --> 00:18:08,445
+the format of the virtual machine info is YAML. So we just add the "--format yaml" format.
+
+149
+00:18:08,445 --> 00:18:17,120
+Then there is the "list" command. "multipass ls" or it stands for the "list" it works for
+
+150
+00:18:17,120 --> 00:18:26,240
+see all the virtual machines that we have create in multipass. Besides that "ls" is also almost
+
+151
+00:18:26,240 --> 00:18:33,740
+same as info. In "ls" we can see info from the virtual machine that we have created
+
+152
+00:18:33,740 --> 00:18:42,143
+in the form of a format. For example, here the format is YAML or JSON. Then there is a menu or command-line start,
+
+153
+00:18:42,143 --> 00:18:48,860
+stop, and delete. If "start" the function is to run a virtual machine. If "stop"
+
+154
+00:18:48,860 --> 00:18:55,190
+its function is to stop the virtual machine. If "delete" is deleting a virtual machine.
+
+155
+00:18:56,200 --> 00:19:04,450
+Next, here are the features that really good matter, very good for 
+
+156
+00:19:04,450 --> 00:19:11,770
+developers. Here there is a "recover" menu. When we incorrectly "delete" on the virtual machine, then
+
+157
+00:19:11,770 --> 00:19:18,280
+state of the virtual machine that we have created before and we have deleted, it is not deleted
+
+158
+00:19:18,280 --> 00:19:26,185
+automatically. The state is simply "deleted". Not permanently deleted. So with state
+
+159
+00:19:26,185 --> 00:19:33,370
+"deleted" we can recover those instances. But if it iss an instance
+
+160
+00:19:33,370 --> 00:19:38,770
+it really wants to be deleted and automatically permanently, we can use "multipass purge".
+
+161
+00:19:39,610 --> 00:19:46,240
+Next there are two options to access an instance or multipass virtual machine.
+
+162
+00:19:46,240 --> 00:19:53,530
+The first uses the shell method. The second using the exec method. If we use
+
+163
+00:19:53,530 --> 00:19:59,050
+exec method, then we don't need to login anymore to the virtual machine shell that we have created.
+
+164
+00:19:59,050 --> 00:20:07,150
+We just need to run multipass exec, name what is the instance, then requirements or information
+
+165
+00:20:07,150 --> 00:20:13,139
+what we want to get. Example here "--lsb_release -a | grep ^Codename"
+
+166
+00:20:13,139 --> 00:20:24,040
+This means that we want to get information about the codename or OS version that we are using in the virtual machine
+
+167
+00:20:24,040 --> 00:20:29,290
+without logging into the shell. Or without login into the virtual machine. While "shell"
+
+168
+00:20:29,290 --> 00:20:37,510
+we can use it to shell or we can login to the virtual machine directly.
+
+169
+00:20:38,890 --> 00:20:47,870
+That's the difference between shell and exec. Then again the best feature is get and set.
+
+170
+00:20:48,780 --> 00:20:58,260
+If get by default, multipass already autorun. Ah, maybe we
+
+171
+00:20:58,260 --> 00:21:04,260
+haven't explained that multipass actually have a graphical user interface. So not only
+
+172
+00:21:05,700 --> 00:21:11,670
+command line interface. Multipass also provides graphical user interface. How is the graphical user
+
+173
+00:21:11,670 --> 00:21:18,150
+this interface if we run a multipass in our local development or local environment?
+
+174
+00:21:18,150 --> 00:21:25,530
+For example on a laptop, the graphical user this interface is automatically set to auto-start.
+
+175
+00:21:26,240 --> 00:21:32,870
+Ah, with this get we can find out how to configure auto-start in multipass.
+
+176
+00:21:32,870 --> 00:21:39,005
+Then there is the set command. Its function is the opposite of get. If
+
+177
+00:21:39,005 --> 00:21:43,490
+get it retrieves an information. If set i.e. apply a configuration.
+
+178
+00:21:45,010 --> 00:21:53,560
+Example here set client.gui.autostart=false. value is [false]. It means we set
+
+179
+00:21:53,560 --> 00:22:01,720
+graphical user interface of multipass [false]. This means that the graphical user interface
+
+180
+00:22:01,720 --> 00:22:08,050
+will not run automatically anymore when we set [false]. Next we will discuss
+
+181
+00:22:08,050 --> 00:22:16,720
+about the existing networking on multipass. By the default in Linux is that there is only one multipass
+
+182
+00:22:16,720 --> 00:22:24,620
+interfaces. Then what about when we need two interfaces in a multipass virtual machine?
+
+183
+00:22:24,620 --> 00:22:33,290
+The solution is that we can use the driver addition of LXD where the driver will be
+
+184
+00:22:33,290 --> 00:22:42,100
+bridged. The first one we install first first LXD. The second we configure LXD with
+
+185
+00:22:42,100 --> 00:22:51,410
+command "lxd init". And then we set local driver from multipass to LXD. By default
+
+186
+00:22:51,410 --> 00:22:59,060
+the same as in other operating systems. For example, in Mac OS, by default we have the correct driver
+
+187
+00:22:59,060 --> 00:23:05,420
+used in multipass is its own multipass. But when we want to use the driver
+
+188
+00:23:05,420 --> 00:23:12,380
+additionally then we have to set the multipass to the additional driver. Example here
+
+189
+00:23:12,380 --> 00:23:19,130
+what's the addition for the driver? Additional drivers LXD, such as that. Ah, after we set additional drivers in LXD.
+
+190
+00:23:19,130 --> 00:23:27,050
+Next we make sure this is using the command that we got earlier. That the local driver is already used in 
+
+191
+00:23:27,050 --> 00:23:34,130
+multipass using that LXD. Ah, after we make sure the driver we are using LXD,
+
+192
+00:23:34,710 --> 00:23:42,810
+Then we connect between multipass and the LXD. Ah, the picture explains multipass
+
+193
+00:23:42,810 --> 00:23:51,210
+network. here is ens3 ethernet, ethernet devices. Then lxdbr0 Bridge Network Bridge.
+
+194
+00:23:51,210 --> 00:24:00,840
+Then multipass br0. This means that this ens3 is interface of our hypervisor or host
+
+195
+00:24:00,840 --> 00:24:09,750
+use. Suppose we use the public hypervisor cloud. Then this is the interface of public
+
+196
+00:24:09,750 --> 00:24:15,210
+cloud. If we use the local environment like on a laptop. Then ens3 is the assumption
+
+197
+00:24:15,210 --> 00:24:24,240
+interface on our laptop. Next there is lxdbr0. This is an additional interface that
+
+198
+00:24:24,240 --> 00:24:30,840
+we just made. By default the name of driver or multipass interface that is mpbr0.
+
+199
+00:24:31,543 --> 00:24:44,500
+MP stands for multipass. All network lxd and This mpbr is a bridge from ens3. Ah, how
+
+200
+00:24:44,500 --> 00:24:50,980
+how to create a virtual machine with network addition? At the end we can declare
+
+201
+00:24:50,980 --> 00:24:57,880
+an option. That is --network adjust to the name of the interface that we have created. Here's the name
+
+202
+00:24:57,880 --> 00:25:07,570
+the interface is lxdbr0. Ah, when the instance is made then we make sure to use multipass
+
+203
+00:25:07,570 --> 00:25:17,534
+ls, then in the IPv4 section you will see two different IPs already attached to the virtual machine.
+
+204
+00:25:17,534 --> 00:25:27,960
+The first one at the top is the IP of the driver LXD. The second IP from multipass. Next
+
+205
+00:25:27,960 --> 00:25:35,460
+I will explain about the existing integration in multipass. Multipass is very flexible.
+
+206
+00:25:35,460 --> 00:25:43,125
+We can integrate the multipass into various like a virtual machine manager. For example
+
+207
+00:25:43,125 --> 00:25:48,690
+we can integrate virtual pass into virt-manager or into VirtualBox itself.
+
+208
+00:25:49,870 --> 00:25:56,350
+Therefore, multipass is very suitable for us, who want to create an environment
+
+209
+00:25:56,350 --> 00:26:02,410
+development. Because with our multipass can run a development on
+
+210
+00:26:02,410 --> 00:26:08,721
+various virtual managers. So when we really need a virtual manager
+
+211
+00:26:08,721 --> 00:26:14,380
+we can use virt-manager. but the back-end we can use multipass.
+
+212
+00:26:14,380 --> 00:26:18,460
+We can also use VirtualBox, but we also use multipass.
+
+213
+00:26:19,260 --> 00:26:24,090
+In this session I will not demonstrate How is the integration. But here we have
+
+214
+00:26:24,090 --> 00:26:31,410
+provide a reference that can be used for multipass integration. Ok, this time I
+
+215
+00:26:31,410 --> 00:26:38,610
+will demonstrate How to use multipass and how to create a
+
+216
+00:26:38,610 --> 00:26:44,700
+virtual machine in multipass and how to deploy a web-based application
+
+217
+00:26:44,700 --> 00:26:51,630
+in a multipass virtual machine. First, make sure you have done a multipass installation.
+
+218
+00:26:52,510 --> 00:26:59,740
+Here I use multipass version 1.8.0. To view the version of
+
+219
+00:26:59,740 --> 00:27:03,760
+multipass can be seen in the terminal i.e. using the command "multipass --version".
+
+220
+00:27:05,210 --> 00:27:12,170
+Next to see any image those in multipass can use
+
+221
+00:27:12,170 --> 00:27:20,720
+command "multipass find". Ah, by default multipass provides images. The existing images 
+
+222
+00:27:20,720 --> 00:27:33,350
+are on ubuntu. Starting from Ubuntu 18.04, Ubuntu 20.04, and 21.04. In addition to the multipass OS image
+
+223
+00:27:33,350 --> 00:27:41,330
+also provides template apps that already exist. There are many options here. Starting from nextcloud,
+
+224
+00:27:41,330 --> 00:27:51,020
+openhab, plexmediaserver, to minikube. If we want to use kubernetes cluster
+
+225
+00:27:51,020 --> 00:27:56,360
+we can also use minikube for our local development using the Kubernetes cluster.
+
+226
+00:27:58,800 --> 00:28:03,870
+Then if we want to see virtual existing machines. We can
+
+227
+00:28:03,870 --> 00:28:13,351
+using the "multipass ls" command. Here are available CentOS 7 Instances or VMs.
+
+228
+00:28:13,351 --> 00:28:20,940
+Ah, the difference between image or instance using CentOS 7 with
+
+229
+00:28:20,940 --> 00:28:28,950
+Ubuntu that already defaults to multipass is in images section. It won't be read in detail here
+
+230
+00:28:28,950 --> 00:28:37,740
+The OS or version or the image used because of the image CentOS 7 is not in the default of multipass.
+
+231
+00:28:40,070 --> 00:28:47,680
+Then how to create a virtual machine in multipass? To create a virtual machine
+
+232
+00:28:47,680 --> 00:28:55,550
+run it using the multipass launch command. Then here we can adjust the version
+
+233
+00:28:55,550 --> 00:29:03,770
+OS that we will use. As an example here I am using Ubuntu 20.04 OS.
+
+234
+00:29:06,060 --> 00:29:13,380
+Then there is the --name option. --name is like previously explained, namely
+
+235
+00:29:13,380 --> 00:29:22,350
+the name of the virtual machine. For example, the name instance-demo. Besides that, we can also
+
+236
+00:29:22,350 --> 00:29:32,820
+adjust the CPU we can use for example here the CPU is dual-core. Then the memory is 2GB
+
+237
+00:29:35,360 --> 00:29:39,740
+and the disk that will be used is 5GB.
+
+238
+00:29:39,740 --> 00:29:45,800
+Ah, with this command line we already able to create a multipass.
+
+239
+00:29:47,740 --> 00:29:55,400
+This is the process of creating a virtual machine. Ah, as we have seen together, in the terminal
+
+240
+00:29:55,400 --> 00:30:01,430
+here is the starting process. It can be said that the steps is very fast starting from creating configuration
+
+241
+00:30:01,430 --> 00:30:06,590
+and starting an instance. So we don't need another manual to do the installation.
+
+242
+00:30:06,590 --> 00:30:12,800
+We just need to use one command-line, we can already create a virtual machine.
+
+243
+00:30:15,690 --> 00:30:21,690
+Waiting for some instance initiation or the virtual machine. Ah,
+
+244
+00:30:23,130 --> 00:30:31,350
+here the instance has been created successfully and if... let's see using the command "multipass ls",
+
+245
+00:30:32,170 --> 00:30:34,660
+here the instance-demo is active.
+
+246
+00:30:36,800 --> 00:30:45,110
+How about when we want to login to virtual the machine we have made? Example here
+
+247
+00:30:45,110 --> 00:30:54,020
+instance-demo. To log in, you can use "multipass shell" following by its instance name.
+
+248
+00:30:55,790 --> 00:31:00,950
+Ah, here we are already logged in shell of the instance-demo virtual machine.
+
+249
+00:31:02,020 --> 00:31:10,280
+Make sure we have succeeded ping from within the virtual machine.
+
+250
+00:31:10,280 --> 00:31:17,180
+Ah, now instace has successfully connected to Internet and we can already use virtual
+
+251
+00:31:17,180 --> 00:31:24,110
+machines quickly and easily. Then, how when we want to create a virtual machine
+
+252
+00:31:24,110 --> 00:31:31,490
+with a custom image using cloud-init? Here I have provided
+
+253
+00:31:33,520 --> 00:31:38,240
+viewable cloud-init templates.
+
+254
+00:31:38,240 --> 00:31:48,660
+Ah, here is SSH authorize where are we here can input a public-key
+
+255
+00:31:48,660 --> 00:31:54,373
+of SSH which we will use. Then here is the package-update parameter
+
+256
+00:31:54,373 --> 00:32:00,840
+the value is [true]. This means that at the time of installation and making the virtual machine packages are
+
+257
+00:32:00,840 --> 00:32:09,300
+automatically updated. And there is apt-upgrade it is mean if the OS is Ubuntu,
+
+258
+00:32:09,300 --> 00:32:15,840
+This will automatically upgrade the package. and here we can also customize what package
+
+259
+00:32:15,840 --> 00:32:24,360
+just what we will install. An example here is git, vim, curl, python3, htop, unzip, webserver
+
+260
+00:32:24,360 --> 00:32:32,610
+apache. In fact we can also install directly automatic package docker. there is also an option here
+
+261
+00:32:34,920 --> 00:32:39,600
+runcmd. Its function is to run a package already installed above.
+
+262
+00:32:40,800 --> 00:32:44,850
+Then how about the command to make a virtual machine using
+
+263
+00:32:46,280 --> 00:32:54,590
+cloud-init? It's easy. We just need got added --cloud-init option. Then
+
+264
+00:32:54,590 --> 00:33:01,070
+followed by the name of the cloud-init that we made before. Ah, because
+
+265
+00:33:01,070 --> 00:33:06,950
+instance-demo has been created, I will add -1 means demo-1.
+
+266
+00:33:09,090 --> 00:33:14,820
+Ah, this one has already configured instances. Then the process of starting the instance
+
+267
+00:33:14,820 --> 00:33:21,590
+using cloud-init. This time it is already in the process of initiating the virtual machine.
+
+268
+00:33:23,550 --> 00:33:29,820
+The most basic difference because of using cloud-init and we have defined
+
+269
+00:33:29,820 --> 00:33:39,030
+any package, not the default of the image exists or is available, then the process will follow
+
+270
+00:33:39,030 --> 00:33:44,940
+how many packages do we customize or which we defined earlier in cloud-init.
+
+271
+00:33:46,190 --> 00:33:54,140
+The more packages we customize, the more the initiation process will also take longer. And
+
+272
+00:33:54,140 --> 00:34:02,480
+therefore, make sure the internet connection in creating a multipass in virtual
+
+273
+00:34:02,480 --> 00:34:10,770
+machine in multipass are stable. Ah, currently the instance with cloud-init already
+
+274
+00:34:10,770 --> 00:34:17,700
+created. Let's see the difference. here are the differences. On configuration or template
+
+275
+00:34:17,700 --> 00:34:24,960
+the previous cloud-init, we define the docker package and here docker is already installed
+
+276
+00:34:24,960 --> 00:34:31,230
+and docker has its own IP address. Then on our previous cloud-init configuration
+
+277
+00:34:31,230 --> 00:34:37,170
+also provides we also import a ssh-key. So to login to the demo-instance-1,
+
+278
+00:34:37,170 --> 00:34:43,470
+which uses cloud-init, there are two options. We can use the key from our SSH,
+
+279
+00:34:43,470 --> 00:34:50,220
+or use shells. For example we use key for the name of the OS corresponds to,
+
+280
+00:34:51,660 --> 00:34:56,670
+to login according to the name of the OS. For example, here the OS is Ubuntu to login
+
+281
+00:34:56,670 --> 00:35:04,460
+into Ubuntu. Okay, here We have successful SSH login to demo-instance-1. How
+
+282
+00:35:04,460 --> 00:35:11,960
+if we want to login to the demo-instance-1 with shells? It also can be done. Currently we have
+
+283
+00:35:11,960 --> 00:35:18,770
+successfully logged into demo-instance-1. Next let's demonstrate how to install a
+
+284
+00:35:18,770 --> 00:35:27,890
+web-based apps on a multipass virtual machine. Make sure the web server is running
+
+285
+00:35:27,890 --> 00:35:34,100
+well. Okay now let's start apache first. Apache is already running.
+
+286
+00:35:35,780 --> 00:35:45,050
+Make sure we enable it so that it automatically runs when the instance is rebooted or stopped. Then
+
+287
+00:35:46,450 --> 00:35:50,170
+by default the apache directory is in /var/www/html.
+
+288
+00:35:52,010 --> 00:35:56,210
+Here I will be in /var/www first. And then
+
+289
+00:35:59,150 --> 00:36:06,050
+I will take the web that I already provided by using the wget command.
+
+290
+00:36:09,810 --> 00:36:15,180
+Ah, here is a website available the template I've used for
+
+291
+00:36:15,180 --> 00:36:24,780
+demo at this time. Unzip the website data first. Then move all website data
+
+292
+00:36:26,310 --> 00:36:34,970
+into /var/www/html using "sudo cp /var/www/html" As it is.
+
+293
+00:36:36,070 --> 00:36:44,440
+Ok, since we moved some directory too then we need the -R option.
+
+294
+00:36:44,440 --> 00:36:55,330
+We make sure in the current directory the data are already enterd with our website data.
+
+295
+00:36:55,330 --> 00:36:59,590
+Let's look at the permissions here. It stil owned by "root". We have to adjust the
+
+296
+00:37:00,960 --> 00:37:07,110
+ownership first. The ownership of the webserver Apache on Ubuntu is www-data:www-data.
+
+297
+00:37:09,170 --> 00:37:15,500
+-R means all files that is in the directory /var/www/html (recursive)
+
+298
+00:37:15,500 --> 00:37:20,840
+will be authorized to www-data:www-data. Like this
+
+299
+00:37:20,840 --> 00:37:26,510
+if we look back at the current owne, it has changed to www-data.
+
+300
+00:37:27,430 --> 00:37:37,385
+Next we make sure in the web browser is accessable with the private IP of the virtual machine. 
+
+301
+00:37:37,385 --> 00:37:49,820
+Here the IP is 10.250.1.146. When we access the browser make sure the website is running.
+
+302
+00:37:49,820 --> 00:37:57,940
+Ah, now the website is running.
+
+303
+00:38:01,880 --> 00:38:12,160
+That's a simple and easy way to run a website on a multipass virtual machine.
+
+304
+00:38:13,040 --> 00:38:20,210
+So with multipass we don't need install an operating system manually anymore.
+
+305
+00:38:20,210 --> 00:38:26,180
+We no longer need to install services Manually. because of these services
+
+306
+00:38:26,180 --> 00:38:35,240
+we can adjust it in cloud-init earlier. So as a developer we are of course
+
+307
+00:38:35,240 --> 00:38:40,634
+will be faster in creating or deploying an app using multipass.
+
+308
+00:38:40,634 --> 00:38:47,480
+That is all from me. I am Nur Hamim. Hope to see you at the next opportunity. Thank you. 
+
