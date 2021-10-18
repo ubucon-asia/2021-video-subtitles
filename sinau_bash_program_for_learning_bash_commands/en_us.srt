@@ -1,0 +1,280 @@
+1
+00:00:07,054 --> 00:00:13,026
+Let me introduce myself, my name is Kuriyanto. I am from Indonesia.
+
+2
+00:00:13,026 --> 00:00:18,895
+I am a teacher at SMK (Vocational School) Negeri 1 Kragilan.
+
+3
+00:00:18,895 --> 00:00:24,164
+Today I will discuss about Sinau-Bash. 
+
+4
+00:00:24,164 --> 00:00:32,329
+Sinau-Bash is a program used to learn Bash language, 
+
+5
+00:00:32,329 --> 00:00:38,218
+or program for learning Bash command.
+
+6
+00:00:40,270 --> 00:00:44,432
+About Bash
+
+7
+00:00:44,432 --> 00:00:58,793
+Bash is a shell-based programming language that is installed on Linux and Mac OS by default.
+
+8
+00:00:58,793 --> 00:01:05,314
+Bash itself is developed by the GNU Project and is licensed free.
+
+9
+00:01:06,687 --> 00:01:10,626
+About Sinau-Bash
+
+10
+00:01:10,729 --> 00:01:17,994
+Sinau-Bash itself is a simple program developed in the Bash language.
+
+11
+00:01:17,994 --> 00:01:29,841
+Sinau in Javanese means learning. If put together Sinau-Bash means learning Bash.
+
+12
+00:01:29,841 --> 00:01:49,357
+Sinau-Bash consists of three levels, the first is the easy level. This easy level when the answer is wrong then the answer will appear.
+
+13
+00:01:49,357 --> 00:02:00,556
+Level 2 is medium level, at this level if the answer is wrong then there is no correct answer information.
+
+14
+00:02:00,556 --> 00:02:22,719
+Hard level or difficult level will not show wrong answer information and will display the result when we are completed answering all questions from Sinau-Bash.
+
+15
+00:02:22,719 --> 00:02:40,724
+Sinau-Bash looks more or less like this. For now there are two languages provided, the first is Indonesian, and the second is English.
+
+16
+00:02:40,724 --> 00:02:48,269
+This is an example when we choose English.
+
+17
+00:02:48,269 --> 00:02:56,066
+You can download it from the address shown here.
+
+18
+00:02:56,066 --> 00:03:07,643
+I will show you how to download Sinau-Bash, run Sinau-Bash, and learn with Sinau-Bash.
+
+19
+00:03:07,643 --> 00:03:20,732
+We enter the link at https://github.com/kuriyantoadi/sinau-bash-ubucon.
+
+20
+00:03:20,732 --> 00:03:35,533
+We can click the code and then download the zip, later when it is downloaded, just look for the folder, there will be an install.sh file.
+
+21
+00:03:35,533 --> 00:03:43,667
+To run this install.sh command we can use the terminal.
+
+22
+00:03:43,667 --> 00:03:54,234
+We can right click here and then Open Terminal in our Sinau-Bash.
+
+23
+00:03:54,234 --> 00:03:58,594
+It's in the Sinau-Bash folder.
+
+24
+00:03:58,594 --> 00:04:12,691
+Now that I'm in the Sinau-Bash directory, let's check if we have the install.sh file.
+
+25
+00:04:12,691 --> 00:04:25,756
+I already have an install.sh file, then we can run it with the command ./install.sh, Enter.
+
+26
+00:04:25,756 --> 00:04:35,108
+Sinau-Bash looks like this.
+
+27
+00:04:35,108 --> 00:04:43,446
+Please select your language, there are two languages, Indonesian and English.
+
+28
+00:04:43,446 --> 00:04:55,905
+Initially it was developed only for Indonesian because the first time I made it, it was intended for vocational schools students
+
+29
+00:04:55,905 --> 00:05:05,509
+who will learn Linux server, so basically you have to learn Sinau-Bash first so you can proceed to learn server.
+
+30
+00:05:05,509 --> 00:05:08,515
+Now I have developed it to include English.
+
+31
+00:05:08,515 --> 00:05:16,709
+For those of you who are in Asia such as Malaysia, Japan, Korea, China, Pakistan, India, and you want to develop it
+
+32
+00:05:16,709 --> 00:05:24,581
+in the local language of your country, please feel free to email me and contribute to developing Sinau-Bash.
+
+33
+00:05:24,581 --> 00:05:32,531
+I give you an example to enter Sinau-Bash using English, we select 2 (two) then Enter.
+
+34
+00:05:32,531 --> 00:05:47,783
+Here we can write our names as participants. I wrote Kuriyanto, the reason is to try Sinau-Bash.
+
+35
+00:05:47,783 --> 00:05:58,210
+There are three levels, the first is easy, then medium, and hard.
+
+36
+00:05:58,210 --> 00:06:11,600
+We try easy level, and a question appears like this: "To open a zip file with the command?"
+
+37
+00:06:11,600 --> 00:06:25,763
+And you can write down the answer below. To open a zip file, the command is unzip, press Enter.
+
+38
+00:06:25,763 --> 00:06:34,637
+If your answer is correct it will say "Your answer is correct", this means we successfully answer the question.
+
+39
+00:06:34,637 --> 00:06:45,843
+And the next question, "To add a new user with the command ?"
+
+40
+00:06:45,843 --> 00:06:54,971
+adduser. This is the right one, let's try to enter the wrong answer.
+
+41
+00:06:54,971 --> 00:07:07,766
+For example, the question is "To enter a directory with the command ?" our answer is "ls" (should be cd or change directory), Enter.
+
+42
+00:07:07,766 --> 00:07:16,594
+There will be an error message, "Sorry your answer is wrong".
+
+43
+00:07:16,594 --> 00:07:22,227
+And the correct answer will be shown, the answer is cd or change directory.
+
+44
+00:07:22,227 --> 00:07:35,034
+Okay, this is easy level of Sinau-Bash. We'll try the medium level at a new tab.
+
+45
+00:07:43,296 --> 00:07:48,558
+We choose 2 and medium, Enter.
+
+46
+00:07:48,558 --> 00:08:02,784
+The question is "To create a belajar-bash directory you can enter the command ?"
+
+47
+00:08:02,784 --> 00:08:14,293
+The answer is "mkdir belajar-bash". This is the right answer.
+
+48
+00:08:14,293 --> 00:08:37,700
+The next question is "Command to give full user, group, and other access rights to files ?", the right answer is "chmod 777".
+
+49
+00:08:37,700 --> 00:08:43,186
+But we'll try to answer incorrectly, we will see if there will be an answer or not, we try only "chmod".
+
+50
+00:08:43,186 --> 00:08:49,151
+The answer is wrong, "Sorry your answer is wrong."
+
+51
+00:08:49,151 --> 00:09:03,489
+So if the answer is wrong, there will be no correct answer below. Unlike the easy level (easy), the correct answer will be shown.
+
+52
+00:09:03,489 --> 00:09:10,374
+Next we'll try the hard level.
+
+53
+00:09:10,374 --> 00:09:28,813
+ 
+
+54
+00:09:28,813 --> 00:09:42,983
+We have a server with IP address 10.78.12.1, how to access the server remotely with SSH?
+
+55
+00:09:42,983 --> 00:09:51,612
+The command is "ssh 10.78.12.1".
+
+56
+00:09:51,612 --> 00:10:03,682
+In the hard level of Sinau-Bash, the answer will not be shown whether it is right or wrong.
+
+57
+00:10:03,682 --> 00:10:20,307
+And the previous questions will disappear, and the result will be shown later after we finish answering all the questions from Sinau-Bash.
+
+58
+00:10:20,307 --> 00:12:14,934
+For example, we finish the easy one first.
+
+59
+00:12:14,934 --> 00:12:18,879
+ 
+
+60
+00:12:18,879 --> 00:12:28,997
+When finished, the result will appear like this.
+
+61
+00:12:28,997 --> 00:12:44,338
+I have answered all of the questions in 375 seconds with easy questions and my score is 90.
+
+62
+00:12:44,338 --> 00:13:01,009
+So we have answered 20 questions, there are 20 questions per level and each question is worth 5 point. I have 2 questions that answered incorrectly.
+
+63
+00:13:01,009 --> 00:13:14,230
+For Sinau-Bash, although the questions are the same, each time the questions will be different because they are randomized.
+
+64
+00:13:14,230 --> 00:13:26,496
+Because the questions are randomized, there are 60 possibilities of randomization, we can repeat the study with Sinau-Bash with a different order of questions,
+
+65
+00:13:26,496 --> 00:13:34,997
+and it will make our memory of Bash basics more convenient.
+
+66
+00:13:34,997 --> 00:13:48,091
+ 
+
+67
+00:13:48,091 --> 00:13:54,300
+Any questions so far?
+
+68
+00:13:54,300 --> 00:14:10,718
+Thank you for watching my material on Sinau-Bash. If you are interested in Sinau-Bash, you can download Sinau-Bash and learn Sinau-Bash. 
+
+69
+00:14:10,718 --> 00:14:17,141
+For those of you who live abroad, especially from Asia, if you want to develop the Sinau-Bash program,
+
+70
+00:14:17,141 --> 00:14:31,680
+I am open if you want to contribute, develop and provide Sinau-Bash for people to learn. Thank you.
+
