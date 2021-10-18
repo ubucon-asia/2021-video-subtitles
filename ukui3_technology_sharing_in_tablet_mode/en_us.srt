@@ -1,0 +1,1168 @@
+1
+00:00:07,832 --> 00:00:08,985
+Hello, everyone.
+
+2
+00:00:08,985 --> 00:00:11,569
+ I am Chao Zhang from the Kylin community. 
+
+3
+00:00:11,569 --> 00:00:17,912
+Today, I will share a simple technology sharing on the UKUI3 tablet mode
+
+4
+00:00:17,912 --> 00:00:23,848
+First of all, I will introduce the latest development of UKUI
+
+5
+00:00:23,848 --> 00:00:27,644
+what results have been achieved and actual application cases
+
+6
+00:00:27,644 --> 00:00:32,809
+and then I will specifically share some of the main features of the new tablet mode
+
+7
+00:00:32,809 --> 00:00:42,123
+Finally, let’s talk about the future of UKUI. What are the important points that need to be developed and improved.
+
+8
+00:00:42,123 --> 00:00:45,811
+First, a simple introduction
+
+9
+00:00:45,811 --> 00:00:51,400
+UKUI is a lightweight Linux open source desktop environment developed by the Kylin team
+
+10
+00:00:51,400 --> 00:01:00,505
+It is currently installed by default in the Ubuntu kylin open source operating system,  the commercial releases of Kylin and the NeoKylin operating system.
+
+11
+00:01:00,505 --> 00:01:08,509
+UKUI has also been ported to many Linux distributions
+
+12
+00:01:08,509 --> 00:01:11,997
+ such as Debian, Ubuntu, Fedora, and openEuler
+
+13
+00:01:11,997 --> 00:01:15,335
+all of which have entered their official repositories
+
+14
+00:01:15,335 --> 00:01:18,682
+It will be promoted to more Linux distributions in the future
+
+15
+00:01:18,682 --> 00:01:25,831
+hoping to allow more users and developers to use UKUI quickly and conveniently
+
+16
+00:01:25,831 --> 00:01:31,567
+In addition to the traditional PC mode of UKUI
+
+17
+00:01:31,567 --> 00:01:38,566
+this time we also provide a new tablet mode to meet the needs of the tablet application ecology and various usage scenarios.
+
+18
+00:01:38,566 --> 00:01:44,340
+In this sharing, I want to introduce how UKUI adds a support for the tablet ecosystem on the basis of the traditional Linux desktop
+
+19
+00:01:44,340 --> 00:01:48,694
+and current support for the tablet devices and future planning
+
+20
+00:01:48,694 --> 00:01:55,521
+and in the process of making the tablet model, we also have some experience and results of some projects and actual products 
+
+21
+00:01:55,521 --> 00:01:56,577
+to share with you
+
+22
+00:01:56,577 --> 00:02:04,668
+The history of UKUI follows the release of the Ubuntu Kylin
+
+23
+00:02:04,668 --> 00:02:07,608
+UKUI1.0 first release in 2013
+
+24
+00:02:07,608 --> 00:02:14,371
+it is a simple modification based on Unity7 and Ubuntu7
+
+25
+00:02:14,371 --> 00:02:17,704
+and the modification is about themes and icons 
+
+26
+00:02:17,704 --> 00:02:24,393
+In 2017, UKUI 2.0 was released
+
+27
+00:02:24,393 --> 00:02:30,189
+At that time, Ubuntu Kylin released a self-developed desktop environment
+
+28
+00:02:30,189 --> 00:02:34,386
+It like the experience of Windows users.
+
+29
+00:02:34,386 --> 00:02:38,185
+In Ubuntu Kylin 20.04
+
+30
+00:02:38,185 --> 00:02:41,866
+we officially released UKUI 3.0
+
+31
+00:02:41,866 --> 00:02:48,000
+The entire UKUI 3.0 was designed by the Ubuntu Kylin team
+
+32
+00:02:48,000 --> 00:02:53,843
+which formed a set of its own design concept and this interactive concept and completed it
+
+33
+00:02:56,587 --> 00:03:02,186
+Here I will give you a brief introduction to the basic technical architecture of UKUI 3.0
+
+34
+00:03:02,186 --> 00:03:09,232
+As shown in the picture, our basic display service is to support X and Wayland at the same time
+
+35
+00:03:09,232 --> 00:03:14,351
+and our basic graphic development library is based on Qt and KF5
+
+36
+00:03:14,351 --> 00:03:17,370
+At the same time, on the basis of Qt and KF5
+
+37
+00:03:17,370 --> 00:03:23,449
+we continue to encapsulate and develop our own advanced interface
+
+38
+00:03:23,449 --> 00:03:33,511
+On this, we have completely rewritten a variety of core desktop components
+
+39
+00:03:33,511 --> 00:03:41,273
+including start menu, task panel, sidebar, multitasking view, file manager, etc.
+
+40
+00:03:41,273 --> 00:03:44,188
+They are more than a dozen core desktop components
+
+41
+00:03:44,188 --> 00:03:49,134
+On top of this, we also have a lot of desktop environment kits and basic applications
+
+42
+00:03:49,134 --> 00:03:52,867
+will be self-developed
+
+43
+00:03:52,867 --> 00:04:05,069
+it includes the upper desktop environment kit and the core desktop environment components
+
+44
+00:04:05,069 --> 00:04:09,315
+and some basic desktop environment graphics development libraries
+
+45
+00:04:09,315 --> 00:04:16,053
+They formed a basic structure of our existing UKUI
+
+46
+00:04:16,053 --> 00:04:24,896
+From this architecture, we can see that it is actually a relatively similar architecture to other Linux desktop environments
+
+47
+00:04:27,144 --> 00:04:30,926
+.It has been more than a year since the release of UKUI3.0
+
+48
+00:04:30,926 --> 00:04:36,601
+During this year's development time, the UKUI development team has mainly increased the development of the tablet mode
+
+49
+00:04:36,601 --> 00:04:38,453
+During this year's development time, the UKUI development team has mainly increased the development of the tablet mode
+
+50
+00:04:38,453 --> 00:04:45,562
+.For the tablet mode, we also carried out an exploration and practice of a market project at the same time
+
+51
+00:04:45,562 --> 00:04:48,006
+Here is a brief introduction to everyone
+
+52
+00:04:48,006 --> 00:04:52,042
+In order to support the tablet mode
+
+53
+00:04:52,042 --> 00:04:58,911
+ first we will add a better support for the touch functions
+
+54
+00:04:58,911 --> 00:05:04,581
+In addition to the common single-finger touch click, long press and swipe
+
+55
+00:05:04,581 --> 00:05:09,373
+It also supports multi-finger and different touch gestures
+
+56
+00:05:09,373 --> 00:05:15,112
+It including from there will be different special effects and functions when sliding into each edge of the screen
+
+57
+00:05:15,112 --> 00:05:18,005
+In addition to enhancing the touch functions
+
+58
+00:05:18,005 --> 00:05:24,930
+We also plan to conduct a unified management of all input events in the system
+
+59
+00:05:24,930 --> 00:05:30,796
+.In addition to including keyboard and mouse, touch pad touch and stylus, etc
+
+60
+00:05:30,796 --> 00:05:39,780
+it will do a unified management to unify a function of various input methods
+
+61
+00:05:39,780 --> 00:05:46,807
+Our touch solution started with the Touchegg
+
+62
+00:05:46,807 --> 00:05:49,446
+The Touchegg mainly contains two parts
+
+63
+00:05:49,446 --> 00:05:54,000
+One is an application event filter implemented in X
+
+64
+00:05:54,000 --> 00:05:56,113
+and the Touchegg itself
+
+65
+00:05:56,113 --> 00:06:00,434
+Toucegg and X share a white list
+
+66
+00:06:00,434 --> 00:06:05,290
+and then X server will block the touch events of the applications in the white list
+
+67
+00:06:05,290 --> 00:06:09,908
+and according to the applications in the white list, Touchegg add touch support for them
+
+68
+00:06:09,908 --> 00:06:14,269
+The touch event is analyzed and processed by Touchegg
+
+69
+00:06:14,269 --> 00:06:16,241
+the corresponding gesture actions are executed
+
+70
+00:06:16,241 --> 00:06:19,489
+or the touch event is converted into an X mouse event
+
+71
+00:06:19,489 --> 00:06:21,829
+and then sent to the application in the white list
+
+72
+00:06:21,829 --> 00:06:24,130
+Several problems have been found
+
+73
+00:06:24,130 --> 00:06:31,088
+one is that some touch bugs cannot be fixed through Touchegg
+
+74
+00:06:31,088 --> 00:06:35,864
+and they need to be modified with X to deal with them, and it is very annoying
+
+75
+00:06:35,864 --> 00:06:38,581
+Secondly, in addition to X
+
+76
+00:06:38,581 --> 00:06:40,581
+we also ported the X+Touchegg solution to Wayland
+
+77
+00:06:40,581 --> 00:06:42,826
+to supported Wayland
+
+78
+00:06:42,826 --> 00:06:51,020
+but we still need to re-develop some of the displays and these input interfaces required by Touchegg.
+
+79
+00:06:51,020 --> 00:06:53,287
+There are so many problems
+
+80
+00:06:53,287 --> 00:06:56,725
+In terms of stability and security
+
+81
+00:06:56,725 --> 00:06:58,491
+Touchegg has relatively high power requirements
+
+82
+00:06:58,491 --> 00:07:02,156
+There may be some security risks
+
+83
+00:07:02,156 --> 00:07:08,032
+and some shortcomings that limit the stability of Wayland and X
+
+84
+00:07:08,032 --> 00:07:12,270
+So based on this, we finally gave up the Touchegg solution
+
+85
+00:07:12,270 --> 00:07:21,376
+After the implementation of Touchegg, we create a new solution called Touch Manager
+
+86
+00:07:21,376 --> 00:07:24,101
+The new solution is mainly divided into two parts
+
+87
+00:07:24,101 --> 00:07:25,763
+one is the global touch gesture
+
+88
+00:07:25,763 --> 00:07:27,586
+another is the internal gesture of the application
+
+89
+00:07:27,586 --> 00:07:30,911
+Global touch gestures are mainly implemented by Kwin
+
+90
+00:07:30,911 --> 00:07:35,504
+the global events are reached by libinput
+
+91
+00:07:35,504 --> 00:07:38,227
+and then these events are sent to the gesture manager
+
+92
+00:07:38,227 --> 00:07:42,359
+and the gesture manager will send the gestures to each gesture recognizer
+
+93
+00:07:42,359 --> 00:07:46,130
+Some recognizers merge into a gesture pool
+
+94
+00:07:46,130 --> 00:07:49,036
+as long as there is a gesture recognizer whose gesture is satisfied
+
+95
+00:07:49,036 --> 00:07:52,204
+then the gesture manager can perform the gesture action
+
+96
+00:07:52,204 --> 00:07:58,162
+and no longer continue to distribute touch events to other gesture recognizers
+
+97
+00:07:58,162 --> 00:08:02,342
+That is, move other gestures out of this gesture pool
+
+98
+00:08:02,342 --> 00:08:10,917
+In addition, the application of internal gestures is a gesture recognition that is realized through plug-ins
+
+99
+00:08:10,917 --> 00:08:13,772
+Take the Qt application as an example
+
+100
+00:08:13,772 --> 00:08:15,366
+Take the Qt application as an example
+
+101
+00:08:15,366 --> 00:08:18,949
+The gesture recognition plug-in is similar to a QPA plug-in
+
+102
+00:08:18,949 --> 00:08:25,243
+This plug-in will be loaded in all Qt applications
+
+103
+00:08:25,243 --> 00:08:28,125
+ all events sent to the qt application
+
+104
+00:08:28,125 --> 00:08:33,662
+will be monitored by this gesture plug-in before being acquired by the internal widget  of the application
+
+105
+00:08:33,662 --> 00:08:38,115
+This plug-in will analyze and process the behavior of touch events
+
+106
+00:08:38,115 --> 00:08:43,229
+and then under certain circumstances, it can achieve some gesture effects
+
+107
+00:08:43,229 --> 00:08:48,697
+For example, we have implemented an inertial scrolling for all scrollbar
+
+108
+00:08:48,697 --> 00:08:54,058
+The new scheme now has several advantages
+
+109
+00:08:54,058 --> 00:09:00,370
+one is that the new scheme mainly handles gestures inside Kwin
+
+110
+00:09:00,370 --> 00:09:04,672
+It no longer needs an external exposure interface like Touchegg
+
+111
+00:09:04,672 --> 00:09:07,255
+which is more secure  and the processing of the window
+
+112
+00:09:07,255 --> 00:09:13,706
+especially the special effects of the window movement will be very convenient
+
+113
+00:09:13,706 --> 00:09:18,965
+Then, the gesture registration of the new scheme is also more flexible
+
+114
+00:09:18,965 --> 00:09:20,331
+because it adopts the concept of a gesture pool
+
+115
+00:09:20,331 --> 00:09:24,261
+and each gesture corresponds to a separate gesture recognizer
+
+116
+00:09:24,261 --> 00:09:28,050
+which can be registered, unregistered and other specific gestures at will
+
+117
+00:09:28,050 --> 00:09:35,654
+Because the new solution is based on Kwin
+
+118
+00:09:35,654 --> 00:09:41,973
+it will have a better effect in supporting Wayland
+
+119
+00:09:41,973 --> 00:09:44,753
+ It can naturally get a higher authority
+
+120
+00:09:44,753 --> 00:09:49,886
+and it is also more controllable for some conflicts between the edge global time and the window title bar
+
+121
+00:09:49,886 --> 00:09:59,185
+Moreover, the current solution adopts the form of plug-in for Qt and GTK applications
+
+122
+00:09:59,185 --> 00:10:03,595
+Plug and play as long as some corresponding touch plug-ins are installed
+
+123
+00:10:03,595 --> 00:10:05,608
+It will keep the original files
+
+124
+00:10:05,608 --> 00:10:09,126
+If an application does not want to use the plug-in
+
+125
+00:10:09,126 --> 00:10:16,631
+then in fact the application only needs to declare an attribute to refuse to use the corresponding plug-in
+
+126
+00:10:16,631 --> 00:10:20,774
+At present, we have developed a plug-in for Qt and GTK,
+
+127
+00:10:20,774 --> 00:10:25,863
+which realizes some gesture animations in part of the program
+
+128
+00:10:25,863 --> 00:10:32,909
+The Touch Manager program is still in its infancy
+
+129
+00:10:32,909 --> 00:10:34,563
+Mainly by touch
+
+130
+00:10:34,563 --> 00:10:37,186
+Realization of gesture function by touch
+
+131
+00:10:37,186 --> 00:10:39,840
+There is still a lot of work to be done afterwards
+
+132
+00:10:39,840 --> 00:10:44,660
+For example, an animation effect that is a gesture will be added gradually
+
+133
+00:10:44,660 --> 00:10:47,663
+Then we also plan to put the touchpad
+
+134
+00:10:47,663 --> 00:10:50,916
+and pressure sensitive pens in the Touch Manager.
+
+135
+00:10:50,916 --> 00:10:59,784
+Will all touch some gesture events a from the design implementation and management in terms of
+
+136
+00:10:59,784 --> 00:11:02,030
+Support and management can also be unified
+
+137
+00:11:02,030 --> 00:11:08,165
+Two basic forms one is the PC mode and one is the tablet mode
+
+138
+00:11:08,165 --> 00:11:10,275
+In the real world
+
+139
+00:11:10,275 --> 00:11:11,966
+There are actually more like the tent model,
+
+140
+00:11:11,966 --> 00:11:20,446
+book mode, which will produce different states through different rotation angles and screen positions
+
+141
+00:11:20,446 --> 00:11:23,680
+These are the things that our operating systems need to respond to and work with
+
+142
+00:11:23,680 --> 00:11:32,019
+So we developed a state management component to listen for changes in the underlying hardware state
+
+143
+00:11:32,019 --> 00:11:35,714
+Such as the state of the gyroscope, laptop plug
+
+144
+00:11:35,714 --> 00:11:39,457
+and filter out the current required state data by calculation
+
+145
+00:11:39,457 --> 00:11:44,252
+Gives us the current state the system should be in
+
+146
+00:11:44,252 --> 00:11:46,713
+Synchronization provided to the application
+
+147
+00:11:46,713 --> 00:11:53,963
+This solution is actually managed by a session daemon at the beginning
+
+148
+00:11:53,963 --> 00:12:00,673
+The flipping action and some anti-shake handling are done in the session daemon
+
+149
+00:12:00,673 --> 00:12:06,340
+But session daemon as a configuration management service should not take on this function
+
+150
+00:12:06,340 --> 00:12:08,808
+And this is too coupled to the hardware
+
+151
+00:12:08,808 --> 00:12:13,858
+So we later made it a separate service for state management
+
+152
+00:12:13,858 --> 00:12:16,626
+This service mainly provides the following functions
+
+153
+00:12:16,626 --> 00:12:20,931
+One is to provide a basic interface for switching between PC and tablet mode
+
+154
+00:12:20,931 --> 00:12:27,129
+For all system components and applications such as input methods to use
+
+155
+00:12:27,129 --> 00:12:32,169
+Because the input method actually has to provide both PC mode and tablet mode
+
+156
+00:12:32,169 --> 00:12:35,400
+The function interface and response of these two modes of input method are completely different
+
+157
+00:12:35,400 --> 00:12:42,271
+So the input method needs to be adjusted in time with the pc mode and tablet mode
+
+158
+00:12:42,271 --> 00:12:48,683
+In addition, this model solution can shield the hardware differences
+
+159
+00:12:48,683 --> 00:12:54,001
+Unify different hardware platforms for uniform processing
+
+160
+00:12:54,001 --> 00:13:05,033
+In addition, we also want to unify the state management entrance and exit as well as the state switching logic for unified implementation management
+
+161
+00:13:05,033 --> 00:13:10,971
+This development of UKUI's new tablet mode of control in
+
+162
+00:13:10,971 --> 00:13:18,206
+We also participated and combined with a real product project to do
+
+163
+00:13:18,206 --> 00:13:25,360
+This is a Kylin, Intel, Tencent, HP for the education industry
+
+164
+00:13:25,360 --> 00:13:26,631
+For k12 users
+
+165
+00:13:26,631 --> 00:13:31,886
+Launched an exclusive educational learning notebook
+
+166
+00:13:31,886 --> 00:13:36,855
+This is a four-way cooperation
+
+167
+00:13:36,855 --> 00:13:44,352
+Intel is mainly responsible for the hardware driver chip including optimization from performance and power consumption
+
+168
+00:13:44,352 --> 00:13:48,566
+Then Tencent mainly provides one of the software implementations for the education industry
+
+169
+00:13:48,566 --> 00:13:58,134
+HP provided hardware design of the product including user product research and marketing
+
+170
+00:13:58,134 --> 00:14:00,842
+Kylin is mainly responsible for the whole system integration
+
+171
+00:14:00,842 --> 00:14:04,879
+Absorb and integrate the resources and technologies provided by the other three
+
+172
+00:14:04,879 --> 00:14:07,626
+Also apply UKUI to the latest technological achievements
+
+173
+00:14:07,626 --> 00:14:09,540
+to the latest products
+
+174
+00:14:09,540 --> 00:14:15,110
+This product is actually a multi-modal
+
+175
+00:14:15,110 --> 00:14:19,015
+It supports both PC and tablet modes
+
+176
+00:14:19,015 --> 00:14:24,780
+这就是对操作系统提出了一个更高的要求
+
+177
+00:14:24,780 --> 00:14:28,197
+This is placing a higher demand on the operating system
+
+178
+00:14:28,197 --> 00:14:31,262
+So we'll have UKUI's new tablet mode coming into being
+
+179
+00:14:31,262 --> 00:14:39,033
+In addition to the two main modes of PC and tablet
+
+180
+00:14:39,033 --> 00:14:43,631
+In fact, this whole device it's screen support 360 degree rotation
+
+181
+00:14:43,631 --> 00:14:47,993
+Then let's say it actually generates more patterns
+
+182
+00:14:47,993 --> 00:14:54,200
+For example, laptop mode, standing mode, tent mode, book mode and tablet mode
+
+183
+00:14:54,200 --> 00:15:01,780
+For such a variety of modes, UKUI is also tailored to the actual device and actual needs
+
+184
+00:15:01,780 --> 00:15:06,382
+A lot of optimization and restructuring of the flat mode and multi-mode switching
+
+185
+00:15:06,382 --> 00:15:12,997
+Finally, it provides a good multi-mode and free switching of a functional experience
+
+186
+00:15:12,997 --> 00:15:22,615
+This product is mainly for the online education industry
+
+187
+00:15:22,615 --> 00:15:27,341
+The current mass production by HP is already on sale
+
+188
+00:15:27,341 --> 00:15:32,870
+UKUI is equipped with a variety of in-depth optimizations and features
+
+189
+00:15:32,870 --> 00:15:38,223
+Some new features will also be synced to Ubuntu Kylin open source OS
+
+190
+00:15:38,223 --> 00:15:41,854
+We will continue to improve it in the future
+
+191
+00:15:41,854 --> 00:15:47,333
+Supports both PC and tablet modes
+
+192
+00:15:47,333 --> 00:15:51,297
+This notebook is able to support 360 degree rotation
+
+193
+00:15:51,297 --> 00:15:57,741
+When the flip of the 360-degree rotation screen flip will automatically cut back to maintain the flat mode
+
+194
+00:15:57,741 --> 00:16:00,829
+Also supports pressure sensitive pen in addition to touch
+
+195
+00:16:00,829 --> 00:16:06,541
+In addition to the two common PC and tablet modes it can also support the tent upside down mode
+
+196
+00:16:06,541 --> 00:16:10,070
+Even the 90 degree upright book mode
+
+197
+00:16:10,070 --> 00:16:18,104
+In addition to the validation of a basic function of our UKUI tablet mode in this product project
+
+198
+00:16:18,104 --> 00:16:22,929
+We have also made some other optimizations including for the input method
+
+199
+00:16:22,929 --> 00:16:27,281
+Because it supports both PC and tablet input
+
+200
+00:16:27,281 --> 00:16:39,776
+Need to do some optimization and some processing and enhancement of the input method framework
+
+201
+00:16:39,776 --> 00:16:43,654
+At the same time, the Bluetooth back connection has also done some optimization
+
+202
+00:16:43,654 --> 00:16:51,289
+The power consumption of the entire UKUI desktop environment has also been optimized through a round of
+
+203
+00:16:51,289 --> 00:16:57,558
+You can see that this data is in fact much more optimized for our 3.0 release
+
+204
+00:16:57,558 --> 00:17:05,212
+Here are some of the relevant features introduced in the flat mode
+
+205
+00:17:05,212 --> 00:17:07,937
+First PC mode
+
+206
+00:17:07,937 --> 00:17:13,567
+PC mode mainly enhances the interactive experience of touch
+
+207
+00:17:13,567 --> 00:17:20,997
+That is, some changes to the layout of the pattern, the size and the range of touch to do some optimization
+
+208
+00:17:20,997 --> 00:17:25,801
+Also added sidebar design
+
+209
+00:17:25,801 --> 00:17:33,091
+Because a lot of some messages pop-in, storage and mode of the quick switch all put into the sidebar this quick entrance
+
+210
+00:17:33,091 --> 00:17:38,844
+The completely new tablet mode has a much simpler UI design
+
+211
+00:17:38,844 --> 00:17:42,825
+The entire applications icon has been redesigned
+
+212
+00:17:42,825 --> 00:17:48,538
+The layout and spacing are all designed and implemented according to the operating experience of the tablet
+
+213
+00:17:48,538 --> 00:17:54,178
+Also added a widget plugin to an area of the homepage
+
+214
+00:17:54,178 --> 00:17:56,878
+You can place some common plug-ins
+
+215
+00:17:56,878 --> 00:18:00,905
+These small plug-ins also support pin
+
+216
+00:18:00,905 --> 00:18:06,221
+You can easily and quickly hide these small plugins by swiping
+
+217
+00:18:06,221 --> 00:18:11,914
+Both PC mode and tablet mode exist
+
+218
+00:18:11,914 --> 00:18:19,526
+Then its mode switching can be switched to the corresponding mode by automatically detecting the form of the hardware
+
+219
+00:18:19,526 --> 00:18:23,878
+Also users can go through the sidebar and click 
+
+220
+00:18:23,878 --> 00:18:33,049
+to manually switch between tablet mode and PC mode
+
+221
+00:18:33,049 --> 00:18:42,186
+At the same time one of the biggest differences of the tablet mode is the display of the application
+
+222
+00:18:42,186 --> 00:18:45,826
+The display of the flat mode is in the form of a single window with full screen
+
+223
+00:18:45,826 --> 00:18:51,586
+This allows the application to maximize a tablet state experience
+
+224
+00:18:51,586 --> 00:18:59,501
+Meanwhile, the sidebar can be called out by sliding out from the far right side of the screen to the left side
+
+225
+00:18:59,501 --> 00:19:01,660
+It contains a lot of shortcuts
+
+226
+00:19:01,660 --> 00:19:06,779
+Easy to switch between networks and modes and to adjust brightness and sound
+
+227
+00:19:06,779 --> 00:19:15,307
+The sidebar also includes a message organizer and message alert function
+
+228
+00:19:15,307 --> 00:19:21,954
+Convenient for users to quickly view system messages and application messages
+
+229
+00:19:21,954 --> 00:19:24,320
+It is also possible to jump in time
+
+230
+00:19:24,320 --> 00:19:31,627
+Another feature that comes with tablet mode is the new task switching, multitasking view
+
+231
+00:19:31,627 --> 00:19:39,783
+Due to the nature of tablet mode is the need for a touch-friendly multi-tasking view
+
+232
+00:19:39,783 --> 00:19:45,688
+Easily switch between tasks and close tasks using gestures
+
+233
+00:19:45,688 --> 00:19:54,907
+File Manager in tablet mode compared to PC mode
+
+234
+00:19:54,907 --> 00:19:59,095
+We didn't make too many interface changes to it
+
+235
+00:19:59,095 --> 00:20:03,169
+Rather, it is more optimized for his touch operation
+
+236
+00:20:03,169 --> 00:20:11,583
+Added checkboxes and some functions related to the right click with the finger selected
+
+237
+00:20:11,583 --> 00:20:15,032
+Making touch easier to use
+
+238
+00:20:15,032 --> 00:20:18,257
+We have also added a global search function
+
+239
+00:20:18,257 --> 00:20:23,064
+By swiping down with four fingers you can immediately drag out the global search
+
+240
+00:20:23,064 --> 00:20:28,193
+Accurate matching of English and Chinese and easy search of local and web resources
+
+241
+00:20:28,193 --> 00:20:35,771
+As you can see the tablet mode is actually a big job is to add a new way of interaction
+
+242
+00:20:35,771 --> 00:20:40,260
+On the basis of the traditional mouse keyboard and touchpad
+
+243
+00:20:40,260 --> 00:20:48,483
+Need to add touch gesture power and pressure sensitive pen support for OS usage
+
+244
+00:20:48,483 --> 00:20:52,416
+What we currently do is
+
+245
+00:20:52,416 --> 00:21:02,394
+The user can alternately use the mouse, gesture, touchpad, and pressure-sensitive pen in any PC mode and tablet mode to operate the device
+
+246
+00:21:02,394 --> 00:21:05,492
+While operating with hand gestures or pressure sensitive pen
+
+247
+00:21:05,492 --> 00:21:08,071
+The mouse pointer will be automatically hidden
+
+248
+00:21:08,071 --> 00:21:18,002
+And for the touchpad and we use the touch finger to operate basically the same functional behavior
+
+249
+00:21:18,002 --> 00:21:23,166
+and some of the above mentioned touch interaction on a tablet mode support
+
+250
+00:21:23,166 --> 00:21:26,482
+Here is also a brief introduction to two interesting little features
+
+251
+00:21:26,482 --> 00:21:30,599
+One is the eye protection mode, while we will automatically
+
+252
+00:21:30,599 --> 00:21:35,600
+UKUI will automatically switch between dark and light themes according to the current one time
+
+253
+00:21:35,600 --> 00:21:44,536
+Also supports user-defined screen brightness and theme color shades
+
+254
+00:21:44,536 --> 00:21:52,693
+In addition, we can identify whether the user is currently staring at the screen through AI recognition technology
+
+255
+00:21:52,693 --> 00:22:00,841
+When the user continuously looks at the screen for a certain time or the user's eyes are too close to the screen
+
+256
+00:22:00,841 --> 00:22:04,524
+We will also pop up a reminder when the sitting position is not correct
+
+257
+00:22:04,524 --> 00:22:07,617
+Remind users to use it for too long
+
+258
+00:22:07,617 --> 00:22:09,547
+Or sitting in the wrong position
+
+259
+00:22:09,547 --> 00:22:12,792
+Too close to the screen will harm the eyesight of such reminders
+
+260
+00:22:12,792 --> 00:22:24,255
+At the same time, we also support the intelligent use of scenes according to the user to adjust the color temperature to reduce a stimulation of the eyes
+
+261
+00:22:24,255 --> 00:22:29,207
+At the same time, we have a light sensor and a color sensor in conjunction with
+
+262
+00:22:29,207 --> 00:22:36,781
+We can automatically adjust the color temperature of the screen according to a scene the user is in
+
+263
+00:22:36,781 --> 00:22:39,519
+to reduce an irritation to the eyes
+
+264
+00:22:39,519 --> 00:22:46,106
+Another interesting feature point is the unified identity
+
+265
+00:22:46,106 --> 00:22:53,781
+Turning a traditional local account into a cloud-based WeChat account
+
+266
+00:22:53,781 --> 00:22:59,348
+Users can directly take out their cell phones and scan the code to log into the operating system
+
+267
+00:22:59,348 --> 00:23:04,659
+OK, the above briefly introduces a current status of our UKUI
+
+268
+00:23:04,659 --> 00:23:11,130
+The following briefly discusses one of our future plans for the near future
+
+269
+00:23:11,130 --> 00:23:18,515
+First of all, for the tablet mode, in fact, the big difference with the PC mode is that he needs a very powerful notification system
+
+270
+00:23:18,515 --> 00:23:23,964
+We will continue to improve the entire notification system.
+
+271
+00:23:23,964 --> 00:23:26,763
+Also the operation of a tablet will be further enhanced
+
+272
+00:23:26,763 --> 00:23:32,961
+For example, a drag and drop of desktop icons, group management including the display of some applications
+
+273
+00:23:32,961 --> 00:23:44,216
+One of the great features of the tablet mode is that it only shows one application in the foreground at the same time
+
+274
+00:23:44,216 --> 00:23:46,537
+The rest of the program is in the background
+
+275
+00:23:46,537 --> 00:23:50,782
+Then its application lifecycle management is completely different from the PC model
+
+276
+00:23:50,782 --> 00:23:54,156
+Subsequently we need to target it
+
+277
+00:23:54,156 --> 00:23:59,934
+At the same time, UKUI3.1 is still lacking in some animation effects in tablet mode
+
+278
+00:23:59,934 --> 00:24:01,857
+We will also continue to improve afterwards
+
+279
+00:24:01,857 --> 00:24:06,485
+Tablet mode can be more demanding on power management than PC mode
+
+280
+00:24:06,485 --> 00:24:09,486
+Because its scenario requires
+
+281
+00:24:09,486 --> 00:24:10,991
+low power consumption
+
+282
+00:24:10,991 --> 00:24:13,106
+Such a state of power saving mode
+
+283
+00:24:13,106 --> 00:24:18,457
+This is also where we need to focus on optimizing it later
+
+284
+00:24:18,457 --> 00:24:25,759
+If you input at the same time, one is pressure-sensitive pen and touch input method
+
+285
+00:24:25,759 --> 00:24:33,696
+The whole input experience is also the direction we need to further optimize
+
+286
+00:24:33,696 --> 00:24:42,104
+Also a support for AI including the entire desktop environment for voice and motion interaction
+
+287
+00:24:42,104 --> 00:24:46,316
+There is also an AI-based data search
+
+288
+00:24:46,316 --> 00:24:49,984
+These are one of the directions we need to explore subsequently
+
+289
+00:24:49,984 --> 00:24:52,504
+ok thank you all very much
+
+290
+00:24:52,504 --> 00:24:57,330
+The above is a technical share of mine today welcome to follow Ubuntu Kylin
+
+291
+00:24:57,330 --> 00:25:01,701
+Follow UKUI to get involved in the development of UKUI and Ubuntu Kylin
+
+292
+00:25:01,701 --> 00:25:04,911
+Okay, thank you all
+
