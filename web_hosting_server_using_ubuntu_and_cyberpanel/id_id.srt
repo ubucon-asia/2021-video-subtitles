@@ -1,0 +1,720 @@
+1
+00:00:00,200 --> 00:00:06,000
+(REMOVE THIS AFTER CORRECTION)
+
+2
+00:00:12,000 --> 00:00:19,600
+Halo semuanya,  Selamat pagi dan salam kenal semuanya saya akan membawakan
+
+3
+00:00:19,600 --> 00:00:25,500
+ materi web hosting server menggunakan dan cyberpanel
+
+4
+00:00:25,500 --> 00:00:34,400
+ perkenalkan dulu Nama saya dari yang disalurkan
+
+5
+00:00:34,400 --> 00:00:39,700
+ selaku bisnis di internet digital indonesia.
+
+6
+00:00:39,700 --> 00:00:46,000
+ Saya di divisi web dan hosting pengalaman saya biasanya
+
+7
+00:00:46,000 --> 00:00:54,400
+ berkaitan dengan Linux server maupun dengan jaringan
+
+8
+00:00:54,400 --> 00:00:58,300
+ internet seperti itu.
+
+9
+00:01:00,200 --> 00:01:10,300
+ Saya akan membawakan materi tentang dulu jadi inilah
+
+10
+00:01:10,300 --> 00:01:16,300
+ control panel menggunakan openlitespeed di mana
+
+11
+00:01:16,300 --> 00:01:22,600
+ kamu bisa website kamu kemudian kamu bisa menginstall
+
+12
+00:01:22,600 --> 00:01:24,100
+ WordPress dan banyak lagi.
+
+13
+00:01:24,100 --> 00:01:31,500
+ Iya apanya sih kamu nggak perlu saya ber penel untuk
+
+14
+00:01:31,500 --> 00:01:35,800
+ meng-install WordPress di atas openlitespeed ya
+
+15
+00:01:35,800 --> 00:01:40,800
+ tapi dengan cyberpanel ini kamu bisa dengan satu
+
+16
+00:01:40,800 --> 00:01:45,700
+ klik itu bikin kamu bisa menginstall WordPress kemudian
+
+17
+00:01:45,700 --> 00:01:52,000
+ bisa mengatur SSL yang bisa membuat banyak website
+
+18
+00:01:52,000 --> 00:01:59,300
+ lain mengganti PHP version sampai ke versi 8 dan juga
+
+19
+00:02:00,200 --> 00:02:06,100
+ Menggunakan File Manager yang built-in di cyberpanel
+
+20
+00:02:06,100 --> 00:02:11,100
+ jadi saya cukup menyarankan untuk temen-temen yang
+
+21
+00:02:11,100 --> 00:02:21,100
+ enggak ribet ya bisa menggunakan seperti ini kemudian
+
+22
+00:02:21,100 --> 00:02:30,100
+ Apa sih openlitespeed salah satu solusi website
+
+23
+00:02:30,100 --> 00:02:39,200
+ Sorry web server yang cepat itu adalah cuman temen
+
+24
+00:02:39,200 --> 00:02:43,600
+ nggak perlu bingung antara perbedaan antara openlitespeed
+
+25
+00:02:43,600 --> 00:02:51,700
+ dan speed semuanya fungsinya sama ya itu dan fungsinya
+
+26
+00:02:51,700 --> 00:02:57,400
+ sama dan open source juga.
+
+27
+00:03:00,100 --> 00:03:04,200
+ temen bisa menginstal openlitespeed di vps server
+
+28
+00:03:04,200 --> 00:03:09,500
+ yang running atau yang jalan di ubuntu 2004 atau di
+
+29
+00:03:09,500 --> 00:03:17,200
+ CentOS 8 Jadi kalau yang menggunakan Super Pel ini
+
+30
+00:03:17,200 --> 00:03:20,900
+ ketika kita menginstal cyberpanel nya di sebuah
+
+31
+00:03:20,900 --> 00:03:27,000
+ vps web interface nya untuk mengontrol openlitespeed
+
+32
+00:03:27,000 --> 00:03:38,800
+ ini ada juga salah satu pelatihan di Jabar peneliti
+
+33
+00:03:38,800 --> 00:03:50,000
+ to plug in LSD sini ini adalah but in one speed resolution
+
+34
+00:03:50,000 --> 00:03:59,100
+ ini juga berjalan dengan Apache server tapi ada beberapa
+
+35
+00:04:00,100 --> 00:04:05,200
+ Fitur yang hanya bisa jalan di openlitespeed server
+
+36
+00:04:05,200 --> 00:04:09,000
+ ketika kita menggunakan flashdisk ini.
+
+37
+00:04:09,000 --> 00:04:17,900
+ Nah kita langsung aja Apa sih yang perlu di siapkan
+
+38
+00:04:17,900 --> 00:04:25,600
+ ketika menginstal saya berkenal ini ya Ini sudah
+
+39
+00:04:25,600 --> 00:04:29,200
+ saya siapkan sebuah vps yang Ketika saya menyiapkan
+
+40
+00:04:29,200 --> 00:04:36,500
+ materi ini kita saya menyiapkan BPS jadi masih repot
+
+41
+00:04:36,500 --> 00:04:43,000
+ ya potnya menggunakan port 22 untuk SS hanya Nah kita
+
+42
+00:04:43,000 --> 00:04:48,800
+ bisa mengakses IPS tersebut ketika menginstal bisa
+
+43
+00:04:48,800 --> 00:04:52,900
+ menggunakan nanti Terminal yang ada di ubuntu atau
+
+44
+00:04:52,900 --> 00:04:59,500
+ di sini saya mencontohkan menggunakan putih seperti
+
+45
+00:05:00,100 --> 00:05:07,000
+ Jadi langsung saja diakses menggunakan diserut
+
+46
+00:05:07,000 --> 00:05:11,200
+ kemudian IP address-nya.
+
+47
+00:05:11,200 --> 00:05:29,200
+ Berapa ini tampilan ketika sudah berhasil menggunakan
+
+48
+00:05:29,200 --> 00:05:52,400
+ Ubuntu 2004 2 seperti ini kenek ini ada komen pertama
+
+49
+00:06:00,100 --> 00:06:07,000
+ ketik saja comment ini di Asia yang sudah berakhir
+
+50
+00:06:07,000 --> 00:06:13,200
+ tadi jadi kita pertama remote dulu ke SSH menggunakan
+
+51
+00:06:13,200 --> 00:06:22,100
+ Terminal atau putih seperti itu jika sudah berhasil
+
+52
+00:06:22,100 --> 00:06:47,700
+ SSC lalu Ketikan ini di sini juga kita tinggal mengikuti
+
+53
+00:06:47,700 --> 00:06:57,700
+ langkah-langkah yang ada di layar terminal ya ketika
+
+54
+00:07:00,100 --> 00:07:10,100
+ otomatis di sini langkahnya adalah yang pertama
+
+55
+00:07:10,100 --> 00:07:14,500
+ adalah nanti kita mengikuti langkah-langkah yang
+
+56
+00:07:14,500 --> 00:07:32,300
+ di layar itu jika sudah berhasil menginstal nanti
+
+57
+00:07:32,300 --> 00:07:39,500
+ kita akan mendapatkan info sebagai berikutnya visit
+
+58
+00:07:39,500 --> 00:07:52,900
+ https IP server anda dan menggunakan port 80 90 isian
+
+59
+00:07:52,900 --> 00:07:58,500
+ dia kan ada username apa panel passwordnya apa kemudian
+
+60
+00:08:00,000 --> 00:08:19,300
+ Apa dan skill passwordnya apa ini jadi kita bisa juga
+
+61
+00:08:19,300 --> 00:08:28,300
+ update siapa panelnya dan openlitespeed nya ya ini
+
+62
+00:08:28,300 --> 00:08:32,100
+ adalah command untuk mengupgrade manusia purba
+
+63
+00:08:32,100 --> 00:08:37,800
+ menggunakan yang table openlitespeed nya versi
+
+64
+00:08:37,800 --> 00:08:38,900
+ 1.6
+
+65
+00:08:38,900 --> 00:08:44,800
+ sekian yang sebel ya kamu bisa mengupgrade keduanya
+
+66
+00:08:44,800 --> 00:08:49,200
+ dengan menggunakan command berikut seperti ini
+
+67
+00:08:49,200 --> 00:08:50,800
+ ya.
+
+68
+00:08:50,800 --> 00:08:57,600
+ Komen ini merupakan momen yang digunakan untuk mengupgrade
+
+69
+00:09:00,000 --> 00:09:04,100
+ Siapa panel dan Open listriknya tinggal copykan
+
+70
+00:09:04,100 --> 00:09:09,200
+ comment ini ke layar Terminal kamu dan kamu akan bisa
+
+71
+00:09:09,200 --> 00:09:19,300
+ melakukan update skor Final dan oven listrik ada
+
+72
+00:09:19,300 --> 00:09:28,500
+ juga cara yang lain ya Jadi untuk update openlitespeed
+
+73
+00:09:28,500 --> 00:09:36,900
+ ke yang paling sebel awalnya Kita dikit Update dulu
+
+74
+00:09:36,900 --> 00:09:41,000
+ kemudian apt-get upgrade.
+
+75
+00:09:41,000 --> 00:09:50,300
+ Ya udah kita bisa men-download atau kita juga bisa
+
+76
+00:09:50,300 --> 00:09:53,000
+ mendownload sendiri versinya menggunakan versi
+
+77
+00:09:53,000 --> 00:09:54,800
+ yang tar.gz
+
+78
+00:10:00,000 --> 00:10:05,700
+ download pesawat kita ekstrak hasil download-an
+
+79
+00:10:05,700 --> 00:10:09,000
+ nya kemudian kita masuk ke folder openlitespeed
+
+80
+00:10:09,000 --> 00:10:16,000
+ nya lalu kita install 2 komen yang diatasnya Yang
+
+81
+00:10:16,000 --> 00:10:22,400
+ komen yang di atas ini akan meng-update secara otomatis
+
+82
+00:10:22,400 --> 00:10:29,300
+ ya Ibu kalau yang bawah ini kita instal sendiri via
+
+83
+00:10:29,300 --> 00:10:33,000
+ paket yang tersedia di websitenya openlitespeed
+
+84
+00:10:33,000 --> 00:10:59,800
+ nah saya akan mencontohkan bagaimana kita proses
+
+85
+00:11:00,000 --> 00:11:06,700
+ Install sebuah website di mana disini saya menggunakan
+
+86
+00:11:06,700 --> 00:11:12,900
+ WordPress untuk contohnya yang simpel saja pertama
+
+87
+00:11:12,900 --> 00:11:24,600
+ kita harus pointing DNS record yang tersedia menggunakan
+
+88
+00:11:24,600 --> 00:11:34,600
+ digital Ocean untuk ips-nya jadi saya Arahkan teman
+
+89
+00:11:34,600 --> 00:11:49,500
+ saya ke IP public si digitalocean diri kita setelah
+
+90
+00:11:49,500 --> 00:11:57,600
+ berhasil pointing domain kemudian akses ke server
+
+91
+00:11:57,600 --> 00:11:59,000
+ panelnya ya.
+
+92
+00:11:59,900 --> 00:12:08,900
+ Dengan mengakses http IP address-nya ditambahkan
+
+93
+00:12:08,900 --> 00:12:14,400
+ dengan port 80 90 seperti itu.
+
+94
+00:12:14,400 --> 00:12:28,000
+ Nah ini adalah tampilan login cyberpanel nya ya kita
+
+95
+00:12:28,000 --> 00:12:31,700
+ ketikan username nya ketika kita ketikan passwordnya
+
+96
+00:12:31,700 --> 00:12:40,900
+ jika kita lupa jika kita lupa password panel dari
+
+97
+00:12:40,900 --> 00:12:46,400
+ cyberpanel ini kita bisa ngecek menggunakan perintah
+
+98
+00:12:46,400 --> 00:12:51,000
+ sudo kab.net
+
+99
+00:12:51,000 --> 00:12:55,400
+ speed underscore password disini akan tersimpan
+
+100
+00:12:59,900 --> 00:13:03,600
+ Kita suatu saat tiba-tiba lupa kita bisa ngecek di
+
+101
+00:13:03,600 --> 00:13:14,000
+ menggunakan command ini ya sudah berhasil login
+
+102
+00:13:14,000 --> 00:13:20,600
+ yang berhasil login di panelnya dashboard panel
+
+103
+00:13:20,600 --> 00:13:29,400
+ kita bisa menuju ke website disini kita Klik tombol
+
+104
+00:13:29,400 --> 00:13:39,500
+ website untuk memulai lalu kita klik create website.
+
+105
+00:13:39,500 --> 00:13:58,600
+ Nah ini kita akan menggunakan mode Depot ya.
+
+106
+00:13:59,900 --> 00:14:05,600
+ masukkan komenmu email dan PHP version yang akan
+
+107
+00:14:05,600 --> 00:14:15,200
+ kita pakai select owner pemain NEMnya dimasukkan
+
+108
+00:14:15,200 --> 00:14:21,600
+ kemudian email your email address dan versi PHP nyangka
+
+109
+00:14:21,600 --> 00:14:28,800
+ kita pakai Berapa adik ada fitur tambahan kita bisa
+
+110
+00:14:28,800 --> 00:14:37,800
+ menggunakan SSL dan dikirim ini untuk email tambahkan
+
+111
+00:14:37,800 --> 00:14:48,500
+ 2 poin ini ini tampilannya jadi kita isi semua mulai
+
+112
+00:14:48,500 --> 00:14:53,000
+ dari select select on earth temenin email select
+
+113
+00:14:53,000 --> 00:14:57,500
+ PHP PHP Apa yang akan kita pakai kemudian centang
+
+114
+00:14:59,800 --> 00:15:05,100
+ Halo jika sudah berhasil kita klik create website
+
+115
+00:15:05,100 --> 00:15:29,900
+ Nah setelah berhasil membuat akun nya ya akun untuk
+
+116
+00:15:29,900 --> 00:15:36,400
+ websitenya kemudian selanjutnya kita akan membuat
+
+117
+00:15:36,400 --> 00:15:40,600
+ WordPress nya menginstal WordPress nya di akun Google
+
+118
+00:15:40,600 --> 00:15:45,600
+ yang sudah kita buat tadi menggunakan aplikasi installer
+
+119
+00:15:45,600 --> 00:15:51,300
+ jadi aplikasi share nya itu sudah input WordPress
+
+120
+00:15:59,800 --> 00:16:20,500
+ Dengan tambahan fitur NFC di php 8 nah,
+
+121
+00:16:20,500 --> 00:16:25,600
+ ini kita isi blog itunya apa usernya apa login passwordnya
+
+122
+00:16:25,600 --> 00:16:35,600
+ apa email untuk ini kita kosongi saja untuk ada foto
+
+123
+00:16:35,600 --> 00:16:40,200
+ kalau kita ada folder khusus kita bisa isikan nama
+
+124
+00:16:40,200 --> 00:16:44,100
+ foldernya apa kita menggunakan Depot lebih baik
+
+125
+00:16:44,100 --> 00:16:44,800
+ di kosongi saja.
+
+126
+00:16:44,800 --> 00:16:59,500
+ Nah ini tampilannya klik install now jika sudah yakin
+
+127
+00:16:59,800 --> 00:17:05,400
+ Settingan yang kita isikan ya Halo jika sudah berhasil
+
+128
+00:17:05,400 --> 00:17:07,900
+ kita bisa mengaksesnya dengan nama domain nya apa
+
+129
+00:17:07,900 --> 00:17:11,100
+ flash BB login.php.
+
+130
+00:17:11,100 --> 00:17:23,100
+ Nah ini ini adalah langkah-langkah untuk menginap
+
+131
+00:17:23,100 --> 00:17:31,000
+ les Inggris di channel kita yang pertama kita harus
+
+132
+00:17:31,000 --> 00:17:35,200
+ pastikan bahwa DNS nya sudah betul terkonfigurasi
+
+133
+00:17:35,200 --> 00:17:43,400
+ menggunakan fitur DNS checker kita cek dulu menggunakan
+
+134
+00:17:43,400 --> 00:17:51,900
+ fitur di Instagram atau Edge ya lalu kita jika sudah
+
+135
+00:17:51,900 --> 00:17:56,500
+ yakin bahwa dompetnya terpenting dengan benar login
+
+136
+00:17:59,800 --> 00:18:11,700
+ ciri panel ikuti tombol-tombol ini jadi menuju ke
+
+137
+00:18:11,700 --> 00:18:18,700
+ menu SSL klik menu Excel kemudian pilih website yang
+
+138
+00:18:18,700 --> 00:18:27,300
+ akan kita pasang SSL nya kemudian klik tissue SSL
+
+139
+00:18:27,300 --> 00:18:50,800
+ nah ini tips and trik untuk display setting secara
+
+140
+00:18:50,800 --> 00:18:54,400
+ otomatis lesnya sudah terinstal kita ketika kita
+
+141
+00:18:59,700 --> 00:19:04,300
+ Jadi kita bisa meng custom settingannya pertama
+
+142
+00:19:04,300 --> 00:19:08,100
+ kita menuju ke RSJ settingnya.
+
+143
+00:19:08,100 --> 00:19:21,500
+ Jika kita mau ada setting-an yang Advance atau khusus
+
+144
+00:19:21,500 --> 00:19:33,100
+ ya kita bisa mensetting http duanya menjadi on kemudian
+
+145
+00:19:33,100 --> 00:19:39,600
+ kita untuk kita bisa menghapus query string kemudian
+
+146
+00:19:59,700 --> 00:20:14,600
+ Untuk merestore Wapres lama dari host yang lain juga
+
+147
+00:20:14,600 --> 00:20:24,000
+ yang mode ini tidak untuk sesi ini tidak untuk mulai
+
+148
+00:20:24,000 --> 00:20:35,500
+ harus sudah memahami tentang kemudian mengkompres
+
+149
+00:20:35,500 --> 00:20:41,200
+ dan lambang ekstrak Wapres direktori yang lama ke
+
+150
+00:20:41,200 --> 00:20:41,900
+ yang baru.
+
+151
+00:20:41,900 --> 00:20:52,900
+ Jadi ada beberapa rencana untuk memindah WordPress
+
+152
+00:20:59,700 --> 00:21:06,100
+ press server yang baru pertama-tama kita harus backup
+
+153
+00:21:06,100 --> 00:21:15,400
+ dulu menggunakan fitur tools di pick up hasil kita
+
+154
+00:21:15,400 --> 00:21:22,300
+ hasil PK punya berhasil kemudian Hasil tersebut
+
+155
+00:21:22,300 --> 00:21:28,000
+ di upload ke yang baru menggunakan smtp server atau
+
+156
+00:21:28,000 --> 00:21:33,600
+ yang lain atau asing juga bisa kemudian di server
+
+157
+00:21:33,600 --> 00:21:44,000
+ yang baru kita restart Tapi perlu kita ubah dulu di
+
+158
+00:21:44,000 --> 00:21:49,100
+ settingan PHP 8 nya di milis PHP masuk ke menu basic
+
+159
+00:21:49,100 --> 00:21:51,900
+ pilih versi yang 8.0
+
+160
+00:21:51,900 --> 00:21:57,800
+ kemudian pos Maksudnya kita besarkan karena pasti
+
+161
+00:21:59,600 --> 00:22:07,200
+ Hasil kompres file nya akan lebih dari 10 MB seperti
+
+162
+00:22:07,200 --> 00:22:13,900
+ itu setelah itu dia berhasil di restore.
+
+163
+00:22:13,900 --> 00:22:27,000
+ Nah di fitur cyberpanel ini juga ada fitur face Maknya
+
+164
+00:22:27,000 --> 00:22:34,100
+ ya yang kita coba tes itu adalah Rp10.000
+
+165
+00:22:34,100 --> 00:22:41,900
+ klien per S di homepage dan rata-rata waktunya adalah
+
+166
+00:22:41,900 --> 00:22:55,000
+ 100 milisekon jadi bisa berhasil dites Rp20.000
+
+167
+00:22:59,600 --> 00:23:09,000
+ second untuk 10 sekon pertama Ini hasilnya tampilannya
+
+168
+00:23:09,000 --> 00:23:32,700
+ seperti ini Nah yang kedua kita coba tes total 10000
+
+169
+00:23:32,700 --> 00:23:45,300
+ client di halaman pos itu kita cepat secara 20 detik
+
+170
+00:23:59,600 --> 00:24:07,100
+ jadi paling tidak kita mendapatkan 10000 hits per
+
+171
+00:24:07,100 --> 00:24:14,200
+ second di WordPress kita dan menggunakan vps server
+
+172
+00:24:14,200 --> 00:24:23,800
+ panel digital Ocean dengan harga 5 dolar per bulan
+
+173
+00:24:23,800 --> 00:24:38,800
+ itu cukup Jadi sebenarnya menggunakan Ubuntu berobat
+
+174
+00:24:38,800 --> 00:24:47,500
+ 5 dolar harganya di digitalocean dan itu hasil tesnya
+
+175
+00:24:47,500 --> 00:24:57,100
+ bagus t1 dan t2 dan ini bisa dicoba oleh teman-teman
+
+176
+00:24:59,500 --> 00:25:16,400
+ Untuk prestasi A2 2021 Oke demikian presentasi saya
+
+177
+00:25:16,400 --> 00:25:21,100
+ terima kasih teman-teman bisa kontak saya melalui
+
+178
+00:25:21,100 --> 00:25:28,200
+ email di kontak dari Edi atau di Instagram saya tarian
+
+179
+00:25:28,200 --> 00:25:29,300
+ dot my.id
+
+180
+00:25:29,300 --> 00:25:39,500
+ ya Selamat malam Selamat pagi terima kasih.
+

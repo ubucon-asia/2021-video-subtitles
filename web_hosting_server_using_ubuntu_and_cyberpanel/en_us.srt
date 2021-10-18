@@ -1,0 +1,680 @@
+1
+00:00:12,000 --> 00:00:18,600
+Hello everyone, Good morning and greetings to all.
+
+2
+00:00:18,600 --> 00:00:25,500
+Today I'm gonna talk about Web Hosting Server using Ubuntu and Cyberpanel
+
+3
+00:00:30,172 --> 00:00:34,400
+But let me introduce myself first. My name is Darian Rizaludin
+
+4
+00:00:34,400 --> 00:00:39,700
+Bussiness development at Radnet Digital Indonesia
+
+5
+00:00:39,700 --> 00:00:45,193
+I'm in the web and hosting division
+
+6
+00:00:45,193 --> 00:00:56,483
+So I often doing things related to Linux administration servers and network
+
+7
+00:01:00,200 --> 00:01:10,300
+Let's start with Cyberpanel first.
+
+8
+00:01:10,300 --> 00:01:16,300
+Cyberpanel is a control panel of OpenLiteSpeed...
+
+9
+00:01:16,300 --> 00:01:22,600
+that you can manage your websites, install Wordpress and more
+
+10
+00:01:24,100 --> 00:01:31,500
+Actually, you don't need Cyberpanel to install Wordpress...
+
+11
+00:01:31,500 --> 00:01:35,800
+over OpenLiteSpeed
+
+12
+00:01:35,800 --> 00:01:40,800
+but with this Cyberpanel, you can do so much things with one click like
+
+13
+00:01:40,800 --> 00:01:45,700
+install WordPress and then
+
+14
+00:01:45,700 --> 00:01:52,000
+set up SSL, make many other webistes,
+
+15
+00:01:52,000 --> 00:01:59,300
+change PHP version up to version 8 and also
+
+16
+00:02:00,200 --> 00:02:06,100
+using the File Manager which is built-in feature in Cyberpanel.
+
+17
+00:02:06,100 --> 00:02:11,100
+I simply recommend this for those who want
+
+18
+00:02:11,100 --> 00:02:20,371
+to keep it easy and simple.
+
+19
+00:02:20,970 --> 00:02:26,100
+What is OpenLiteSpeed then?
+
+20
+00:02:26,100 --> 00:02:39,200
+It is one of the fastest web server.
+
+21
+00:02:39,200 --> 00:02:44,121
+You don't need to be confused of the differences between OpenLiteSpeed and Lite Speed.
+
+22
+00:02:44,121 --> 00:02:51,231
+All have the same function
+
+23
+00:02:51,700 --> 00:02:57,400
+and it's open source too.
+
+24
+00:03:00,100 --> 00:03:04,200
+So you can install OpenLiteSpeed on a vps server
+
+25
+00:03:04,200 --> 00:03:09,500
+that is running on Ubuntu 20.04 or on
+
+26
+00:03:09,500 --> 00:03:11,200
+CentOS 8
+
+27
+00:03:12,200 --> 00:03:20,900
+So when you install the Cyberpanel on a vps,
+
+28
+00:03:20,900 --> 00:03:27,000
+there will be a web interface to control OpenLiteSpeed
+
+29
+00:03:34,420 --> 00:03:45,127
+There is also a plugin in Cyberpanel called LSCache.
+
+30
+00:03:45,127 --> 00:03:50,000
+It is actually a built in OpenLiteSpeed cache solution.
+
+31
+00:03:50,000 --> 00:03:59,100
+It also runs with Apache and NginX server
+
+32
+00:04:00,100 --> 00:04:06,000
+but some features can only run on OpenLiteSpeed server
+
+33
+00:04:09,000 --> 00:04:17,900
+Now, let's just go ahead. What do you need to prepare
+
+34
+00:04:17,900 --> 00:04:25,600
+when installing this Cyberpanel.
+
+35
+00:04:25,808 --> 00:04:33,652
+I have prepared a vps when I writing this slides.
+
+36
+00:04:33,652 --> 00:04:36,500
+So most of them are in default settings.
+
+37
+00:04:36,500 --> 00:04:43,000
+We use the port 22 for SSH.
+
+38
+00:04:43,000 --> 00:04:48,800
+Now we can access the vps and use it to install.
+
+39
+00:04:48,800 --> 00:04:52,900
+You can use terminal on Ubuntu or
+
+40
+00:04:52,900 --> 00:04:59,500
+here I give an example using PuTTY
+
+41
+00:05:00,100 --> 00:05:07,000
+Just access it using user root
+
+42
+00:05:07,000 --> 00:05:11,200
+then the IP address.
+
+43
+00:05:19,200 --> 00:05:29,200
+This is how it looks when you have successfully connect with SSH.
+
+44
+00:05:29,200 --> 00:05:35,141
+I am using Ubuntu 20.04.2.
+
+45
+00:05:50,085 --> 00:05:59,479
+This is the first command we need to type to install Cyberpanel
+
+46
+00:06:00,100 --> 00:06:07,000
+just type this comment and used on ssh that already connect
+
+47
+00:06:07,000 --> 00:06:13,200
+earlier so we first remotely to SSH using
+
+48
+00:06:13,200 --> 00:06:22,100
+Terminal or PuTTY
+
+49
+00:06:22,100 --> 00:06:27,700
+If it successful then type this here too
+
+50
+00:06:47,700 --> 00:07:00,000
+We just need to follow these steps
+
+51
+00:07:30,606 --> 00:07:32,316
+If installation is success
+
+52
+00:07:32,316 --> 00:07:39,500
+we will get info like this
+
+53
+00:07:39,500 --> 00:07:52,900
+visit https://your server's IP and use the port 8090
+
+54
+00:07:52,900 --> 00:08:06,129
+It'll also show panel username, panel password, mysql username and mysql password
+
+55
+00:08:14,379 --> 00:08:28,300
+We can update the Cyberpanel and the OpenLiteSpeed
+
+56
+00:08:28,300 --> 00:08:32,100
+Here is a command to upgrade the version
+
+57
+00:08:32,100 --> 00:08:37,800
+using the stable OpenLiteSpeed (v1.6)
+
+58
+00:08:38,900 --> 00:08:44,800
+You can upgrade both
+
+59
+00:08:44,800 --> 00:08:49,200
+by using the following command like this command
+
+60
+00:08:49,200 --> 00:08:57,600
+This is a command that is used to upgrade
+
+61
+00:09:00,000 --> 00:09:04,100
+Cyberpanel and OpenLiteSpeed. Just copy this and
+
+62
+00:09:04,100 --> 00:09:09,200
+paste to your terminal, and you will be able
+
+63
+00:09:09,200 --> 00:09:19,300
+to update the Cyberpanel and OpenLiteSpeed
+
+64
+00:09:19,300 --> 00:09:28,500
+There is also other ways to update OpenLiteSpeed
+
+65
+00:09:28,500 --> 00:09:34,505
+to the most recent stable version.
+
+66
+00:09:34,505 --> 00:09:37,785
+Type "apt-get update" first and
+
+67
+00:09:37,785 --> 00:09:41,000
+then apt-get upgrade.
+
+68
+00:09:41,469 --> 00:09:52,982
+Or we can download with other way (tar.gz)
+
+69
+00:09:58,750 --> 00:10:12,209
+After download using wget, we can extract and then move it its folder and install.
+
+70
+00:10:16,000 --> 00:10:22,400
+So the first command will update the package automatically
+
+71
+00:10:22,400 --> 00:10:29,300
+and the second one for update it manually
+
+72
+00:10:29,300 --> 00:10:33,000
+via package that available on the openlitespeed website,
+
+73
+00:10:55,387 --> 00:10:59,845
+I will give an example about how to 
+
+74
+00:11:00,000 --> 00:11:06,700
+install a website in Cyberpanel
+
+75
+00:11:06,700 --> 00:11:12,900
+I'll use WordPress for a simple example.
+
+76
+00:11:12,900 --> 00:11:24,600
+First we have to point to the available DNS records
+
+77
+00:11:24,600 --> 00:11:34,600
+In my case, I'm using digital ocean for the vps
+
+78
+00:11:34,600 --> 00:11:49,500
+I pointing my domain to the digitalocean's public IP.
+
+79
+00:11:49,500 --> 00:11:57,600
+After successfully pointing the domain, then access the Cyberpanel
+
+80
+00:11:59,900 --> 00:12:08,900
+by accessing the http://IP address plus
+
+81
+00:12:08,900 --> 00:12:14,400
+port 8090. Just like that.
+
+82
+00:12:20,883 --> 00:12:28,000
+Well this is his cyberpanel login view.
+
+83
+00:12:28,000 --> 00:12:31,700
+Type the username and the password.
+
+84
+00:12:31,700 --> 00:12:40,900
+If we forget the Cyberpanel password
+
+85
+00:12:40,900 --> 00:12:46,400
+We can use command
+
+86
+00:12:46,400 --> 00:12:53,525
+sudo cat .litespeed_password
+
+87
+00:12:55,448 --> 00:12:59,148
+Here we can see the stored username and password
+
+88
+00:13:00,000 --> 00:13:10,400
+You can use that comment in case you forget.
+
+89
+00:13:12,000 --> 00:13:18,600
+This is when successfully logged in on the dashboard panel,
+
+90
+00:13:20,600 --> 00:13:29,400
+we can go to the website here, we click the
+
+91
+00:13:29,400 --> 00:13:39,500
+website button to start then we click create website.
+
+92
+00:13:39,500 --> 00:13:58,600
+Now, we're going to use Default mode.
+
+93
+00:13:59,900 --> 00:14:05,600
+enter your domain email and PHP version that
+
+94
+00:14:05,600 --> 00:14:12,206
+we will use
+
+95
+00:14:12,206 --> 00:14:21,600
+Select owner, choose Admin, domain, then email your email address and the PHP version we will use.
+
+96
+00:14:21,600 --> 00:14:28,800
+There is also optional feature like SSL
+
+97
+00:14:28,800 --> 00:14:39,727
+and DKIM for email security.
+
+98
+00:14:41,576 --> 00:14:48,500
+Here is the interface. Fill up this form
+
+99
+00:14:48,500 --> 00:14:53,000
+from select package, select on owner, domain name, email
+
+100
+00:14:53,000 --> 00:15:02,837
+and what PHP version will we use then tick DKIM support and SSL
+
+101
+00:15:02,837 --> 00:15:07,287
+Then click Create Website
+
+102
+00:15:20,487 --> 00:15:29,900
+Now after successfully creating an account
+
+103
+00:15:29,900 --> 00:15:36,400
+for website, then next we will
+
+104
+00:15:36,400 --> 00:15:40,600
+install WordPress on the that account
+
+105
+00:15:40,600 --> 00:15:45,600
+that we created earlier using the installer application,
+
+106
+00:15:45,600 --> 00:15:53,044
+so the application installer already include WordPress and LSCache.
+
+107
+00:15:57,925 --> 00:16:13,262
+We are going to install WordPress with the addition of the LSCache feature in php 8
+
+108
+00:16:20,212 --> 00:16:25,368
+Now we fill in the blog, blog title, login user and the login password
+
+109
+00:16:25,368 --> 00:16:30,365
+what is the email for this.
+
+110
+00:16:30,365 --> 00:16:35,600
+Leave it blank for path
+
+111
+00:16:35,600 --> 00:16:40,200
+if we have our special folder can fill in the name of the
+
+112
+00:16:40,200 --> 00:16:44,100
+folder, if we use default, it's better
+
+113
+00:16:44,100 --> 00:16:44,800
+to just leave it blank.
+
+114
+00:16:50,007 --> 00:16:59,500
+Now, this is how it looks, click install now, if you are sure of the
+
+115
+00:16:59,800 --> 00:17:05,400
+settings that we have entered. 
+
+116
+00:17:05,400 --> 00:17:07,900
+If it successful we can access it with the domain name slash
+
+117
+00:17:07,900 --> 00:17:15,396
+wp-login.php
+
+118
+00:17:16,516 --> 00:17:23,100
+Now, these are the steps for enabling
+
+119
+00:17:23,100 --> 00:17:31,000
+LetsEncrypt SSL on our Cyberpanel.
+
+120
+00:17:31,000 --> 00:17:35,200
+First, we need to make sure that the DNS is properly configured
+
+121
+00:17:35,200 --> 00:17:43,400
+using the DNS checker feature.
+
+122
+00:17:43,400 --> 00:17:51,900
+Check it using dnschecker.org
+
+123
+00:17:51,900 --> 00:17:59,800
+After that, just login to our Cyberpanel dashboard.
+
+124
+00:17:59,800 --> 00:18:11,700
+On the left side of the panel, follow these (flow) buttons
+
+125
+00:18:11,700 --> 00:18:18,700
+click menu SSL > manage SSL  > and then select the website that
+
+126
+00:18:18,700 --> 00:18:29,148
+we want to attach SSL on it and then click the Issus SSL.
+
+127
+00:18:39,120 --> 00:18:50,800
+Ah, this is tips & trick for LSCache plugin settings.
+
+128
+00:18:50,800 --> 00:18:58,540
+LSCache itself is automatically installed when we success install Wordpress.
+
+129
+00:18:59,700 --> 00:19:04,300
+So we can customize the settings.
+
+130
+00:19:04,300 --> 00:19:08,100
+First, we go to the LSCache setting.
+
+131
+00:19:08,100 --> 00:19:21,500
+If we want advanced or special settings,
+
+132
+00:19:21,500 --> 00:19:33,100
+we can set http2 to on then
+
+133
+00:19:33,100 --> 00:19:39,600
+we can delete the query string then remove wordpress emoji.
+
+134
+00:19:47,593 --> 00:19:48,351
+etc
+
+135
+00:19:59,700 --> 00:20:14,600
+We can restore the old Wordpress from another host too
+
+136
+00:20:14,600 --> 00:20:24,000
+but this is not for beginner
+
+137
+00:20:24,000 --> 00:20:35,500
+because you must understand about SFTP,
+
+138
+00:20:35,500 --> 00:20:41,200
+compressing and extracting Wordpress directory to
+
+139
+00:20:41,200 --> 00:20:41,900
+the new one.
+
+140
+00:20:42,343 --> 00:21:02,404
+So there are several plans to move the new WordPress.
+
+141
+00:21:02,404 --> 00:21:06,100
+First of all we have to backup
+
+142
+00:21:06,100 --> 00:21:15,400
+using the tools feature.
+
+143
+00:21:15,400 --> 00:21:22,300
+After the backup process have been successful, then the backup file needs to be 
+
+144
+00:21:22,300 --> 00:21:28,000
+uploaded to a new one using an SFTP server or
+
+145
+00:21:28,000 --> 00:21:33,600
+another thing like rsync.
+
+146
+00:21:33,600 --> 00:21:44,000
+In the new server, we need to restore but we need to change PHP 8 settings on the
+
+147
+00:21:44,000 --> 00:21:49,100
+manage PHP > Basic > 
+
+148
+00:21:49,100 --> 00:21:51,900
+select the version 8.0 > 
+
+149
+00:21:51,900 --> 00:21:57,800
+then increase the post_max_size
+
+150
+00:21:58,871 --> 00:22:06,471
+Because the compressed wordpress will be more than 10 MB.
+
+151
+00:22:07,200 --> 00:22:13,900
+After that it should be successfully restored.
+
+152
+00:22:13,900 --> 00:22:27,000
+Now in this cyberpanel feature there is also a benchmark.
+
+153
+00:22:27,000 --> 00:22:34,100
+So what we are trying to test is 10,000 clients/second
+
+154
+00:22:34,100 --> 00:22:41,900
+on the homepage and the average time is
+
+155
+00:22:41,900 --> 00:22:55,000
+100 milliseconds so we can successfully test 20,000 clients per second
+
+156
+00:22:59,600 --> 00:23:09,000
+for the first 10 seconds.
+
+157
+00:23:09,000 --> 00:23:11,292
+This results look like this.
+
+158
+00:23:21,977 --> 00:23:34,577
+Now the second we try to test a total of 10000 clients on the post page
+
+159
+00:23:41,503 --> 00:23:54,038
+We try to run the test for 20 seconds and the success rate is 100%.
+
+160
+00:23:59,600 --> 00:24:07,100
+so at least we get 10000 hits per
+
+161
+00:24:07,100 --> 00:24:14,200
+second on our WordPress and use
+
+162
+00:24:14,200 --> 00:24:23,800
+the Ocean digital panel vps server at a price of 5 dollars per month
+
+163
+00:24:23,800 --> 00:24:38,800
+that is enough. So actually using Ubuntu for treatment
+
+164
+00:24:38,800 --> 00:24:47,500
+5 dollars the price is on digitalocean and the test results are
+
+165
+00:24:47,500 --> 00:24:57,100
+good (test 1 and test 2). You can try this.
+
+166
+00:25:09,550 --> 00:25:16,400
+Ok. that is all from me.
+
+167
+00:25:16,400 --> 00:25:21,100
+Thank you very much. You can contact me by
+
+168
+00:25:21,100 --> 00:25:28,200
+email: kontak@darian.my.id or instagram
+
+169
+00:25:28,200 --> 00:25:30,000
+@darian.my.id
+
+170
+00:25:30,810 --> 00:25:41,010
+Good bye. Thankyou.
+
