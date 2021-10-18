@@ -1,0 +1,1207 @@
+1
+00:00:00,200 --> 00:00:04,200
+
+2
+00:00:07,200 --> 00:00:14,700
+Halo, saya akan menjelaskan tentang Ubuntu Operating System and Service Patch Management menggunakan Ansible. 
+
+3
+00:00:14,700 --> 00:00:18,500
+Sebelum ke materi sedikit perkenalan dari saya. Saya Doni Kuswara,
+
+4
+00:00:18,500 --> 00:00:21,400
+ seorang Ubuntu user dan teknologi enthusiast.
+
+5
+00:00:21,400 --> 00:00:25,900
+ Saat ini saya bekerja di PT Biznet Gio Nusantara sebagai
+
+6
+00:00:25,900 --> 00:00:31,000
+ Product Operations Engineer sejak Juni 2020. Jika dibutuhkan,
+
+7
+00:00:31,000 --> 00:00:34,100
+ Anda bisa kontak saya di sosial media di bawah ini.
+
+8
+00:00:35,800 --> 00:00:40,100
+Saya juga sebagai pemilik dan penulis dari website maringulik.com.
+
+9
+00:00:40,100 --> 00:00:43,300
+ Di website tersebut terdapat beberapa tutorial
+
+10
+00:00:43,300 --> 00:00:46,900
+ mulai dari Linux configuration ataupun cloud configuration.
+
+11
+00:00:48,700 --> 00:00:52,000
+ Lalu lanjut ke topik apa saja yang akan kita bahas
+
+12
+00:00:52,000 --> 00:00:55,800
+ pada materi ini. Yang pertama kita akan pengenalan
+
+13
+00:00:55,800 --> 00:00:56,800
+ tentang Patch Management.
+
+14
+00:00:56,800 --> 00:00:59,100
+ Apa itu Patch Management?
+
+15
+00:00:59,100 --> 00:01:02,100
+ Mengapa Patch Management itu penting? Mengapa harus menggunakan otomasi?
+
+16
+00:01:02,100 --> 00:01:06,600
+Mengapa memilih Ansible untuk Patch Management ini?
+
+17
+00:01:06,600 --> 00:01:10,200
+Bagaimana melakukan patching Ubuntu secara manual?
+
+18
+00:01:10,200 --> 00:01:14,700
+Dan di akhir, kita akan melakukan demonstrasi bagaimana
+
+19
+00:01:14,700 --> 00:01:18,900
+dan cara konfigurasi OS & Patch Management menggunakan
+
+20
+00:01:18,900 --> 00:01:25,500
+ Ansible ini. Introduction Patch Management. 
+
+21
+00:01:25,500 --> 00:01:28,700
+System Administrator bertanggung jawab untuk melakukan patching sistem operasi.
+
+22
+00:01:28,700 --> 00:01:32,900
+Dan untuk melakukan patching satu server, system administrator
+
+23
+00:01:32,900 --> 00:01:36,800
+perlu mengidentifikasi bahwa update tersedia, lalu
+
+24
+00:01:36,800 --> 00:01:41,000
+jika tersedia maka didownload dan menginstal pembaharuan tersebut.
+
+25
+00:01:41,000 --> 00:01:43,800
+Pada lingkungan yang lebih luas, contohnya
+
+26
+00:01:43,800 --> 00:01:48,500
+di lingkungan perusahaan mungkin tidak terdapat
+
+27
+00:01:48,600 --> 00:01:52,600
+hanya satu server, bisa ada puluhan bahkan ratusan server yang
+
+28
+00:01:52,600 --> 00:01:55,400
+memerlukan update sehingga pekerjaan update dan
+
+29
+00:01:55,400 --> 00:01:58,800
+upgrade itu akan menyita waktu, dan mungkin bisa terjadi
+
+30
+00:01:58,800 --> 00:02:02,200
+kesalahan dalam proses patching tersebut sehingga menyebabkan
+
+31
+00:02:02,200 --> 00:02:05,000
+sistem operasi Ubuntu kalian gagal booting.
+
+32
+00:02:05,000 --> 00:02:09,400
+Maka perlu dilakukan otomatisasi agar pekerjaan
+
+33
+00:02:09,400 --> 00:02:13,200
+patching ini menjadi lebih efektif dan efisien.
+
+34
+00:02:13,200 --> 00:02:16,800
+Lalu apa itu Patch Management? System administrator perlu
+
+35
+00:02:16,800 --> 00:02:19,200
+memahami pentingnya melakukan patching pada Sistem Operasi.
+
+36
+00:02:19,200 --> 00:02:22,300
+Sistem administrator dapat dengan mudah
+
+37
+00:02:22,300 --> 00:02:26,500
+melakukan update dan upgrade secara manual, tapi jika dapat
+
+38
+00:02:26,500 --> 00:02:29,100
+dilakukan secara otomatis, tentu akan menjadi
+
+39
+00:02:29,100 --> 00:02:32,200
+lebih mudah dan dapat menghindari terjadinya kesalahan.
+
+40
+00:02:32,200 --> 00:02:36,200
+Dengan patch management ini system administrator dapat
+
+41
+00:02:36,200 --> 00:02:39,200
+melakukan update/upgrade Ubuntu secara bersamaan
+
+42
+00:02:39,200 --> 00:02:42,500
+dan terpusat, bahkan dengan menambahkan parameter-parameter
+
+43
+00:02:42,500 --> 00:02:46,900
+tambahan seperti hanya update paket spesifik,
+
+44
+00:02:48,600 --> 00:02:53,600
+atau tidak melakukan patching pada Operating System yang memang
+
+45
+00:02:53,600 --> 00:02:56,600
+di situ running critical service. 
+
+46
+00:02:56,600 --> 00:03:01,300
+Critical service itu bisa ditentukan, contohnya aplikasi Nginx yang masih running,
+
+47
+00:03:01,300 --> 00:03:03,700
+atau aplikasi database seperti MySQL, 
+
+48
+00:03:03,700 --> 00:03:06,100
+PostgreSQL atau MariaDB yang sedang running,
+
+49
+00:03:06,100 --> 00:03:09,100
+maka server tersebut tidak dapat dilakukan proses patching.
+
+50
+00:03:10,400 --> 00:03:16,000
+Mengapa patch management itu penting? Server publik yang
+
+51
+00:03:16,000 --> 00:03:19,100
+belum dilakukan patching merupakan critical issue
+
+52
+00:03:19,100 --> 00:03:22,400
+terhadap cyber security. Tapi cyber security bukan
+
+53
+00:03:22,400 --> 00:03:25,400
+satu-satunya alasan untuk melakukan update atau upgrade Ubuntu.
+
+54
+00:03:25,400 --> 00:03:30,900
+Patch server juga dapat memperbaiki
+
+55
+00:03:30,900 --> 00:03:35,900
+isu seperti perbaikan driver atau menaikkan performa
+
+56
+00:03:35,900 --> 00:03:39,100
+server itu sendiri ketika memang tidak terdapat
+
+57
+00:03:39,100 --> 00:03:44,000
+service issue di server tersebut.
+
+58
+00:03:44,000 --> 00:03:46,700
+Semakin lama system administrator menunda untuk melakukan update dan
+
+59
+00:03:46,700 --> 00:03:50,100
+upgrade, maka semakin banyak list packages yang tentu perlu dipatching.
+
+60
+00:03:50,100 --> 00:03:54,100
+Masalah ini meningkatkan waktu yang
+
+61
+00:03:54,100 --> 00:03:56,200
+diperlukan untuk sepenuhnya melakukan patching
+
+62
+00:03:56,200 --> 00:03:59,200
+pada sistem Ubuntu.
+
+63
+00:03:59,200 --> 00:04:03,000
+Mengapa kita perlu melakukan automation? 
+
+64
+00:04:03,000 --> 00:04:07,500
+Di sini ada gambaran sederhana bahwa administrator memiliki
+
+65
+00:04:07,500 --> 00:04:10,200
+Administrator Note,
+
+66
+00:04:10,400 --> 00:04:14,000
+seperti administrator notenya, misalnya cek service
+
+67
+00:04:14,000 --> 00:04:14,800
+yang saya sebutkan tadi,
+
+68
+00:04:14,800 --> 00:04:18,200
+verifikasi apakah critical servisnya
+
+69
+00:04:18,200 --> 00:04:21,700
+running atau tidak, check available update, cek apt update,
+
+70
+00:04:21,700 --> 00:04:23,700
+check list upgradeable,
+
+71
+00:04:23,700 --> 00:04:27,800
+lalu upgrade sepenuhnya atau upgrade spesifik package,
+
+72
+00:04:27,800 --> 00:04:32,700
+lalu cek reboot required atau setelah itu melakukan
+
+73
+00:04:32,700 --> 00:04:35,800
+reboot jika memang sistemnya dibutuhkan reboot,
+
+74
+00:04:35,800 --> 00:04:39,000
+setelah booting selesai melakukan verifikasi kembali.
+
+75
+00:04:39,000 --> 00:04:43,700
+Note tersebut dilakukan untuk satu server.
+
+76
+00:04:43,700 --> 00:04:48,600
+Dan bagaimana jika ada belasan, puluhan atau ratusan server?
+
+77
+00:04:48,600 --> 00:04:52,500
+Tentu hal yang sangat tidak masuk akal jika dilakukan secara manual.
+
+78
+00:04:52,500 --> 00:04:56,300
+Ketika Anda mencari tools patch management di Google,
+
+79
+00:04:56,300 --> 00:05:00,000
+maka banyak artikel akan merekomendasikan
+
+80
+00:05:00,000 --> 00:05:04,500
+tools-tools seperti ManageEngine Patch Manager, ataupun Automox.
+
+81
+00:05:04,500 --> 00:05:07,900
+Namun dari berbagai rekomendasi yang disarankan dari banyak artikel,
+
+82
+00:05:10,400 --> 00:05:13,500
+tools-tools tersebut berbayar dan memerlukan agent yang perlu diinstal
+
+83
+00:05:13,500 --> 00:05:16,600
+dari setiap host yang akan dilakukan patch nantinya.
+
+84
+00:05:16,600 --> 00:05:21,000
+Lalu bagaimana dengan Ansible dan mengapa kita
+
+85
+00:05:21,000 --> 00:05:25,900
+ memilih Ansible sebagai tools patch manager ini?
+
+86
+00:05:25,900 --> 00:05:28,200
+Ansible merupakan salah satu tools automation yang tidak memerlukan agent
+
+87
+00:05:28,200 --> 00:05:31,400
+karena Ansible memanage node dengan koneksi SSH.
+
+88
+00:05:31,400 --> 00:05:35,000
+Ansible hanya membutuhkan satu server sebagai
+
+89
+00:05:35,000 --> 00:05:38,400
+control node untuk push perintah ke setiap node yang
+
+90
+00:05:38,400 --> 00:05:41,700
+terdapat pada inventory. Ansible lebih mudah dan
+
+91
+00:05:41,700 --> 00:05:44,400
+praktis dibandingkan dengan management tools lainnya
+
+92
+00:05:44,400 --> 00:05:47,800
+seperti mungkin puppet, karena tidak membutuhkan agent pada setiap node,
+
+93
+00:05:47,800 --> 00:05:52,400
+hanya menggunakan koneksi SSH saja.
+
+94
+00:05:52,400 --> 00:05:56,000
+Sebelum kita melakukan automation kita perlu pahami dulu
+
+95
+00:05:56,000 --> 00:06:00,500
+cara manual untuk patching Ubuntu itu seperti apa, dan biasanya
+
+96
+00:06:00,500 --> 00:06:04,200
+Anda melakukan apt update. Apt update ini berfungsi
+
+97
+00:06:04,200 --> 00:06:12,400
+untuk memperbaharui daftar source package untuk mendapatkan daftar terbaru dari package yang tersedia di repository.
+
+98
+00:06:12,400 --> 00:06:14,600
+Perintah ini berguna untuk mendapatkan
+
+99
+00:06:14,600 --> 00:06:17,900
+info tentang versi terbaru package atau dependensinya.
+
+100
+00:06:17,900 --> 00:06:22,100
+Tetapi apt update tidak menginstal atau
+
+101
+00:06:22,100 --> 00:06:26,100
+memutakhirkan package apapun. Setelah melakukan apt update,
+
+102
+00:06:26,100 --> 00:06:30,400
+lalu melakukan apt upgrade yang berfungsi
+
+103
+00:06:30,400 --> 00:06:33,200
+untuk meng-install upgrade yang tersedia di semua
+
+104
+00:06:33,200 --> 00:06:36,100
+paket yang diinstal sistem operasi Ubuntu kalian
+
+105
+00:06:36,100 --> 00:06:39,500
+melalui file sources.list. Paket baru akan diinstal
+
+106
+00:06:39,500 --> 00:06:42,700
+jika diperlukan untuk memenuhi dependensi, tetapi
+
+107
+00:06:42,700 --> 00:06:46,800
+paket yang ada tidak akan dihapus. Untuk mengetahui
+
+108
+00:06:46,800 --> 00:06:50,500
+paket apa saja yang perlu di-upgrade, Anda bisa menggunakan
+
+109
+00:06:50,500 --> 00:06:55,100
+command apt list --upgradeable. Di sini bisa Anda lihat
+
+110
+00:06:55,100 --> 00:06:59,500
+contoh videonya, di sini terdapat banyak package yang perlu
+
+111
+00:06:59,500 --> 00:07:03,300
+Anda upgrade atau sudah tersedia upgrade-nya.
+
+112
+00:07:03,300 --> 00:07:10,800
+Anda bisa scroll ke atas, tentu akan ada banyak sekali dan command apt upgrade akan memperbaharui semua
+
+113
+00:07:10,300 --> 00:07:14,400
+atau spesifik yang Anda tentukan package yang memang
+
+114
+00:07:14,400 --> 00:07:17,800
+sudah tersedia upgradeable-nya. Di sini saya menggunakan
+
+115
+00:07:17,800 --> 00:07:22,300
+6 server yang server pertama sebagai Ansible control node dan
+
+116
+00:07:22,300 --> 00:07:27,500
+5 server dibagi menjadi dua host group: host group A dan host group B.
+
+117
+00:07:27,500 --> 00:07:32,700
+Host group A kita isi dengan server-server yang running aplikasi
+
+118
+00:07:32,700 --> 00:07:38,400
+web server dan host group B yang diisi dengan server-server
+
+119
+00:07:38,400 --> 00:07:42,200
+yang running aplikasi database. Kita juga akan memahami
+
+120
+00:07:42,200 --> 00:07:44,900
+apa itu Playbook dan Inventory dan istilah-istilah
+
+121
+00:07:44,900 --> 00:07:49,000
+lain yang digunakan pada Ansible. 
+
+122
+00:07:49,000 --> 00:07:52,000
+Misalnya control node yaitu server di mana Ansible itu diinstal,
+
+123
+00:07:52,000 --> 00:07:54,800
+managed node yaitu semua infrastruktur yang dikontrol
+
+124
+00:07:54,800 --> 00:07:58,800
+oleh control node, lalu inventory yaitu daftar dari managed node,
+
+125
+00:07:58,800 --> 00:08:01,700
+lalu Playbook itu daftar command atau perintah yang
+
+126
+00:08:01,700 --> 00:08:04,700
+ditulis dalam format YAML. Karena Ansible ini
+
+127
+00:08:04,700 --> 00:08:11,000
+bersifat agentless, maka Anda hanya perlu mengkonfigurasi Ansible di control node saja.
+
+128
+00:08:11,000 --> 00:08:17,200
+Lalu how to use Ansible for patching Ubuntu & Service Patch Management?
+
+129
+00:08:17,200 --> 00:08:23,500
+Di sini untuk menginstal Ansible sangat
+
+130
+00:08:23,500 --> 00:08:26,300
+sederhana, Anda hanya menggunakan command apt install ansible,
+
+131
+00:08:26,300 --> 00:08:31,800
+lalu setelah Ansible di-install, Anda perlu mengkonfigurasi inventory.
+
+132
+00:08:31,800 --> 00:08:34,900
+Inventory ini file yang berisi tentang
+
+133
+00:08:34,900 --> 00:08:37,900
+informasi host yang akan dimanage oleh control node.
+
+134
+00:08:37,900 --> 00:08:41,400
+Anda dapat menyertakan satu hingga ratusan server
+
+135
+00:08:41,400 --> 00:08:47,300
+pada file inventory tersebut. Secara default file inventory Ansible
+
+136
+00:08:47,300 --> 00:08:51,500
+terdapat pada /etc/ansible/hosts.
+
+137
+00:08:51,500 --> 00:08:55,500
+Di sini Anda bisa lihat contohnya, di sini ada
+
+138
+00:08:55,500 --> 00:09:03,000
+web-1, web-2, web-3, lalu db-1, db-2. Yang web-1 sampai 3 dimasukkan ke
+
+139
+00:09:03,000 --> 00:09:10,000
+dalam grup web server dan db-1 dan db-2 dimasukkan ke grup database server.
+
+140
+00:09:10,600 --> 00:09:13,800
+Anda bisa mendeklarasikan parameter-parameter
+
+141
+00:09:13,800 --> 00:09:18,000
+tambahan, misalnya username dan password servernya,
+
+142
+00:09:18,000 --> 00:09:22,600
+ataupun misalnya port custom SSH jika memang server
+
+143
+00:09:22,600 --> 00:09:25,900
+yang dikontrol nantinya tidak menggunakan port
+
+144
+00:09:25,900 --> 00:09:29,000
+default dari SSH itu sendiri, yaitu port 22. 
+
+145
+00:09:29,000 --> 00:09:32,700
+Selain itu untuk host yang dikontrol Anda bisa panggil menggunakan
+
+146
+00:09:32,700 --> 00:09:35,800
+hostname ataupun IP. Jika ingin menggunakan hostname,
+
+147
+00:09:35,800 --> 00:09:38,500
+dalam contoh yaitu untuk penerapan web-2 sampai dengan db-2
+
+148
+00:09:38,500 --> 00:09:42,400
+itu dipastikan terlebih dahulu untuk host-host tersebut
+
+149
+00:09:42,400 --> 00:09:46,400
+resolved dari control node. Untuk tes resolve atau tidaknya
+
+150
+00:09:46,400 --> 00:09:50,500
+sederhana, Anda tinggal coba ping saja untuk setiap hostname-nya.
+
+151
+00:09:50,500 --> 00:09:55,100
+Di sini juga ada video contoh saya menggunakan
+
+152
+00:09:55,100 --> 00:09:59,700
+ssh-copy-id terlebih dahulu agar nanti control node
+
+153
+00:09:59,700 --> 00:10:03,100
+dapat dengan mudah mengakses setiap host-host yang menjadi
+
+154
+00:10:03,100 --> 00:10:08,000
+managed node. Di sini dalam video ini mencontohkan public key
+
+155
+00:10:08,900 --> 00:10:13,500
+pada control node dicopy ke setiap host yang menjadi managed node
+
+156
+00:10:13,500 --> 00:10:16,700
+nantinya, sehingga untuk akses SSH nanti tidak lagi
+
+157
+00:10:16,700 --> 00:10:20,600
+harus menginput password. Setelah mengkonfigurasi inventory,
+
+158
+00:10:20,600 --> 00:10:24,900
+mari kita mengkonfigurasi playbooknya. Ansible playbook
+
+159
+00:10:24,900 --> 00:10:27,800
+menawarkan manajemen konfigurasi sederhana yang
+
+160
+00:10:27,800 --> 00:10:31,800
+dapat diulang, dapat digunakan kembali, dan penerapan
+
+161
+00:10:31,800 --> 00:10:34,400
+multi machine yang sangat cocok untuk penerapan aplikasi kompleks.
+
+162
+00:10:34,400 --> 00:10:37,000
+Playbook ini ditulis dalam bahasa yang
+
+163
+00:10:37,000 --> 00:10:40,200
+sangat sederhana yaitu bahasa YAML, sehingga kita
+
+164
+00:10:40,200 --> 00:10:44,500
+tidak sulit untuk mempelajari bahasa baru ini, karena
+
+165
+00:10:44,500 --> 00:10:47,700
+YAML juga digunakan contohnya untuk konfigurasi
+
+166
+00:10:47,700 --> 00:10:52,500
+Kubernetes, Istio, Service Mesh, atau Docker Compose.
+
+167
+00:10:53,900 --> 00:11:01,800
+Di sini jika Anda lihat terdapat task-task dari Task 1 sampai dengan Task 7.
+
+168
+00:11:01,100 --> 00:11:05,300
+Saya beri nama di masing-masing tasknya agar mudah
+
+169
+00:11:05,300 --> 00:11:08,700
+dipahami dan tentunya ketika administrator merunning
+
+170
+00:11:08,700 --> 00:11:11,400
+playbook tersebut, administrator tidak bingung
+
+171
+00:11:11,400 --> 00:11:16,500
+Ansible sedang running proses apa. Jadi perlu dideklarasikan
+
+172
+00:11:16,500 --> 00:11:20,300
+nama-nama di setiap tasknya. Di task pertama,
+
+173
+00:11:20,300 --> 00:11:24,100
+verify web/database processes are not running. Di task ini memverifikasi
+
+174
+00:11:24,100 --> 00:11:28,400
+jika status webserver atau database berjalan
+
+175
+00:11:28,400 --> 00:11:31,500
+atau tidaknya di setiap host yang akan dilakukan patching.
+
+176
+00:11:31,500 --> 00:11:36,500
+Di task kedua, What is web/database process are running on the server.
+
+177
+00:11:36,500 --> 00:11:39,700
+Task lanjutnya akan dibatalkan pada host dengan
+
+178
+00:11:39,700 --> 00:11:43,000
+status web server dan database running. Di task ketiga
+
+179
+00:11:43,000 --> 00:11:47,300
+update kernel package. Task ini akan memulai memutakhirkan
+
+180
+00:11:47,300 --> 00:11:50,600
+pada server Ubuntu di mana aplikasi di atas yang telah
+
+181
+00:11:50,600 --> 00:11:58,900
+kita tentukan parameternya yaitu Nginx, MySQL, Apache, MariaDB atau Postgre tidak running maka akan
+
+182
+00:11:58,900 --> 00:12:06,000
+lanjut ke task ketiga ini. Di sini ada juga beberapa parameter atau modul yang saya buat.
+
+183
+00:12:06,000 --> 00:12:10,200
+Di task ke-4, di sini periksa apakah reboot diperlukan
+
+184
+00:12:10,200 --> 00:12:13,200
+setelah dilakukan pembaharuan kernel pada Ubuntu.
+
+185
+00:12:13,200 --> 00:12:17,200
+Task ini akan memeriksa persyaratan reboot pada Ubuntu
+
+186
+00:12:17,200 --> 00:12:22,200
+setelah kernel diupdate dengan memverifikasi keberadaan file /var/run/reboot-required.
+
+187
+00:12:22,200 --> 00:12:25,600
+Kita menyimpan hasil keluaran stat module yang akan
+
+188
+00:12:25,600 --> 00:12:29,000
+kita gunakan untuk memutuskan mereboot server nantinya.
+
+189
+00:12:29,000 --> 00:12:33,200
+Di task ke-5 ini reboot sistem Ubuntu jika kernel diperbaharui
+
+190
+00:12:33,200 --> 00:12:36,000
+atau reboot dibutuhkan. Task ini akan menginstruksikan
+
+191
+00:12:36,000 --> 00:12:39,600
+Ansible untuk mereboot sistem Ubuntu jika kernel
+
+192
+00:12:39,600 --> 00:12:42,900
+diperbaharui dan reboot diperlukan. Dalam task ini
+
+193
+00:12:42,900 --> 00:12:45,900
+menggunakan reboot module Ansible untuk memulai proses reboot.
+
+194
+00:12:47,900 --> 00:12:53,700
+Di task ke-6, di sini kita melakukan jeda selama 180 detik.
+
+195
+00:12:53,700 --> 00:12:57,900
+Task ini menunggu selama 3 menit agar server
+
+196
+00:12:57,900 --> 00:13:01,900
+running setelah reboot. Di sini menggunakan pause module Ansible.
+
+197
+00:13:02,900 --> 00:13:06,600
+Ini menjeda eksekusi playbook untuk waktu yang ditentukan
+
+198
+00:13:06,600 --> 00:13:11,700
+atau hingga prompt diakui. Di sini Anda bisa konfigurasi
+
+199
+00:13:11,700 --> 00:13:17,800
+sesuai dengan kebutuhan, biasanya untuk proses reboot berjalan atau reboot berproses berapa lama.
+
+200
+00:13:17,800 --> 00:13:22,100
+Kita setting juga agar bisa menggunakan
+
+201
+00:13:22,100 --> 00:13:27,700
+Ctrl-c + c untuk kontinu tanpa menunggu hingga
+
+202
+00:13:27,700 --> 00:13:31,400
+masa jedanya selesai yaitu 3 menit, atau menggunakan
+
+203
+00:13:31,400 --> 00:13:35,800
+Ctrl-c + a untuk abort atau menghentikan task
+
+204
+00:13:35,800 --> 00:13:40,600
+sampai di task ke-6 saja. Lalu task terakhir yaitu task ke-7,
+
+205
+00:13:40,600 --> 00:13:43,800
+periksa apakah semua sistem merespon SSH. Task ini akan memastikan
+
+206
+00:13:43,800 --> 00:13:47,300
+bahwa setelah 3 menit, sistem dapat diakses kembali
+
+207
+00:13:47,300 --> 00:13:50,700
+melalui SSH. Di sini kita menggunakan local action module.
+
+208
+00:13:50,700 --> 00:13:53,900
+Saat kita menggunakan modul ini, Ansible akan
+
+209
+00:13:53,900 --> 00:13:56,400
+menjalankan modul yang disebutkan di bawahnya pada
+
+210
+00:13:56,400 --> 00:14:01,200
+node controller. Modul di sini adalah wait for. 
+
+211
+00:14:01,800 --> 00:14:06,900
+Setelah kita konfigurasi mulai dari inventory lalu playbooknya telah kita susun,
+
+212
+00:14:06,900 --> 00:14:10,900
+kita jalankan playbook tersebut dalam video demo berikut ini.
+
+213
+00:14:10,900 --> 00:14:13,800
+Sebelum kita running playbook, kita verifikasi terlebih dahulu
+
+214
+00:14:13,800 --> 00:14:19,000
+mulai dari versi kernel dari setiap servernya ataupun
+
+215
+00:14:19,000 --> 00:14:22,300
+uptime dari setiap server yang nanti kita akan lakukan patching.
+
+216
+00:14:23,900 --> 00:14:29,900
+Di sini kita bisa lihat untuk versi kernel-kernelnya
+
+217
+00:14:29,900 --> 00:14:37,500
+dari mulai web-2, web-1, db-2, db-1, web-3 versi kernelnya yang terbaru
+
+218
+00:14:37,500 --> 00:14:42,200
+yaitu digunakan pada server db-2. Lalu untuk uptime-nya
+
+219
+00:14:42,200 --> 00:14:48,300
+di sini kita bisa lihat web-2, db-2, db-1, web-3 dan db-1.
+
+220
+00:14:48,300 --> 00:14:54,900
+Uptime ini kita verifikasi untuk mengetahui apakah
+
+221
+00:14:54,900 --> 00:14:57,200
+server nantinya melakukan reboot atau tidak walaupun
+
+222
+00:14:57,200 --> 00:15:01,800
+di tasknya kita kelihatan juga. Tapi di sini untuk melakukan
+
+223
+00:15:01,800 --> 00:15:04,100
+verifikasi benar atau tidaknya melakukan reboot.
+
+224
+00:15:04,100 --> 00:15:08,400
+Kita juga melakukan verifikasi service Nginx-nya
+
+225
+00:15:08,400 --> 00:15:12,100
+atau service web server. Di sini kita lihat bahwa
+
+226
+00:15:12,100 --> 00:15:46,600
+web-3 ini servis Nginx-nya running, dan kita juga melakukan verifikasi service database.
+
+227
+00:15:56,100 --> 00:16:02,200
+Di sini terpantau untuk status MySQL di db-2 statusnya aktif,
+
+228
+00:16:02,200 --> 00:16:08,800
+artinya web-3 status Nginx-nya aktif dan db-2 status
+
+229
+00:16:08,800 --> 00:16:15,200
+MySQL-nya aktif, dan web-1, web-2 dan db-1 bisa memulai proses patching.
+
+230
+00:16:17,400 --> 00:16:20,400
+Untuk menjalankan playbooknya, Anda bisa mengetikkan
+
+231
+00:16:20,400 --> 00:16:25,000
+sudo ansible-playbook update.yml
+
+232
+00:16:25,000 --> 00:16:31,500
+Update.yml ini file YAML yang telah kita konfigurasi untuk patching dan saya beri nama update.yml.
+
+233
+00:16:32,400 --> 00:16:37,000
+Di masing-masing tasknya sudah berjalan,
+
+234
+00:16:37,000 --> 00:16:42,300
+di Task 1 dan Task 2 ini menunjukkan error untuk web-3 dan db-2
+
+235
+00:16:42,300 --> 00:16:47,600
+yang telah kita detailkan tadi bahwa status
+
+236
+00:16:47,600 --> 00:16:51,100
+webserver ataupun status database-nya running pada
+
+237
+00:16:51,100 --> 00:16:54,900
+kedua server tersebut. Sehingga nanti di task ketiga
+
+238
+00:16:54,900 --> 00:17:00,300
+untuk web-2 maupun db-2 ini tidak akan dilakukan update
+
+239
+00:17:00,300 --> 00:17:04,500
+ataupun upgrade, karena memang status atau critical
+
+240
+00:17:04,500 --> 00:17:09,400
+servisnya running. Di task ketiga ini akan membutuhkan waktu
+
+241
+00:17:09,400 --> 00:17:14,500
+cukup banyak karena memang di sinilah proses update/upgrade
+
+242
+00:17:14,500 --> 00:17:17,300
+ini berjalan. Update/upgrade ini tentunya
+
+243
+00:17:17,300 --> 00:17:20,400
+akan mendownload dari source-nya dan menginstalnya.
+
+244
+00:17:20,400 --> 00:17:23,900
+Di sini kita potong videonya, nanti kita bisa lihat
+
+245
+00:17:23,900 --> 00:17:26,500
+untuk lebih mengefektifkan waktu.
+
+246
+00:17:28,500 --> 00:17:45,700
+Setelah task ketiga ini nanti akan lanjut ke task keempat.
+
+247
+00:17:48,300 --> 00:17:57,100
+Di task keempat kita bisa lihat ada web-2, web-1 dan db-1 yang
+
+248
+00:17:57,100 --> 00:18:02,200
+dilakukan reboot yang memang tadi dikecualikan web-3
+
+249
+00:18:02,200 --> 00:18:07,200
+dan db-2 karena tidak dilanjut ke proses patching.
+
+250
+00:18:07,200 --> 00:18:28,300
+Kita bisa lihat hasilnya juga, di sini yang statusnya changed ada db-1, web-1 dan web-2.
+
+251
+00:18:29,200 --> 00:18:40,200
+Di sini web-3 statusnya failed, dan db-2 juga statusnya failed. 
+
+252
+00:18:40,200 --> 00:18:45,600
+Kita coba stop untuk servis-servis yang kita telah tentukan.
+
+253
+00:18:45,600 --> 00:18:50,000
+Kita stop Nginx pada web-3 dan kita stop
+
+254
+00:18:50,000 --> 00:18:55,300
+juga service MySQL pada db-2. Ini kita lihat ada
+
+255
+00:18:55,300 --> 00:18:59,300
+uptime dari masing-masing server yang telah mengalami
+
+256
+00:18:59,300 --> 00:19:04,100
+reboot di 4 menit yang lalu untuk web-1, web-2 dan db-1.
+
+257
+00:19:05,000 --> 00:19:10,400
+Setelah kita stop untuk servis Nginx pada web-3
+
+258
+00:19:10,400 --> 00:19:14,900
+dan MySQL pada db-2, kita running ulang playbooknya.
+
+259
+00:19:14,900 --> 00:19:19,800
+Artinya yang nantinya di lakukan patching itu pada
+
+260
+00:19:19,800 --> 00:19:26,200
+semua server, namun untuk server web-1, web-2 dan db-1
+
+261
+00:19:26,200 --> 00:19:28,400
+itu harusnya tidak ada proses lagi karena memang
+
+262
+00:19:28,400 --> 00:19:32,500
+sudah menggunakan atau sudah tidak ada paket yang
+
+263
+00:19:32,500 --> 00:19:34,200
+perlu di-update lagi.
+
+264
+00:19:34,900 --> 00:19:40,700
+Kita lihat di web-3 di task ketiganya statusnya changed. 
+
+265
+00:19:41,500 --> 00:19:55,700
+Task keempat kita lihat apakah perlu dilakukan reboot dan ternyata yang direboot hanya web-3 saja.
+
+266
+00:19:57,200 --> 00:20:02,600
+Kenapa hanya web-3 saja, kenapa db-2 tidak? Kita di awal sudah
+
+267
+00:20:02,600 --> 00:20:08,000
+melihat juga untuk db-2 ini sudah menggunakan versi
+
+268
+00:20:08,000 --> 00:20:11,800
+kernel terbaru sehingga tidak dilakukan update
+
+269
+00:20:11,800 --> 00:20:15,100
+ataupun upgrade lagi, karena memang sudah tidak ada
+
+270
+00:20:15,100 --> 00:20:22,000
+available atau list update upgradeable. Kita juga bisa
+
+271
+00:20:22,000 --> 00:20:25,600
+verifikasi uptime-nya kembali bahwa web-3 telah
+
+272
+00:20:25,600 --> 00:20:32,800
+mengalami reboot dan web-1, 2 dan db-1, db-2 tidak mengalami reboot.
+
+273
+00:20:34,000 --> 00:20:38,000
+Di sini status kernelnya juga sudah update semua
+
+274
+00:20:38,000 --> 00:20:43,600
+dari mulai web-1, web-2, web-3, db-1 dan db-2.
+
+275
+00:20:47,400 --> 00:20:52,300
+Itu jika kita lakukan patching secara keseluruhan.
+
+276
+00:20:52,300 --> 00:20:56,900
+Bagaimana kita ingin melakukan patch hanya spesifik package?
+
+277
+00:20:56,900 --> 00:20:59,900
+Mari kita lanjut ke demo selanjutnya. 
+
+278
+00:21:01,500 --> 00:21:10,200
+Di sini kita akan melakukan update version Nginx.
+
+279
+00:21:10,200 --> 00:21:17,300
+Saya menambahkan satu server di inventory yaitu app-1.
+
+280
+00:21:19,800 --> 00:21:35,200
+Saya juga telah membuat playbooknya, playbook ini saya ambil dari Ansible websitenya, yaitu untuk mengupdate version Nginx.
+
+281
+00:21:35,200 --> 00:21:38,400
+Kita lihat terlebih dahulu untuk versi Nginx
+
+282
+00:21:38,400 --> 00:21:46,200
+yang saat ini berjalan di app-1 yaitu Nginx dengan versi 1.17.10
+
+283
+00:21:51,100 --> 00:21:55,900
+Kita coba lihat juga playbook yang telah dibuat.
+
+284
+00:21:55,900 --> 00:21:59,800
+Untuk playbook ini Anda bisa dapatkan atau copy dari Ansible website.
+
+285
+00:22:02,100 --> 00:22:05,400
+Untuk menjalankan playbooknya sama seperti command
+
+286
+00:22:05,400 --> 00:22:10,400
+sebelumnya yaitu ansible-playbook nama playbooknya.
+
+287
+00:22:11,300 --> 00:22:15,200
+Di sini kita tunggu proses update version Nginx-nya
+
+288
+00:22:15,200 --> 00:22:18,100
+seharusnya tidak memakan waktu lama karena ini hanya
+
+289
+00:22:18,100 --> 00:22:23,500
+patching package tertentu saja secara spesifik.
+
+290
+00:22:31,900 --> 00:22:35,900
+Nah benar proses patchingnya telah selesai, 
+
+291
+00:22:35,900 --> 00:22:38,800
+kita lihat versi Nginx
+
+292
+00:22:38,800 --> 00:22:43,500
+setelah kita lakukan update di versi berapa,
+
+293
+00:22:43,500 --> 00:22:48,700
+saat ini status Nginx di versi 1.18.0
+
+294
+00:22:48,700 --> 00:22:51,700
+artinya ini kita hanya meng-update Nginx-nya saja,
+
+295
+00:22:51,700 --> 00:22:56,400
+tidak melakukan apt upgrade secara keseluruhan.
+
+296
+00:22:56,400 --> 00:22:59,800
+Pada materi ini instance yang saya buat menggunakan resource
+
+297
+00:22:59,800 --> 00:23:03,100
+yang ada di layanan NEO Virtual Compute.
+
+298
+00:23:03,100 --> 00:23:06,500
+Dengan Ansible ini, Anda dapat mudah push command ke server manapun
+
+299
+00:23:06,500 --> 00:23:09,300
+selama server tersebut dapat Anda akses melalui SSH.
+
+300
+00:23:09,300 --> 00:23:12,900
+Sekian presentasi dari saya. Saya Doni Kuswara, 
+
+301
+00:23:12,900 --> 00:23:14,500
+semoga kita bisa bertemu di lain kesempatan.
+
+302
+00:23:14,500 --> 00:23:15,600
+Terima kasih.
+
