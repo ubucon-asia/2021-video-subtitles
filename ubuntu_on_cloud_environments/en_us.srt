@@ -1,0 +1,280 @@
+1
+00:00:06,710 --> 00:00:08,034
+Hello
+
+2
+00:00:08,700 --> 00:00:11,034
+In today's session
+
+3
+00:00:11,034 --> 00:00:18,367
+We'd talk a little bit about how Ubuntu is being provided in various cloud environments.
+
+4
+00:00:18,367 --> 00:00:25,034
+We are Junhyun Bae of Cloud Mate, Sejun Kim. It's nice to meet you (nice to meet you)
+
+5
+00:00:26,269 --> 00:00:31,640
+Here, it's a topic we're going to talk about today
+
+6
+00:00:31,640 --> 00:00:34,700
+Can you explain about it briefly?
+
+7
+00:00:35,700 --> 00:00:38,367
+You pass it like that(laughs)
+
+8
+00:00:38,367 --> 00:00:41,034
+It's giving or receiving, and it's in English
+
+9
+00:00:41,034 --> 00:00:49,034
+We are a cloud service provider, and we provide services to cloud to cloud venders.
+
+10
+00:00:49,034 --> 00:00:58,066
+And we consult users no matter they are on AWS, Azure or Google.
+
+11
+00:00:58,066 --> 00:01:02,034
+Now, what we want to focus on here is that when we're using Linux,
+
+12
+00:01:02,034 --> 00:01:08,529
+Ubuntu deliverd by Canonical is the most being supported operating system supported by the 3 companies.
+
+13
+00:01:08,529 --> 00:01:13,400
+So, each vendor is now focusing on different operating systems, but
+
+14
+00:01:14,400 --> 00:01:23,553
+For Canonical's Ubuntu which all three provide in common, we are explaining a little more detail what kind of service the vendor provides and how does it deliverd.
+
+15
+00:01:23,553 --> 00:01:30,034
+As you said, now let's find out how Ubuntu is being provided by three famous companies in the cloud.
+
+16
+00:01:30,740 --> 00:01:34,168
+First of all, oh, we didn't introduce ourselves before that.
+
+17
+00:01:34,168 --> 00:01:41,034
+To introduce myself, I'm Bae Junhyun, and I'm currently the head of the Seoul branch of Ubuntu Korean Commnnity.
+
+18
+00:01:41,034 --> 00:01:47,700
+And I work as an Azure MVP at Microsoft and work on DevOps.
+
+19
+00:01:47,700 --> 00:01:52,767
+Yes, I operate a community called Smart Azure Living in Korea
+
+20
+00:01:52,767 --> 00:01:58,034
+I also work as an Azure MVP and I work as a cloud architect.
+
+21
+00:01:58,034 --> 00:02:03,700
+Then, let's talk about Azure, which we are a bit confident of among the three cloud companies.
+
+22
+00:02:03,700 --> 00:02:07,534
+In the case of Azure, the logo has changed a bit recently. The logo has changed, and
+
+23
+00:02:07,534 --> 00:02:13,367
+we do not need to find Ubuntu to use Ubuntu on Azure now, we are now
+
+24
+00:02:13,367 --> 00:02:16,700
+providing the latest LTS version of Ubuntu as
+
+25
+00:02:16,700 --> 00:02:22,034
+it is, 'Create a resource', as you can see when we create a virtual machine.
+
+26
+00:02:22,034 --> 00:02:26,034
+It provides the version corresponding to 'focal fossa' as it is.
+
+27
+00:02:26,034 --> 00:02:32,700
+Sometimes, there's some people who want to use a different version of the image, who want to use a lower image to be more stable.
+
+28
+00:02:32,700 --> 00:02:36,700
+So, if you want to use a lower version, you can create a virtual machine like
+
+29
+00:02:36,700 --> 00:02:38,367
+let's enlarge this guy
+
+30
+00:02:38,367 --> 00:02:43,034
+You can use the lower version such as 'bionic beaver' or
+
+31
+00:02:43,034 --> 00:02:48,700
+you can also use the Linux other versions as we can see.
+
+32
+00:02:50,700 --> 00:02:54,700
+In addition, when you want to get some support from Canonical
+
+33
+00:02:54,700 --> 00:03:00,034
+you can search for Canonical on the Marketplace to find various versions, and
+
+34
+00:03:00,034 --> 00:03:03,700
+in the case of this guy, a bit of price should be charged.
+
+35
+00:03:03,700 --> 00:03:12,033
+If you want to check the Pro licenses that are now fully serviced by Canonical, you should search for Canonical on the Marketplace.
+
+36
+00:03:12,033 --> 00:03:16,033
+Yes, and there's a 'reserved instance'
+
+37
+00:03:16,033 --> 00:03:21,033
+Which can be reserved Canonical delivering instances for 1~3 years
+
+38
+00:03:21,033 --> 00:03:27,560
+then you can also get some discount option about 15% for these reservations.
+
+39
+00:03:27,560 --> 00:03:34,033
+In the case of Azure, most of the backend technologies are very well connected with Canonical (Yes, it is)
+
+40
+00:03:34,033 --> 00:03:43,033
+It differ by the each cloud company, though you should regard Azure is being supporeted as Debian or Ubuntu like.
+
+41
+00:03:43,033 --> 00:03:48,367
+So even if you run Cloud Shell, there is now another operating system for Ubuntu.
+
+42
+00:03:49,033 --> 00:03:51,033
+Next, it's AWS
+
+43
+00:03:51,033 --> 00:03:57,033
+Now, if you scroll down a bit on the first screen when you create an actual instance
+
+44
+00:03:57,033 --> 00:04:01,033
+it now supports Ubuntu Server
+
+45
+00:04:01,033 --> 00:04:04,033
+and it supports 64-bit or ARM
+
+46
+00:04:04,033 --> 00:04:08,033
+it supports x86 and ARM of 64-bit.
+
+47
+00:04:09,145 --> 00:04:16,367
+And there's another license for these servers when you search for it
+
+48
+00:04:16,367 --> 00:04:21,700
+and here you see 62% saving in order to get a 62% saving
+
+49
+00:04:21,700 --> 00:04:29,033
+you have to sign to 'you must keep to use about 1~3 years'.
+
+50
+00:04:29,033 --> 00:04:34,690
+In case of AWS, when you installed such Azamzon Linux, bacially
+
+51
+00:04:34,690 --> 00:04:39,700
+the package manager is a Debian familly, it actually provides Fedora familly
+
+52
+00:04:39,700 --> 00:04:44,033
+In case of Azure, it provides the Debian family
+
+53
+00:04:44,033 --> 00:04:46,033
+Lastly, here is Google
+
+54
+00:04:46,033 --> 00:04:49,216
+In case of Google, uh, it was a bit unique.
+
+55
+00:04:49,216 --> 00:04:52,700
+First of all, the Google console itself is rather simple.
+
+56
+00:04:52,700 --> 00:04:59,040
+It's simple, but as we saw earlier, you can still get a Pro license
+
+57
+00:04:59,040 --> 00:05:01,867
+and it offers all of the same existing LTSs.
+
+58
+00:05:01,867 --> 00:05:10,367
+What differs in GCP is that you can see the lastest is deployed here
+
+59
+00:05:11,367 --> 00:05:19,033
+Usually, they only provide LTSs, and the other 2 companies still don't support 21.04,
+
+60
+00:05:19,033 --> 00:05:27,033
+while here, it support 'hirsute hippo' the 21.04.
+
+61
+00:05:27,033 --> 00:05:29,367
+In 21.04, the kernel version has been changed.
+
+62
+00:05:29,367 --> 00:05:37,033
+In the 20.04, the 5.4 kernel was used, but if you want to use the 5.11 kernel, you can choose it.
+
+63
+00:05:38,260 --> 00:05:45,533
+Finally, we, Cloudmate structs and operate the real services for the member companies.
+
+64
+00:05:45,533 --> 00:05:50,700
+and, some of you who use cloud, Wherever for you are using in,
+
+65
+00:05:50,700 --> 00:05:54,033
+if you use Linux, we recommond you to use Ubuntu
+
+66
+00:05:54,033 --> 00:06:01,033
+and we highly encourage you to operate as same configurations and same environments.
+
+67
+00:06:01,033 --> 00:06:03,700
+and it would be good to play with us for clouds.
+
+68
+00:06:04,033 --> 00:06:06,033
+Yes, this was our explanation.
+
+69
+00:06:06,067 --> 00:06:08,367
+Nice to meet you. Oh, it's not 'nice to meet you'.
+
+70
+00:06:08,367 --> 00:06:14,033
+Yes, thank you. It's been Cloudmate.
+
