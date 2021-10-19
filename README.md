@@ -29,3 +29,6 @@ UbuCon Asia 2021 - Conference recordings video subtitles
  - Muhammad Izzat (izzat.bey@gmail.com)
  - Geraldhi A.P. Mahayadnya	(geraldiaditya1111@gmail.com)
  - Prieyuda Akadita S (yudhanewbie@gmail.com)
+
+## License
+All files in this repository are licensed under [**CC BY-SA 4.0**](https://creativecommons.org/licenses/by-sa/4.0/)
