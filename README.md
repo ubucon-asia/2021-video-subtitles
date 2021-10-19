@@ -9,7 +9,7 @@ UbuCon Asia 2021 - Conference recordings video subtitles
 - Jaewon Lim (jeawon139@gmail.com)
 - Kwangyeon Kim (ghemool123@gmail.com)
 
-## ja-JP <-> en-US
+### ja-JP <-> en-US
 - Fumihito Yoshida (hito@ubuntu.com)
 - Masafumi Ohta(masafumi@pid0.org)
 
