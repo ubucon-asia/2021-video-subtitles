@@ -8,7 +8,7 @@
 
 - [`en_us.srt`: English subtitle](en_us.srt)
     - Translated by Ziva Li(zivalee87@gmail.com)
-- [`id_id.srt`: Chinese(China) subtitle](id_id.srt)
+- [`id_id.srt`: Indonesian subtitle](id_id.srt)
     - Translated by `Unknown` (<- Please fix if you know who post-edited)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
     - Generated with Google Cloud Speech-to-text
