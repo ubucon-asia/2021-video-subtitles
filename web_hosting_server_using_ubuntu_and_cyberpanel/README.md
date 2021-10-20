@@ -12,4 +12,4 @@
     - Machine-translated with Google Cloud Translation API
     - Reviewed and Post-edited by `Unknown` (<- Please fix if you know who work on this)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
-    - Translated by Hung-Chi, Liao (Amy) (amyliao237@gmail.com)
+    - Translated by Hung-Chi(Amy) Liao(amyliao237@gmail.com)

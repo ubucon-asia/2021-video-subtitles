@@ -13,4 +13,4 @@
     - Generated with Google Cloud Speech-to-text
     - Reviewed and Post-edited by Bugress Chang (open@brsvh.org), Ivy Yang(yangfengling@kylinos.cn)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
-    - Translated by Yi-Tse(Steven) Wu (r09631007@ntu.edu.tw)
+    - Translated by Yi-Tse(Steven) Wu(r09631007@ntu.edu.tw)

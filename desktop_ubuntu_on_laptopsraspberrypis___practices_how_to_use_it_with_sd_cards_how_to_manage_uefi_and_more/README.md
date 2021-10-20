@@ -10,4 +10,4 @@
     - Authored by Fumihito Yoshida(hito@ubuntu.com)
     - Reviewed and edited by Masafumi Ohta(masafumi@pid0.org)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
-    - Translated by Yi-Tse(Steven) Wu (r09631007@ntu.edu.tw)
+    - Translated by Yi-Tse(Steven) Wu(r09631007@ntu.edu.tw),  RJ Hsiao(rj@ubuntu-tw.org)

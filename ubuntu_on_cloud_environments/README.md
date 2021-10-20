@@ -12,4 +12,4 @@
     - Machine-translated with Google Cloud Translation API
     - Reviewed and Post-edited by Kwangyeon Kim(ghemool123@gmail.com)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
-    - Translated by Yi-Tse(Steven) Wu (r09631007@ntu.edu.tw)
+    - Translated by Yi-Tse(Steven) Wu(r09631007@ntu.edu.tw)
