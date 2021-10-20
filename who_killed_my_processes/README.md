@@ -11,3 +11,5 @@
 - [`en_us.srt`: English subtitle](en_us.srt)
     - Machine-translated with YouTube subtitle translate tool
     - Reviewed and Post-edited by Kwangyeon Kim(ghemool123@gmail.com)
+- [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
+    - Translated by Andre Liang(andrecat1116@gmail.com)
