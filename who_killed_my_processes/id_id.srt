@@ -1,0 +1,352 @@
+1
+00:00:13,600 --> 00:00:14,700
+Halo.
+
+2
+00:00:15,034 --> 00:00:22,700
+Dalam sesi ini, saya akan berbicara tentang hacking kernel untuk tracing sinyal.
+
+3
+00:00:23,677 --> 00:00:30,611
+Nama saya Leesoo Ahn. Dan saat ini saya bekerja sebagai engineer di perusahaan wireless router.
+
+4
+00:00:31,034 --> 00:00:40,900
+Saya bekerja sebagai kontributor di GNOME selama 2 tahun dari 2018, dan saat ini saya sedang melakukan riset terkait kernel.
+
+5
+00:00:42,100 --> 00:00:45,800
+Saya yakin beberapa dari Anda di sini sudah tahu tentang Sinyal.
+
+6
+00:00:46,700 --> 00:00:52,500
+Sinyal adalah salah satu dari banyak komunikasi antar-proses yang saat ini ada di Linux
+
+7
+00:00:52,500 --> 00:01:00,500
+Sebagai contoh sederhana, berikut adalah dua proses: induk dan anak.
+
+8
+00:01:00,500 --> 00:01:08,600
+Induk mengirim pesan ke anak, dan gambaran keseluruhan ini adalah IPC.
+
+9
+00:01:10,100 --> 00:01:14,200
+Dan pesan yang akan digunakan disini adalah Sinyal.
+
+10
+00:01:16,600 --> 00:01:20,300
+Tentu saja, anak juga dapat merespon induknya.
+
+11
+00:01:21,200 --> 00:01:26,100
+Hal ini hanya bergantung pada bagaimana program anak diimplementasikan.
+
+12
+00:01:28,700 --> 00:01:33,700
+Situasi pada contoh sebelumnya sering kita lihat di buku teks.
+
+13
+00:01:34,700 --> 00:01:36,700
+Sepertinya tidak ada masalah dan terlihat baik-baik saja, tapi...
+
+14
+00:01:38,000 --> 00:01:43,700
+Ada situasi yang lebih rumit daripada situasi yang menyenangkan ini dalam produksi yang sesungguhnya.
+
+15
+00:01:47,100 --> 00:01:53,400
+Misalnya, ada kasus di mana proses yang sama sekali tidak terkait mengirim sinyal ke anak-anak mereka,
+
+16
+00:01:53,400 --> 00:01:57,600
+dan mungkin ada situasi di mana induk tidak menerima sinyal.
+
+17
+00:02:00,300 --> 00:02:07,067
+Ketika kita menghadapi masalah yang terkait dengan sinyal, masalah itu akan dapat dengan mudah diselesaikan jika Anda tahu cara menganalisisnya,
+
+18
+00:02:07,900 --> 00:02:11,600
+tapi bagaimana kita bisa melakukannya?
+
+19
+00:02:13,100 --> 00:02:17,500
+Beberapa tools tersedia untuk menganalisis masalah tersebut.
+
+20
+00:02:19,100 --> 00:02:27,034
+Yang pertama adalah tool yang telah Anda kenal. GDB adalah debugger baris-demi-baris, dan
+
+21
+00:02:27,267 --> 00:02:34,800
+Anda dapat menautkannya ke suatu proses, dan Anda dapat memeriksa program yang sedang berjalan baris-demi-baris.
+
+22
+00:02:38,367 --> 00:02:44,867
+Kita juga dapat menggunakan Strace. Strace lebih ringan daripada GDB,
+
+23
+00:02:45,534 --> 00:02:51,100
+dan dirancang untuk fokus hanya pada system-call dan sinyal dalam pelacakan kita.
+
+24
+00:02:52,900 --> 00:03:09,600
+Ketiga, kita memiliki Ftrace. Tidak seperti GDB dan Strace, Ftrace dapat melacak keseluruhan sistem dan dapat menganalisis sebagian besar event yang terjadi di kernel.
+
+25
+00:03:12,000 --> 00:03:16,000
+Tentunya ada banyak teknik lain yang belum saya ketahui.
+
+26
+00:03:16,900 --> 00:03:18,734
+Tapi jika
+
+27
+00:03:19,800 --> 00:03:22,000
+situasi yang saya tunjukkan sebelumnya terjadi
+
+28
+00:03:23,100 --> 00:03:27,800
+ketika sistem sedang melakukan boot, maka ada lebih banyak hal yang perlu dipertimbangkan.
+
+29
+00:03:31,800 --> 00:03:45,400
+Tool seperti GDB, Strace, dan Ftrace disimpan di sistem file, tetapi jika sistem file sedang di-mount pada saat masalah terjadi, maka kita tidak dapat menggunakannya, ditambah lagi,
+
+30
+00:03:47,600 --> 00:03:52,500
+Urutan eksekusi antara proses target dan debugger juga harus dipertimbangkan.
+
+31
+00:03:53,500 --> 00:04:02,200
+Misalnya, jika kita menjalankan debugger terlebih dahulu sebelum target dieksekusi, analisis tidak bisa dilakukan, bukan?
+
+32
+00:04:04,300 --> 00:04:17,200
+Selain itu, dalam sistem embedded, akses shell diblokir untuk keamanan, dan kita tidak dapat meluncurkan debugger melalui terminal, pada lingkungan seperti itu.
+
+33
+00:04:19,600 --> 00:04:23,800
+Selain itu, ada beberapa hal lain yang perlu dipertimbangkan.
+
+34
+00:04:24,500 --> 00:04:32,800
+Kita tahu itu bukanlah inti permasalahannya, tetapi itu memaksa kita fokus pada tugas-tugas yang melelahkan seperti itu, jadi itu sangat membuat stres dan menjengkelkan.
+
+35
+00:04:34,800 --> 00:04:41,634
+Daripada seperti itu, akan lebih baik untuk fokus pada masalah awal dan menyelesaikannya dengan cepat, bukan?
+
+36
+00:04:44,700 --> 00:04:56,134
+Jika memodifikasi kode untuk memecahkan masalah ini adalah hal yang benar, bukankah lebih efisien untuk mengakses dan menganalisis rutin penanganan sinyal di kernel?
+
+37
+00:04:58,200 --> 00:05:00,800
+Saya menggunakan pendekatan dengan pemikiran tersebut.
+
+38
+00:05:03,200 --> 00:05:14,400
+Sekali lagi, ada dua proses di sini, dan induk mengirimkan sinyal ke anak. Ini adalah tampilan pemrosesan sinyal di tingkat pengguna.
+
+39
+00:05:16,200 --> 00:05:18,400
+dan ini adalah tampilan level kernel pada praktiknya.
+
+40
+00:05:18,400 --> 00:05:28,367
+Induk meminta sinyal dari kernel melalui system-call 'kill', dan kernel menangani sinyal yang diambil, dan mengirimkannya ke anak.
+
+41
+00:05:30,000 --> 00:05:37,700
+Jika tingkat kernel ini dibagi lagi, maka dapat dibagi menjadi tiga stage sebagai berikut.
+
+42
+00:05:38,200 --> 00:05:42,900
+Dari ketiga tahapan tersebut, kita akan mengedit kode pada stage ke-3.
+
+43
+00:05:44,900 --> 00:05:55,800
+Anda mungkin berpikir, 'Ada tiga stage, jadi mengapa saya mengedit di stage 3?' Alasan pertama terkait dengan keamanan.
+
+44
+00:05:56,800 --> 00:06:04,500
+Kernel harus selalu menangani eksepsi untuk nilai yang dikirim oleh pengguna.
+
+45
+00:06:04,500 --> 00:06:15,000
+Misalnya, pengguna bisa saja menyampaikan integer yang tidak valid ke kernel dan bukannya nomor sinyal, sehingga nilai tersebut harus selalu diperiksa.
+
+46
+00:06:16,800 --> 00:06:20,900
+Kedua, kita harus memeriksa prosesnya, untuk memastikan bahwa
+
+47
+00:06:20,900 --> 00:06:25,600
+target hidup pada sistem kita.
+
+48
+00:06:25,600 --> 00:06:30,500
+Jika proses tidak ada, maka tidak perlu menangani sinyal.
+
+49
+00:06:32,300 --> 00:06:39,200
+Juga, jika ada beberapa thread dalam satu proses, Anda perlu memeriksa thread mana yang akan dikirim.
+
+50
+00:06:43,200 --> 00:06:46,800
+Kemudian, Anda harus memeriksa null pointer pada level kode,
+
+51
+00:06:47,034 --> 00:06:53,400
+dan harus ada banyak hal lain seperti keamanan.
+
+52
+00:06:56,700 --> 00:07:02,000
+Sekarang kita mengerti alasan melakukannya di stage 3, tetapi bagaimana cara kita memperbaikinya?
+
+53
+00:07:03,000 --> 00:07:09,900
+Singkatnya, pertama, kita akan menyaring semua sinyal yang tidak diperlukan pada pelacakan.
+
+54
+00:07:12,000 --> 00:07:15,900
+Dengan printk, kita akan menampilkan hasilnya ke console.
+
+55
+00:07:18,200 --> 00:07:27,400
+Di dalam konten, nama proses dan PID pada Sender, nama proses dan PID pada Receiver, dan nomor sinyal adalah output.
+
+56
+00:07:28,200 --> 00:07:33,500
+Ini adalah patch sederhana yang saya buat berdasarkan informasi yang kita lihat sebelumnya
+
+57
+00:07:33,500 --> 00:07:42,700
+Saya memodifikasinya untuk menyaring SIGCHLD dan SIGALRM dan menampilkan Sender dan Receiver dan nomor sinyal.
+
+58
+00:07:44,700 --> 00:07:49,500
+Ini adalah stack kernel call yang dieksekusi ketika system-call 'kill' dipanggil,
+
+59
+00:07:49,500 --> 00:08:01,600
+dan setelah memproses stage 1 dan 2, ia disesuaikan supaya mengeluarkan output setelah complete_signal selesai di dalam fungsi send_signal.
+
+60
+00:08:02,600 --> 00:08:09,700
+Mulai sekarang, saya akan menunjukkan kepada Anda secara singkat menggunakan sistem yang menerapkan patch yang disebutkan di atas.
+
+61
+00:08:18,000 --> 00:08:21,400
+Terminal ini saat ini terhubung ke Raspberry Pi.
+
+62
+00:08:22,700 --> 00:08:24,800
+Saat ini sedang melakukan reboot.
+
+63
+00:08:26,000 --> 00:08:28,200
+Kita akan melanjutkan penjelasan setelah booting.
+
+64
+00:08:40,900 --> 00:08:47,600
+Sekarang booting sudah selesai, mari kita analisa pesan booting secara perlahan.
+
+65
+00:08:54,300 --> 00:09:00,200
+Seperti yang bisa kita lihat di sini, sebelum sistem file diinisialisasi pada fase boot,
+
+66
+00:09:01,400 --> 00:09:10,000
+Karena sinyal dapat ditransmisikan seperti yang ditunjukkan di atas, sulit untuk menggunakan tool tracing yang dijelaskan di atas.
+
+67
+00:09:10,900 --> 00:09:17,900
+Jika Anda melakukan hack kernel dan menganalisisnya, Anda dapat dengan mudah memeriksanya seperti ini.
+
+68
+00:09:19,200 --> 00:09:28,100
+Sekali lagi, ini adalah pesan bahwa sistem file sedang diinisialisasi dan sinyal dikirim sebelum itu, dan kemudian kita akan mengirim sebuah
+
+69
+00:09:29,100 --> 00:09:37,800
+sinyal melalui perintah kill di shell.
+
+70
+00:09:38,800 --> 00:09:46,800
+Menggunakan perintah 'kill' ini, saya akan mengirim sebuah sinyal ke klien DHCP,
+
+71
+00:09:47,500 --> 00:09:51,500
+dan sekarang saya akan mengirim sinyal menggunakan perintah tersebut.
+
+72
+00:09:53,700 --> 00:10:04,700
+Kemudian, seperti yang Anda lihat di pesan kernel, Sender menjadi shell dan Receiver menjadi klien DHCP di shell.
+
+73
+00:10:05,000 --> 00:10:13,200
+Anda dapat mengkonfirmasi bahwa sinyal SIGUSR1 disampaikan melalui pesan.
+
+74
+00:10:16,100 --> 00:10:26,634
+Selanjutnya, saya akan menunjukkan kepada Anda bagaimana sinyal bekerja saat reboot melalui perintah reboot.
+
+75
+00:10:27,634 --> 00:10:31,500
+Saya menjalankan perintah reboot.
+
+76
+00:10:31,867 --> 00:10:32,600
+Ini akan kita jelaskan
+
+77
+00:10:33,700 --> 00:10:38,200
+ketika proses reboot selesai sampai tingkat tertentu.
+
+78
+00:10:54,800 --> 00:10:58,400
+Reboot sekarang hampir selesai.
+
+79
+00:10:59,300 --> 00:11:06,700
+Saya akan menjelaskan isi dari sinyal yang dihasilkan melalui perintah reboot.
+
+80
+00:11:07,400 --> 00:11:17,367
+Pertama, ketika perintah reboot dieksekusi, sebuah sinyal dikirim ke semua proses di sistem kita.
+
+81
+00:11:20,000 --> 00:11:24,534
+Dalam kasus nomor 15, itu menjadi nomor sinyal SIGTERM.
+
+82
+00:11:25,100 --> 00:11:32,100
+Dengan cara ini, ketika proses benar-benar dihentikan, reboot dilakukan.
+
+83
+00:11:33,700 --> 00:11:46,400
+Oleh karena itu, dimungkinkan untuk menganalisis jenis sinyal apa yang dipanggil saat me-reboot melalui hacking kernel.
+
+84
+00:11:50,200 --> 00:11:59,167
+Jadi, mari selesaikan demo dan kembali ke presentasi.
+
+85
+00:12:03,900 --> 00:12:15,867
+Di sesi ini, daripada menganalisis kernel secara mendalam, saya menjelaskan dari sudut pandang bahwa ada masalah tertentu dan diselesaikan dengan memodifikasi kernel untuk menyelesaikannya.
+
+86
+00:12:15,900 --> 00:12:20,800
+Saya senang Anda semakin dekat dengan kernel,
+
+87
+00:12:21,667 --> 00:12:24,600
+dan saya akan mengakhiri presentasi saya di sini.
+
+88
+00:12:24,867 --> 00:12:26,034
+Terima kasih!
+

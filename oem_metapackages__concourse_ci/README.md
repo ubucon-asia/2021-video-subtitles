@@ -9,7 +9,7 @@
 - [`en_us.srt`: English subtitle](en_us.srt)
     - Translated by Ziva Li(zivalee87@gmail.com)
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
-    - Translated by `Unknown` (<- Please fix if you know who post-edited)
+    - Translated by Triyan W Nugroho (triyan.wn@gmail.com)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
     - Generated with Google Cloud Speech-to-text
     - Reviewed and Post-edited by Ziva Li(zivalee87@gmail.com)

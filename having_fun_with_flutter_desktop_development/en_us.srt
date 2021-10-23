@@ -1,0 +1,1336 @@
+
+1
+00:00:07,280 --> 00:00:11,520
+hello everyone thank you for coming to this 
+presentation my name is rafael and hopefully  
+
+2
+00:00:11,520 --> 00:00:15,840
+we have some fun today i would like to 
+tell you a few things about flutter why  
+
+3
+00:00:15,840 --> 00:00:20,880
+it's becoming so popular and why you might 
+consider using it okay so let's get started  
+
+4
+00:00:22,640 --> 00:00:27,600
+cool i will start by introducing myself 
+i first tried flutter five years ago
+
+5
+00:00:27,600 --> 00:00:33,200
+i was an android developer back then i was looking 
+for new fast ways to develop applications and  
+
+6
+00:00:33,200 --> 00:00:38,960
+one of my friends recommended flutter as good 
+alternative i was really surprised how easy and  
+
+7
+00:00:38,960 --> 00:00:43,040
+fast you can build UI interfaces 
+and how easy you can integrate on it  
+
+8
+00:00:43,040 --> 00:00:49,600
+i moved to the UK and got an opportunity to make 
+an app in flutter i really liked it so i started  
+
+9
+00:00:49,600 --> 00:00:54,960
+contributing more and more to the community 
+joining meetups and i never moved back to android
+
+10
+00:00:57,520 --> 00:01:02,960
+i mentioned flutter a few times already but 
+you may ask what exactly is flutter on its  
+
+11
+00:01:02,960 --> 00:01:09,040
+website google describes it as UI toolkit 
+for building beautiful natively compiled  
+
+12
+00:01:09,040 --> 00:01:15,440
+applications for mobile web desktop and other 
+devices from a single codebase adding to that  
+
+13
+00:01:15,440 --> 00:01:20,720
+it is free and open source meaning that you can 
+see everything on github to gather resources  
+
+14
+00:01:20,720 --> 00:01:26,800
+for flutter's website you can contribute to the 
+project and report backs or suggest improvements  
+
+15
+00:01:27,440 --> 00:01:32,880
+we will talk about how it works later but for now 
+let me just say that it's written in dart and C++  
+
+16
+00:01:35,440 --> 00:01:39,920
+quick history how it came to this point that 
+canonical partner with google and decide to  
+
+17
+00:01:39,920 --> 00:01:46,160
+make a new installer in flutter at the beginning 
+flutter started as a strip down chrome runtime  
+
+18
+00:01:46,160 --> 00:01:52,080
+it was an experiment in which developers wanted 
+to check how much faster UI rendering might be  
+
+19
+00:01:52,080 --> 00:01:59,840
+and it was targeting 120 fps it went through many 
+stages and languages but dart fit all the boxes to  
+
+20
+00:01:59,840 --> 00:02:06,400
+be both interpreted and compiled at the same time 
+they made their first demo at dart summit in 2015.  
+
+21
+00:02:07,120 --> 00:02:12,400
+after that everything happened fast flutter 
+was targeting android and ios first but support
+
+22
+00:02:12,400 --> 00:02:18,080
+for linux windows mac os and web came 
+after that flutter is also very portable  
+
+23
+00:02:18,080 --> 00:02:23,040
+for example google engineers took flutter and 
+made it run on the wall within the office which  
+
+24
+00:02:23,040 --> 00:02:28,560
+is i must say not very common place to run a ui 
+framework but a more common thing would be running  
+
+25
+00:02:28,560 --> 00:02:36,320
+flutter on xbox or raspberry pi without xorc 
+on wayland which is supported by the community  
+
+26
+00:02:36,320 --> 00:02:41,200
+so you might think that it sounds interesting 
+but don't we have GTK and Qt already  
+
+27
+00:02:41,840 --> 00:02:47,120
+well yes those are great too and i'm not saying 
+that you should re-write all your apps in flatter  
+
+28
+00:02:47,680 --> 00:02:53,840
+that would be cool exercise though i just want to 
+say that flutter is backed by many companies now  
+
+29
+00:02:53,840 --> 00:02:59,200
+and at first it was only google who contributed 
+to it but now engineers from many companies do
+
+30
+00:03:01,680 --> 00:03:06,640
+as we will see shortly thanks to composition 
+over inheritance and reactive nature of the  
+
+31
+00:03:06,640 --> 00:03:13,920
+framework it's easy to code uis in flatter like 
+i said before it has great cross-platform support  
+
+32
+00:03:13,920 --> 00:03:19,840
+but if you want you can create your own embedder 
+and run it on almost everything it's fast and  
+
+33
+00:03:19,840 --> 00:03:26,320
+compiles down to the native binary and last but 
+not least it's also great news for linux community  
+
+34
+00:03:26,320 --> 00:03:31,840
+that full source code and development is available 
+on github for both dart and flutter itself
+
+35
+00:03:34,080 --> 00:03:39,840
+i've seen a few misconceptions how it all works 
+so let me quickly explain how flutter is built  
+
+36
+00:03:40,480 --> 00:03:45,200
+in short there are two parts the one 
+that you code in which is written in dart  
+
+37
+00:03:45,200 --> 00:03:50,320
+and the engine part written in C++ the engine uses a library called skia  
+
+38
+00:03:50,320 --> 00:03:56,800
+for driving pixels on the screen skia can draw 
+using opengl vulkan metal or software renderer  
+
+39
+00:03:57,840 --> 00:04:02,720
+of course some things require calling the 
+underlying platform and for this we have a  
+
+40
+00:04:02,720 --> 00:04:09,280
+plug-in system thanks to which we can make native 
+calls on android it calls java runtime on ios it's  
+
+41
+00:04:09,280 --> 00:04:17,840
+swift but on linux it's C++ it's also worth noting 
+that lately dart got FFI support thanks to which  
+
+42
+00:04:17,840 --> 00:04:24,480
+you can call C compatible libraries there's 
+also a tool which can scan C headers and  
+
+43
+00:04:24,480 --> 00:04:29,680
+create those bindings if you are interested 
+check the documentation to find out more
+
+44
+00:04:32,640 --> 00:04:38,560
+alright now that everyone has some understanding 
+what flutter is let's jump to the demo i will go  
+
+45
+00:04:38,560 --> 00:04:44,320
+slowly at first but for later parts i will fast 
+forward the demos and talk so you won't get bored  
+
+46
+00:04:44,880 --> 00:04:48,560
+this is not a tutorial and i will 
+be writing everything in one file  
+
+47
+00:04:48,560 --> 00:04:55,840
+but hopefully you will get a feeling of how to 
+use this framework and how powerful it is okay  
+
+48
+00:04:55,840 --> 00:04:59,760
+so let's jump through the demo maybe for 
+the first step would be to install flutter  
+
+49
+00:05:00,720 --> 00:05:07,600
+so let's jump to the flutter webpage which 
+is flutter.dev you can see that is the main  
+
+50
+00:05:07,600 --> 00:05:14,480
+clutter website we can read through it but for us 
+let's just get started choose other platform for  
+
+51
+00:05:14,480 --> 00:05:20,960
+us it's linux and the first good thing is that if 
+you want to install it you can choose two options  
+
+52
+00:05:20,960 --> 00:05:26,560
+one is to use snap package so if you are 
+just want to develop your application this is  
+
+53
+00:05:27,280 --> 00:05:34,640
+probably daisy's one or we can download the 
+photos manually i choose this path because  
+
+54
+00:05:34,640 --> 00:05:43,040
+i sometimes change letter source code but yeah 
+for you maybe that would be the the preferred  
+
+55
+00:05:43,040 --> 00:05:49,200
+one i've already done this in in advance so 
+we won't be seeing me just you know doing some  
+
+56
+00:05:50,880 --> 00:05:55,200
+puff manipulation and trying 
+stuff with the command line  
+
+57
+00:05:56,080 --> 00:06:01,760
+so now let's jump to the terminal great so 
+after installing flutter either for the package  
+
+58
+00:06:01,760 --> 00:06:07,120
+or manually from source code then we should 
+be able to run command name flutter doctor
+
+59
+00:06:10,640 --> 00:06:18,400
+we should display our options so in my case 
+i'm using the stable channel and also i can  
+
+60
+00:06:18,960 --> 00:06:27,600
+develop flutter applications from web linux or 
+android and i have here two ids in intellij idea  
+
+61
+00:06:27,600 --> 00:06:37,520
+or vs code today i will be using vs code but 
+the other options are vim which has lsp support  
+
+62
+00:06:37,520 --> 00:06:44,800
+so all the you know code completion and other 
+stuff which works with vs code can also work with  
+
+63
+00:06:45,680 --> 00:06:55,280
+vim or neovim if that's your choice so to create 
+the flutter application we need to enable flutter  
+
+64
+00:06:55,280 --> 00:07:01,920
+desktop first i've already done that and after 
+that we will be able to develop linux applications  
+
+65
+00:07:01,920 --> 00:07:08,400
+because it's because the flutter is currently 
+in beta so it's not enabled but after invoking  
+
+66
+00:07:08,400 --> 00:07:15,280
+this command then you will be able to develop and 
+create applications so to start let's just create  
+
+67
+00:07:15,280 --> 00:07:21,280
+the application for us today we'll be developing 
+the file manager so let's create a project  
+
+68
+00:07:22,160 --> 00:07:30,400
+click enter and then we can try to run that so 
+let's try running this on linux we currently  
+
+69
+00:07:30,400 --> 00:07:36,880
+cannot see this but let me just change the 
+scene and here we can see that is our default  
+
+70
+00:07:38,080 --> 00:07:45,200
+application this is basically what clutter 
+creates when you're creating the project you  
+
+71
+00:07:45,200 --> 00:07:54,000
+can click this button and this will increase our 
+counter okay so let me change the scene once again  
+
+72
+00:07:55,120 --> 00:08:01,520
+all right so here is our code editor on the left 
+here is our running application on the right  
+
+73
+00:08:02,160 --> 00:08:07,280
+i went ahead and created the launch 
+application for that you for that you need to
+
+74
+00:08:07,280 --> 00:08:12,536
+download the flutter plug-in or just available in extensions 
+
+75
+00:08:12,536 --> 00:08:17,440
+so just go to extensions 
+and download the flut the flutter plugin and that  
+
+76
+00:08:17,440 --> 00:08:22,960
+would also install the dartmouth plugin so you 
+will have the complete and environmental to run  
+
+77
+00:08:22,960 --> 00:08:31,360
+flutter applications so let's maybe take a look at 
+our file structure so we can see that it created  
+
+78
+00:08:31,360 --> 00:08:37,920
+the directories for android ios because 
+you can run that okay it said for test web  
+
+79
+00:08:38,560 --> 00:08:47,600
+and also we here's our linux directory and this 
+is our custom embedded original c++ uses GTK
+
+80
+00:08:50,800 --> 00:08:57,280
+and here we can see our lib directory 
+so this is where our application  
+
+81
+00:08:57,280 --> 00:09:03,520
+lives that's where we spend most of the 
+time writing code inside this directory  
+
+82
+00:09:04,160 --> 00:09:12,000
+let's also pubspec the young and what 
+this is is the project setup so here's our  
+
+83
+00:09:12,000 --> 00:09:20,400
+name of the application that we created 
+description and the version environment  
+
+84
+00:09:20,400 --> 00:09:26,320
+and this is the data version that we're running 
+our dependencies so currently we only we only  
+
+85
+00:09:27,200 --> 00:09:34,000
+use flutter from the sdk8 and cooperating icons 
+some development dependencies like testing  
+
+86
+00:09:34,720 --> 00:09:42,400
+and other stuff which we will go through 
+later on so now let's open our source
+
+87
+00:09:45,600 --> 00:10:03,840
+and let me quickly delete everything so we will 
+start from scratch okay so let's start coding
+
+88
+00:10:08,720 --> 00:10:14,800
+okay great our application went red for a second 
+but we will fix that soon let's quickly look  
+
+89
+00:10:14,800 --> 00:10:19,760
+what is happening here on the top we are 
+importing material library which implements  
+
+90
+00:10:19,760 --> 00:10:25,440
+all widgets from google material design next 
+we have the main function which starts our app  
+
+91
+00:10:26,800 --> 00:10:33,760
+and then we have our main application class which 
+is stateless widget to put it simple flutter has  
+
+92
+00:10:33,760 --> 00:10:38,640
+two main types of widgets stateless 
+and stateful we use stateful widget  
+
+93
+00:10:38,640 --> 00:10:43,840
+when we want to store some value in current 
+widget and stateless if it's imitable class  
+
+94
+00:10:45,280 --> 00:10:51,760
+all right let's save our file and we can see that 
+our application went white what just happened  
+
+95
+00:10:52,560 --> 00:10:58,960
+if we take a look here in the corner we have 
+the restart and we have reload they both do the  
+
+96
+00:10:58,960 --> 00:11:05,680
+same thing but almost the restart completely 
+launches this other application from scratch  
+
+97
+00:11:05,680 --> 00:11:11,920
+so if you have some state then it gets also 
+reset but for the reload tries to preserve the  
+
+98
+00:11:11,920 --> 00:11:21,120
+state of our application so for now 
+let's try to create something more useful  
+
+99
+00:11:22,640 --> 00:11:29,360
+and if i click save it should fail yeah and 
+the reason is that the material app needs  
+
+100
+00:11:29,360 --> 00:11:36,960
+some page to display let's create another 
+stateless widget it's called main page for example
+
+101
+00:11:39,040 --> 00:11:46,160
+and then inside of this let's create something 
+which is called scaffold and scaffold is basically  
+
+102
+00:11:46,160 --> 00:11:52,640
+the skeleton of our material application so now 
+if we go to mat material up and create a home  
+
+103
+00:11:54,320 --> 00:11:57,840
+and pass the main page to it and then we can see  
+
+104
+00:11:58,720 --> 00:12:04,800
+that we have the white screen again let's try 
+to create the app bar and see how how it works
+
+105
+00:12:07,680 --> 00:12:15,360
+in action so let's try to put up bar with 
+text inside it and say hello here we come  
+
+106
+00:12:17,120 --> 00:12:22,720
+okay so let's try to implement something more 
+useful rather than empty screen with the title  
+
+107
+00:12:23,280 --> 00:12:30,080
+so we can change our widget to stateful one 
+because we'll hold the files of our disk  
+
+108
+00:12:31,440 --> 00:12:37,040
+and now we can see that you have the widget and 
+now we have its state and instead we have the  
+
+109
+00:12:37,040 --> 00:12:45,840
+same build function like again and in our main 
+app nothing is changed i will copy one function  
+
+110
+00:12:46,560 --> 00:12:56,800
+because we have limited time so let me quickly do 
+it okay so inside this our state class let's paste
+
+111
+00:12:59,120 --> 00:13:03,120
+one function then it's paste some variables
+
+112
+00:13:05,440 --> 00:13:12,640
+and i will explain it in a second and 
+do one more thing our abstraction so
+
+113
+00:13:15,200 --> 00:13:19,840
+okay so that's everything so 
+let me quick quickly save this
+
+114
+00:13:24,720 --> 00:13:28,000
+okay so we have some problem 
+with imports so let's import
+
+115
+00:13:31,040 --> 00:13:37,680
+and yes in this case we can see that we have some 
+problem that if we try to import it we can see  
+
+116
+00:13:37,680 --> 00:13:45,760
+that and the reason is because it's in file and 
+imported a little bit different so if we go up  
+
+117
+00:13:46,400 --> 00:13:54,960
+to our import section we can add our dependencies 
+before go to the semicolon so now we save  
+
+118
+00:13:56,800 --> 00:14:06,720
+it should have everything all right yeah okay 
+so let's go and see what i pasted so with this  
+
+119
+00:14:06,720 --> 00:14:11,920
+basically what this function basically does 
+is it leaves files in the given directory  
+
+120
+00:14:12,560 --> 00:14:23,680
+and it returns it as either directory or file 
+items so you see i created here all items  
+
+121
+00:14:23,680 --> 00:14:30,880
+so every files and i have directory items and file 
+items so this will display them in given order  
+
+122
+00:14:32,000 --> 00:14:36,320
+you also get the current highlighted 
+item i went a little bit ahead of myself  
+
+123
+00:14:37,120 --> 00:14:43,840
+and we also have the home here which we'll add 
+soon and for our abstractions is basically my  
+
+124
+00:14:44,800 --> 00:14:51,360
+type so i added if it's either a file or 
+directory and my class custom model to  
+
+125
+00:14:51,920 --> 00:14:58,640
+display it quick quicker so name name without 
+extension path item time or if it's hidden or not  
+
+126
+00:14:59,600 --> 00:15:07,520
+so nothing big but i just don't want to spend 
+time you know for you to see me writing this  
+
+127
+00:15:07,520 --> 00:15:12,160
+file function because it's pretty boring to 
+be honest and there is no point in doing so  
+
+128
+00:15:13,040 --> 00:15:18,000
+okay so maybe let's try to display 
+some files in our application
+
+129
+00:15:20,320 --> 00:15:25,840
+let's try by implementing the init function so
+
+130
+00:15:37,120 --> 00:15:43,200
+right so our in function runs before build 
+method and enter its home environment variable  
+
+131
+00:15:43,200 --> 00:15:49,360
+so we can display contents of our home folder 
+so let's try display something on the screen  
+
+132
+00:15:50,480 --> 00:15:57,840
+and that will be the body of our 
+scaffold and maybe there's a column
+
+133
+00:16:01,200 --> 00:16:07,840
+of children and what we can 
+do is display text and check
+
+134
+00:16:10,160 --> 00:16:16,720
+our file manager we need to invoke 
+this function so let's get files in the  
+
+135
+00:16:17,760 --> 00:16:21,840
+given directory and create a directory
+
+136
+00:16:24,560 --> 00:16:31,360
+based on our home directory and we need 
+to explicitly said that it's not null  
+
+137
+00:16:32,960 --> 00:16:37,680
+so this function should load all items 
+and split into directories and files
+
+138
+00:16:41,680 --> 00:16:45,520
+let's display the first one and we 
+see that it failed and why did failed  
+
+139
+00:16:46,160 --> 00:16:52,080
+because we have the state so the code really 
+won't work but if we do the hold restart  
+
+140
+00:16:52,080 --> 00:16:58,320
+we have the tender so this is our android folder 
+okay but you can see that this is pretty boring  
+
+141
+00:16:58,320 --> 00:17:09,280
+so maybe let's display all of them in one go so 
+what we can do you can get all items and map them
+
+142
+00:17:11,360 --> 00:17:11,860
+and
+
+143
+00:17:13,840 --> 00:17:19,680
+we can map all of those items 
+to the name and do to the list  
+
+144
+00:17:21,280 --> 00:17:27,600
+and we can see that we displayed everything we 
+also got the exception because we run out of space  
+
+145
+00:17:27,600 --> 00:17:34,800
+so to quickly fix that we can do list view instead 
+of column so let's check change that to living
+
+146
+00:17:38,320 --> 00:17:43,120
+and now we can see that our exception is 
+gone and you can scroll through our items  
+
+147
+00:17:44,000 --> 00:17:49,920
+okay sure but we can see that there's a problem 
+in our approach first of all we can see also the  
+
+148
+00:17:49,920 --> 00:17:58,400
+hidden files and directories and we also see that 
+it's in alphabetical order but also it doesn't  
+
+149
+00:17:58,400 --> 00:18:04,960
+distinguish between files and directories so 
+let's quickly fix that okay let's create two lists  
+
+150
+00:18:05,520 --> 00:18:12,080
+one for non-hidden directories and second one 
+for non-hidden files after that we can merge  
+
+151
+00:18:12,080 --> 00:18:19,680
+them together and replace current items with our 
+newly created filtered structure so that list  
+
+152
+00:18:19,680 --> 00:18:22,880
+is a little bit shorter so you can 
+see that we have the apps desktop  
+
+153
+00:18:23,600 --> 00:18:30,000
+and all of the folders and then we 
+can see the files now we have another  
+
+154
+00:18:30,000 --> 00:18:36,800
+problem our application looks pretty boring 
+to be honest so maybe let's first apply the  
+
+155
+00:18:36,800 --> 00:18:43,360
+theme from the yellow theme so to do that 
+we need to go up to our main application  
+
+156
+00:18:44,960 --> 00:18:51,920
+we can see that we are importing the yaru theme
+already and we can do very very simple thing  
+
+157
+00:18:51,920 --> 00:18:58,560
+so first apply the theme the yaru light theme
+so we'll be using the light theme by default  
+
+158
+00:18:59,920 --> 00:19:04,320
+and for a dark theme we can do yaru.darkTheme
+
+159
+00:19:07,280 --> 00:19:08,080
+and theme mode
+
+160
+00:19:10,720 --> 00:19:16,960
+system so this will check if we are using the 
+light theme or dark theme and then apply it to our  
+
+161
+00:19:16,960 --> 00:19:22,720
+application and that should be basically it we can 
+see that up bar has changed to the error theme and  
+
+162
+00:19:22,720 --> 00:19:29,520
+now we should use the proper one okay now for a 
+second thing we probably should display this in  
+
+163
+00:19:29,520 --> 00:19:38,480
+a grid okay so total to that we can change our 
+listview to responsive gridlist upon save great  
+
+164
+00:19:38,480 --> 00:19:46,240
+list and you can see that you have some squiggly 
+lines so in the import of course and what else  
+
+165
+00:19:47,280 --> 00:19:58,000
+we need to desired item with so because that would 
+be the width of our one block let's choose the 72  
+
+166
+00:19:58,000 --> 00:20:03,280
+for example and now we see that it looks a 
+little bit different it looks like a grid  
+
+167
+00:20:03,280 --> 00:20:10,480
+which is good and you can see that this 
+line is a little bit long so what we can do  
+
+168
+00:20:11,360 --> 00:20:20,240
+is to add column here and that would change it to 
+be more readable okay so before we can continue i  
+
+169
+00:20:20,240 --> 00:20:27,840
+must tell you a little bit secret i went ahead of 
+myself and i wanted to pass back two assets one is  
+
+170
+00:20:27,840 --> 00:20:33,840
+for the folder black and one's for text while 
+two icons which we'll use for our application  
+
+171
+00:20:34,560 --> 00:20:41,760
+and i added them in assets folder so we have for 
+the black and text i also added other ones for a  
+
+172
+00:20:41,760 --> 00:20:48,480
+test but let's focus on those two right now let's 
+go back and what we can do right now is we can  
+
+173
+00:20:49,520 --> 00:20:54,240
+extract this to a separate flutter widget 
+so let's do that right now and let's name it
+
+174
+00:20:56,560 --> 00:21:02,880
+item should really use different name but you know 
+naming is hard hope you forgive me this one time  
+
+175
+00:21:03,760 --> 00:21:07,120
+awesome next we can extract our 
+text into new flutter widget  
+
+176
+00:21:07,920 --> 00:21:12,320
+because you want to do some more 
+customization and i'm also adding a  
+
+177
+00:21:12,320 --> 00:21:17,840
+flag to distinguish if item is highlighted 
+or not and after he fixes it's ready  
+
+178
+00:21:19,520 --> 00:21:26,320
+to make it a little bit better we can add icons to 
+each type of element first we wrap text in column  
+
+179
+00:21:26,320 --> 00:21:32,960
+so we can add svg picture widget we check if 
+current item is either folder or file and we apply  
+
+180
+00:21:32,960 --> 00:21:40,560
+different icon and it looks already better we can 
+see that text is still not centered so we should  
+
+181
+00:21:40,560 --> 00:21:47,280
+also fix that but first let's add some padding to 
+have more space i also add a size box to increase  
+
+182
+00:21:47,280 --> 00:21:53,680
+the gap between the icon and the name of the item 
+we can see that i'm experimenting quite a bit with  
+
+183
+00:21:53,680 --> 00:21:59,360
+the design adding padding here and there but i 
+just wanted to express how powerful this process  
+
+184
+00:21:59,360 --> 00:22:05,280
+is we have fast feedback loop which encourages 
+developers to experiment with different designs  
+
+185
+00:22:06,080 --> 00:22:12,240
+i can imagine a developer sits with designer 
+and fine tunes application as much as they can  
+
+186
+00:22:12,240 --> 00:22:17,760
+you can see that application is also responsive 
+to window changes all right now we should fix  
+
+187
+00:22:17,760 --> 00:22:24,560
+that text which is also very easy by the way i 
+just set max line's limit and overflow in case  
+
+188
+00:22:24,560 --> 00:22:30,160
+we have to deal with really long names and 
+to center the text i just specify text align  
+
+189
+00:22:31,920 --> 00:22:37,280
+brilliant it's time to add click handler 
+to highlighted items we'll grab everything  
+
+190
+00:22:37,280 --> 00:22:43,600
+in container and specify box decoration you can 
+see that i again use yellow colors and highlight  
+
+191
+00:22:43,600 --> 00:22:51,200
+everything in aubergine first because border 
+radius is fancy these days i specify this too our  
+
+192
+00:22:51,200 --> 00:22:56,480
+new operating highlight is a little bit too much 
+but fortunately we can put more transparency to it  
+
+193
+00:22:57,760 --> 00:23:04,800
+after seeing it working it's time to use our is 
+highlighted variable with simple if statement  
+
+194
+00:23:04,800 --> 00:23:10,960
+we can set box decoration when the variable is 
+set to true to handle clicks in flutter we can  
+
+195
+00:23:10,960 --> 00:23:17,040
+wrap our widgets in another widget called gesture 
+detector and since we want to specify function  
+
+196
+00:23:17,040 --> 00:23:24,880
+from the parent we pass it through the constructor 
+with this approach we can pass highlighted flag  
+
+197
+00:23:24,880 --> 00:23:31,120
+based on current highlighted item and then click 
+logic it's important to call setstate function  
+
+198
+00:23:31,120 --> 00:23:36,800
+which will inform flatter to refresh UI for state 
+changes and repaint the change part of the screen
+
+199
+00:23:39,120 --> 00:23:44,960
+alright we can now mark our files but when we try 
+to double click on some element nothing happens  
+
+200
+00:23:45,840 --> 00:23:52,880
+let's implement this logic quickly in our item 
+class we add onDoubleTap callback we set it to gesture  
+
+201
+00:23:52,880 --> 00:23:58,480
+detector and pass it through the constructor 
+just like we did with the single tab next  
+
+202
+00:23:58,480 --> 00:24:05,600
+we create one doubletap function we check if the 
+item is directly or not and we implement small  
+
+203
+00:24:05,600 --> 00:24:17,840
+function to reset current state after which we 
+change directory to items directory and that's it
+
+204
+00:24:25,520 --> 00:24:30,960
+keyboard shortcuts are essential to desktop 
+programs let me show you how easy you can do  
+
+205
+00:24:30,960 --> 00:24:38,080
+that in flutter first we need to create intent 
+which we will later listen for intent is just  
+
+206
+00:24:38,080 --> 00:24:43,840
+a normal class which can optionally hold some 
+data in our case we just have an empty class  
+
+207
+00:24:45,120 --> 00:24:51,600
+next we wrap application in shortcuts widget 
+and specify map of shortcuts in my case  
+
+208
+00:24:51,600 --> 00:24:57,920
+it's up arrow which will invoke newly created 
+intent after that we need to specify actions  
+
+209
+00:24:57,920 --> 00:25:03,200
+widget the reason why it's separated 
+is because we can use the same intents  
+
+210
+00:25:03,200 --> 00:25:09,440
+for different parts of our application but for 
+the sake of simplicity we are using them always  
+
+211
+00:25:10,800 --> 00:25:16,400
+we also need to specify focus widget two 
+shortcuts to be fired if we hold restart  
+
+212
+00:25:16,400 --> 00:25:21,360
+the app we can see that after clicking up 
+arrow we navigate to the root of the hard disk
+
+213
+00:25:25,280 --> 00:25:29,520
+we still have a little bit of time so let 
+me quickly demonstrate few more things  
+
+214
+00:25:30,400 --> 00:25:36,000
+we all know that size panel is very convenient 
+in file manager and since we don't have one it's  
+
+215
+00:25:36,000 --> 00:25:43,440
+time to change that let me add side panel color 
+first and we can start if you start to think that  
+
+216
+00:25:43,440 --> 00:25:50,400
+this whole thing is too easy then you are right 
+i simply wrap grid in row which allow me to have  
+
+217
+00:25:50,400 --> 00:25:56,800
+two views next to each other horizontally next i 
+add container with specified with and create items  
+
+218
+00:25:56,800 --> 00:26:04,640
+inside lessview thanks to canonical's work i use 
+the arrow icons very easily now we can reuse our  
+
+219
+00:26:04,640 --> 00:26:12,000
+well known change directory function put it on 
+click and our code fails and the reason why it  
+
+220
+00:26:12,000 --> 00:26:18,560
+fails is because we are not specifying constraints 
+how big grid can grow it wants to paint itself  
+
+221
+00:26:18,560 --> 00:26:24,720
+infinity basically to prevent this behavior we 
+wrap a responsive grid list into expanded widget  
+
+222
+00:26:25,840 --> 00:26:32,960
+if you are interested how flutter decides on 
+widget sizes search for flutter box model i don't  
+
+223
+00:26:32,960 --> 00:26:39,360
+want home to feel lonely inside our site panel so 
+i'll add projects item too and that's basically it  
+
+224
+00:26:41,200 --> 00:26:45,760
+i know what you are thinking right now it's just 
+another boring application we have that already  
+
+225
+00:26:46,560 --> 00:26:52,800
+so i guess it's time to add just a little bit of 
+eye candy stuff you can notice that when we click  
+
+226
+00:26:52,800 --> 00:26:58,400
+on some item it simply highlights it wouldn't 
+it be better if we could animate this transition  
+
+227
+00:26:59,440 --> 00:27:05,600
+fortunately flutter has very good support for 
+animations we just need to change container  
+
+228
+00:27:05,600 --> 00:27:13,760
+inside our item widget to animated container next 
+we specify duration how long animation should  
+
+229
+00:27:13,760 --> 00:27:22,720
+be now we just need to change how we are using 
+box decoration instead of setting it or not i'm  
+
+230
+00:27:22,720 --> 00:27:29,680
+setting aubergine color when it's highlighted but 
+when it's not i put transparent color flutter the  
+
+231
+00:27:29,680 --> 00:27:37,520
+text changed variable and animates its value when 
+it changes i change aubergine to to be more darker  
+
+232
+00:27:37,520 --> 00:27:47,840
+for visibility maybe it's not the best design but 
+you must say that it was very easy to implement
+
+233
+00:27:50,480 --> 00:27:55,440
+okay last thing i promise i just want to 
+show you integration with external programs  
+
+234
+00:27:56,240 --> 00:28:02,000
+if you are watching closely you probably noticed 
+that we are missing logic for opening items  
+
+235
+00:28:02,000 --> 00:28:07,280
+thanks to open file plugin we can open programs 
+which are set as default for given extension  
+
+236
+00:28:08,080 --> 00:28:11,280
+to do that just navigate to on double tap function  
+
+237
+00:28:11,840 --> 00:28:16,800
+and simply use plugins open function to 
+open the file and that's basically it
+
+238
+00:28:19,520 --> 00:28:25,680
+okay so hopefully it wasn't that boring but let's 
+recap the demo we created a responsive application  
+
+239
+00:28:25,680 --> 00:28:31,280
+very quickly it was easy to develop UI even if we 
+didn't have some functionality like highlighting  
+
+240
+00:28:31,280 --> 00:28:36,880
+the folder it was quick to implement also 
+quad reload and quad restart are awesome tools  
+
+241
+00:28:37,440 --> 00:28:43,680
+to help you iterate on your project animations 
+are built-in and easy to use and by the way it's  
+
+242
+00:28:43,680 --> 00:28:49,520
+also very easy to create new custom animations 
+we saw libraries made by canonical thanks to  
+
+243
+00:28:49,520 --> 00:28:54,800
+which we could integrate flutter more easily 
+with our desktop environment and plugins made  
+
+244
+00:28:54,800 --> 00:29:02,160
+by others to open files i think is a good 
+place to mention linux specific integrations  
+
+245
+00:29:02,160 --> 00:29:07,840
+which we haven't seen in the demo i only showed 
+two libraries but canonical guys had other cool  
+
+246
+00:29:07,840 --> 00:29:15,280
+stuff for integrating dart with linux to name a 
+few you can use network manager dbus Gsettings  
+
+247
+00:29:15,280 --> 00:29:20,960
+or package kit and again everything is open 
+source and available for you to use or contribute  
+
+248
+00:29:22,080 --> 00:29:28,640
+there are other integrations done by google like 
+native file selector we know size checker or  
+
+249
+00:29:28,640 --> 00:29:34,080
+menu bar integration and of course many 
+other libraries done by the community  
+
+250
+00:29:35,920 --> 00:29:40,880
+you might ask if we can do everything in 
+flatter now the answer is yes but also not quite  
+
+251
+00:29:41,440 --> 00:29:46,160
+linux still lacks native view support 
+and texture view support there are pull  
+
+252
+00:29:46,160 --> 00:29:50,800
+requests implementing that so it shouldn't be 
+too long to see this functionality in framework  
+
+253
+00:29:51,360 --> 00:29:56,160
+there's also no sound plugin for linux but 
+that could be relatively easy to implement  
+
+254
+00:29:57,120 --> 00:30:01,760
+so we still need to wait for a few things but 
+it's a good time to start writing your apps
+
+255
+00:30:03,920 --> 00:30:08,400
+if you like woodruff so and would like to learn 
+more about flutter then check out official  
+
+256
+00:30:08,400 --> 00:30:14,560
+documentation also there are many great tutorials 
+on youtube with source code on github letter  
+
+257
+00:30:14,560 --> 00:30:21,280
+community makes a harm take when a youtube stream 
+every wednesday well almost where you can ask  
+
+258
+00:30:21,280 --> 00:30:27,600
+your questions regarding the framework to get the 
+taste of awesome UIs search for flutter challenges  
+
+259
+00:30:27,600 --> 00:30:32,640
+in your search engine of choice you might be 
+surprised how easy people implement applications  
+
+260
+00:30:32,640 --> 00:30:39,040
+in flutter with custom UIs if you need to talk 
+with any developers there's also discord channel
+
+261
+00:30:41,920 --> 00:30:45,600
+if you already know flutter and would 
+like to help with linux adoption  
+
+262
+00:30:45,600 --> 00:30:49,360
+here are my tips for you write 
+and share your linux programs  
+
+263
+00:30:49,360 --> 00:30:54,480
+you can for example use twitter for that don't 
+forget to mention flutter and linux accounts  
+
+264
+00:30:55,440 --> 00:31:01,280
+write posts about your experiences and problems 
+that you've encountered if you find bugs or have  
+
+265
+00:31:01,280 --> 00:31:06,720
+some suggestions how to improve the framework 
+report issues to a flutter's github page speaking  
+
+266
+00:31:06,720 --> 00:31:12,080
+of improvement take a look at documentation 
+there is always something to fix last but  
+
+267
+00:31:12,080 --> 00:31:18,480
+not least help Canonical to develop their libraries 
+and add support to popular libraries on pub.dev
+
+268
+00:31:20,560 --> 00:31:26,960
+that is all i had for today hope you had some 
+fun and at least i got your interest in flutter  
+
+269
+00:31:26,960 --> 00:31:31,840
+thank you for listening now i think 
+we have some time for questions
+

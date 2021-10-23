@@ -13,3 +13,5 @@
     - Reviewed and Post-edited by Kwangyeon Kim(ghemool123@gmail.com)
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
     - Translated by Andre Liang(andrecat1116@gmail.com)
+- [`id_id.srt`: Indonesian subtitle](id_id.srt)
+    - Translated by Triyan W Nugroho (triyan.wn@gmail.com)

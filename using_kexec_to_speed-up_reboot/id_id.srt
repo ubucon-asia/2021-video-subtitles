@@ -1,0 +1,504 @@
+1
+00:00:01,790 --> 00:00:05,240
+ 
+
+2
+00:00:07,520 --> 00:00:10,960
+Halo semuanya, dan selamat datang di
+
+3
+00:00:08,800 --> 00:00:13,200
+presentasi saya. Nama saya Juhyung Park dan
+
+4
+00:00:10,960 --> 00:00:14,559
+saya telah menggunakan Ubuntu selama 11 tahun, dan
+
+5
+00:00:13,200 --> 00:00:16,880
+saya di sini untuk berdiskusi mengenai mainan baru saya
+
+6
+00:00:14,559 --> 00:00:18,960
+di Linux yang dinamakan kexec, dan bagaimana cara
+
+7
+00:00:16,880 --> 00:00:20,320
+menggunakannya di Ubuntu.
+
+8
+00:00:18,960 --> 00:00:21,920
+Jika Anda ingin mengoptimalkan waktu boot Anda,
+
+9
+00:00:20,320 --> 00:00:24,480
+ini adalah perintah yang perlu Anda gunakan:
+
+10
+00:00:21,920 --> 00:00:26,240
+systemd-analyze. Anda akan mengetahui
+
+11
+00:00:24,480 --> 00:00:29,279
+servis mana saja yang menghabiskan waktu boot Anda
+
+12
+00:00:26,240 --> 00:00:30,960
+dan Anda bisa menonaktifkannya.
+
+13
+00:00:29,279 --> 00:00:33,040
+Masalahnya, meskipun Anda mengoptimalkan
+
+14
+00:00:30,960 --> 00:00:34,320
+rantai servis systemd, 
+
+15
+00:00:33,040 --> 00:00:35,840
+reboot tetap saja lambat.
+
+16
+00:00:34,320 --> 00:00:36,880
+Sebagian besar waktu dihabiskan di
+
+17
+00:00:35,840 --> 00:00:38,719
+BIOS dan GRUB.
+
+18
+00:00:36,880 --> 00:00:40,800
+Workstation dan server lebih parah lagi
+
+19
+00:00:38,719 --> 00:00:43,120
+karena perlu waktu lebih lama di inisialisasi BIOS,
+
+20
+00:00:40,800 --> 00:00:45,440
+menghabiskan beberapa menit
+
+21
+00:00:43,120 --> 00:00:47,200
+hanya untuk mencapai tampilan layar GRUB.
+
+22
+00:00:45,440 --> 00:00:49,440
+Hadirlah kexec.
+
+23
+00:00:47,200 --> 00:00:52,000
+kexec bisa mem-bypass BIOS dan GRUB
+
+24
+00:00:49,440 --> 00:00:53,680
+sehingga reboot menjadi jauh lebih cepat.
+
+25
+00:00:52,000 --> 00:00:56,079
+Sebelumnya, mari kita lihat bagaimana reboot reguler
+
+26
+00:00:53,680 --> 00:00:57,840
+bekerja di Ubuntu.
+
+27
+00:00:56,079 --> 00:00:59,600
+Ketika Anda mengetik reboot di shell,
+
+28
+00:00:57,840 --> 00:01:01,600
+maka servis init systemd akan dipanggil untuk
+
+29
+00:00:59,600 --> 00:01:04,000
+memulai proses reboot.
+
+30
+00:01:01,600 --> 00:01:05,920
+Setelah systemd menghentikan semua servis, 
+
+31
+00:01:04,000 --> 00:01:08,000
+ia akan memanggil system call reboot.
+
+32
+00:01:05,920 --> 00:01:10,000
+Kemudian kernel Linux akan mereset komputer
+
+33
+00:01:08,000 --> 00:01:12,000
+secara fisik.
+
+34
+00:01:10,000 --> 00:01:13,680
+BIOS mengambil alih dan melakukan
+
+35
+00:01:12,000 --> 00:01:14,960
+memory training dan memuat
+
+36
+00:01:13,680 --> 00:01:16,479
+driver UEFI.
+
+37
+00:01:14,960 --> 00:01:19,040
+GRUB kemudian akan dimuat, yang sayangnya
+
+38
+00:01:16,479 --> 00:01:21,520
+bisa membuang lebih banyak waktu
+
+39
+00:01:19,040 --> 00:01:23,119
+karena pengaturan timeout pada GRUB.
+
+40
+00:01:21,520 --> 00:01:25,680
+GRUB memuat kernel Linux yang kemudian
+
+41
+00:01:23,119 --> 00:01:28,000
+memuat initrd dan systemd.
+
+42
+00:01:25,680 --> 00:01:29,759
+Sekarang kita bandingkan dengan kexec. 
+
+43
+00:01:28,000 --> 00:01:31,840
+Systemd sekarang memberikan tanda bendera yang sedikit berbeda
+
+44
+00:01:29,759 --> 00:01:34,479
+ke system call reboot yang memberitahu 
+
+45
+00:01:31,840 --> 00:01:36,159
+kernel Linux untuk menggunakan kexec.
+
+46
+00:01:34,479 --> 00:01:38,079
+Setelah kernel Linux mematikan semua perangkat,
+
+47
+00:01:36,159 --> 00:01:40,479
+ia akan melompat ke kernel yang baru dimuat
+
+48
+00:01:38,079 --> 00:01:43,680
+yang memulai proses inisialisasi
+
+49
+00:01:40,479 --> 00:01:45,600
+dan memuat systemd.
+
+50
+00:01:43,680 --> 00:01:47,439
+Di sini seseorang harus memuat kernel
+
+51
+00:01:45,600 --> 00:01:49,360
+yang akan di-boot ke RAM dan disinilah
+
+52
+00:01:47,439 --> 00:01:51,759
+kexec muncul.
+
+53
+00:01:49,360 --> 00:01:55,200
+Ia digunakan sebelum systemd untuk memuat
+
+54
+00:01:51,759 --> 00:01:56,880
+kernel dan initrd ke RAM.
+
+55
+00:01:55,200 --> 00:01:58,560
+Sekarang kita telah memahami bagaimana cara kerja
+
+56
+00:01:56,880 --> 00:02:00,560
+reboot dengan kexec, kita sekarang akan mempelajari bagaimana
+
+57
+00:01:58,560 --> 00:02:02,799
+cara menggunakan kexec di Ubuntu.
+
+58
+00:02:00,560 --> 00:02:04,960
+Pertama, kita akan membutuhkan kexec-tools,
+
+59
+00:02:02,799 --> 00:02:06,159
+kedua, kita perlu menghapus paket
+
+60
+00:02:04,960 --> 00:02:08,319
+finalrd.
+
+61
+00:02:06,159 --> 00:02:10,319
+Dengan finalrd, systemd gagal menemukan
+
+62
+00:02:08,319 --> 00:02:12,000
+binari kexec dan kemudian melakukan
+
+63
+00:02:10,319 --> 00:02:13,680
+reboot secara penuh.
+
+64
+00:02:12,000 --> 00:02:16,319
+Paket ini ditandai sebagai paket yang direkomendasikan oleh
+
+65
+00:02:13,680 --> 00:02:18,239
+manajer RAID md, sehingga jika Anda menggunakan RAID
+
+66
+00:02:16,319 --> 00:02:20,640
+atau Ubuntu Server, besar kemungkinan Anda 
+
+67
+00:02:18,239 --> 00:02:22,640
+memiliki paket ini di sistem Anda.
+
+68
+00:02:20,640 --> 00:02:25,040
+Ingat bahwa md RAID itu sendiri bisa bekerja
+
+69
+00:02:22,640 --> 00:02:26,720
+dengan baik tanpa finalrd.
+
+70
+00:02:25,040 --> 00:02:29,920
+Bagian akhirnya adalah helper reboot yang terkustomisasi.
+
+71
+00:02:27,920 --> 00:02:32,080
+Helper ini akan membungkus kexec untuk memuat
+
+72
+00:02:29,920 --> 00:02:34,840
+kernel terbaru dan initrd ke dalam RAM,
+
+73
+00:02:32,080 --> 00:02:37,440
+dan akhirnya memanggil systemd untuk memulai kexec.
+
+74
+00:02:34,840 --> 00:02:40,080
+Anda bisa membuka tautan berikut ini dan menyimpannya ke
+
+75
+00:02:37,440 --> 00:02:44,400
+/usr/local/sbin dengan perizinan dapat dieksekusi.
+
+76
+00:02:42,319 --> 00:02:46,160
+Jadi seberapa efektif kexec?
+
+77
+00:02:44,400 --> 00:02:48,560
+Saya telah mengukur waktu yang dibutuhkan
+
+78
+00:02:46,160 --> 00:02:50,800
+oleh jaringan untuk kembali aktif.
+
+79
+00:02:48,560 --> 00:02:53,440
+kexec hanya memerlukan sekitar 8 detik sampai
+
+80
+00:02:50,800 --> 00:02:56,160
+ping kembali merespon, sedangkan reboot secara penuh
+
+81
+00:02:53,440 --> 00:02:58,319
+memerlukan waktu 36 detik.
+
+82
+00:02:56,160 --> 00:03:00,000
+Pada sistem AMD EPYC dengan dua node NUMA,
+
+83
+00:02:58,319 --> 00:03:02,640
+kami berhasil mengurangi waktunya dari 2 menit
+
+84
+00:03:00,000 --> 00:03:04,000
+menjadi 15 detik.
+
+85
+00:03:02,640 --> 00:03:05,280
+Perlu diingat bahwa kexec memiliki
+
+86
+00:03:04,000 --> 00:03:07,200
+beberapa batasan.
+
+87
+00:03:05,280 --> 00:03:09,120
+Pertama, framebuffer yang disediakan oleh
+
+88
+00:03:07,200 --> 00:03:10,720
+UEFI mungkin tidak bisa bekerja.
+
+89
+00:03:09,120 --> 00:03:13,040
+Oleh karena itu, mungkin layar tidak akan
+
+90
+00:03:10,720 --> 00:03:15,120
+menerima sinyal sampai kernel yang baru
+
+91
+00:03:13,040 --> 00:03:16,560
+memuat driver grafis.
+
+92
+00:03:15,120 --> 00:03:18,480
+Hal ini tidak akan menjadi masalah
+
+93
+00:03:16,560 --> 00:03:20,000
+kecuali jika Anda adalah seorang pengembang sistem
+
+94
+00:03:18,480 --> 00:03:23,280
+dan perlu membaca log
+
+95
+00:03:20,000 --> 00:03:26,000
+selama proses awal GRUB.
+
+96
+00:03:23,280 --> 00:03:27,680
+Kedua, beberapa BIOS yang tidak sempurna mungkin bisa
+
+97
+00:03:26,000 --> 00:03:29,360
+menggagalkan kexec.
+
+98
+00:03:27,680 --> 00:03:31,760
+Pada platform Intel, sejauh ini kami
+
+99
+00:03:29,360 --> 00:03:34,239
+tidak menemukan adanya permasalahan, namun kami mendapatkan beberapa permasalahan
+
+100
+00:03:31,760 --> 00:03:35,920
+pada platform AMD yang kemudian bisa diperbaiki
+
+101
+00:03:34,239 --> 00:03:38,400
+dengan pembaruan BIOS.
+
+102
+00:03:35,920 --> 00:03:40,480
+Ketiga, beberapa perubahan perangkat keras mungkin masih
+
+103
+00:03:38,400 --> 00:03:42,400
+memerlukan reboot tradisional. 
+
+104
+00:03:40,480 --> 00:03:45,200
+Sebagai contoh, jika pengendali SATA Anda tidak mendukung
+
+105
+00:03:42,400 --> 00:03:47,360
+hot plugging, atau fitur tersebut dinonaktifkan,
+
+106
+00:03:45,200 --> 00:03:49,440
+maka menambahkan sebuah drive baru mungkin masih memerlukan
+
+107
+00:03:47,360 --> 00:03:51,680
+reboot tradisional seperti biasa
+
+108
+00:03:49,440 --> 00:03:53,599
+alih-alih kexec.
+
+109
+00:03:51,680 --> 00:03:55,680
+Dengan demikian, mungkin Anda sebaiknya
+
+110
+00:03:53,599 --> 00:03:58,080
+menguji kexec ketika Anda memiliki
+
+111
+00:03:55,680 --> 00:04:00,959
+akses secara fisik atau IPMI sebelum memasang
+
+112
+00:03:58,080 --> 00:04:02,239
+kexec pada mesin produksi.
+
+113
+00:04:00,959 --> 00:04:03,760
+Saya akan mengakhiri presentasi dengan beberapa
+
+114
+00:04:02,239 --> 00:04:05,760
+tips dan trik ekstra.
+
+115
+00:04:03,760 --> 00:04:07,599
+Jika Anda seorang pengembang kernel, mungkin
+
+116
+00:04:05,760 --> 00:04:10,080
+qboot juga akan berguna bagi Anda untuk
+
+117
+00:04:07,599 --> 00:04:12,319
+mengurangi downtime selama pengembangan.
+
+118
+00:04:10,080 --> 00:04:14,000
+Saya secara aktif menggunakan qboot selama pengembangan
+
+119
+00:04:12,319 --> 00:04:16,959
+karena pada dasarnya Anda bisa memulihkan sistem dari
+
+120
+00:04:14,000 --> 00:04:18,720
+kernel crash yang fatal hanya dalam
+
+121
+00:04:16,959 --> 00:04:20,320
+3 detik.
+
+122
+00:04:18,720 --> 00:04:22,560
+Jika Anda ingin melihat kexec atau qboot
+
+123
+00:04:20,320 --> 00:04:24,800
+yang sedang beraksi dengan tangkapan layar secara penuh,
+
+124
+00:04:22,560 --> 00:04:26,720
+silakan kunjungi tautan berikut.
+
+125
+00:04:24,800 --> 00:04:29,840
+Saya berharap presentasi ini berguna untuk Anda.
+
+126
+00:04:26,720 --> 00:04:29,840
+Terimakasih telah menyaksikan presentasi saya.
+

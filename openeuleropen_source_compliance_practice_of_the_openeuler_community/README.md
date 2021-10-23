@@ -15,4 +15,4 @@
 - [`zh_tw.srt`: Chinese(Taiwan) subtitle](zh_tw.srt)
     - Translated by Jacob Lin (lovetaeyeon507@gmail.com)
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
-    - Translated by `Unknown` (<- Please fix if you know who translated)
+    - Translated by Geraldhi A.P. Mahayadnya (geraldiaditya1111@gmail.com)
