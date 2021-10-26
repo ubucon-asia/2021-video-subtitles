@@ -7,6 +7,7 @@
 ## Subtitles
 
 - [`en_us.srt`: English subtitle](en_us.srt)
-	- Translated by `unknown`
+	- Transcription provided by speaker, Rafal Wachol
+	- Authored by `unknown`
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
 	- Translated by Muhammad Izzat (izzat.bey@gmail.com)
