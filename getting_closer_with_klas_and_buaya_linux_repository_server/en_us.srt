@@ -1,0 +1,1433 @@
+1
+00:00:01,790 --> 00:00:05,240
+[Music]
+
+2
+00:00:10,639 --> 00:00:16,066
+Halo guys, thanks for your attendance in this session at Ubuntu Conference Asia 2021
+
+3
+00:00:17,109 --> 00:00:20,528
+it's a pleasure for us to introduce our organization to you all
+
+4
+00:00:20,528 --> 00:00:24,817
+Today, me with my colleagues are going to talk about
+
+5
+00:00:24,817 --> 00:00:31,164
+[Title]
+
+6
+00:00:32,399 --> 00:00:39,177
+Presentation will be presented by me, Mohammed Andhika Prasetya, and my colleagues, Fadhil Yori
+
+7
+00:00:39,177 --> 00:00:41,177
+from Indonesia
+
+8
+00:00:42,239 --> 00:00:45,920
+Oke first of all, I want to introduce myself
+
+9
+00:00:45,920 --> 00:00:50,406
+My name is Muhamad Andhika Prasetya. 
+I am chairman of Kelompok Linux Arek Suroboyo
+
+10
+00:00:50,406 --> 00:00:53,760
+I'm also a college student at
+
+11
+00:00:53,760 --> 00:00:56,770
+Sepuluh Nopember Institute of Technology (ITS)
+
+12
+00:00:56,770 --> 00:01:02,640
+you can find out me more at
+
+13
+00:01:02,640 --> 00:01:06,799
+my social media
+in Facebook Instagram or Linkedin and
+
+14
+00:01:06,799 --> 00:01:09,360
+my personal website
+
+15
+00:01:09,360 --> 00:01:16,917
+or you can get in touch with me 
+personally by Telegram or my email
+
+16
+00:01:17,352 --> 00:01:20,000
+next is Mr. Fadhil
+
+17
+00:01:22,880 --> 00:01:27,119
+Oke thank you, Andhika,
+
+18
+00:01:27,119 --> 00:01:32,548
+Hai, I'm Fadhil Yori Hibatullah. 
+I'm from Surabaya, Indonesia.
+
+19
+00:01:32,548 --> 00:01:37,988
+currently I work at Trustmedis as a Infrastructure and Network Operation Specialist
+
+20
+00:01:40,960 --> 00:01:45,920
+Trustmedis is an online hub facility application in Indonesia
+
+21
+00:01:45,920 --> 00:01:53,692
+I'm also a leader of research team at
+Kelompok Linux Arek Suroboyo (KLAS)
+
+22
+00:01:53,692 --> 00:01:56,719
+I joined KLAS in 2018.
+
+23
+00:01:56,719 --> 00:02:02,479
+Today I would like to introduce you about
+server repository linux
+
+24
+00:02:02,479 --> 00:02:10,190
+that I managed and was deployed by our friends at KLAS
+
+25
+00:02:10,190 --> 00:02:13,822
+You can connect with me 
+
+26
+00:02:15,040 --> 00:02:19,520
+with Instagram Telegram Facebook or email.
+
+27
+00:02:19,520 --> 00:02:21,622
+Thank you
+
+28
+00:02:21,767 --> 00:02:24,535
+Oke, thank you Mr. Fadhil for the introduction
+
+29
+00:02:24,897 --> 00:02:27,902
+today we have 2 main topics in this presentation
+
+30
+00:02:27,902 --> 00:02:30,879
+the first is
+[Topic 1 title]
+
+31
+00:02:30,879 --> 00:02:33,438
+that will be presented by me
+
+32
+00:02:33,438 --> 00:02:37,901
+and the second is
+[Topic 2 title]
+
+33
+00:02:37,901 --> 00:02:42,640
+that will be presented by Mr. Fadhil
+
+34
+00:02:43,519 --> 00:02:49,594
+Oke, first, I'm going to talk about the history of Kelompok Linux Arek Suroboyo (KLAS)
+
+35
+00:02:49,594 --> 00:02:57,804
+KLAS was actually founded in 1995 but it went vacuum and refounded again in 1998
+
+36
+00:02:58,420 --> 00:03:04,640
+by the first KLAS chairman, Muhammad Noor Al Azam in his house, Surabaya.
+
+37
+00:03:04,640 --> 00:03:12,338
+You can see the right picture
+it was the oldest documented event of KLAS in 2003.
+
+38
+00:03:12,338 --> 00:03:17,258
+it was talking about IT and copyright
+
+39
+00:03:20,239 --> 00:03:24,239
+at that time, the event is quite big tho because
+
+40
+00:03:24,239 --> 00:03:29,760
+it was attended by around 400 people
+
+41
+00:03:29,760 --> 00:03:35,440
+and we have quite big sponsor too at the event
+so I can say that
+
+42
+00:03:35,440 --> 00:03:39,920
+it was a big event for us
+
+43
+00:03:39,920 --> 00:03:44,239
+Oke
+this is the slides
+
+44
+00:03:44,239 --> 00:03:49,280
+it's talking about out first basecamp that collaborated with
+
+45
+00:03:49,280 --> 00:03:55,697
+Institut Teknologi Sepuluh Nopember (ITS),
+which is my alma mater in early 2000
+
+46
+00:03:56,785 --> 00:04:03,040
+we collaborated with ITS because we have the same vision & mission to share knowledge and
+
+47
+00:04:03,040 --> 00:04:09,200
+do education about information technology (IT)
+to Surabayans dan Indonesia.
+
+48
+00:04:09,200 --> 00:04:13,599
+honestly until today, we are still
+
+49
+00:04:13,599 --> 00:04:18,880
+having collab with ITS but in different circumstances
+
+50
+00:04:18,880 --> 00:04:23,360
+and our basecamp right now has already moved from ITS to
+
+51
+00:04:23,360 --> 00:04:28,759
+Intiland Tower 11th floor
+
+52
+00:04:30,240 --> 00:04:36,000
+Oke, this is one of our oldest events too. The event was
+
+53
+00:04:36,000 --> 00:04:42,400
+Software Freedom Day in Surabaya in 2005.
+
+54
+00:04:42,400 --> 00:04:45,840
+at that time, we were not just talking about
+
+55
+00:04:45,840 --> 00:04:52,728
+software, freedom, or open source,
+we were also talking about Linux itself.
+
+56
+00:04:54,479 --> 00:04:59,360
+There is a funny story behind the CD (Compact Disc) where this CD is a key from
+
+57
+00:04:59,360 --> 00:05:05,120
+Chronicle that we were going to distribute
+
+58
+00:05:05,120 --> 00:05:11,440
+so the CD is being held by the customs, so we need to pay the tax
+
+59
+00:05:11,440 --> 00:05:16,160
+for the gift that has been sent by Chronicle, but...
+
+60
+00:05:16,160 --> 00:05:19,759
+you know?
+we were actually not
+
+61
+00:05:19,759 --> 00:05:24,720
+"borrowing" a gift,
+that was literally a "gift"
+
+62
+00:05:24,720 --> 00:05:31,310
+so we don't pay any money for that gift
+
+63
+00:05:33,039 --> 00:05:36,400
+so the tax would have been 0 because
+
+64
+00:05:36,400 --> 00:05:40,560
+it has no price on that gift but
+
+65
+00:05:40,560 --> 00:05:45,759
+at that time, we have quite
+
+66
+00:05:45,759 --> 00:05:52,479
+sort of money for paying the tax, 
+so it was impossible for us to
+
+67
+00:05:52,479 --> 00:05:58,880
+pay the tax impossed to us, then we decided to give up and just ask the
+
+68
+00:05:58,880 --> 00:06:06,068
+officer to just return the gift to the sender which is Chronical.
+
+69
+00:06:06,609 --> 00:06:13,520
+but lucky us, while dealing with the officer,
+we got a call from Suara Surabaya,
+
+70
+00:06:13,520 --> 00:06:16,800
+which was one of the biggest radio media in Surabaya at the time
+
+71
+00:06:16,800 --> 00:06:22,560
+regarding about our plan about IT dialog Talkshow in the radio.
+
+72
+00:06:22,560 --> 00:06:26,800
+so at that time was KLAS and Suara Surabaya
+
+73
+00:06:26,800 --> 00:06:31,360
+talking about IT
+
+74
+00:06:31,360 --> 00:06:36,080
+we deliberately spoke out loud in front of the officer
+
+75
+00:06:36,080 --> 00:06:40,240
+and we were little worried
+
+76
+00:06:40,240 --> 00:06:43,840
+that the CD that came
+
+77
+00:06:43,840 --> 00:06:52,236
+the CD is already came but it was detained by the customs
+
+78
+00:06:57,360 --> 00:07:01,680
+we told them that, unfortunately
+
+79
+00:07:01,680 --> 00:07:07,440
+we were afraid that our event cannot be continued again because
+
+80
+00:07:07,440 --> 00:07:12,639
+our stuff is being held by the customs
+
+81
+00:07:14,000 --> 00:07:17,440
+we talk like that quite loudly so
+
+82
+00:07:17,440 --> 00:07:22,240
+the office could hear what we are talking about
+
+83
+00:07:22,240 --> 00:07:25,360
+and then after we finished meeting with the media
+
+84
+00:07:25,360 --> 00:07:33,531
+the officer asked us 
+"is this later to be distributed to an event sir?"
+
+85
+00:07:33,759 --> 00:07:46,251
+and we said "yes of course! we are going to make IT Talkshow event and we are going to distribute the CD, not to sell it!"
+
+86
+00:07:48,160 --> 00:07:58,838
+then the officer said
+"oh ok if that so, you can take the CD, no need to pay the tax!"
+
+87
+00:07:59,199 --> 00:08:03,440
+"you just need to pay the repacking fee"
+
+88
+00:08:05,182 --> 00:08:10,000
+Finally, we were able to distribute a lot of CDs
+
+89
+00:08:10,000 --> 00:08:14,639
+the gift from Chronical. 
+so what's the point?
+
+90
+00:08:14,639 --> 00:08:20,080
+the point is the power of media,
+we should not
+
+91
+00:08:20,080 --> 00:08:23,280
+underestimate the power of media, you know ehe...
+
+92
+00:08:23,280 --> 00:08:28,400
+OK
+it was quite funny for us tho :)
+
+93
+00:08:28,879 --> 00:08:33,440
+here is another one of our oldest event
+
+94
+00:08:33,440 --> 00:08:38,159
+in Kelompok Linux Arek Suroboyo
+
+95
+00:08:38,159 --> 00:08:42,880
+which is one of the oldest "cangkrukan" that we're going to talk about it later.
+
+96
+00:08:42,880 --> 00:08:47,839
+it was talking about the introduction and installation of OpenSUSE LINUX 10
+
+97
+00:08:47,839 --> 00:08:51,600
+it was held on
+
+98
+00:08:51,600 --> 00:08:58,800
+Saturday, 15 October 2005
+at workshop room Hi Tech Mall Surabaya
+
+99
+00:08:58,800 --> 00:09:03,440
+so it was talking about linux installation and the use of
+
+100
+00:09:03,440 --> 00:09:07,600
+multimedia and office application so
+yes
+
+101
+00:09:07,600 --> 00:09:18,264
+the price was 50.000 rupiah
+
+102
+00:09:18,264 --> 00:09:22,720
+if we convert it to USD, it was 
+
+103
+00:09:22,720 --> 00:09:28,399
+around 5 bucks,
+but for today
+
+104
+00:09:28,399 --> 00:09:32,640
+because of the inflation, the price would have been
+
+105
+00:09:32,640 --> 00:09:40,669
+150.000 rupiah which is quite 15 dollar
+
+106
+00:09:40,959 --> 00:09:48,214
+it was quite expensive for some of us in Surabaya at that time,
+
+107
+00:09:48,214 --> 00:09:51,440
+maybe for you, 10 bucks can be used to buy a
+
+108
+00:09:51,440 --> 00:09:55,440
+burger to eat or something
+
+109
+00:09:55,440 --> 00:09:58,800
+uh
+that's kinda cheap you know...
+
+110
+00:09:58,800 --> 00:10:02,399
+but for us, it was expensive
+so that's why the absorb of technology
+
+111
+00:10:02,399 --> 00:10:09,234
+at that time was quite slow in Surabaya
+because the expensiveness of knowledge
+
+112
+00:10:10,079 --> 00:10:15,200
+next I'm going to introduce you our head of community of 
+
+113
+00:10:15,200 --> 00:10:18,200
+Kelompok Linux Arek Suroboyo
+
+114
+00:10:18,399 --> 00:10:23,120
+from our founder until me, who is on duty right now, we have been serving for
+
+115
+00:10:23,120 --> 00:10:31,341
+more than 20 years but yeah.. only 4 of us who ever lead from the founder to me
+
+116
+00:10:31,760 --> 00:10:37,040
+the founder was Mr. Muammar Al Azam
+dan the second head was
+
+117
+00:10:37,040 --> 00:10:43,777
+Darian Rizaluddin and the third was Joko Susilo and the fourth is me right now
+
+118
+00:10:45,680 --> 00:10:50,240
+OK, next is I'm going to talk about what we are going to do today
+
+119
+00:10:50,240 --> 00:10:58,839
+and what we've been done in this period of organizer 
+
+120
+00:11:00,220 --> 00:11:04,399
+first of all, I'm going to introduce you our organizer at
+
+121
+00:11:04,399 --> 00:11:07,600
+Kelompok Linux Arek Suroboyo (KLAS)
+
+122
+00:11:07,600 --> 00:11:11,680
+first is me, I'm the chairman of KLAS
+
+123
+00:11:11,680 --> 00:11:20,640
+and I have some devision that every devision has its own head of devision
+
+124
+00:11:20,640 --> 00:11:25,246
+the first is Muhammad Nur Arifin, he is the
+
+125
+00:11:25,246 --> 00:11:31,360
+head of public relations and planning
+division and the second is Fadhil Yori Hibatullah
+
+126
+00:11:31,360 --> 00:11:38,160
+he is the head of research and development devision
+and the third is Muhammad Irvan Fanani as 
+
+127
+00:11:38,160 --> 00:11:42,079
+head of design
+and also we have miss Indita Fania as
+
+128
+00:11:42,079 --> 00:11:44,650
+secretarial and treasury
+
+129
+00:11:45,056 --> 00:11:52,720
+every devision have its own members
+like Nur Arifin has Alif & Toriq as its members
+
+130
+00:11:52,720 --> 00:12:01,600
+Fadhil has
+[mentioning names]
+
+131
+00:12:01,600 --> 00:12:06,399
+as his members.
+most of us are still on probation
+
+132
+00:12:06,399 --> 00:12:13,120
+right know except me, Arifin, Fadhil and Fanani
+
+133
+00:12:14,800 --> 00:12:17,200
+OK
+next is
+
+134
+00:12:17,200 --> 00:12:23,360
+I'm going to talk about our public services
+
+135
+00:12:23,360 --> 00:12:27,760
+first we have Buaya mirror that means
+
+136
+00:12:27,760 --> 00:12:31,200
+Buaya repository server
+this is our own server
+
+137
+00:12:31,200 --> 00:12:35,279
+that has been serving public since 2007
+
+138
+00:12:35,279 --> 00:12:38,800
+and it has been serving more than
+
+139
+00:12:38,800 --> 00:12:41,920
+9 linux  distros and server repositories
+
+140
+00:12:41,920 --> 00:12:47,440
+and also we have on-premise dedicated
+server in Surabaya
+
+141
+00:12:47,440 --> 00:12:53,360
+the details about this public service will be presented
+
+142
+00:12:53,360 --> 00:12:58,079
+further more by Fadhil later in this presentation
+
+143
+00:12:58,240 --> 00:13:00,070
+next is
+
+144
+00:13:00,070 --> 00:13:04,959
+this is our newest public service 
+
+145
+00:13:04,959 --> 00:13:08,079
+that we've just built
+
+146
+00:13:08,079 --> 00:13:14,160
+it is a "KLAS" link shortener
+it was developed in 2008
+
+147
+00:13:17,279 --> 00:13:21,680
+but since the first launch until today
+
+148
+00:13:21,680 --> 00:13:25,360
+it has big impact for the society for the public
+
+149
+00:13:25,360 --> 00:13:34,853
+because just for 3 years,
+this service has been shortened for more than 1500 links
+
+150
+00:13:34,853 --> 00:13:39,040
+for community, public services, 
+
+151
+00:13:39,040 --> 00:13:43,839
+students, around Surabaya and Indonesia.
+so it is quite big impact for us to know
+
+152
+00:13:43,839 --> 00:13:49,839
+just for 3 years since the first time it has been developed
+
+153
+00:13:50,800 --> 00:13:57,199
+this is one of the most impactful
+
+154
+00:13:57,199 --> 00:14:02,959
+services in KLAS.
+this is a #cangkrukanklas
+
+155
+00:14:02,959 --> 00:14:07,839
+#cangkrukanklas is a Surabaya javanese language that means hang out
+
+156
+00:14:07,839 --> 00:14:10,959
+so, cangkrukanklas means hang out with
+
+157
+00:14:10,959 --> 00:14:17,160
+friends, talking about knowledge with us,
+with KLAS
+
+158
+00:14:19,440 --> 00:14:23,120
+we have been holding cangkukanklas since 2003 until today
+
+159
+00:14:23,120 --> 00:14:27,680
+and we have reach many fields of knowledge from desain open source linux
+
+160
+00:14:27,680 --> 00:14:31,519
+iot infrastructure networking etc
+
+161
+00:14:31,519 --> 00:14:36,880
+we are also doing #cangkrukanklas offline
+
+162
+00:14:36,880 --> 00:14:39,839
+by default it was offline but
+
+163
+00:14:39,839 --> 00:14:46,480
+since this pandemic era, we moved all the event to online 
+
+164
+00:14:46,800 --> 00:14:51,760
+so you can see since the oldest event on the top left
+
+165
+00:14:51,760 --> 00:14:57,600
+it was held in 2005, until today the bottom left
+
+166
+00:14:57,600 --> 00:15:03,680
+it was held in 2021, so this is quite new for us
+
+167
+00:15:03,680 --> 00:15:07,600
+it was held in July
+
+168
+00:15:10,160 --> 00:15:16,560
+beside cangkrukanklas, KLAS is also holding conferences
+
+169
+00:15:16,560 --> 00:15:21,199
+you can see this is our posters that
+
+170
+00:15:21,199 --> 00:15:24,800
+we've been organized or we've been collaborated
+
+171
+00:15:24,800 --> 00:15:30,160
+on the top left, it was me
+
+172
+00:15:30,160 --> 00:15:35,600
+who was the speaker at
+OpenSUSE Asia Summit 2019
+
+173
+00:15:35,600 --> 00:15:39,759
+at that time, I was talking about
+minimizing international internet
+
+174
+00:15:39,759 --> 00:15:44,639
+traffic usage from interacting devices
+using local server on opencif with
+
+175
+00:15:44,639 --> 00:15:48,720
+application
+and we are also in collaboration with
+
+176
+00:15:48,720 --> 00:15:52,839
+Indonesia Open Infra Day
+which is OpenStack Indonesia
+
+177
+00:15:52,839 --> 00:16:00,220
+to organize the event in Surabaya 2019
+
+178
+00:16:00,959 --> 00:16:06,097
+and today, today's event which is
+UbuCon Asia
+
+179
+00:16:12,880 --> 00:16:18,720
+we are collaborating with UbuCon as community partner,
+and also we have
+
+180
+00:16:18,720 --> 00:16:22,000
+Kubernetes Community Days Indonesia 2021
+
+181
+00:16:22,000 --> 00:16:26,720
+as community partner and Libre Office Conference Indonesia 2018
+
+182
+00:16:26,720 --> 00:16:30,560
+as organizer
+
+183
+00:16:40,320 --> 00:16:44,800
+this survey has been held on 2008 - 2012 
+
+184
+00:16:44,800 --> 00:16:50,639
+for the KLAS event, cangkrukanklas etc
+
+185
+00:16:50,639 --> 00:17:01,631
+there's more than 20 topics on 50 events has been held by KLAS just in 4 years
+
+186
+00:17:01,631 --> 00:17:04,640
+that is quite big for us you know
+
+187
+00:17:04,640 --> 00:17:13,132
+like once a month
+so this is quite big for us at that time
+
+188
+00:17:13,132 --> 00:17:14,959
+so, that's all from me
+
+189
+00:17:14,959 --> 00:17:19,360
+the next presentation will be presented by
+
+190
+00:17:19,360 --> 00:17:23,039
+Fadhil, please take your time
+
+191
+00:17:23,439 --> 00:17:25,454
+OK thank you Andika
+
+192
+00:17:28,880 --> 00:17:34,720
+today I would like to introduce you about Buaya
+
+193
+00:17:41,760 --> 00:17:47,480
+oke
+we start from the history
+
+194
+00:17:52,120 --> 00:18:05,786
+[reading slide]
+
+195
+00:18:05,919 --> 00:18:09,600
+so buaya was deployed
+
+196
+00:18:09,600 --> 00:18:14,760
+and maintaned by our friends at KLAS
+
+197
+00:18:18,000 --> 00:18:24,720
+Buaya was first deployed in 2007 
+
+198
+00:18:24,720 --> 00:18:29,600
+Buaya if we translate into english is a
+
+199
+00:18:29,600 --> 00:18:34,160
+"crocodile"
+why crocodile?
+
+200
+00:18:34,160 --> 00:18:41,880
+because it comes from the symbol of Surabaya which has a shark and a crocodile
+
+201
+00:18:43,679 --> 00:18:50,799
+in 2007
+Buaya still only provide ubuntu repository
+
+202
+00:18:50,799 --> 00:18:55,360
+if we remember it was ubuntu 5.4
+
+203
+00:18:55,360 --> 00:19:00,160
+which at that time ubuntu 
+
+204
+00:19:00,160 --> 00:19:03,760
+was hype in Indonesia
+
+205
+00:19:03,760 --> 00:19:07,440
+then we add more for the other 
+
+206
+00:19:07,440 --> 00:19:13,919
+distribution, when we got some donation
+
+207
+00:19:13,919 --> 00:19:17,919
+currently Buaya supports several distribution
+
+208
+00:19:17,919 --> 00:19:21,679
+we just add AlmaLinux
+
+209
+00:19:21,679 --> 00:19:30,388
+[mentioning the numbers]
+
+210
+00:19:40,080 --> 00:19:44,880
+this is a list of the maintaners
+
+211
+00:19:45,039 --> 00:19:48,320
+we can next
+
+212
+00:19:54,160 --> 00:20:01,120
+the first one we got a support from
+
+213
+00:20:01,120 --> 00:20:06,480
+Radnext Indonesia to build this service
+
+214
+00:20:06,480 --> 00:20:10,080
+they support us by giving physical server
+
+215
+00:20:10,080 --> 00:20:13,919
+with Intel Pentium 2
+
+216
+00:20:14,320 --> 00:20:19,200
+Buaya was initiated by one of the KLAS organizer
+
+217
+00:20:19,200 --> 00:20:23,039
+he is pak Budiwijaya
+that works at Radnet Digital Indonesia before,
+
+218
+00:20:23,039 --> 00:20:28,258
+he and his colleagues also made logo for Buaya
+
+219
+00:20:29,446 --> 00:20:34,773
+we can check the logo in the previous slide
+
+220
+00:20:35,919 --> 00:20:41,200
+they also create and maintain a mailing list on Yahoo
+
+221
+00:20:41,200 --> 00:20:46,622
+and people get connected to us through that mailing list
+
+222
+00:20:47,202 --> 00:20:50,400
+unfortunately we don't have screenshot
+
+223
+00:20:50,400 --> 00:20:53,919
+to the mailing list now
+
+224
+00:20:53,919 --> 00:20:56,720
+so we can't show it
+
+225
+00:20:57,600 --> 00:21:02,559
+first was maintanied by Budiwijaya from 2007
+
+226
+00:21:02,559 --> 00:21:05,880
+until 2013
+
+227
+00:21:08,159 --> 00:21:13,600
+at the time, we use Intel Pentium 2 processor
+
+228
+00:21:14,840 --> 00:21:21,280
+and we also got help from OpenSUSE and OpenBSD community
+
+229
+00:21:21,280 --> 00:21:26,640
+in the form of hard drives
+
+230
+00:21:26,640 --> 00:21:32,400
+and Mr. Budiwijaya also told us when he was setting up Buaya in 2018,
+
+231
+00:21:32,400 --> 00:21:37,679
+he was using [ ... FS]
+and several hard drives on several
+
+232
+00:21:37,679 --> 00:21:41,520
+nodes or computer
+
+233
+00:21:41,760 --> 00:21:46,880
+after Mr.Budiwijaya, Buaya was maintaned by Mr. Mahyuddin
+
+234
+00:21:46,880 --> 00:21:52,559
+from 2013 - 2016
+
+235
+00:21:52,559 --> 00:21:54,880
+and then after 
+
+236
+00:21:54,880 --> 00:22:02,240
+Mr. Mahyuddin
+Buaya was done from 2016 - 2017
+
+237
+00:22:02,240 --> 00:22:10,000
+then in 2018, we initialized it again to revive Buaya
+
+238
+00:22:13,280 --> 00:22:17,600
+by Mr. Darian
+and then I joinded KLAS to help
+
+239
+00:22:17,600 --> 00:22:22,139
+Mr. Darian setting up and maintaining buaya until now
+
+240
+00:22:26,159 --> 00:22:28,400
+next
+
+241
+00:22:29,039 --> 00:22:33,919
+this is a screenshot from 2010
+
+242
+00:22:33,919 --> 00:22:38,493
+was taken on 11 February 2010
+
+243
+00:22:38,493 --> 00:22:43,280
+you can see at the top of the news area 
+
+244
+00:22:43,280 --> 00:22:47,760
+it is called "Berita Penting" (important information)
+
+245
+00:22:47,919 --> 00:22:55,273
+if there is a status or fix or update regarding the Buaya server, it will post in this section
+
+246
+00:22:56,640 --> 00:23:02,960
+the list of mirror list is also quite much at that time
+
+247
+00:23:06,159 --> 00:23:13,640
+from ubuntu 5.4 until ubuntu 8.4
+
+248
+00:23:15,039 --> 00:23:20,480
+and OpenSuse 10.3
+
+249
+00:23:20,480 --> 00:23:26,320
+at that time it was pretty cool, quite a lot of people were using 
+
+250
+00:23:26,320 --> 00:23:32,480
+and active in our forums to report us about 
+
+251
+00:23:32,480 --> 00:23:38,640
+something about Buaya, and how to use Buaya like that
+
+252
+00:23:39,679 --> 00:23:42,000
+next
+
+253
+00:23:44,159 --> 00:23:51,279
+and also we have screenshot in 2014,
+we have the same layout 
+
+254
+00:23:51,279 --> 00:23:55,360
+with additional monitoring graph
+
+255
+00:23:57,840 --> 00:24:01,360
+next
+ok, for
+
+256
+00:24:01,360 --> 00:24:05,600
+current condition
+
+257
+00:24:05,600 --> 00:24:10,159
+we are using Intel Core 2 Duo
+and we have drives with total of
+
+258
+00:24:10,159 --> 00:24:16,320
+8 TB what we configured using LVM
+
+259
+00:24:17,200 --> 00:24:22,880
+as we know, today there are 6 active mirror in Buaya: ArcLinux,
+
+260
+00:24:22,880 --> 00:24:28,880
+AlmaLinux, Ubuntu, Ubuntu Port, Debian
+
+261
+00:24:28,880 --> 00:24:34,799
+and also OpenSUSE.
+for Ubuntu and OpenSUSE we are 
+
+262
+00:24:34,799 --> 00:24:40,159
+already in official mirror list
+we use R-Sync and
+
+263
+00:24:40,159 --> 00:24:44,400
+cron to schedule the synchronization
+
+264
+00:24:44,400 --> 00:24:48,640
+and also we create a simple script from Python
+
+265
+00:24:48,640 --> 00:24:54,240
+to monitor and report via Telegram
+
+266
+00:24:54,640 --> 00:24:58,840
+for the next,
+we plan to use 
+
+267
+00:24:58,840 --> 00:25:06,159
+ftpsync for Debian and Ubuntu
+and implement 2-stage sync
+
+268
+00:25:06,159 --> 00:25:10,960
+for Debian and Ubuntu
+
+269
+00:25:11,600 --> 00:25:15,440
+that was based on the documentation we read from mirror Debian and Ubuntu
+
+270
+00:25:15,440 --> 00:25:21,520
+this is a screenshot of
+
+271
+00:25:21,520 --> 00:25:24,880
+Launchpad Buaya
+you can
+
+272
+00:25:24,880 --> 00:25:29,480
+check it for synchronization status
+
+273
+00:25:30,720 --> 00:25:35,679
+next
+this is the release sites
+
+274
+00:25:35,679 --> 00:25:38,720
+for the ISO
+
+275
+00:25:39,919 --> 00:25:43,240
+okay next
+
+276
+00:25:43,440 --> 00:25:47,279
+this is screenshot of the current Buaya website
+
+277
+00:25:47,279 --> 00:25:52,467
+you can check buaya.class.or.id
+
+278
+00:25:54,720 --> 00:26:00,240
+and this is our repo in gitlab
+
+279
+00:26:00,240 --> 00:26:06,559
+[inaudible]
+there is a screenshot of the report of
+
+280
+00:26:06,559 --> 00:26:11,720
+script sent via Telegram
+
+281
+00:26:13,600 --> 00:26:18,640
+for the monitoring, we use Gravana, Prometheus and
+
+282
+00:26:18,640 --> 00:26:23,600
+Influx DB
+this one is the screenshot of
+
+283
+00:26:23,600 --> 00:26:28,320
+engine extra stick
+monitor dashboard
+
+284
+00:26:28,960 --> 00:26:31,840
+and next
+
+285
+00:26:31,919 --> 00:26:36,960
+is for load resource monitoring 
+
+286
+00:26:36,960 --> 00:26:42,159
+and the last one is 
+
+287
+00:26:42,240 --> 00:26:45,760
+hard disk monitoring
+
+288
+00:26:48,080 --> 00:26:50,320
+okay
+
+289
+00:26:51,440 --> 00:26:56,159
+the following is a list of our sponsors
+
+290
+00:27:01,440 --> 00:27:05,120
+those are list of sponsor that help us a lot 
+
+291
+00:27:05,120 --> 00:27:10,559
+to make Buaya happen
+
+292
+00:27:10,559 --> 00:27:15,520
+thank you very much to sponsor, from
+Indocenter, Radnext,
+
+293
+00:27:15,520 --> 00:27:21,799
+OpenSUSE Indonesia Community,
+and also Fans
+
+294
+00:27:25,840 --> 00:27:29,120
+next
+okay
+
+295
+00:27:29,120 --> 00:27:36,279
+next, I will show you how to use buaya.klas.or.id
+
+296
+00:27:37,440 --> 00:27:41,600
+for Ubuntu desktop, you can
+
+297
+00:27:41,600 --> 00:27:48,852
+[read step 1 & 2]
+
+298
+00:28:03,440 --> 00:28:08,640
+[read step 3]
+
+299
+00:28:08,640 --> 00:28:13,840
+[read step 4]
+after that you can
+
+300
+00:28:14,559 --> 00:28:19,200
+insert password
+and click "Close" to apply
+
+301
+00:28:19,200 --> 00:28:25,039
+you can check with sudo apt update
+
+302
+00:28:25,039 --> 00:28:30,720
+to test that it already use buaya.class.or.id or not
+
+303
+00:28:30,720 --> 00:28:35,679
+ok, for Ubuntu CLI
+
+304
+00:28:35,679 --> 00:28:40,880
+you can add directly in
+ /etc/apt/sources.list
+
+305
+00:28:40,880 --> 00:28:46,399
+you can use the following url
+
+306
+00:28:46,399 --> 00:28:51,679
+[reads links on point 2]
+
+307
+00:28:51,679 --> 00:29:00,488
+and change any url into Buaya url
+
+308
+00:29:03,039 --> 00:29:07,360
+there is an example 1
+
+309
+00:29:07,360 --> 00:29:11,120
+then do step 3 & 4
+
+310
+00:29:11,120 --> 00:29:16,159
+to get the update from our service
+
+311
+00:29:17,200 --> 00:29:22,240
+[reads]
+
+312
+00:29:22,240 --> 00:29:24,880
+if you have any recommendation, suggestion
+
+313
+00:29:24,880 --> 00:29:29,840
+or you want to contact us
+
+314
+00:29:29,840 --> 00:29:34,159
+or ask how to open
+
+315
+00:29:34,159 --> 00:29:39,039
+your private mirror or any
+you can contact us through
+
+316
+00:29:39,039 --> 00:29:43,360
+email
+
+317
+00:29:43,360 --> 00:29:49,840
+mirror@klas.or.id
+or you can simply reach from
+
+318
+00:29:49,840 --> 00:29:54,840
+Telegram or our discord server
+
+319
+00:29:54,960 --> 00:30:01,039
+ok thanks
+that was Buaya presentation
+
+320
+00:30:01,120 --> 00:30:05,440
+back to Andhika
+ok thank you Mr. Fadhil
+
+321
+00:30:05,440 --> 00:30:08,880
+it was quite presentation
+
+322
+00:30:08,880 --> 00:30:14,960
+ok for you guys,
+today I want to introduce to you
+
+323
+00:30:14,960 --> 00:30:20,240
+we are also open for donation
+and please become our patrons
+
+324
+00:30:20,240 --> 00:30:25,440
+you can send your donation to our Saweria dan Patreon
+
+325
+00:30:25,440 --> 00:30:31,279
+and your donation is very meaningful to us
+
+326
+00:30:31,279 --> 00:30:35,679
+because the donation that have been sent to us
+
+327
+00:30:35,679 --> 00:30:38,880
+that keeps our public services alive
+
+328
+00:30:38,880 --> 00:30:43,840
+and we can continue serving public in Surabaya
+
+329
+00:30:46,799 --> 00:30:54,200
+you can find us more at our website
+
+330
+00:30:54,200 --> 00:31:00,480
+klas.or.id or you can find us on our social media
+
+331
+00:31:00,480 --> 00:31:06,399
+linkedin, instagram, facebook
+or chat us via email
+
+332
+00:31:06,399 --> 00:31:12,480
+admin@klas.or.id
+we are so welcome to you all to
+
+333
+00:31:12,480 --> 00:31:18,240
+join to our community to our group, join our telegram group
+
+334
+00:31:18,240 --> 00:31:26,386
+on the left QR code or you can also join our discord group
+
+335
+00:31:26,386 --> 00:31:29,039
+we are waiting
+
+336
+00:31:29,039 --> 00:31:33,600
+for you guys to join our community
+
+337
+00:31:39,360 --> 00:31:43,200
+Thank you, that's all from us
+

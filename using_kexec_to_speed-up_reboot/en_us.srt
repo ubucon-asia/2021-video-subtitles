@@ -1,0 +1,504 @@
+1
+00:00:01,790 --> 00:00:05,240
+ 
+
+2
+00:00:07,520 --> 00:00:10,960
+Hello everyone, and welcome to my
+
+3
+00:00:08,800 --> 00:00:13,200
+presentation. My name is Juhyung Park and
+
+4
+00:00:10,960 --> 00:00:14,559
+I've been using Ubuntu for 11 years, and
+
+5
+00:00:13,200 --> 00:00:16,880
+I'm here to talk about my new favorite
+
+6
+00:00:14,559 --> 00:00:18,960
+thing in Linux called kexec and how to
+
+7
+00:00:16,880 --> 00:00:20,320
+use it on Ubuntu.
+
+8
+00:00:18,960 --> 00:00:21,920
+If you want to optimize your boot time,
+
+9
+00:00:20,320 --> 00:00:24,480
+this is the go to command that you would
+
+10
+00:00:21,920 --> 00:00:26,240
+use: systemd-analyze. You can find out
+
+11
+00:00:24,480 --> 00:00:29,279
+which services are hogging up your boot
+
+12
+00:00:26,240 --> 00:00:30,960
+time and disable it.
+
+13
+00:00:29,279 --> 00:00:33,040
+The problem is that even if you optimize
+
+14
+00:00:30,960 --> 00:00:34,320
+the systemd service chain, reboots are
+
+15
+00:00:33,040 --> 00:00:35,840
+still slow. 
+
+16
+00:00:34,320 --> 00:00:36,880
+The majority of time is spent in BIOS
+
+17
+00:00:35,840 --> 00:00:38,719
+and GRUB.
+
+18
+00:00:36,880 --> 00:00:40,800
+Workstations and servers are much worse
+
+19
+00:00:38,719 --> 00:00:43,120
+as those take much longer time in BIOS
+
+20
+00:00:40,800 --> 00:00:45,440
+initialization, taking several minutes
+
+21
+00:00:43,120 --> 00:00:47,200
+just to get to the GRUB screen.
+
+22
+00:00:45,440 --> 00:00:49,440
+Enter kexec.
+
+23
+00:00:47,200 --> 00:00:52,000
+kexec can bypass BIOS and GRUB to
+
+24
+00:00:49,440 --> 00:00:53,680
+make reboots much faster.
+
+25
+00:00:52,000 --> 00:00:56,079
+Let's first look at how regular reboots
+
+26
+00:00:53,680 --> 00:00:57,840
+work on Ubuntu.
+
+27
+00:00:56,079 --> 00:00:59,600
+When you type reboot on the shell, it
+
+28
+00:00:57,840 --> 00:01:01,600
+calls the systemd init service to
+
+29
+00:00:59,600 --> 00:01:04,000
+initiate the reboot process.
+
+30
+00:01:01,600 --> 00:01:05,920
+After systemd stops all services, it
+
+31
+00:01:04,000 --> 00:01:08,000
+calls the reboot system call.
+
+32
+00:01:05,920 --> 00:01:10,000
+The Linux kernel then physically resets
+
+33
+00:01:08,000 --> 00:01:12,000
+the computer.
+
+34
+00:01:10,000 --> 00:01:13,680
+The BIOS takes control and performs
+
+35
+00:01:12,000 --> 00:01:14,960
+memory training and loads the UEFI
+
+36
+00:01:13,680 --> 00:01:16,479
+drivers.
+
+37
+00:01:14,960 --> 00:01:19,040
+GRUB then gets loaded which
+
+38
+00:01:16,479 --> 00:01:21,520
+unfortunately can waste additional time
+
+39
+00:01:19,040 --> 00:01:23,119
+due to the GRUB timeout setting.
+
+40
+00:01:21,520 --> 00:01:25,680
+GRUB loads the Linux kernel which in
+
+41
+00:01:23,119 --> 00:01:28,000
+turn loads initrd and systemd.
+
+42
+00:01:25,680 --> 00:01:29,759
+Now comparing this with kexec, systemd
+
+43
+00:01:28,000 --> 00:01:31,840
+now passes a slightly different flag to
+
+44
+00:01:29,759 --> 00:01:34,479
+the reboot system call which tells the
+
+45
+00:01:31,840 --> 00:01:36,159
+Linux kernel to use kexec instead.
+
+46
+00:01:34,479 --> 00:01:38,079
+After the Linux kernel shuts down all
+
+47
+00:01:36,159 --> 00:01:40,479
+devices, it jumps to the newly loaded
+
+48
+00:01:38,079 --> 00:01:43,680
+kernel which starts the initialization
+
+49
+00:01:40,479 --> 00:01:45,600
+process and loads systemd.
+
+50
+00:01:43,680 --> 00:01:47,439
+Here someone has to load the to be booted
+
+51
+00:01:45,600 --> 00:01:49,360
+kernel to the RAM and this is where
+
+52
+00:01:47,439 --> 00:01:51,759
+kexec tools comes up.
+
+53
+00:01:49,360 --> 00:01:55,200
+It is used before systemd to load the
+
+54
+00:01:51,759 --> 00:01:56,880
+kernel and initrd to the RAM.
+
+55
+00:01:55,200 --> 00:01:58,560
+Now that we have an idea of how kexec
+
+56
+00:01:56,880 --> 00:02:00,560
+reboots work, we'll now learn how to use
+
+57
+00:01:58,560 --> 00:02:02,799
+kexec on Ubuntu.
+
+58
+00:02:00,560 --> 00:02:04,960
+First we will need kexec-tools,
+
+59
+00:02:02,799 --> 00:02:06,159
+second we need to remove the finalrd
+
+60
+00:02:04,960 --> 00:02:08,319
+package.
+
+61
+00:02:06,159 --> 00:02:10,319
+With finalrd, systemd fails to find the
+
+62
+00:02:08,319 --> 00:02:12,000
+kexec binary and performs a full
+
+63
+00:02:10,319 --> 00:02:13,680
+reboot instead. 
+
+64
+00:02:12,000 --> 00:02:16,319
+This package is marked recommended by
+
+65
+00:02:13,680 --> 00:02:18,239
+the md RAID manager, so if you use RAID
+
+66
+00:02:16,319 --> 00:02:20,640
+or Ubuntu Server, chances are that you
+
+67
+00:02:18,239 --> 00:02:22,640
+would have this installed on your system.
+
+68
+00:02:20,640 --> 00:02:25,040
+Note that the md RAID itself works just
+
+69
+00:02:22,640 --> 00:02:26,720
+fine without finalrd.
+
+70
+00:02:25,040 --> 00:02:29,920
+The final piece is the custom reboot helper.
+
+71
+00:02:27,920 --> 00:02:32,080
+This wraps kexec tools to load the
+
+72
+00:02:29,920 --> 00:02:34,840
+latest kernel and initrd to the RAM,
+
+73
+00:02:32,080 --> 00:02:37,440
+and finally calls systemd to initiate
+
+74
+00:02:34,840 --> 00:02:40,080
+kexec. You can follow this link and save it
+
+75
+00:02:37,440 --> 00:02:44,400
+to /usr/local/sbin with executable permission.
+
+76
+00:02:42,319 --> 00:02:46,160
+So how effective is kexec?
+
+77
+00:02:44,400 --> 00:02:48,560
+I've measured the time for how long it
+
+78
+00:02:46,160 --> 00:02:50,800
+takes for the network to get back up.
+
+79
+00:02:48,560 --> 00:02:53,440
+kexec only takes around 8 seconds for
+
+80
+00:02:50,800 --> 00:02:56,160
+ping to respawn back while a full reboot
+
+81
+00:02:53,440 --> 00:02:58,319
+takes 36 seconds.
+
+82
+00:02:56,160 --> 00:03:00,000
+On another AMD EPYC system with two NUMA
+
+83
+00:02:58,319 --> 00:03:02,640
+nodes, we managed to reduce it from 2
+
+84
+00:03:00,000 --> 00:03:04,000
+minutes to 15 seconds.
+
+85
+00:03:02,640 --> 00:03:05,280
+Note that kexec has several
+
+86
+00:03:04,000 --> 00:03:07,200
+limitations.
+
+87
+00:03:05,280 --> 00:03:09,120
+First, the framebuffer provided by the
+
+88
+00:03:07,200 --> 00:03:10,720
+UEFI may not work.
+
+89
+00:03:09,120 --> 00:03:13,040
+Because of this, the display may not
+
+90
+00:03:10,720 --> 00:03:15,120
+receive a signal until the new kernel
+
+91
+00:03:13,040 --> 00:03:16,560
+loads the graphics drivers.
+
+92
+00:03:15,120 --> 00:03:18,480
+This is not really much of an issue
+
+93
+00:03:16,560 --> 00:03:20,000
+unless you're a system developer and
+
+94
+00:03:18,480 --> 00:03:23,280
+needs to read logs
+
+95
+00:03:20,000 --> 00:03:26,000
+during the early GRUB process.
+
+96
+00:03:23,280 --> 00:03:27,680
+Second, several imperfect BIOS may break
+
+97
+00:03:26,000 --> 00:03:29,360
+kexec.
+
+98
+00:03:27,680 --> 00:03:31,760
+On Intel platforms we didn't have any
+
+99
+00:03:29,360 --> 00:03:34,239
+issues so far, but we had multiple issues
+
+100
+00:03:31,760 --> 00:03:35,920
+on AMD platforms which were fixed by a
+
+101
+00:03:34,239 --> 00:03:38,400
+BIOS update.
+
+102
+00:03:35,920 --> 00:03:40,480
+Third, some hardware changes may still
+
+103
+00:03:38,400 --> 00:03:42,400
+require traditional reboots. So for
+
+104
+00:03:40,480 --> 00:03:45,200
+example if your SATA controller doesn't
+
+105
+00:03:42,400 --> 00:03:47,360
+support hot plugging or has it disabled,
+
+106
+00:03:45,200 --> 00:03:49,440
+adding a new drive may still require you
+
+107
+00:03:47,360 --> 00:03:51,680
+to perform a normal traditional reboot
+
+108
+00:03:49,440 --> 00:03:53,599
+instead of kexec.
+
+109
+00:03:51,680 --> 00:03:55,680
+With all of this in mind it's probably a
+
+110
+00:03:53,599 --> 00:03:58,080
+good idea to test kexec when you have
+
+111
+00:03:55,680 --> 00:04:00,959
+physical access or IPMI before putting
+
+112
+00:03:58,080 --> 00:04:02,239
+kexec into production.
+
+113
+00:04:00,959 --> 00:04:03,760
+I'll end the presentation with some
+
+114
+00:04:02,239 --> 00:04:05,760
+extra tips and tricks.
+
+115
+00:04:03,760 --> 00:04:07,599
+If you are a kernel developer you might
+
+116
+00:04:05,760 --> 00:04:10,080
+find qboot to be useful as well for
+
+117
+00:04:07,599 --> 00:04:12,319
+reducing downtime during development.
+
+118
+00:04:10,080 --> 00:04:14,000
+I actively use qboot during development
+
+119
+00:04:12,319 --> 00:04:16,959
+as you can basically recover from any
+
+120
+00:04:14,000 --> 00:04:18,720
+sort of fatal kernel crashes within just
+
+121
+00:04:16,959 --> 00:04:20,320
+3 seconds.
+
+122
+00:04:18,720 --> 00:04:22,560
+If you want to have a look at kexec or
+
+123
+00:04:20,320 --> 00:04:24,800
+qboot in action with full screen capture,
+
+124
+00:04:22,560 --> 00:04:26,720
+please visit these links.
+
+125
+00:04:24,800 --> 00:04:29,840
+I hope you find this presentation useful.
+
+126
+00:04:26,720 --> 00:04:29,840
+Thanks for listening.
+

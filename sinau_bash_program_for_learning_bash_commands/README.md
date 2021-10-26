@@ -7,7 +7,7 @@
 ## Subtitles
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
     - Generated with Google Cloud Speech-to-text
-    - Reviewed and Post-edited by `Unknown` (<- Please fix if you know who work on this)
+    - Reviewed and Post-edited by Triyan W Nugroho (triyan.wn@gmail.com)
 - [`en_us.srt`: English subtitle](en_us.srt)
     - Machine-translated with Google Cloud Translation API
-    - Reviewed and Post-edited by `Unknown` (<- Please fix if you know who work on this)
+    - Reviewed and Post-edited by Triyan W Nugroho (triyan.wn@gmail.com)

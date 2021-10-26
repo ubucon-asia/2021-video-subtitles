@@ -1,0 +1,1345 @@
+1
+00:00:07,280 --> 00:00:11,520
+halo semua terima kasih telah datang pada presentasi 
+ini nama saya adalah rafael dan harapannya
+
+2
+00:00:11,520 --> 00:00:15,840
+kita dapat memiliki beberapa kesenangan
+hari ini saya ingin memberitahu kalian
+beberapa hal tentang flutter mengapa
+
+3
+00:00:15,840 --> 00:00:20,880
+ini menjadi sangat popular dan mengapa anda
+akan mempertimbangkan untuk menggunakannya okay
+jadi mari mulai
+
+4
+00:00:22,640 --> 00:00:27,600
+saya akan mulai dengan memperkenalkan diri saya
+saya pertama mencoba flutter lima tahun lalu
+
+5
+00:00:27,600 --> 00:00:33,200
+saya adalah seorang android developer sebelumnya
+kemudian saya mencari suatu jalan cepat yang baru
+untuk mengembangkan aplikasi dan
+
+6
+00:00:33,200 --> 00:00:38,960
+salah sat teman saya merekomendasikan flutter
+sebagai alternatif yang bagus saya sangat terkejut
+betapa mudahnya dan
+
+7
+00:00:38,960 --> 00:00:43,040
+cepat anda dapat membuat tampilan UI dan
+betapa mudahnya anda dapat mengintegrasikannya
+
+8
+00:00:43,040 --> 00:00:49,600
+saya pindah dari UK dan mendapat kesempatan untuk
+membuat sebuah app dalam flutter saya sangat 
+menyukainya jadi saya memulai
+
+9
+00:00:49,600 --> 00:00:54,960
+kontribusi lebih dan lebih kepada komunitas bergabung 
+pertemuan dan saya tidak pernah berpaling dari android
+
+10
+00:00:57,520 --> 00:01:02,960
+saya menyebutkan flutter sudah beberapa kali namun
+anda mungkin menanyakan apa itu sebenarnya flutter
+
+11
+00:01:02,960 --> 00:01:09,040
+laman web google menjelaskan bahwa itu adalah
+sebagai UI toolkit untuk membangun aplikasi native
+
+12
+00:01:09,040 --> 00:01:15,440
+yang telah dicompile dengan indah untuk mobile web
+desktop dan sebagainya dari sebuah basis kode 
+
+13
+00:01:15,440 --> 00:01:20,720
+ini bebas dan sumber terbuka berarti anda dapat melihat 
+semuanya dari github untuk mendapatkan sumber daya
+
+14
+00:01:20,720 --> 00:01:26,800
+untuk laman web flutter anda dapat berkontribusi
+pada projek dan melaporkan kembali atau menyarankan
+pembaharuan
+
+15
+00:01:27,440 --> 00:01:32,880
+kita akan berbicara mengenai bagaimana caranya kemudian
+tapi untuk saat ini saya akan berkata bahwa ini ditulis
+dengan dart dan C++
+
+16
+00:01:35,440 --> 00:01:39,920
+sejarah bagaimana hal ini datang ke titik ini
+mitra kanonik dengan google dan memutuskan untuk
+
+17
+00:01:39,920 --> 00:01:46,160
+membuat pemasangan baru di flutter pada awalnya
+flutter mulai sebagai penanggal chrome runtime
+
+18
+00:01:46,160 --> 00:01:52,080
+ini adalah sebuah eksperimen yang mana pengembang
+diminta untuk mengecek seberapa cepat UI rendering dapat
+
+19
+00:01:52,080 --> 00:01:59,840
+dan ini menargetkan 120 fps ini melalui berbagai
+tahapan dan bahasa namun dart muat secara keseluruhan
+
+20
+00:01:59,840 --> 00:02:06,400
+untuk ditafsirkan dan dikompilasi pada saat yang sama
+mereka membuat demo pertama mereka pada dart summit 2015
+
+21
+00:02:07,120 --> 00:02:12,400
+setelah itu semuanya berjalan cepat flutter
+menargetkan android dan ios pertama namun mendukung
+
+22
+00:02:12,400 --> 00:02:18,080
+untuk linux windows mac os dan web datang
+setelahnya flutter juga sangat portable
+
+23
+00:02:18,080 --> 00:02:23,040
+untuk contoh teknisi google mengambil flutter
+dan membuat itu berjalan pada tembok diantara
+kantor yang mana
+
+24
+00:02:23,040 --> 00:02:28,560
+saya harus berkata sangat tidak biasa untuk tempat
+berjalannya sebuah ui framework namun lebih dari
+sebuah hal biasa yang dapat berjalan
+
+25
+00:02:28,560 --> 00:02:36,320
+flutter pada xbox dan raspberry pi tanpa xorc
+pada wayland yang mana didukung komunitas
+
+26
+00:02:36,320 --> 00:02:41,200
+jadi anda mungkin berpikir bahwa ini terdengar
+menarik namun bukankah kita punya GTK dan Qt
+
+27
+00:02:41,840 --> 00:02:47,120
+ya itu juga bagus dan saya tidak mengatakannya
+bahwa Anda harus menulis ulang semua aplikasi 
+Anda dalam flutter 
+
+28
+00:02:47,680 --> 00:02:53,840
+itu akan menjadi latihan yang keren meskipun saya hanya ingin
+katakan bahwa flutter didukung oleh banyak perusahaan sekarang
+
+29
+00:02:53,840 --> 00:02:59,200
+dan pada awalnya hanya google yang berkontribusi
+untuk itu tetapi sekarang insinyur dari banyak perusahaan melakukannya
+
+30
+00:03:01,680 --> 00:03:06,640
+seperti yang akan kita lihat segera berkat komposisi
+atas pewarisan dan sifat reaktif dari
+
+31
+00:03:06,640 --> 00:03:13,920
+framework mudah untuk mengkode UI dengan cara yang lebih datar
+saya katakan sebelumnya memiliki dukungan lintas platform yang hebat
+
+32
+00:03:13,920 --> 00:03:19,840
+tetapi jika mau, Anda dapat membuat penyemat sendiri
+dan jalankan di hampir semua hal dengan cepat dan
+
+33
+00:03:19,840 --> 00:03:26,320
+mengkompilasi ke biner asli dan terakhir tetapi
+paling tidak itu juga berita bagus untuk komunitas linux
+
+34
+00:03:26,320 --> 00:03:31,840
+bahwa kode sumber dan pengembangan lengkap tersedia
+di github untuk dart dan flutter itu sendiri
+
+35
+00:03:34,080 --> 00:03:39,840
+saya telah melihat beberapa kesalahpahaman tentang cara kerjanya
+jadi izinkan saya menjelaskan dengan cepat bagaimana flutter dibangun
+
+36
+00:03:40,480 --> 00:03:45,200
+singkatnya ada dua bagian yang satu
+kode yang Anda tulis di dart
+
+37
+00:03:45,200 --> 00:03:50,320
+dan bagian mesin yang ditulis dalam C++ mesin menggunakan perpustakaan yang disebut skia
+
+38
+00:03:50,320 --> 00:03:56,800
+untuk menjalankan piksel di layar skia dapat menggambar
+menggunakan opengl vulkan metal atau software renderer
+
+39
+00:03:57,840 --> 00:04:02,720
+tentu saja beberapa hal memerlukan panggilan
+platform yang mendasari dan untuk ini kami memiliki
+
+40
+00:04:02,720 --> 00:04:09,280
+sistem plug-in yang kita dapat membuat panggilan native
+di android itu memanggil runtime Java di ios itu adalah
+
+41
+00:04:09,280 --> 00:04:17,840
+swift tetapi di linux itu C++ juga perlu diperhatikan
+yang akhir-akhir ini mendapat dukungan FFI berkat itu
+
+42
+00:04:17,840 --> 00:04:24,480
+Anda dapat memanggil perpustakaan yang kompatibel dengan C di sana
+juga alat yang dapat memindai header C dan
+
+43
+00:04:24,480 --> 00:04:29,680
+buat binding itu jika Anda tertarik
+periksa dokumentasi untuk mengetahui lebih lanjut
+
+44
+00:04:32,640 --> 00:04:38,560
+baiklah sekarang semua orang memiliki pemahaman
+apa flutter itu mari kita lompat ke demo saya akan menjelaskan
+
+45
+00:04:38,560 --> 00:04:44,320
+lambat pada awalnya tetapi untuk bagian selanjutnya 
+saya akan percepat demo dan bicara agar Anda tidak bosan
+
+46
+00:04:44,880 --> 00:04:48,560
+ini bukan tutorial dan saya akan
+menulis semuanya dalam satu file
+
+47
+00:04:48,560 --> 00:04:55,840
+tapi mudah-mudahan Anda akan mendapatkan perasaan bagaimana caranya
+gunakan kerangka kerja ini dan seberapa kuat itu baik-baik saja
+
+48
+00:04:55,840 --> 00:04:59,760
+jadi mari kita lompat melalui demo mungkin untuk
+langkah pertama adalah menginstal flutter
+
+49
+00:05:00,720 --> 00:05:07,600
+jadi mari kita lompat ke halaman web flutter yang
+adalah flutter.dev Anda dapat melihat itu adalah situs
+
+50
+00:05:07,600 --> 00:05:14,480
+web utama yang kita dapat membacanya tetapi untuk kita
+mari kita mulai memilih platform lain untuk
+
+51
+00:05:14,480 --> 00:05:20,960
+kami ini linux dan hal baik pertama adalah jika
+Anda ingin menginstalnya, Anda dapat memilih dua opsi
+
+52
+00:05:20,960 --> 00:05:26,560
+salah satunya adalah menggunakan paket snap jadi jika Anda
+hanya ingin mengembangkan aplikasi Anda ini
+
+53
+00:05:27,280 --> 00:05:34,640
+mungkin milik daisy atau kita dapat mengunduhnya
+foto secara manual saya memilih jalur ini karena
+
+54
+00:05:34,640 --> 00:05:43,040
+saya terkadang merubah sumber kode nanti tapi ya
+untuk Anda mungkin itu akan menjadi pilihan
+
+55
+00:05:43,040 --> 00:05:49,200
+yang saya sudah melakukan ini sebelumnya jadi
+kita tidak akan melihat saya hanya Anda tahu melakukan beberapa
+
+56
+00:05:50,880 --> 00:05:55,200
+manipulasi kepulan dan mencoba
+hal-hal dengan baris perintah
+
+57
+00:05:56,080 --> 00:06:01,760
+jadi sekarang mari kita lompat ke terminal hebat
+setelah menginstal flutter baik dari package
+
+58
+00:06:01,760 --> 00:06:07,120
+atau secara manual dari kode sumber maka kita harus
+dapat menjalankan nama perintah flutter doctor
+
+59
+00:06:10,640 --> 00:06:18,400
+kita harus menampilkan opsi kita jadi dalam kasus saya
+saya menggunakan saluran stabil dan juga saya bisa
+
+60
+00:06:18,960 --> 00:06:27,600
+mengembangkan aplikasi flutter dari web linux atau
+android dan saya memiliki dua ide intellij idea
+
+61
+00:06:27,600 --> 00:06:37,520
+atau vs code hari ini saya akan menggunakan kode vs tetapi
+opsi lainnya adalah vim yang memiliki dukungan lsp
+
+62
+00:06:37,520 --> 00:06:44,800
+jadi semua yang Anda tahu penyelesaian kode dan lainnya
+hal-hal yang berfungsi dengan kode vs juga dapat berfungsi
+
+63
+00:06:45,680 --> 00:06:55,280
+vim atau neovim jika itu pilihan Anda untuk membuat
+aplikasi flutter yang kita perlukan untuk mengaktifkan flutter
+
+64
+00:06:55,280 --> 00:07:01,920
+desktop dulu saya sudah melakukan itu dan setelahnya
+bahwa kita akan dapat mengembangkan aplikasi linux
+
+65
+00:07:01,920 --> 00:07:08,400
+karena itu karena flutter saat ini
+dalam versi beta sehingga tidak diaktifkan tetapi setelah dipanggil
+
+66
+00:07:08,400 --> 00:07:15,280
+perintah ini kemudian anda akan dapat mengembangkan
+dan membuat aplikasi jadi untuk memulai mari kita buat
+
+67
+00:07:15,280 --> 00:07:21,280
+aplikasi untuk kita hari ini yang akan kita kembangkan
+file manager jadi mari buat proyek
+
+68
+00:07:22,160 --> 00:07:30,400
+klik enter dan kemudian kita dapat mencoba menjalankannya
+mari kita coba jalankan ini di linux kita saat ini
+
+69
+00:07:30,400 --> 00:07:36,880
+tidak dapat melihat ini tetapi biarkan saya mengubahnya
+adegan dan di sini kita dapat melihat itu adalah default kita
+
+70
+00:07:38,080 --> 00:07:45,200
+aplikasi ini pada dasarnya adalah kekacauan
+buat saat Anda membuat proyek yang Anda
+
+71
+00:07:45,200 --> 00:07:54,000
+dapat mengklik tombol ini dan ini akan meningkatkan
+counter oke jadi biarkan aku mengubah adegan sekali lagi
+
+72
+00:07:55,120 --> 00:08:01,520
+baiklah jadi di sini adalah editor kode kami di sebelah kiri
+di sini adalah aplikasi kami yang berjalan di sebelah kanan
+
+73
+00:08:02,160 --> 00:08:07,280
+saya melanjutkan dan membuat peluncuran
+aplikasi untuk itu Anda untuk itu Anda perlu
+
+74
+00:08:07,280 --> 00:08:12,536
+unduh plugin flutter atau hanya tersedia di ekstensi
+
+75
+00:08:12,536 --> 00:08:17,440
+jadi buka saja ekstensi
+dan unduh flut the flutter plugin dan itu
+
+76
+00:08:17,440 --> 00:08:22,960
+juga akan menginstal plugin dartmouth sehingga Anda
+akan memiliki yang lengkap dan lingkungan untuk dijalankan
+
+77
+00:08:22,960 --> 00:08:31,360
+aplikasi flutter jadi mari kita lihat
+struktur file kami sehingga kami dapat melihat bahwa itu dibuat
+
+78
+00:08:31,360 --> 00:08:37,920
+direktori untuk android ios karena
+Anda dapat menjalankannya dengan baik, katanya untuk web uji
+
+79
+00:08:38,560 --> 00:08:47,600
+dan juga kami inilah direktori linux kami dan ini
+adalah c++ asli yang disematkan khusus kami menggunakan GTK
+
+80
+00:08:50,800 --> 00:08:57,280
+dan di sini kita dapat melihat direktori lib kita
+jadi di sinilah aplikasi kita
+
+81
+00:08:57,280 --> 00:09:03,520
+hidup di situlah kita menghabiskan sebagian besar
+waktu menulis kode di dalam direktori ini
+
+82
+00:09:04,160 --> 00:09:12,000
+ayo pubspec yang muda dan apa
+ini adalah pengaturan proyek jadi inilah kami
+
+83
+00:09:12,000 --> 00:09:20,400
+nama aplikasi yang kita buat
+deskripsi dan lingkungan versi
+
+84
+00:09:20,400 --> 00:09:26,320
+dan ini adalah versi data yang kami jalankan
+ketergantungan kita jadi saat ini kita hanya kita saja
+
+85
+00:09:27,200 --> 00:09:34,000
+gunakan flutter dari sdk8 dan ikon yang bekerja sama
+beberapa dependensi pengembangan seperti pengujian
+
+86
+00:09:34,720 --> 00:09:42,400
+dan hal-hal lain yang akan kita lalui
+nanti jadi sekarang mari kita buka sumber kita
+
+87
+00:09:45,600 --> 00:10:03,840
+dan biarkan saya menghapus semuanya dengan cepat sehingga kami akan melakukannya
+mulai dari awal oke jadi mari kita mulai coding
+
+88
+00:10:08,720 --> 00:10:14,800
+oke bagus aplikasi kami menjadi merah sebentar
+tapi akan segera kita perbaiki ayo cepat kita lihat
+
+89
+00:10:14,800 --> 00:10:19,760
+apa yang terjadi di sini di atas kita
+mengimpor bahan pustaka yang mengimplementasikan
+
+90
+00:10:19,760 --> 00:10:25,440
+semua widget dari desain material google selanjutnya
+kami memiliki fungsi utama yang memulai aplikasi kami
+
+91
+00:10:26,800 --> 00:10:33,760
+dan kemudian kami memiliki kelas aplikasi utama kami yang
+adalah widget stateless untuk membuatnya bergetar sederhana
+
+92
+00:10:33,760 --> 00:10:38,640
+dua jenis utama widget tanpa kewarganegaraan
+dan stateful kami menggunakan widget stateful
+
+93
+00:10:38,640 --> 00:10:43,840
+ketika kita ingin menyimpan beberapa nilai dalam arus
+widget dan stateless jika itu kelas yang dapat ditiru
+
+94
+00:10:45,280 --> 00:10:51,760
+baiklah mari kita simpan file kita dan kita bisa melihatnya
+aplikasi kami menjadi putih apa yang baru saja terjadi
+
+95
+00:10:52,560 --> 00:10:58,960
+jika kita lihat di sini di sudut yang kita miliki
+restart dan kami telah memuat ulang mereka berdua melakukan
+
+96
+00:10:58,960 --> 00:11:05,680
+hal yang sama tetapi hampir restart sepenuhnya
+meluncurkan aplikasi lain ini dari awal
+
+97
+00:11:05,680 --> 00:11:11,920
+jadi jika Anda memiliki beberapa status maka itu juga
+reset tetapi untuk memuat ulang mencoba untuk mempertahankan
+
+98
+00:11:11,920 --> 00:11:21,120
+keadaan aplikasi kita jadi untuk saat ini
+mari kita coba membuat sesuatu yang lebih bermanfaat
+
+99
+00:11:22,640 --> 00:11:29,360
+dan jika saya mengklik simpan itu harus gagal ya dan
+alasannya adalah kebutuhan aplikasi materi
+
+100
+00:11:29,360 --> 00:11:36,960
+beberapa halaman untuk ditampilkan mari buat halaman lain
+widget stateless itu disebut halaman utama misalnya
+
+101
+00:11:39,040 --> 00:11:46,160
+dan kemudian di dalam ini mari kita buat sesuatu
+yang disebut perancah dan perancah pada dasarnya
+
+102
+00:11:46,160 --> 00:11:52,640
+kerangka aplikasi material kami jadi sekarang
+jika kita pergi ke material dan membuat home
+
+103
+00:11:54,320 --> 00:11:57,840
+dan berikan halaman utama ke sana dan kemudian kita bisa melihatnya
+
+104
+00:11:58,720 --> 00:12:04,800
+bahwa kita memiliki layar putih lagi mari kita coba
+untuk membuat bilah aplikasi dan melihat cara kerjanya
+
+105
+00:12:07,680 --> 00:12:15,360
+beraksi jadi mari kita coba memasang bar dengan
+teks di dalamnya dan katakan halo, kami datang
+
+106
+00:12:17,120 --> 00:12:22,720
+oke jadi mari kita coba menerapkan sesuatu yang lebih
+berguna daripada layar kosong dengan judul
+
+107
+00:12:23,280 --> 00:12:30,080
+jadi kita bisa mengubah widget kita menjadi yang stateful
+karena kami akan menyimpan file dari disk kami
+
+108
+00:12:31,440 --> 00:12:37,040
+dan sekarang kami dapat melihat bahwa Anda memiliki widget dan
+sekarang kami memiliki statusnya dan sebagai gantinya kami memiliki
+
+109
+00:12:37,040 --> 00:12:45,840
+fungsi build yang sama seperti lagi dan di main . kami
+aplikasi tidak ada yang berubah saya akan menyalin satu fungsi
+
+110
+00:12:46,560 --> 00:12:56,800
+karena kita memiliki waktu yang terbatas jadi biarkan aku cepat melakukannya
+tidak apa-apa jadi di dalam kelas negara bagian ini mari kita tempel
+
+111
+00:12:59,120 --> 00:13:03,120
+satu fungsi lalu tempel beberapa variabel
+
+112
+00:13:05,440 --> 00:13:12,640
+dan saya akan menjelaskannya sebentar lagi dan
+lakukan satu hal lagi abstraksi kami jadi
+
+113
+00:13:15,200 --> 00:13:19,840
+oke jadi itu saja
+biar cepat cepat simpan ini
+
+114
+00:13:24,720 --> 00:13:28,000
+oke jadi kita punya masalah
+dengan impor jadi mari impor
+
+115
+00:13:31,040 --> 00:13:37,680
+dan ya dalam hal ini kita dapat melihat bahwa kita memiliki beberapa
+masalah bahwa jika kami mencoba mengimpornya, kami dapat melihatnya
+
+116
+00:13:37,680 --> 00:13:45,760
+itu dan alasannya adalah karena ada dalam file dan
+diimpor sedikit berbeda jadi jika kita naik
+
+117
+00:13:46,400 --> 00:13:54,960
+ke bagian impor kami, kami dapat menambahkan dependensi kami
+sebelum pergi ke titik koma jadi sekarang kita simpan
+
+118
+00:13:56,800 --> 00:14:06,720
+itu harus memiliki segalanya baik-baik saja ya oke
+jadi mari kita pergi dan melihat apa yang saya tempel dengan ini
+
+119
+00:14:06,720 --> 00:14:11,920
+pada dasarnya apa fungsi ini pada dasarnya
+apakah itu meninggalkan file di direktori yang diberikan
+
+120
+00:14:12,560 --> 00:14:23,680
+dan mengembalikannya sebagai direktori atau file
+item jadi Anda lihat saya buat di sini semua item
+
+121
+00:14:23,680 --> 00:14:30,880
+jadi setiap file dan saya memiliki item direktori dan file
+item jadi ini akan menampilkannya dalam urutan yang diberikan
+
+122
+00:14:32,000 --> 00:14:36,320
+Anda juga mendapatkan sorotan saat ini
+item saya pergi sedikit di depan diriku sendiri
+
+123
+00:14:37,120 --> 00:14:43,840
+dan kami juga memiliki rumah di sini yang akan kami tambahkan
+segera dan untuk abstraksi kami pada dasarnya adalah milik saya
+
+124
+00:14:44,800 --> 00:14:51,360
+ketik jadi saya menambahkan apakah itu file atau
+direktori dan model kustom kelas saya untuk
+
+125
+00:14:51,920 --> 00:14:58,640
+tampilkan lebih cepat lebih cepat jadi beri nama tanpa
+waktu item jalur ekstensi atau jika disembunyikan atau tidak
+
+126
+00:14:59,600 --> 00:15:07,520
+jadi tidak ada yang besar tapi saya hanya tidak ingin menghabiskan
+waktu Anda tahu bagi Anda untuk melihat saya menulis ini
+
+127
+00:15:07,520 --> 00:15:12,160
+fungsi file karena itu cukup membosankan untuk
+jujur ​​dan tidak ada gunanya melakukannya
+
+128
+00:15:13,040 --> 00:15:18,000
+oke jadi mungkin mari kita coba tampilkan
+beberapa file di aplikasi kami
+
+129
+00:15:20,320 --> 00:15:25,840
+mari kita coba dengan mengimplementasikan fungsi init jadi
+
+130
+00:15:37,120 --> 00:15:43,200
+benar jadi fungsi in kita berjalan sebelum build
+metode dan masukkan variabel lingkungan rumahnya
+
+131
+00:15:43,200 --> 00:15:49,360
+sehingga kami dapat menampilkan isi folder rumah kami
+jadi mari kita coba tampilkan sesuatu di layar
+
+132
+00:15:50,480 --> 00:15:57,840
+dan itu akan menjadi tubuh kita
+perancah dan mungkin ada kolom
+
+133
+00:16:01,200 --> 00:16:07,840
+anak-anak dan apa yang kita bisa
+lakukan adalah menampilkan teks dan memeriksa
+
+134
+00:16:10,160 --> 00:16:16,720
+manajer file kami, kami perlu memanggil
+fungsi ini jadi mari kita dapatkan file di
+
+135
+00:16:17,760 --> 00:16:21,840
+direktori yang diberikan dan buat direktori
+
+136
+00:16:24,560 --> 00:16:31,360
+berdasarkan direktori home kami dan kami membutuhkan
+untuk secara eksplisit mengatakan bahwa itu bukan null
+
+137
+00:16:32,960 --> 00:16:37,680
+jadi fungsi ini harus memuat semua item
+dan dipecah menjadi direktori dan file
+
+138
+00:16:41,680 --> 00:16:45,520
+mari kita tampilkan yang pertama dan kita
+lihat bahwa itu gagal dan mengapa gagal
+
+139
+00:16:46,160 --> 00:16:52,080
+karena kami memiliki negara jadi kodenya benar-benar
+tidak akan berfungsi tetapi jika kita melakukan hold restart
+
+140
+00:16:52,080 --> 00:16:58,320
+kami memiliki tender jadi ini adalah folder android kami
+oke tapi Anda dapat melihat bahwa ini sangat membosankan
+
+141
+00:16:58,320 --> 00:17:09,280
+jadi mungkin mari kita tampilkan semuanya sekaligus
+apa yang bisa kami lakukan, Anda bisa mendapatkan semua item dan memetakannya
+
+142
+00:17:11,360 --> 00:17:11,860
+dan
+
+143
+00:17:13,840 --> 00:17:19,680
+kita dapat memetakan semua item itu
+untuk nama dan lakukan untuk daftar
+
+144
+00:17:21,280 --> 00:17:27,600
+dan kami dapat melihat bahwa kami menampilkan semua yang kami miliki
+juga mendapat pengecualian karena kami kehabisan ruang
+
+145
+00:17:27,600 --> 00:17:34,800
+jadi untuk memperbaikinya dengan cepat kita bisa melakukan tampilan daftar sebagai gantinya
+kolom jadi mari kita periksa ubah itu menjadi hidup
+
+146
+00:17:38,320 --> 00:17:43,120
+dan sekarang kita dapat melihat bahwa pengecualian kita adalah
+hilang dan Anda dapat menggulir item kami
+
+147
+00:17:44,000 --> 00:17:49,920
+oke tentu tapi kita bisa melihat bahwa ada masalah
+dalam pendekatan kami, pertama-tama, kami juga dapat melihat
+
+148
+00:17:49,920 --> 00:17:58,400
+file dan direktori tersembunyi dan kami juga melihatnya
+itu dalam urutan abjad tetapi juga tidak
+
+149
+00:17:58,400 --> 00:18:04,960
+membedakan antara file dan direktori jadi
+ayo cepat perbaiki oke ayo buat dua daftar
+
+150
+00:18:05,520 --> 00:18:12,080
+satu untuk direktori non-tersembunyi dan yang kedua
+untuk file yang tidak disembunyikan setelah itu kita dapat menggabungkan
+
+151
+00:18:12,080 --> 00:18:19,680
+mereka bersama-sama dan mengganti item saat ini dengan kami
+struktur terfilter yang baru dibuat sehingga daftar
+
+152
+00:18:19,680 --> 00:18:22,880
+sedikit lebih pendek sehingga Anda bisa
+lihat bahwa kami memiliki desktop aplikasi
+
+153
+00:18:23,600 --> 00:18:30,000
+dan semua folder dan kemudian kami
+dapat melihat file sekarang kami memiliki yang lain
+
+154
+00:18:30,000 --> 00:18:36,800
+masalah aplikasi kita terlihat sangat membosankan
+sejujurnya jadi mungkin mari kita terapkan dulu
+
+155
+00:18:36,800 --> 00:18:43,360
+tema dari tema kuning jadi untuk melakukan itu
+kita harus pergi ke aplikasi utama kita
+
+156
+00:18:44,960 --> 00:18:51,920
+kita dapat melihat bahwa kita sedang mengimpor tema yaru
+sudah dan kita bisa melakukan hal yang sangat sangat sederhana
+
+157
+00:18:51,920 --> 00:18:58,560
+jadi pertama terapkan tema yaru light theme
+jadi kami akan menggunakan tema ringan secara default
+
+158
+00:18:59,920 --> 00:19:04,320
+dan untuk tema gelap kita bisa melakukan yaru.darkTheme
+
+159
+00:19:07,280 --> 00:19:08,080
+dan mode tema
+
+160
+00:19:10,720 --> 00:19:16,960
+sistem jadi ini akan memeriksa apakah kita menggunakan
+tema terang atau tema gelap dan kemudian menerapkannya ke kami
+
+161
+00:19:16,960 --> 00:19:22,720
+aplikasi dan itu pada dasarnya kita bisa
+lihat bilah atas telah berubah menjadi tema kesalahan dan
+
+162
+00:19:22,720 --> 00:19:29,520
+sekarang kita harus menggunakan yang tepat oke sekarang untuk
+hal kedua kita mungkin harus menampilkan ini di
+
+163
+00:19:29,520 --> 00:19:38,480
+grid oke jadi total untuk itu kita bisa mengubah kita
+tampilan daftar ke daftar kisi responsif setelah disimpan dengan baik
+
+164
+00:19:38,480 --> 00:19:46,240
+daftar dan Anda dapat melihat bahwa Anda memiliki beberapa squiggly
+garis jadi di impor tentu saja dan apa lagi
+
+165
+00:19:47,280 --> 00:19:58,000
+kita perlu item yang diinginkan dengan begitu karena itu akan
+jadilah lebar satu blok kita, mari kita pilih 72
+
+166
+00:19:58,000 --> 00:20:03,280
+misalnya dan sekarang kita melihat bahwa itu terlihat
+sedikit berbeda terlihat seperti kotak
+
+167
+00:20:03,280 --> 00:20:10,480
+yang bagus dan Anda dapat melihat ini
+antreannya agak panjang jadi apa yang bisa kita lakukan
+
+168
+00:20:11,360 --> 00:20:20,240
+adalah menambahkan kolom di sini dan itu akan mengubahnya menjadi
+menjadi lebih mudah dibaca oke jadi sebelum kita bisa melanjutkan i
+
+169
+00:20:20,240 --> 00:20:27,840
+harus memberi tahu Anda sedikit rahasia yang saya lakukan sebelumnya
+saya dan saya ingin mengembalikan dua aset satu adalah
+
+170
+00:20:27,840 --> 00:20:33,840
+untuk folder hitam dan satu untuk teks while
+dua ikon yang akan kita gunakan untuk aplikasi kita
+
+171
+00:20:34,560 --> 00:20:41,760
+dan saya menambahkannya di folder aset jadi kami punya untuk
+hitam dan teks saya juga menambahkan yang lain untuk a
+
+172
+00:20:41,760 --> 00:20:48,480
+tes tapi mari kita fokus pada keduanya sekarang mari
+kembali dan apa yang bisa kita lakukan sekarang adalah kita bisa
+
+173
+00:20:49,520 --> 00:20:54,240
+ekstrak ini ke widget flutter terpisah
+jadi mari kita lakukan itu sekarang dan beri nama itu
+
+174
+00:20:56,560 --> 00:21:02,880
+item harus benar-benar menggunakan nama yang berbeda tetapi Anda tahu
+penamaan itu sulit harap Anda memaafkan saya kali ini
+
+175
+00:21:03,760 --> 00:21:07,120
+luar biasa selanjutnya kita dapat mengekstrak
+teks ke widget flutter baru
+
+176
+00:21:07,920 --> 00:21:12,320
+karena Anda ingin melakukan lebih banyak lagi
+kustomisasi dan saya juga menambahkan
+
+177
+00:21:12,320 --> 00:21:17,840
+bendera untuk membedakan apakah item disorot
+atau tidak dan setelah dia memperbaikinya sudah siap
+
+178
+00:21:19,520 --> 00:21:26,320
+untuk membuatnya sedikit lebih baik, kita dapat menambahkan ikon ke
+setiap jenis elemen pertama kita bungkus teks dalam kolom
+
+179
+00:21:26,320 --> 00:21:32,960
+jadi kami dapat menambahkan widget gambar svg, kami memeriksa apakah
+item saat ini adalah folder atau file dan kami menerapkan
+
+180
+00:21:32,960 --> 00:21:40,560
+ikon yang berbeda dan terlihat sudah lebih baik kita bisa
+lihat teks itu masih belum di tengah jadi kita harus
+
+181
+00:21:40,560 --> 00:21:47,280
+juga perbaiki itu tetapi pertama-tama mari tambahkan beberapa bantalan ke
+memiliki lebih banyak ruang saya juga menambahkan kotak ukuran untuk menambah
+
+182
+00:21:47,280 --> 00:21:53,680
+celah antara ikon dan nama item
+kita dapat melihat bahwa saya sedang bereksperimen sedikit dengan
+
+183
+00:21:53,680 --> 00:21:59,360
+desain menambahkan bantalan di sana-sini tetapi saya
+hanya ingin mengungkapkan betapa kuatnya proses ini
+
+184
+00:21:59,360 --> 00:22:05,280
+apakah kita memiliki umpan balik cepat yang mendorong
+pengembang untuk bereksperimen dengan desain yang berbeda
+
+185
+00:22:06,080 --> 00:22:12,240
+saya bisa membayangkan seorang pengembang duduk dengan desainer
+dan aplikasi fine tune sebanyak yang mereka bisa
+
+186
+00:22:12,240 --> 00:22:17,760
+Anda dapat melihat bahwa aplikasi juga responsif
+untuk mengubah jendela baik-baik saja sekarang kita harus memperbaikinya
+
+187
+00:22:17,760 --> 00:22:24,560
+teks itu yang juga sangat mudah i
+cukup atur batas garis maks dan luapan untuk berjaga-jaga
+
+188
+00:22:24,560 --> 00:22:30,160
+kita harus berurusan dengan nama yang sangat panjang dan
+untuk memusatkan teks saya hanya menentukan perataan teks
+
+189
+00:22:31,920 --> 00:22:37,280
+brilian saatnya untuk menambahkan penangan klik
+untuk item yang disorot, kami akan mengambil semuanya
+
+190
+00:22:37,280 --> 00:22:43,600
+dalam wadah dan tentukan dekorasi kotak yang Anda bisa
+lihat saya lagi menggunakan warna kuning dan sorot
+
+191
+00:22:43,600 --> 00:22:51,200
+semuanya di terong dulu karena border
+radius mewah hari ini saya tentukan ini juga kami
+
+192
+00:22:51,200 --> 00:22:56,480
+sorotan operasi baru sedikit terlalu banyak
+tapi untungnya kita bisa lebih transparan
+
+193
+00:22:57,760 --> 00:23:04,800
+setelah melihatnya berfungsi saatnya untuk menggunakan milik kami
+variabel yang disorot dengan pernyataan if sederhana
+
+194
+00:23:04,800 --> 00:23:10,960
+kita dapat mengatur dekorasi kotak ketika variabelnya adalah
+setel ke true untuk menangani klik di flutter kita bisa
+
+195
+00:23:10,960 --> 00:23:17,040
+bungkus widget kami di widget lain yang disebut gesture
+detektor dan karena kami ingin menentukan fungsi
+
+196
+00:23:17,040 --> 00:23:24,880
+dari induk kami meneruskannya melalui konstruktor
+dengan pendekatan ini kita dapat melewati bendera yang disorot
+
+197
+00:23:24,880 --> 00:23:31,120
+berdasarkan item yang disorot saat ini dan kemudian klik
+logika penting untuk memanggil fungsi setstate
+
+198
+00:23:31,120 --> 00:23:36,800
+yang akan menginformasikan lebih datar untuk menyegarkan UI untuk status
+mengubah dan mengecat ulang bagian layar yang berubah
+
+199
+00:23:39,120 --> 00:23:44,960
+baiklah kami sekarang dapat menandai file kami tetapi ketika kami mencoba
+untuk mengklik dua kali pada beberapa elemen tidak ada yang terjadi
+
+200
+00:23:45,840 --> 00:23:52,880
+mari kita terapkan logika ini dengan cepat di item kita
+kelas kami menambahkan panggilan balik onDoubleTap kami mengaturnya ke isyarat
+
+201
+00:23:52,880 --> 00:23:58,480
+detektor dan meneruskannya melalui konstruktor
+seperti yang kami lakukan dengan satu tab berikutnya
+
+202
+00:23:58,480 --> 00:24:05,600
+kami membuat satu fungsi doubletap kami memeriksa apakah
+item langsung atau tidak dan kami menerapkan kecil
+
+203
+00:24:05,600 --> 00:24:17,840
+berfungsi untuk mengatur ulang keadaan saat ini setelah itu kita
+ubah direktori ke direktori item dan hanya itu
+
+204
+00:24:25,520 --> 00:24:30,960
+pintasan keyboard sangat penting untuk desktop
+program izinkan saya menunjukkan kepada Anda betapa mudahnya Anda melakukannya
+
+205
+00:24:30,960 --> 00:24:38,080
+bahwa dalam flutter pertama kita perlu membuat niat
+yang nanti akan kita dengarkan niatnya adil
+
+206
+00:24:38,080 --> 00:24:43,840
+kelas normal yang secara opsional dapat menampung beberapa
+data dalam kasus kami, kami hanya memiliki kelas kosong
+
+207
+00:24:45,120 --> 00:24:51,600
+selanjutnya kita bungkus aplikasi di widget shortcut
+dan tentukan peta pintasan dalam kasus saya
+
+208
+00:24:51,600 --> 00:24:57,920
+itu panah atas yang akan memanggil yang baru dibuat
+maksud setelah itu kita perlu menentukan tindakan
+
+209
+00:24:57,920 --> 00:25:03,200
+widget alasan kenapa dipisah
+adalah karena kita dapat menggunakan maksud yang sama
+
+210
+00:25:03,200 --> 00:25:09,440
+untuk bagian yang berbeda dari aplikasi kita tetapi untuk
+demi kesederhanaan kami selalu menggunakannya
+
+211
+00:25:10,800 --> 00:25:16,400
+kita juga perlu menentukan widget fokus dua
+pintasan yang akan ditembakkan jika kita menahan restart
+
+212
+00:25:16,400 --> 00:25:21,360
+aplikasi kita dapat melihatnya setelah mengklik ke atas
+panah kami menavigasi ke root hard disk
+
+213
+00:25:25,280 --> 00:25:29,520
+kita masih punya sedikit waktu jadi ayo
+saya dengan cepat menunjukkan beberapa hal lagi
+
+214
+00:25:30,400 --> 00:25:36,000
+kita semua tahu bahwa panel ukuran sangat nyaman
+di pengelola file dan karena kami tidak memilikinya, itu
+
+215
+00:25:36,000 --> 00:25:43,440
+waktu untuk mengubah itu biarkan saya menambahkan warna panel samping
+pertama dan kita bisa mulai jika Anda mulai berpikir seperti itu
+
+216
+00:25:43,440 --> 00:25:50,400
+semua ini terlalu mudah maka Anda benar
+saya cukup membungkus kotak di baris yang memungkinkan saya untuk memiliki
+
+217
+00:25:50,400 --> 00:25:56,800
+dua tampilan bersebelahan secara horizontal di sebelah i
+tambahkan wadah dengan yang ditentukan dan buat item
+
+218
+00:25:56,800 --> 00:26:04,640
+di dalam lessview berkat karya kanonik yang saya gunakan
+ikon panah dengan sangat mudah sekarang kami dapat menggunakan kembali kami
+
+219
+00:26:04,640 --> 00:26:12,000
+ubah fungsi direktori yang terkenal, aktifkan
+klik dan kode kami gagal dan alasannya
+
+220
+00:26:12,000 --> 00:26:18,560
+gagal adalah karena kami tidak menentukan batasan
+seberapa besar kisi-kisi dapat tumbuh, ia ingin melukis dirinya sendiri
+
+221
+00:26:18,560 --> 00:26:24,720
+infinity pada dasarnya untuk mencegah perilaku ini kita
+bungkus daftar kisi responsif ke dalam widget yang diperluas
+
+222
+00:26:25,840 --> 00:26:32,960
+jika Anda tertarik bagaimana flutter memutuskan
+ukuran widget mencari model kotak flutter saya tidak
+
+223
+00:26:32,960 --> 00:26:39,360
+ingin rumah merasa kesepian di dalam panel situs kami jadi
+saya akan menambahkan item proyek juga dan itu pada dasarnya
+
+224
+00:26:41,200 --> 00:26:45,760
+Saya tahu apa yang Anda pikirkan saat ini hanya saja
+aplikasi membosankan lain yang sudah kami miliki
+
+225
+00:26:46,560 --> 00:26:52,800
+jadi saya rasa sudah waktunya untuk menambahkan sedikit saja
+hal-hal permen mata Anda dapat melihat bahwa ketika kita mengklik
+
+226
+00:26:52,800 --> 00:26:58,400
+pada beberapa item itu hanya menyoroti itu tidak akan
+lebih baik jika kita bisa menghidupkan transisi ini
+
+227
+00:26:59,440 --> 00:27:05,600
+untungnya flutter memiliki dukungan yang sangat baik untuk
+animasi kita hanya perlu mengubah wadah
+
+228
+00:27:05,600 --> 00:27:13,760
+di dalam widget item kami ke wadah animasi selanjutnya
+kami menentukan durasi berapa lama animasi harus
+
+229
+00:27:13,760 --> 00:27:22,720
+sekarang kita hanya perlu mengubah cara kita menggunakan
+dekorasi kotak bukannya mengaturnya atau tidak saya
+
+230
+00:27:22,720 --> 00:27:29,680
+mengatur warna terong saat disorot tetapi
+ketika tidak saya menempatkan warna transparan bergetar
+
+231
+00:27:29,680 --> 00:27:37,520
+teks mengubah variabel dan menjiwai nilainya ketika
+itu berubah saya mengubah terong menjadi lebih gelap
+
+232
+00:27:37,520 --> 00:27:47,840
+untuk visibilitas mungkin itu bukan desain terbaik tapi
+Anda harus mengatakan bahwa itu sangat mudah diterapkan
+
+233
+00:27:50,480 --> 00:27:55,440
+oke hal terakhir saya berjanji saya hanya ingin
+menunjukkan integrasi dengan program eksternal
+
+234
+00:27:56,240 --> 00:28:02,000
+jika Anda memperhatikan dengan seksama, Anda mungkin memperhatikan
+bahwa kita kehilangan logika untuk membuka item
+
+235
+00:28:02,000 --> 00:28:07,280
+berkat membuka plugin file, kami dapat membuka program
+yang ditetapkan sebagai default untuk ekstensi yang diberikan
+
+236
+00:28:08,080 --> 00:28:11,280
+untuk melakukan itu cukup navigasikan ke fungsi ketuk dua kali
+
+237
+00:28:11,840 --> 00:28:16,800
+dan cukup gunakan fungsi buka plugin untuk
+buka file dan pada dasarnya itu
+
+238
+00:28:19,520 --> 00:28:25,680
+oke jadi semoga itu tidak membosankan tapi mari
+rekap demo kami membuat aplikasi responsif
+
+239
+00:28:25,680 --> 00:28:31,280
+sangat cepat sangat mudah untuk mengembangkan UI bahkan jika kita
+tidak memiliki beberapa fungsi seperti penyorotan
+
+240
+00:28:31,280 --> 00:28:36,880
+folder itu juga cepat diimplementasikan
+quad reload dan quad restart adalah alat yang luar biasa
+
+241
+00:28:37,440 --> 00:28:43,680
+untuk membantu Anda mengulangi animasi proyek Anda
+built-in dan mudah digunakan dan omong-omong
+
+242
+00:28:43,680 --> 00:28:49,520
+juga sangat mudah untuk membuat animasi kustom baru
+kami melihat perpustakaan yang dibuat oleh kanonik berkat
+
+243
+00:28:49,520 --> 00:28:54,800
+yang bisa kita integrasikan dengan lebih mudah
+dengan lingkungan desktop dan plugin kami dibuat
+
+244
+00:28:54,800 --> 00:29:02,160
+oleh orang lain untuk membuka file yang menurut saya bagus
+tempat untuk menyebutkan integrasi khusus linux
+
+245
+00:29:02,160 --> 00:29:07,840
+yang belum kita lihat di demo yang hanya saya tunjukkan
+dua perpustakaan tetapi orang-orang kanonik memiliki hal keren lainnya
+
+246
+00:29:07,840 --> 00:29:15,280
+hal-hal untuk mengintegrasikan dart dengan linux ke nama a
+sedikit Anda dapat menggunakan manajer jaringan dbus Gsettings
+
+247
+00:29:15,280 --> 00:29:20,960
+atau paket kit dan sekali lagi semuanya terbuka
+sumber dan tersedia untuk Anda gunakan atau sumbangkan
+
+248
+00:29:22,080 --> 00:29:28,640
+ada integrasi lain yang dilakukan oleh google seperti
+pemilih file asli yang kita kenal dengan pemeriksa ukuran atau
+
+249
+00:29:28,640 --> 00:29:34,080
+integrasi bilah menu dan tentu saja banyak
+perpustakaan lain yang dilakukan oleh komunitas
+
+250
+00:29:35,920 --> 00:29:40,880
+Anda mungkin bertanya apakah kami bisa melakukan semuanya di
+menyanjung sekarang jawabannya adalah ya tetapi juga tidak cukup
+
+251
+00:29:41,440 --> 00:29:46,160
+linux masih kekurangan dukungan tampilan asli
+dan dukungan tampilan tekstur ada tarik
+
+252
+00:29:46,160 --> 00:29:50,800
+meminta penerapan itu sehingga tidak seharusnya
+terlalu lama untuk melihat fungsi ini dalam kerangka
+
+253
+00:29:51,360 --> 00:29:56,160
+juga tidak ada plugin suara untuk linux tetapi
+yang bisa relatif mudah diimplementasikan
+
+254
+00:29:57,120 --> 00:30:01,760
+jadi kita masih perlu menunggu beberapa hal tapi
+ini saat yang tepat untuk mulai menulis aplikasi Anda
+
+255
+00:30:03,920 --> 00:30:08,400
+jika Anda suka woodruff dan ingin belajar
+lebih lanjut tentang flutter kemudian periksa resmi
+
+256
+00:30:08,400 --> 00:30:14,560
+dokumentasi juga ada banyak tutorial bagus
+di youtube dengan kode sumber di github letter
+
+257
+00:30:14,560 --> 00:30:21,280
+komunitas membuat kerugian ketika streaming youtube
+setiap hari rabu hampir di mana Anda bisa bertanya
+
+258
+00:30:21,280 --> 00:30:27,600
+pertanyaan Anda tentang kerangka kerja untuk mendapatkan
+rasa pencarian UI yang luar biasa untuk tantangan flutter
+
+259
+00:30:27,600 --> 00:30:32,640
+di mesin pencari pilihan Anda, Anda mungkin
+terkejut betapa mudahnya orang mengimplementasikan aplikasi
+
+260
+00:30:32,640 --> 00:30:39,040
+bergetar dengan UI khusus jika Anda perlu berbicara
+dengan pengembang mana pun, ada juga saluran perselisihan
+
+261
+00:30:41,920 --> 00:30:45,600
+jika Anda sudah tahu flutter dan mau
+suka membantu dengan adopsi linux
+
+262
+00:30:45,600 --> 00:30:49,360
+inilah tips saya untuk Anda menulis
+dan bagikan program linux Anda
+
+263
+00:30:49,360 --> 00:30:54,480
+kamu bisa misalnya menggunakan twitter untuk itu jangan
+lupa menyebutkan akun flutter dan linux
+
+264
+00:30:55,440 --> 00:31:01,280
+tulis posting tentang pengalaman dan masalah Anda
+yang Anda temui jika Anda menemukan bug atau memiliki
+
+265
+00:31:01,280 --> 00:31:06,720
+beberapa saran bagaimana meningkatkan kerangka kerja
+laporkan masalah ke halaman github flutter berbicara
+
+266
+00:31:06,720 --> 00:31:12,080
+perbaikan lihat dokumentasi
+selalu ada sesuatu untuk diperbaiki terakhir tapi
+
+267
+00:31:12,080 --> 00:31:18,480
+paling tidak membantu Canonical untuk mengembangkan perpustakaan mereka
+dan tambahkan dukungan ke perpustakaan populer di pub.dev
+
+268
+00:31:20,560 --> 00:31:26,960
+hanya itu yang saya miliki untuk hari ini semoga Anda memilikinya
+menyenangkan dan setidaknya saya tertarik dengan flutter
+
+269
+00:31:26,960 --> 00:31:31,840
+terima kasih telah mendengarkan sekarang saya pikir
+kami punya waktu untuk pertanyaan
+

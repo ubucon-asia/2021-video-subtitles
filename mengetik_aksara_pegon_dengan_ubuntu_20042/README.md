@@ -7,6 +7,7 @@
 ## Subtitles
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
     - Subtitle provided by speaker: Faiq Aminuddin(dampuawang@gmail.com)
+    - Reviewed and Post-edited by Yudhi Satrio (isatrio.is.me@gmail.com)
 - [`en_us.srt`: English subtitle](en_us.srt)
     - Machine-translated with YouTube subtitle translate tool
-    - Reviewed and Post-edited by `Unknown` (<- Please fix if you know who translated)
+    - Reviewed and Post-edited by Yudhi Satrio (isatrio.is.me@gmail.com)
