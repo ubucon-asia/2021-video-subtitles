@@ -7,6 +7,6 @@
 ## Subtitles
 
 - [`en_us.srt`: English subtitle](en_us.srt)
-	- Translated by Jordan Maulana (jordanmaulana26@gmail.com)
+	- Authored by Jordan Maulana (jordanmaulana26@gmail.com)
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
 	- Translated by Jordan Maulana (jordanmaulana26@gmail.com)
