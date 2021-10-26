@@ -7,6 +7,6 @@
 ## Subtitles
 
 - [`en_en.srt`: English subtitle](en_en.srt)
-	- Translated by `unknown`
+	- Authored by `unknown`
 - [`id_id.srt`: Indonesian subtitle](id_id.srt)
 	- Translated by Triyan W Nugroho (triyan.wn@gmail.com)
